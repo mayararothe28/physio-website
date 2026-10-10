@@ -73,56 +73,44 @@ const CLINIC_FACILITIES = [
 export default function AboutPage() {
   return (
     <main className="about-page">
-      {/* ─── 1. HERO HEADER ─── */}
-      <section className="about-hero-section">
+      {/* ─── 1. STANDARDIZED UNIFORM SUBPAGE HERO ─── */}
+      <section className="subpage-hero-banner">
+        <div className="subpage-hero-content">
+          <span className="subpage-kicker">
+            <ShieldCheck size={14} /> ABOUT REVITAORTHO CLINIC
+          </span>
+          <h1 className="subpage-title">
+            Dedicated to Evidence-Based Healing.
+            <br />
+            <span className="text-highlight">Committed to Avoiding Surgery.</span>
+          </h1>
+          <p className="subpage-lead">
+            Founded with a clinical mission to bring world-class non-invasive orthopedic rehabilitation to Pune, combining Master’s-level clinical expertise with advanced European technologies.
+          </p>
+        </div>
+      </section>
+
+      {/* ─── 2. CLINIC VISUAL SPOTLIGHT ─── */}
+      <section className="about-visual-strip">
         <div className="about-container">
-          <div className="about-hero-grid">
-            <div className="about-hero-text">
-              <span className="about-kicker">
-                <ShieldCheck size={14} /> ABOUT REVITAORTHO CLINIC
-              </span>
-              <h1>
-                Dedicated to Evidence-Based Healing.
-                <br />
-                <span className="text-highlight">Committed to Avoiding Surgery.</span>
-              </h1>
-              <p className="about-hero-lead">
-                Founded with a clinical mission to bring world-class non-invasive orthopedic rehabilitation to Pune, RevitaOrtho combines certified Master’s-level clinical expertise with advanced German and European rehabilitation technologies.
-              </p>
-
-              <div className="about-hero-actions">
-                <Link to="/appointment" className="btn-about-primary">
-                  <Calendar size={18} />
-                  <span>Book Initial Assessment</span>
-                  <ArrowRight size={17} />
-                </Link>
-                <Link to="/team" className="btn-about-secondary">
-                  <span>Meet Our Clinical Team</span>
-                </Link>
-              </div>
-            </div>
-
-            <div className="about-hero-visual">
-              <div className="about-img-frame">
-                <img
-                  src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1000&q=80"
-                  alt="Physiotherapist providing hands-on orthopedic care"
-                  className="about-main-img"
-                />
-                <div className="about-floating-badge">
-                  <Award size={22} className="text-azure" />
-                  <div>
-                    <strong>NABH Quality Protocols</strong>
-                    <p>ISO 9001:2015 Certified Center</p>
-                  </div>
-                </div>
+          <div className="about-img-frame">
+            <img
+              src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=80"
+              alt="Physiotherapist providing hands-on orthopedic care"
+              className="about-main-img"
+            />
+            <div className="about-floating-badge">
+              <Award size={22} className="text-azure" />
+              <div>
+                <strong>NABH Quality Protocols • ISO 9001:2015</strong>
+                <p>Private Treatment Suites & Gait Lab in Baner, Pune</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ─── 2. CLINICAL MILESTONES RIBBON ─── */}
+      {/* ─── 3. CLINICAL MILESTONES RIBBON ─── */}
       <section className="about-milestones-bar">
         <div className="about-container milestones-grid">
           {CLINICAL_MILESTONES.map((item, idx) => (
@@ -135,7 +123,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ─── 3. CLINICAL PHILOSOPHY / FOUNDER'S NOTE ─── */}
+      {/* ─── 4. CLINICAL PHILOSOPHY / FOUNDER'S NOTE ─── */}
       <section className="about-founder-section section-padding">
         <div className="about-container founder-grid">
           <div className="founder-image-col">
@@ -181,7 +169,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ─── 4. FOUR CLINICAL PILLARS ─── */}
+      {/* ─── 5. FOUR CLINICAL PILLARS ─── */}
       <section className="about-pillars-section section-padding">
         <div className="about-container">
           <div className="section-head-center">
@@ -209,7 +197,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ─── 5. INFRASTRUCTURE & FACILITIES ─── */}
+      {/* ─── 6. INFRASTRUCTURE & FACILITIES ─── */}
       <section className="about-facilities-section section-padding">
         <div className="about-container">
           <div className="section-head-center">
@@ -236,7 +224,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ─── 6. BOTTOM CTA ─── */}
+      {/* ─── 7. BOTTOM CTA ─── */}
       <section className="about-cta-section">
         <div className="about-container about-cta-inner">
           <span className="about-kicker text-ice">START YOUR RECOVERY</span>

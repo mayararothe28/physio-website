@@ -20,6 +20,62 @@
   padding: 85px 0;
 }
 
+/* ─── STANDARDIZED UNIFORM SUBPAGE HERO ─── */
+.subpage-hero-banner {
+  min-height: 280px;
+  padding: 68px 0 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: 
+    radial-gradient(circle at 10% 20%, rgba(224, 242, 254, 0.65) 0%, transparent 45%),
+    radial-gradient(circle at 90% 80%, rgba(240, 249, 255, 0.8) 0%, transparent 45%),
+    #f8fafc;
+  border-bottom: 1px solid #e2e8f0;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.subpage-hero-content {
+  width: 100%;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.subpage-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #0284c7;
+  background-color: #e0f2fe;
+  padding: 5px 14px;
+  border-radius: 99px;
+  margin-bottom: 12px;
+}
+
+.subpage-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(30px, 3.6vw, 44px);
+  font-weight: 900;
+  line-height: 1.18;
+  color: #081a2e;
+  letter-spacing: -0.02em;
+  margin: 0 0 12px;
+}
+
+.subpage-lead {
+  font-size: 16px;
+  color: #475569;
+  line-height: 1.65;
+  margin: 0 auto;
+  max-width: 780px;
+}
+
 .treatments-kicker {
   display: inline-flex;
   align-items: center;
@@ -48,36 +104,11 @@
   color: #0284c7;
 }
 
-/* ─── 1. HERO ─── */
-.treatments-hero-section {
-  padding: 70px 0 60px;
-  background: 
-    radial-gradient(circle at 10% 20%, rgba(224, 242, 254, 0.6) 0%, transparent 45%),
-    #f8fafc;
+/* ─── FILTER PILLS BAR ─── */
+.subpage-filter-bar {
+  background-color: #ffffff;
+  padding: 24px 0;
   border-bottom: 1px solid #e2e8f0;
-}
-
-.treatments-hero-content {
-  text-align: center;
-  max-width: 860px;
-  margin: 0 auto;
-}
-
-.treatments-hero-content h1 {
-  font-family: 'Outfit', sans-serif;
-  font-size: clamp(34px, 4vw, 50px);
-  font-weight: 900;
-  line-height: 1.15;
-  color: #081a2e;
-  letter-spacing: -0.02em;
-  margin: 0 0 16px;
-}
-
-.treatments-hero-lead {
-  font-size: 17px;
-  color: #475569;
-  line-height: 1.7;
-  margin-bottom: 34px;
 }
 
 .treatment-filter-pills {
@@ -89,7 +120,7 @@
 }
 
 .filter-pill {
-  background-color: #ffffff;
+  background-color: #f8fafc;
   border: 1.5px solid #e2e8f0;
   padding: 10px 20px;
   border-radius: 99px;
@@ -112,7 +143,7 @@
   box-shadow: 0 4px 14px rgba(2, 132, 199, 0.3);
 }
 
-/* ─── 2. TREATMENTS VERTICAL FLOW ─── */
+/* ─── 3. TREATMENTS VERTICAL FLOW ─── */
 .treatments-list-section {
   background-color: #ffffff;
 }
@@ -341,7 +372,7 @@
   background-color: #bae6fd;
 }
 
-/* ─── 3. BOTTOM CTA ─── */
+/* ─── 4. BOTTOM CTA ─── */
 .treatments-bottom-cta {
   padding-bottom: 85px;
   background-color: #ffffff;

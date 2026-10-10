@@ -148,75 +148,78 @@ export default function TreatmentsPage() {
 
   return (
     <main className="treatments-page">
-      {/* ─── 1. HERO ─── */}
-      <section className="treatments-hero-section">
-        <div className="treatments-container">
-          <div className="treatments-hero-content">
-            <span className="treatments-kicker">
-              <Bone size={14} /> ADVANCED ORTHOPEDIC PROTOCOLS
-            </span>
-            <h1>
-              Evidence-Based Treatments.
-              <br />
-              <span className="text-highlight">Proven Non-Surgical Results.</span>
-            </h1>
-            <p className="treatments-hero-lead">
-              We combine world-class medical modalities with certified clinical expertise. Every treatment protocol is scientifically verified to accelerate tissue repair and prevent surgical intervention.
-            </p>
-
-            <div className="treatment-filter-pills">
-              <button
-                type="button"
-                className={`filter-pill ${activeTab === "all" ? "active" : ""}`}
-                onClick={() => setActiveTab("all")}
-              >
-                All Protocols ({CLINICAL_TREATMENTS.length})
-              </button>
-              <button
-                type="button"
-                className={`filter-pill ${activeTab === "spine" ? "active" : ""}`}
-                onClick={() => setActiveTab("spine")}
-              >
-                Spine Decompression
-              </button>
-              <button
-                type="button"
-                className={`filter-pill ${activeTab === "cellular" ? "active" : ""}`}
-                onClick={() => setActiveTab("cellular")}
-              >
-                Class-IV Laser
-              </button>
-              <button
-                type="button"
-                className={`filter-pill ${activeTab === "joint" ? "active" : ""}`}
-                onClick={() => setActiveTab("joint")}
-              >
-                Tecar Joint Care
-              </button>
-              <button
-                type="button"
-                className={`filter-pill ${activeTab === "manual" ? "active" : ""}`}
-                onClick={() => setActiveTab("manual")}
-              >
-                Dry Needling
-              </button>
-              <button
-                type="button"
-                className={`filter-pill ${activeTab === "diagnostic" ? "active" : ""}`}
-                onClick={() => setActiveTab("diagnostic")}
-              >
-                Gait Lab
-              </button>
-            </div>
-          </div>
+      {/* ─── 1. STANDARDIZED UNIFORM SUBPAGE HERO ─── */}
+      <section className="subpage-hero-banner">
+        <div className="subpage-hero-content">
+          <span className="subpage-kicker">
+            <Bone size={14} /> ADVANCED ORTHOPEDIC PROTOCOLS
+          </span>
+          <h1 className="subpage-title">
+            Evidence-Based Treatments.
+            <br />
+            <span className="text-highlight">Proven Non-Surgical Results.</span>
+          </h1>
+          <p className="subpage-lead">
+            Combining world-class medical modalities with certified clinical expertise in Baner, Pune. Every protocol is scientifically verified to accelerate tissue repair and prevent surgery.
+          </p>
         </div>
       </section>
 
-      {/* ─── 2. TREATMENTS DEEP DIVE ─── */}
+      {/* ─── 2. FILTER PILLS BAR ─── */}
+      <div className="subpage-filter-bar">
+        <div className="treatments-container">
+          <div className="treatment-filter-pills">
+            <button
+              type="button"
+              className={`filter-pill ${activeTab === "all" ? "active" : ""}`}
+              onClick={() => setActiveTab("all")}
+            >
+              All Protocols ({CLINICAL_TREATMENTS.length})
+            </button>
+            <button
+              type="button"
+              className={`filter-pill ${activeTab === "spine" ? "active" : ""}`}
+              onClick={() => setActiveTab("spine")}
+            >
+              Spine Decompression
+            </button>
+            <button
+              type="button"
+              className={`filter-pill ${activeTab === "cellular" ? "active" : ""}`}
+              onClick={() => setActiveTab("cellular")}
+            >
+              Class-IV Laser
+            </button>
+            <button
+              type="button"
+              className={`filter-pill ${activeTab === "joint" ? "active" : ""}`}
+              onClick={() => setActiveTab("joint")}
+            >
+              Tecar Joint Care
+            </button>
+            <button
+              type="button"
+              className={`filter-pill ${activeTab === "manual" ? "active" : ""}`}
+              onClick={() => setActiveTab("manual")}
+            >
+              Dry Needling
+            </button>
+            <button
+              type="button"
+              className={`filter-pill ${activeTab === "diagnostic" ? "active" : ""}`}
+              onClick={() => setActiveTab("diagnostic")}
+            >
+              Gait Lab
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* ─── 3. TREATMENTS DEEP DIVE ─── */}
       <section className="treatments-list-section section-padding">
         <div className="treatments-container">
           <div className="treatments-vertical-flow">
-            {displayedTreatments.map((treatment, idx) => (
+            {displayedTreatments.map((treatment) => (
               <article key={treatment.id} className="treatment-protocol-card">
                 <div className="treatment-card-grid">
                   <div className="treatment-image-col">
@@ -301,7 +304,7 @@ export default function TreatmentsPage() {
         </div>
       </section>
 
-      {/* ─── 3. BOTTOM CTA ─── */}
+      {/* ─── 4. BOTTOM CTA ─── */}
       <section className="treatments-bottom-cta">
         <div className="treatments-container bottom-cta-box">
           <div className="bottom-cta-inner">

@@ -2089,3 +2089,169 @@
   gap: 18px;
   flex-wrap: wrap;
 }
+
+/* ==========================================================================
+   INTERACTIVE CARD ANIMATIONS & DYNAMIC MICRO-INTERACTIONS
+   ========================================================================== */
+
+@keyframes float-slow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes float-subtle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes pulse-azure {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(2, 132, 199, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(2, 132, 199, 0);
+  }
+}
+
+/* Floating Elements */
+.hero-floating-specialist {
+  animation: float-slow 4s ease-in-out infinite;
+}
+
+.pain-image-overlay-card {
+  animation: float-subtle 4.5s ease-in-out infinite;
+}
+
+/* Card Transitions & Hover Elevations */
+.tech-modality-card,
+.case-study-card,
+.doctor-specialist-card,
+.roadmap-phase-card,
+.care-mode-card,
+.testimonial-patient-card,
+.credential-item,
+.facility-perk-card,
+.triage-card {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.25s ease;
+}
+
+/* Shimmer Sweep Animation on Hover */
+.tech-modality-card::before,
+.case-study-card::before,
+.doctor-specialist-card::before,
+.testimonial-patient-card::before,
+.roadmap-phase-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 70%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(2, 132, 199, 0.08) 50%,
+    transparent 100%
+  );
+  transform: skewX(-20deg);
+  pointer-events: none;
+  transition: left 0.75s ease;
+  z-index: 2;
+}
+
+.tech-modality-card:hover::before,
+.case-study-card:hover::before,
+.doctor-specialist-card:hover::before,
+.testimonial-patient-card:hover::before,
+.roadmap-phase-card:hover::before {
+  left: 140%;
+}
+
+/* Card Lift & Glow Effects */
+.tech-modality-card:hover {
+  transform: translateY(-8px) scale(1.01);
+  border-color: #0284c7;
+  box-shadow: 0 18px 40px rgba(2, 132, 199, 0.16);
+}
+
+.case-study-card:hover {
+  transform: translateY(-8px) scale(1.01);
+  border-color: #0284c7;
+  box-shadow: 0 18px 40px rgba(2, 132, 199, 0.16);
+}
+
+.doctor-specialist-card:hover {
+  transform: translateY(-8px) scale(1.01);
+  border-color: #0284c7;
+  box-shadow: 0 18px 40px rgba(2, 132, 199, 0.18);
+}
+
+.doctor-specialist-card:hover .doctor-card-photo {
+  transform: scale(1.06);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.doctor-card-photo {
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.roadmap-phase-card:hover {
+  transform: translateY(-6px);
+  border-color: #0284c7;
+  box-shadow: 0 14px 34px rgba(2, 132, 199, 0.14);
+}
+
+.roadmap-phase-card:hover .phase-number-badge {
+  color: rgba(2, 132, 199, 0.45);
+  transform: scale(1.08);
+  transition: all 0.3s ease;
+}
+
+.phase-number-badge {
+  transition: all 0.3s ease;
+}
+
+.care-mode-card:hover {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 20px 45px rgba(2, 132, 199, 0.18);
+}
+
+.testimonial-patient-card:hover {
+  transform: translateY(-6px);
+  border-color: #0284c7;
+  box-shadow: 0 16px 36px rgba(2, 132, 199, 0.14);
+}
+
+.triage-card:hover {
+  box-shadow: 0 20px 48px rgba(10, 37, 64, 0.16);
+}
+
+.credential-item {
+  transition: transform 0.25s ease;
+}
+
+.credential-item:hover {
+  transform: translateY(-3px);
+}
+
+.facility-perk-card {
+  transition: all 0.25s ease;
+}
+
+.facility-perk-card:hover {
+  transform: translateX(4px);
+  background-color: rgba(255, 255, 255, 0.14);
+  border-color: rgba(56, 189, 248, 0.4);
+}

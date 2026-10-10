@@ -124,71 +124,74 @@ export default function ServicesPage() {
 
   return (
     <main className="services-page">
-      {/* ─── 1. SERVICES HERO ─── */}
-      <section className="services-hero-section">
-        <div className="services-container">
-          <div className="services-hero-content">
-            <span className="services-kicker">
-              <Sparkles size={14} /> EVIDENCE-BASED CLINICAL DIRECTORY
-            </span>
-            <h1>
-              Specialized Physiotherapy &
-              <br />
-              <span className="text-highlight">Orthopedic Rehabilitation Services</span>
-            </h1>
-            <p className="services-hero-lead">
-              Every service is delivered 1-on-1 by certified Master’s-qualified (MPT) clinical specialists utilizing advanced European rehabilitation technology. Transparent, ethical, and tailored to your recovery goals.
-            </p>
-
-            <div className="services-filter-tabs">
-              <button
-                type="button"
-                className={`filter-tab-btn ${selectedCategory === "all" ? "active" : ""}`}
-                onClick={() => setSelectedCategory("all")}
-              >
-                All Clinical Services (6)
-              </button>
-              <button
-                type="button"
-                className={`filter-tab-btn ${selectedCategory === "spine" ? "active" : ""}`}
-                onClick={() => setSelectedCategory("spine")}
-              >
-                Spine & Sciatica
-              </button>
-              <button
-                type="button"
-                className={`filter-tab-btn ${selectedCategory === "sports" ? "active" : ""}`}
-                onClick={() => setSelectedCategory("sports")}
-              >
-                Sports Medicine
-              </button>
-              <button
-                type="button"
-                className={`filter-tab-btn ${selectedCategory === "joint" ? "active" : ""}`}
-                onClick={() => setSelectedCategory("joint")}
-              >
-                Joint Preservation
-              </button>
-              <button
-                type="button"
-                className={`filter-tab-btn ${selectedCategory === "post-surgical" ? "active" : ""}`}
-                onClick={() => setSelectedCategory("post-surgical")}
-              >
-                Post-Op Rehab
-              </button>
-              <button
-                type="button"
-                className={`filter-tab-btn ${selectedCategory === "doorstep" ? "active" : ""}`}
-                onClick={() => setSelectedCategory("doorstep")}
-              >
-                Home Visit Care
-              </button>
-            </div>
-          </div>
+      {/* ─── 1. STANDARDIZED UNIFORM SUBPAGE HERO ─── */}
+      <section className="subpage-hero-banner">
+        <div className="subpage-hero-content">
+          <span className="subpage-kicker">
+            <Sparkles size={14} /> EVIDENCE-BASED CLINICAL DIRECTORY
+          </span>
+          <h1 className="subpage-title">
+            Specialized Physiotherapy &
+            <br />
+            <span className="text-highlight">Orthopedic Rehabilitation Services</span>
+          </h1>
+          <p className="subpage-lead">
+            Every service is delivered 1-on-1 by certified Master’s-qualified (MPT) clinical specialists utilizing advanced European rehabilitation technology in Baner, Pune.
+          </p>
         </div>
       </section>
 
-      {/* ─── 2. SERVICES GRID ─── */}
+      {/* ─── 2. FILTER TABS BAR ─── */}
+      <div className="subpage-filter-bar">
+        <div className="services-container">
+          <div className="services-filter-tabs">
+            <button
+              type="button"
+              className={`filter-tab-btn ${selectedCategory === "all" ? "active" : ""}`}
+              onClick={() => setSelectedCategory("all")}
+            >
+              All Clinical Services (6)
+            </button>
+            <button
+              type="button"
+              className={`filter-tab-btn ${selectedCategory === "spine" ? "active" : ""}`}
+              onClick={() => setSelectedCategory("spine")}
+            >
+              Spine & Sciatica
+            </button>
+            <button
+              type="button"
+              className={`filter-tab-btn ${selectedCategory === "sports" ? "active" : ""}`}
+              onClick={() => setSelectedCategory("sports")}
+            >
+              Sports Medicine
+            </button>
+            <button
+              type="button"
+              className={`filter-tab-btn ${selectedCategory === "joint" ? "active" : ""}`}
+              onClick={() => setSelectedCategory("joint")}
+            >
+              Joint Preservation
+            </button>
+            <button
+              type="button"
+              className={`filter-tab-btn ${selectedCategory === "post-surgical" ? "active" : ""}`}
+              onClick={() => setSelectedCategory("post-surgical")}
+            >
+              Post-Op Rehab
+            </button>
+            <button
+              type="button"
+              className={`filter-tab-btn ${selectedCategory === "doorstep" ? "active" : ""}`}
+              onClick={() => setSelectedCategory("doorstep")}
+            >
+              Home Visit Care
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* ─── 3. SERVICES GRID ─── */}
       <section className="services-grid-section section-padding">
         <div className="services-container">
           <div className="clinical-services-grid">
@@ -258,7 +261,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* ─── 3. WHAT YOUR INITIAL EVALUATION INCLUDES ─── */}
+      {/* ─── 4. WHAT YOUR INITIAL EVALUATION INCLUDES ─── */}
       <section className="evaluation-protocol-section section-padding">
         <div className="services-container">
           <div className="evaluation-card">

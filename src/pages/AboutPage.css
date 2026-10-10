@@ -20,6 +20,62 @@
   padding: 85px 0;
 }
 
+/* ─── STANDARDIZED UNIFORM SUBPAGE HERO ─── */
+.subpage-hero-banner {
+  min-height: 280px;
+  padding: 68px 0 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: 
+    radial-gradient(circle at 10% 20%, rgba(224, 242, 254, 0.65) 0%, transparent 45%),
+    radial-gradient(circle at 90% 80%, rgba(240, 249, 255, 0.8) 0%, transparent 45%),
+    #f8fafc;
+  border-bottom: 1px solid #e2e8f0;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.subpage-hero-content {
+  width: 100%;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.subpage-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #0284c7;
+  background-color: #e0f2fe;
+  padding: 5px 14px;
+  border-radius: 99px;
+  margin-bottom: 12px;
+}
+
+.subpage-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(30px, 3.6vw, 44px);
+  font-weight: 900;
+  line-height: 1.18;
+  color: #081a2e;
+  letter-spacing: -0.02em;
+  margin: 0 0 12px;
+}
+
+.subpage-lead {
+  font-size: 16px;
+  color: #475569;
+  line-height: 1.65;
+  margin: 0 auto;
+  max-width: 780px;
+}
+
 .about-kicker {
   display: inline-flex;
   align-items: center;
@@ -69,99 +125,23 @@
   margin: 0;
 }
 
-/* ─── 1. HERO SECTION ─── */
-.about-hero-section {
-  padding: 70px 0 80px;
-  background: 
-    radial-gradient(circle at 10% 20%, rgba(224, 242, 254, 0.6) 0%, transparent 45%),
-    #f8fafc;
-  border-bottom: 1px solid #e2e8f0;
-}
-
-.about-hero-grid {
-  display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  align-items: center;
-  gap: 50px;
-}
-
-.about-hero-text h1 {
-  font-family: 'Outfit', sans-serif;
-  font-size: clamp(34px, 4vw, 52px);
-  font-weight: 900;
-  line-height: 1.15;
-  color: #081a2e;
-  letter-spacing: -0.02em;
-  margin: 0 0 18px;
-}
-
-.about-hero-lead {
-  font-size: 17px;
-  color: #475569;
-  line-height: 1.7;
-  margin-bottom: 30px;
-}
-
-.about-hero-actions {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-.btn-about-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 13px 26px;
-  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
-  color: #ffffff !important;
-  font-weight: 700;
-  font-size: 14.5px;
-  border-radius: 8px;
-  text-decoration: none;
-  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.3);
-  transition: all 0.25s ease;
-}
-
-.btn-about-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 22px rgba(2, 132, 199, 0.4);
-}
-
-.btn-about-secondary {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 13px 24px;
-  background-color: #e0f2fe;
-  color: #081a2e !important;
-  font-weight: 700;
-  font-size: 14.5px;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: all 0.2s;
-}
-
-.btn-about-secondary:hover {
-  background-color: #bae6fd;
-}
-
-.about-hero-visual {
-  position: relative;
+/* ─── 2. CLINIC VISUAL STRIP ─── */
+.about-visual-strip {
+  padding: 50px 0 0;
+  background-color: #ffffff;
 }
 
 .about-img-frame {
   position: relative;
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 16px 40px rgba(10, 37, 64, 0.12);
+  box-shadow: 0 16px 40px rgba(10, 37, 64, 0.1);
   border: 1px solid #e2e8f0;
 }
 
 .about-main-img {
   width: 100%;
-  height: 420px;
+  height: 380px;
   object-fit: cover;
   display: block;
 }
@@ -174,29 +154,30 @@
   background-color: rgba(8, 26, 46, 0.92);
   backdrop-filter: blur(8px);
   color: #ffffff;
-  padding: 14px 20px;
+  padding: 16px 24px;
   border-radius: 12px;
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 16px;
 }
 
 .about-floating-badge strong {
   display: block;
-  font-size: 14px;
+  font-size: 15px;
+  color: #ffffff;
 }
 
 .about-floating-badge p {
-  font-size: 12px;
-  color: #94a3b8;
-  margin: 0;
+  font-size: 12.5px;
+  color: #cbd5e1;
+  margin: 2px 0 0;
 }
 
-/* ─── 2. MILESTONES BAR ─── */
+/* ─── 3. MILESTONES BAR ─── */
 .about-milestones-bar {
   background-color: #ffffff;
   border-bottom: 1px solid #e2e8f0;
-  padding: 36px 0;
+  padding: 40px 0;
 }
 
 .milestones-grid {
@@ -231,7 +212,7 @@
   margin: 2px 0 0;
 }
 
-/* ─── 3. FOUNDER SECTION ─── */
+/* ─── 4. FOUNDER SECTION ─── */
 .about-founder-section {
   background-color: #ffffff;
 }
@@ -338,7 +319,7 @@
   gap: 6px;
 }
 
-/* ─── 4. CLINICAL PILLARS ─── */
+/* ─── 5. CLINICAL PILLARS ─── */
 .about-pillars-section {
   background-color: #f8fafc;
   border-top: 1px solid #e2e8f0;
@@ -361,9 +342,9 @@
 }
 
 .pillar-card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-4px);
   border-color: #0284c7;
-  box-shadow: 0 10px 25px rgba(2, 132, 199, 0.12);
+  box-shadow: 0 12px 28px rgba(2, 132, 199, 0.14);
 }
 
 .pillar-icon-box {
@@ -393,7 +374,7 @@
   margin: 0;
 }
 
-/* ─── 5. INFRASTRUCTURE ─── */
+/* ─── 6. INFRASTRUCTURE ─── */
 .about-facilities-section {
   background-color: #ffffff;
 }
@@ -414,6 +395,13 @@
   padding: 20px 24px;
   border-radius: 12px;
   border: 1px solid #e2e8f0;
+  transition: all 0.25s ease;
+}
+
+.facility-item-card:hover {
+  transform: translateY(-2px);
+  border-color: #0284c7;
+  box-shadow: 0 6px 18px rgba(2, 132, 199, 0.08);
 }
 
 .fac-bullet {
@@ -435,7 +423,7 @@
   line-height: 1.55;
 }
 
-/* ─── 6. BOTTOM CTA ─── */
+/* ─── 7. BOTTOM CTA ─── */
 .about-cta-section {
   background: linear-gradient(135deg, #081a2e 0%, #0e2a4a 100%);
   color: #ffffff;
@@ -510,7 +498,6 @@
 }
 
 @media (max-width: 900px) {
-  .about-hero-grid,
   .founder-grid {
     grid-template-columns: 1fr;
     gap: 40px;
