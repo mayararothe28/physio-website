@@ -1,0 +1,288 @@
+/* ==========================================================================
+   FAQ PAGE - EXECUTIVE NAVY & AZURE MEDICAL THEME
+   ========================================================================== */
+
+.faq-page {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #0f172a;
+  background-color: #ffffff;
+  overflow-x: hidden;
+}
+
+.faq-container {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section-padding {
+  padding: 85px 0;
+}
+
+.faq-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #0284c7;
+  background-color: #e0f2fe;
+  padding: 5px 14px;
+  border-radius: 99px;
+  margin-bottom: 14px;
+}
+
+.text-azure {
+  color: #0284c7;
+}
+
+.text-highlight {
+  color: #0284c7;
+}
+
+/* ─── 1. HERO ─── */
+.faq-hero-section {
+  padding: 70px 0 60px;
+  background: 
+    radial-gradient(circle at 10% 20%, rgba(224, 242, 254, 0.6) 0%, transparent 45%),
+    #f8fafc;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.faq-hero-content {
+  text-align: center;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.faq-hero-content h1 {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(34px, 4vw, 50px);
+  font-weight: 900;
+  line-height: 1.15;
+  color: #081a2e;
+  letter-spacing: -0.02em;
+  margin: 0 0 16px;
+}
+
+.faq-hero-lead {
+  font-size: 17px;
+  color: #475569;
+  line-height: 1.7;
+  margin-bottom: 30px;
+}
+
+.faq-category-pills {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.faq-cat-btn {
+  background-color: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  padding: 10px 20px;
+  border-radius: 99px;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #081a2e;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.faq-cat-btn:hover {
+  border-color: #0284c7;
+  color: #0284c7;
+}
+
+.faq-cat-btn.active {
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  color: #ffffff;
+  border-color: #0284c7;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.3);
+}
+
+/* ─── 2. ACCORDION & SIDEBAR ─── */
+.faq-list-section {
+  background-color: #ffffff;
+}
+
+.faq-layout-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: 48px;
+  align-items: flex-start;
+}
+
+.faq-accordion-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.clinical-faq-item {
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background-color: #ffffff;
+  overflow: hidden;
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px rgba(10, 37, 64, 0.03);
+}
+
+.clinical-faq-item.active {
+  border-color: #0284c7;
+  box-shadow: 0 6px 18px rgba(2, 132, 199, 0.1);
+}
+
+.clinical-faq-trigger {
+  width: 100%;
+  padding: 20px 24px;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  font-family: inherit;
+  font-size: 15.5px;
+  font-weight: 750;
+  color: #081a2e;
+  text-align: left;
+  cursor: pointer;
+}
+
+.faq-arrow-icon {
+  color: #0284c7;
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.faq-arrow-icon.rotated {
+  transform: rotate(180deg);
+}
+
+.clinical-faq-answer {
+  padding: 0 24px 22px;
+}
+
+.clinical-faq-answer p {
+  margin: 0;
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: #475569;
+}
+
+/* Sidebar */
+.faq-sidebar-col {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.faq-help-card {
+  background: linear-gradient(135deg, #081a2e 0%, #0e2a4a 100%);
+  color: #ffffff;
+  border-radius: 18px;
+  padding: 34px 28px;
+  box-shadow: 0 12px 30px rgba(10, 37, 64, 0.12);
+}
+
+.faq-help-card h3 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 14px 0 8px;
+}
+
+.faq-help-card p {
+  font-size: 13.5px;
+  color: #cbd5e1;
+  line-height: 1.6;
+  margin: 0 0 22px;
+}
+
+.btn-faq-whatsapp {
+  width: 100%;
+  padding: 12px;
+  background-color: #0284c7;
+  color: #ffffff !important;
+  font-weight: 750;
+  font-size: 13.5px;
+  border-radius: 8px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+  transition: all 0.2s;
+  margin-bottom: 18px;
+}
+
+.btn-faq-whatsapp:hover {
+  background-color: #0369a1;
+  transform: translateY(-2px);
+}
+
+.faq-direct-call {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 14px;
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.faq-direct-call a {
+  display: block;
+  font-family: 'Outfit', sans-serif;
+  font-size: 17px;
+  font-weight: 800;
+  color: #38bdf8 !important;
+  text-decoration: none;
+  margin-top: 2px;
+}
+
+.faq-schedule-box {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 22px 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.faq-schedule-box strong {
+  display: block;
+  font-size: 14px;
+  color: #081a2e;
+}
+
+.faq-schedule-box p {
+  font-size: 12.5px;
+  color: #64748b;
+  margin: 2px 0 8px;
+}
+
+.faq-book-link {
+  font-size: 13px;
+  font-weight: 750;
+  color: #0284c7;
+  text-decoration: none;
+}
+
+.faq-book-link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 992px) {
+  .faq-layout-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}

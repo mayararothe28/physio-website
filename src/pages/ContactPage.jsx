@@ -1,252 +1,238 @@
-import React, { useState } from 'react';
-import { 
-  Phone, 
-  Mail, 
-  MessageCircle, 
-  Send, 
-  CheckCircle2, 
-  AlertCircle,
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import {
+  MapPin,
+  Phone,
+  Mail,
+  Clock,
+  MessageCircle,
+  Building2,
   ShieldCheck,
-  Headphones
-} from 'lucide-react';
-import { CLINIC_INFO } from '../data/physioData';
+  CheckCircle2,
+  Calendar,
+  ArrowRight,
+  ExternalLink,
+} from "lucide-react";
+import "./ContactPage.css";
 
-export default function ContactPage({ setActivePage }) {
-  const [formSubmitted, setFormSubmitted] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('');
+export default function ContactPage() {
   const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    email: '',
-    message: ''
+    name: "",
+    phone: "",
+    email: "",
+    concern: "spine",
+    message: "",
   });
+  const [submitted, setSubmitted] = useState(false);
 
-  const handlePhoneChange = (e) => {
-    // Strictly numeric and max 10 digits
-    const numericValue = e.target.value.replace(/\D/g, '').slice(0, 10);
-    setFormData((prev) => ({ ...prev, phone: numericValue }));
-    if (errorMessage) setErrorMessage('');
-  };
+  function handleChange(e) {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  }
 
-  const handleSubmit = (e) => {
+  function handleSubmit(e) {
     e.preventDefault();
-    if (!formData.name.trim()) {
-      setErrorMessage('Please enter your full name.');
-      return;
-    }
-
-    const cleanPhone = formData.phone.trim();
-    if (cleanPhone.length !== 10 || !/^[6-9]\d{9}$/.test(cleanPhone)) {
-      setErrorMessage('Please enter a valid 10-digit mobile number (starting with 6, 7, 8, or 9).');
-      return;
-    }
-
-    setErrorMessage('');
-    setFormSubmitted(true);
-    setTimeout(() => {
-      setFormData({ name: '', phone: '', email: '', message: '' });
-    }, 2500);
-  };
+    setSubmitted(true);
+  }
 
   return (
-    <div className="contact-page-container page-transition">
-      {/* Header Banner - Standardized matching all inner pages */}
-      <section className="page-header-banner">
-        <div className="container text-center">
-          <span className="section-badge">DIRECT CONTACT</span>
-          <h1 className="page-header-title">Get in Touch with Our Specialists</h1>
-          <p className="page-header-subtitle">
-            Need urgent clinical advice or have questions about your pain? 
-            Connect directly via 10-digit phone lines, WhatsApp, email, or submit a message below.
-          </p>
+    <main className="contact-page">
+      {/* ─── 1. HERO ─── */}
+      <section className="contact-hero-section">
+        <div className="contact-container">
+          <div className="contact-hero-content">
+            <span className="contact-kicker">
+              <MapPin size={14} /> PATIENT HELPDESK & CLINIC DIRECTIONS
+            </span>
+            <h1>
+              We Are Here to Guide
+              <br />
+              <span className="text-highlight">Your Recovery Journey.</span>
+            </h1>
+            <p className="contact-hero-lead">
+              Have questions about your condition, insurance reimbursement, or booking an evaluation? Our clinical coordination team in Baner, Pune is ready to assist you.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* Main Pure Contact Grid */}
-      <section className="contact-main-section">
-        <div className="container">
-          <div className="contact-layout-grid">
-            {/* Left: Pure Contact Channels (Phone, WhatsApp, Email, Helpline) */}
-            <div className="contact-cards-col">
-              {/* 1. Direct Calling Line */}
-              <div className="contact-card-box glass-panel">
-                <div className="ccb-icon-wrap bg-teal-100 text-teal-700">
-                  <Phone size={24} />
+      {/* ─── 2. CONTACT DETAILS & FORM ─── */}
+      <section className="contact-main-section section-padding">
+        <div className="contact-container">
+          <div className="contact-main-grid">
+            {/* Info Cards Column */}
+            <div className="contact-info-col">
+              <div className="clinic-location-hero-card">
+                <div className="loc-card-tag">
+                  <Building2 size={16} /> CENTRAL CLINIC IN PUNE
                 </div>
-                <div className="ccb-content">
-                  <h4 className="ccb-title">Direct Calling Lines</h4>
-                  <p className="ccb-phone-main">
-                    <a href={`tel:${CLINIC_INFO.phone}`} className="hover:underline font-extrabold text-teal-700 text-xl">
-                      {CLINIC_INFO.phone}
-                    </a>
-                  </p>
-                  <p className="ccb-desc text-sm text-slate-600 mt-1">
-                    Alternate Line: <a href={`tel:${CLINIC_INFO.altPhone}`} className="font-semibold text-teal-700">{CLINIC_INFO.altPhone}</a>
-                  </p>
-                  <span className="text-xs text-emerald-600 font-semibold mt-1 inline-block">
-                    ● Direct line to clinic reception (10 Digits)
-                  </span>
-                </div>
-              </div>
+                <h3>RevitaOrtho Spine & Joint Clinic</h3>
+                <p className="address-text">
+                  Plot 42, High Street Galleria, Baner-Pashan Link Road, Baner, Pune, Maharashtra – 411045
+                </p>
+                <p className="landmark-text">
+                  <strong>Landmark:</strong> Adjacent to High Street Retail Hub, 5 mins from Mumbai-Pune Expressway Exit.
+                </p>
 
-              {/* 2. WhatsApp Direct Chat */}
-              <div className="contact-card-box glass-panel">
-                <div className="ccb-icon-wrap bg-green-100 text-green-700">
-                  <MessageCircle size={24} />
-                </div>
-                <div className="ccb-content">
-                  <h4 className="ccb-title">WhatsApp Support ({CLINIC_INFO.whatsapp})</h4>
-                  <p className="ccb-desc text-sm text-slate-600">
-                    Send MRI reports, doctor prescriptions, or inquire about instant slot availability.
-                  </p>
+                <div className="location-action-btns">
                   <a
-                    href={`https://wa.me/91${CLINIC_INFO.whatsapp}?text=Hello%20RevitaPhysio,%20I%20have%20a%20query%20regarding%20treatment`}
+                    href="https://maps.google.com"
                     target="_blank"
                     rel="noreferrer"
-                    className="wa-direct-link"
+                    className="btn-maps-action"
                   >
-                    <span>Chat on WhatsApp Now ({CLINIC_INFO.whatsapp}) →</span>
+                    <MapPin size={16} />
+                    <span>Open in Google Maps</span>
+                    <ExternalLink size={14} />
                   </a>
                 </div>
               </div>
 
-              {/* 3. Official Email Support */}
-              <div className="contact-card-box glass-panel">
-                <div className="ccb-icon-wrap bg-blue-100 text-blue-700">
-                  <Mail size={24} />
+              <div className="contact-channels-grid">
+                <div className="channel-card">
+                  <Phone size={22} className="text-azure" />
+                  <div>
+                    <strong>Doctor & Reception Helpline</strong>
+                    <a href="tel:+919876543210">+91 98765 43210</a>
+                    <a href="tel:+919876543211">+91 98765 43211</a>
+                  </div>
                 </div>
-                <div className="ccb-content">
-                  <h4 className="ccb-title">Official Medical Email</h4>
-                  <p className="ccb-phone-main">
-                    <a href={`mailto:${CLINIC_INFO.email}`} className="font-bold text-teal-700 text-base hover:underline">
-                      {CLINIC_INFO.email}
+
+                <div className="channel-card">
+                  <MessageCircle size={22} className="text-azure" />
+                  <div>
+                    <strong>WhatsApp Triage Desk</strong>
+                    <p>Instant chat with duty physiotherapist</p>
+                    <a
+                      href="https://wa.me/919876543210?text=Hello%20RevitaOrtho,%20I%20have%20an%20inquiry."
+                      target="_blank"
+                      rel="noreferrer"
+                      className="whatsapp-link-btn"
+                    >
+                      Chat on WhatsApp &rarr;
                     </a>
-                  </p>
-                  <span className="text-xs text-slate-500 mt-1 block">
-                    Replies guaranteed within 2-4 business hours
-                  </span>
+                  </div>
                 </div>
-              </div>
 
-              {/* 4. Priority Emergency Support */}
-              <div className="contact-card-box glass-panel">
-                <div className="ccb-icon-wrap bg-rose-100 text-rose-700">
-                  <Headphones size={24} />
+                <div className="channel-card">
+                  <Clock size={22} className="text-azure" />
+                  <div>
+                    <strong>Consultation Hours</strong>
+                    <p>Monday – Saturday: 8:00 AM – 8:00 PM</p>
+                    <p>Sunday: By Prior Appointment Only</p>
+                  </div>
                 </div>
-                <div className="ccb-content">
-                  <h4 className="ccb-title">24/7 Patient Care Helpline</h4>
-                  <p className="ccb-desc text-sm text-slate-600">
-                    For acute disc pain, sudden muscle spasms, or post-surgery home visit emergencies.
-                  </p>
-                  <a href={`tel:${CLINIC_INFO.phone}`} className="font-bold text-rose-600 text-sm mt-1 inline-block hover:underline">
-                    Emergency Call: {CLINIC_INFO.phone}
-                  </a>
+
+                <div className="channel-card">
+                  <Mail size={22} className="text-azure" />
+                  <div>
+                    <strong>Email Inquiries</strong>
+                    <a href="mailto:care@revitaortho.com">care@revitaortho.com</a>
+                    <p>Report reviews within 4 business hours</p>
+                  </div>
                 </div>
               </div>
             </div>
 
-            {/* Right: Quick Query Form */}
+            {/* Inquiry Form Column */}
             <div className="contact-form-col">
-              <div className="contact-form-card glass-panel">
-                <div className="cfc-header">
-                  <h3 className="cfc-title">Send a Quick Inquiry</h3>
-                  <p className="cfc-subtitle">
-                    Drop your contact details and questions. Our senior physiotherapist will call you back within 2 hours.
-                  </p>
-                </div>
-
-                {formSubmitted ? (
-                  <div className="contact-success-state text-center py-10">
-                    <CheckCircle2 size={54} className="text-emerald-500 mx-auto mb-3" />
-                    <h4 className="font-bold text-xl text-slate-800">Inquiry Received!</h4>
-                    <p className="text-slate-600 text-sm max-w-sm mx-auto mt-2">
-                      Thank you, <strong>{formData.name || 'Patient'}</strong>. Our care coordinator will call your 10-digit number ({formData.phone}) shortly.
+              <div className="contact-form-card">
+                {submitted ? (
+                  <div className="contact-success-state">
+                    <CheckCircle2 size={44} className="text-azure" />
+                    <h3>Message Received!</h3>
+                    <p>
+                      Thank you, <strong>{formData.name}</strong>. Our clinical coordinator will call you back at <strong>+91 {formData.phone}</strong> shortly.
                     </p>
                     <button
-                      onClick={() => setFormSubmitted(false)}
-                      className="btn-secondary mt-6"
+                      type="button"
+                      className="btn-reset-contact"
+                      onClick={() => setSubmitted(false)}
                     >
-                      Send Another Inquiry
+                      Send Another Message
                     </button>
                   </div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="quick-contact-form" noValidate>
-                    {errorMessage && (
-                      <div className="form-error-banner flex items-center gap-2 p-3 mb-4 rounded-lg bg-rose-50 border border-rose-200 text-rose-700 text-xs font-semibold">
-                        <AlertCircle size={16} className="flex-shrink-0" />
-                        <span>{errorMessage}</span>
-                      </div>
-                    )}
+                  <form onSubmit={handleSubmit} className="inquiry-form">
+                    <h3>Send a Medical Inquiry</h3>
+                    <p>Share your concerns and our senior clinical team will respond promptly.</p>
 
-                    <div className="form-group mb-4">
-                      <label className="field-label">Full Name *</label>
+                    <div className="form-input-group">
+                      <label htmlFor="c-name">Full Name *</label>
                       <input
                         type="text"
-                        required
-                        placeholder="Your full name"
+                        id="c-name"
+                        name="name"
+                        placeholder="e.g. Anand Kulkarni"
                         value={formData.name}
-                        onChange={(e) => {
-                          setFormData({ ...formData, name: e.target.value });
-                          if (errorMessage) setErrorMessage('');
-                        }}
-                        className="form-input"
+                        onChange={handleChange}
+                        required
                       />
                     </div>
 
-                    <div className="form-group mb-4">
-                      <label className="field-label">
-                        Phone Number (10 Digits) *
-                      </label>
-                      <div className="relative">
+                    <div className="form-row-2">
+                      <div className="form-input-group">
+                        <label htmlFor="c-phone">Phone / WhatsApp *</label>
                         <input
                           type="tel"
-                          required
-                          maxLength={10}
-                          placeholder="e.g. 9876543210"
+                          id="c-phone"
+                          name="phone"
+                          placeholder="e.g. 98765 43210"
                           value={formData.phone}
-                          onChange={handlePhoneChange}
-                          className="form-input"
+                          onChange={handleChange}
+                          required
                         />
-                        <span className="text-xs text-slate-400 absolute right-3 top-3.5">
-                          {formData.phone.length}/10 digits
-                        </span>
                       </div>
-                      <span className="text-xs text-slate-500 mt-1">
-                        Enter 10-digit Indian mobile number without +91 or 0
-                      </span>
+
+                      <div className="form-input-group">
+                        <label htmlFor="c-email">Email Address</label>
+                        <input
+                          type="email"
+                          id="c-email"
+                          name="email"
+                          placeholder="e.g. anand@example.com"
+                          value={formData.email}
+                          onChange={handleChange}
+                        />
+                      </div>
                     </div>
 
-                    <div className="form-group mb-4">
-                      <label className="field-label">Email Address (Optional)</label>
-                      <input
-                        type="email"
-                        placeholder="yourname@gmail.com"
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="form-input"
-                      />
+                    <div className="form-input-group">
+                      <label htmlFor="c-concern">Primary Area of Concern</label>
+                      <select
+                        id="c-concern"
+                        name="concern"
+                        value={formData.concern}
+                        onChange={handleChange}
+                      >
+                        <option value="spine">Lower Back / L4-L5 Slip Disc / Sciatica</option>
+                        <option value="knee">Knee Pain / Osteoarthritis / Cartilage</option>
+                        <option value="shoulder">Frozen Shoulder / Rotator Cuff</option>
+                        <option value="neck">Neck Pain / Cervical Spondylosis</option>
+                        <option value="sports">Sports Rehabilitation / ACL Tear</option>
+                        <option value="postop">Post-Surgical Care (TKR / THR / Spine)</option>
+                        <option value="homecare">Doorstep Home Visit Physiotherapy</option>
+                        <option value="other">General Inquiry / Insurance Claim</option>
+                      </select>
                     </div>
 
-                    <div className="form-group mb-5">
-                      <label className="field-label">Your Question or Symptoms</label>
+                    <div className="form-input-group">
+                      <label htmlFor="c-message">How can our doctors help you? *</label>
                       <textarea
+                        id="c-message"
+                        name="message"
                         rows="4"
-                        placeholder="Describe your condition, pain symptoms, or required physiotherapy..."
+                        placeholder="Describe your symptoms, how long you've had pain, or any existing MRI scan recommendations..."
                         value={formData.message}
-                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                        className="form-input form-textarea"
-                      />
+                        onChange={handleChange}
+                        required
+                      ></textarea>
                     </div>
 
-                    <button type="submit" className="btn-primary w-full">
-                      <Send size={16} />
-                      <span>Send Inquiry to Clinic</span>
+                    <button type="submit" className="btn-send-inquiry">
+                      <span>Submit Clinical Inquiry</span>
+                      <ArrowRight size={17} />
                     </button>
-
-                    <p className="privacy-hint text-center mt-3">
-                      <ShieldCheck size={13} className="inline mr-1 text-teal-600" />
-                      We respect your privacy. No spam, only direct clinical response.
-                    </p>
                   </form>
                 )}
               </div>
@@ -254,6 +240,6 @@ export default function ContactPage({ setActivePage }) {
           </div>
         </div>
       </section>
-    </div>
+    </main>
   );
 }

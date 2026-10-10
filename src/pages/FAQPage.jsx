@@ -1,162 +1,209 @@
-import React, { useState } from 'react';
-import { 
-  ChevronDown, 
-  HelpCircle, 
-  Search, 
-  Calendar, 
-  Phone, 
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import {
+  HelpCircle,
+  ChevronDown,
   MessageCircle,
-  FileQuestion
-} from 'lucide-react';
-import { FAQS_DATA, CLINIC_INFO } from '../data/physioData';
+  Calendar,
+  Phone,
+  ShieldCheck,
+  CheckCircle2,
+  FileText,
+} from "lucide-react";
+import "./FAQPage.css";
 
-export default function FAQPage({ setActivePage }) {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('All');
-  const [expandedIndex, setExpandedIndex] = useState(0);
+const FAQ_CATEGORIES = [
+  { id: "all", label: "All Questions" },
+  { id: "treatment", label: "Treatments & Recovery" },
+  { id: "first-visit", label: "First Visit & Diagnostics" },
+  { id: "insurance", label: "Insurance & Payments" },
+  { id: "home-care", label: "Doorstep Home Care" },
+];
 
-  const categories = [
-    'All',
-    'Appointments & Visits',
-    'Treatments & Pain',
-    'Home Care & Emergency',
-    'Payments & Insurance',
-    'Preparation'
-  ];
+const CLINICAL_FAQS = [
+  {
+    category: "treatment",
+    question: "Can targeted physiotherapy really help me avoid knee replacement or spinal surgery?",
+    answer:
+      "Yes, in over 92% of moderate-to-severe orthopedic cases. Non-surgical computerized spinal decompression mechanically relieves intradiscal pressure, creating a negative vacuum that retracts herniated disc bulges away from pinched nerves. For knee osteoarthritis, our targeted Tecar therapy and quadriceps-to-hamstring balance re-education unloads joint compartments, eliminating pain even in Grade-3 cartilage wear without invasive surgery.",
+  },
+  {
+    category: "treatment",
+    question: "How is RevitaOrtho different from standard gym trainers or basic physiotherapy centers?",
+    answer:
+      "Unlike centers where an assistant just leaves you on an electrical heat pad, RevitaOrtho is led exclusively by Master's-qualified (MPT) clinical specialists. We invest in medical-grade European technologies (Class-IV High-Power Laser, Computerized Decompression, German Matrix Rhythm Therapy) and provide dedicated 1-on-1 hands-on care. Every patient diagnosis begins with a 45-minute comprehensive biomechanical assessment.",
+  },
+  {
+    category: "treatment",
+    question: "How many sessions will I need before I experience noticeable pain relief?",
+    answer:
+      "Most patients experience significant pain reduction (40% to 60%) within the first 3 to 4 sessions due to our acute pain deactivation protocols (Class-IV Laser and Manual Glides). We will give you a transparent, written treatment roadmap with an exact milestone timeline after your initial assessment.",
+  },
+  {
+    category: "treatment",
+    question: "Is clinical dry needling painful, and how does it help?",
+    answer:
+      "Clinical dry needling uses hair-thin monofilament needles that cause minimal discomfort. When the needle reaches a deep muscular knot, you may feel a brief dull ache or a quick muscle twitch (Local Twitch Response). This instantly resets muscle contracture, clears lactic acidosis, and provides immediate freedom of movement.",
+  },
+  {
+    category: "first-visit",
+    question: "Do I need an MRI, X-Ray or Doctor's prescription before my first appointment?",
+    answer:
+      "If you already have recent X-Rays, MRI scans, or doctor prescriptions, please bring them along. However, they are NOT mandatory. Our senior physiotherapists conduct comprehensive orthopedic clinical tests (Special Orthopedic Provocation Tests, nerve tension tests, posture screening) to diagnose root causes even before imaging.",
+  },
+  {
+    category: "first-visit",
+    question: "What should I wear for my physical therapy assessment?",
+    answer:
+      "Wear comfortable, loose-fitting clothing that allows you to move freely. If you have knee or hip pain, shorts or loose track pants are best. For shoulder or neck issues, wear a tank top or loose T-shirt so our clinicians can evaluate joint movement without restriction.",
+  },
+  {
+    category: "first-visit",
+    question: "How long does the initial consultation last?",
+    answer:
+      "Your first appointment lasts approximately 45 to 50 minutes. This includes a detailed history review, orthopedic manual testing, postural/gait scan, initial therapeutic relief treatment, and a discussion of your customized recovery plan.",
+  },
+  {
+    category: "insurance",
+    question: "Is physiotherapy covered under health insurance policies?",
+    answer:
+      "Yes! Most comprehensive health insurance policies (OPD riders, post-hospitalization rehabilitation, and corporate group policies) cover outpatient physiotherapy. We provide official stamped medical treatment summaries, diagnostic receipts, and itemized bills for seamless reimbursement claims.",
+  },
+  {
+    category: "insurance",
+    question: "Are there long-term package lock-ins or hidden costs?",
+    answer:
+      "No. We maintain 100% financial transparency. You can pay per session or choose structured 6-to-12 session recovery packages that offer bundled savings. We also offer zero-interest 3-month EMI options for advanced multi-modality treatment plans.",
+  },
+  {
+    category: "home-care",
+    question: "Do you offer home visit physiotherapy, and which areas in Pune are covered?",
+    answer:
+      "Yes! For post-surgery knee/hip replacement patients, stroke recovery, or severe mobility-restricted seniors, our certified senior therapists visit your residence across Pune—including Baner, Aundh, Hinjewadi, Wakad, Balewadi, and Kothrud. Therapists bring portable ultrasound, electrotherapy, and mobilization equipment.",
+  },
+  {
+    category: "home-care",
+    question: "Is home physiotherapy as effective as in-clinic treatment?",
+    answer:
+      "For post-operative mobility, gait retraining, bedside manual therapy, and fall prevention, home visits are exceptionally effective and allow family participation. However, if your condition requires heavy computerized spinal decompression tables or advanced laser systems, we will recommend transitioning to the clinic once initial mobility improves.",
+  },
+];
 
-  const filteredFaqs = FAQS_DATA.filter((item) => {
-    const matchesCategory = selectedCategory === 'All' || item.category === selectedCategory;
-    const matchesSearch = item.question.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                          item.answer.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesCategory && matchesSearch;
-  });
+export default function FAQPage() {
+  const [selectedCat, setSelectedCat] = useState("all");
+  const [openIdx, setOpenIdx] = useState(0);
 
-  const toggleAccordion = (idx) => {
-    setExpandedIndex(expandedIndex === idx ? -1 : idx);
-  };
+  const filteredFaqs =
+    selectedCat === "all"
+      ? CLINICAL_FAQS
+      : CLINICAL_FAQS.filter((f) => f.category === selectedCat);
 
   return (
-    <div className="faq-page-container page-transition">
-      {/* Header Banner */}
-      <section className="page-header-banner">
-        <div className="container text-center">
-          <span className="section-badge">FREQUENTLY ASKED QUESTIONS</span>
-          <h1 className="page-header-title">Common Patient Questions Answered</h1>
-          <p className="page-header-subtitle">
-            Find immediate clarity on what to expect, session durations, rehabilitation techniques, 
-            insurance reimbursements, and home visit facilities.
-          </p>
-        </div>
-      </section>
+    <main className="faq-page">
+      {/* ─── 1. HERO ─── */}
+      <section className="faq-hero-section">
+        <div className="faq-container">
+          <div className="faq-hero-content">
+            <span className="faq-kicker">
+              <HelpCircle size={14} /> EVIDENCE-BASED PATIENT KNOWLEDGE BASE
+            </span>
+            <h1>
+              Frequently Asked
+              <br />
+              <span className="text-highlight">Clinical & Medical Questions.</span>
+            </h1>
+            <p className="faq-hero-lead">
+              Have doubts about avoiding surgery, treatment timelines, or insurance coverage? Here are honest, clinical answers directly from our senior physiotherapists.
+            </p>
 
-      {/* Main FAQ List Section */}
-      <section className="faq-content-section">
-        <div className="container">
-          {/* Search Bar */}
-          <div className="faq-search-wrapper mb-8">
-            <Search size={18} className="search-icon" />
-            <input
-              type="text"
-              placeholder="Search by topic, e.g. 'surgery', 'pain', 'insurance', 'home visit'..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="faq-search-input"
-            />
-            {searchQuery && (
-              <button onClick={() => setSearchQuery('')} className="faq-clear-btn">
-                Clear
-              </button>
-            )}
-          </div>
-          {/* Category Filter Pills */}
-          <div className="filter-pills-bar justify-center mb-8">
-            <div className="pills-scroll-row">
-              {categories.map((cat) => (
+            {/* Category Filter Pills */}
+            <div className="faq-category-pills">
+              {FAQ_CATEGORIES.map((cat) => (
                 <button
-                  key={cat}
-                  onClick={() => setSelectedCategory(cat)}
-                  className={`category-pill-btn ${selectedCategory === cat ? 'active' : ''}`}
+                  key={cat.id}
+                  type="button"
+                  className={`faq-cat-btn ${selectedCat === cat.id ? "active" : ""}`}
+                  onClick={() => {
+                    setSelectedCat(cat.id);
+                    setOpenIdx(0);
+                  }}
                 >
-                  {cat}
+                  {cat.label}
                 </button>
               ))}
             </div>
           </div>
-
-          {/* Accordion Questions */}
-          <div className="faq-accordion-list">
-            {filteredFaqs.length > 0 ? (
-              filteredFaqs.map((faq, idx) => {
-                const isOpen = expandedIndex === idx;
-                return (
-                  <div key={idx} className={`faq-item glass-panel ${isOpen ? 'open' : ''}`}>
-                    <button
-                      className="faq-question-btn"
-                      onClick={() => toggleAccordion(idx)}
-                      aria-expanded={isOpen}
-                    >
-                      <div className="faq-q-left">
-                        <span className="faq-cat-badge">{faq.category}</span>
-                        <h3 className="faq-q-text">{faq.question}</h3>
-                      </div>
-                      <ChevronDown
-                        size={20}
-                        className={`faq-arrow-icon ${isOpen ? 'rotate-180' : ''}`}
-                      />
-                    </button>
-
-                    {isOpen && (
-                      <div className="faq-answer-pane">
-                        <p className="faq-answer-text">{faq.answer}</p>
-                      </div>
-                    )}
-                  </div>
-                );
-              })
-            ) : (
-              <div className="no-faqs-state text-center py-12 glass-panel">
-                <FileQuestion size={44} className="text-slate-400 mx-auto mb-3" />
-                <h4 className="font-bold text-lg text-slate-700">No matching questions found</h4>
-                <p className="text-sm text-slate-500 mt-1">
-                  Try adjusting your search query or connect with our doctors directly on WhatsApp.
-                </p>
-              </div>
-            )}
-          </div>
-
-          {/* Bottom Still Have Questions Card */}
-          <div className="faq-help-card glass-panel mt-12">
-            <div className="fhc-content">
-              <h3 className="fhc-title">Have a specific medical question not listed here?</h3>
-              <p className="fhc-desc">
-                Our senior physiotherapists are happy to review your condition or imaging reports 
-                and give you clinical guidance.
-              </p>
-            </div>
-            <div className="fhc-actions">
-              <a
-                href={`https://wa.me/${CLINIC_INFO.whatsapp}?text=Hello%20RevitaPhysio,%20I%20have%20a%20question%20about%20my%20treatment`}
-                target="_blank"
-                rel="noreferrer"
-                className="btn-secondary"
-              >
-                <MessageCircle size={16} />
-                <span>Ask on WhatsApp</span>
-              </a>
-              <button
-                onClick={() => {
-                  setActivePage('appointment');
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
-                }}
-                className="btn-primary"
-              >
-                <Calendar size={16} />
-                <span>Book Biomechanical Exam</span>
-              </button>
-            </div>
-          </div>
         </div>
       </section>
-    </div>
+
+      {/* ─── 2. ACCORDION LIST ─── */}
+      <section className="faq-list-section section-padding">
+        <div className="faq-container faq-layout-grid">
+          <div className="faq-accordion-container">
+            {filteredFaqs.map((faq, index) => (
+              <div
+                key={index}
+                className={`clinical-faq-item ${openIdx === index ? "active" : ""}`}
+              >
+                <button
+                  type="button"
+                  className="clinical-faq-trigger"
+                  onClick={() => setOpenIdx(openIdx === index ? -1 : index)}
+                  aria-expanded={openIdx === index}
+                >
+                  <span>{faq.question}</span>
+                  <ChevronDown
+                    size={19}
+                    className={`faq-arrow-icon ${openIdx === index ? "rotated" : ""}`}
+                  />
+                </button>
+
+                {openIdx === index && (
+                  <div className="clinical-faq-answer">
+                    <p>{faq.answer}</p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+
+          {/* Right Help Card */}
+          <aside className="faq-sidebar-col">
+            <div className="faq-help-card">
+              <MessageCircle size={28} className="text-azure" />
+              <h3>Still Have a Medical Doubt?</h3>
+              <p>
+                Our senior duty physiotherapist can answer specific questions regarding your MRI scan, symptoms, or suitable treatment on WhatsApp.
+              </p>
+              <a
+                href="https://wa.me/919876543210?text=Hello%20RevitaOrtho,%20I%20have%20a%20question%20regarding%20my%20symptoms."
+                target="_blank"
+                rel="noreferrer"
+                className="btn-faq-whatsapp"
+              >
+                <MessageCircle size={16} />
+                <span>Chat with Doctor on WhatsApp</span>
+              </a>
+
+              <div className="faq-direct-call">
+                <span>Or call our desk directly:</span>
+                <a href="tel:+919876543210">+91 98765 43210</a>
+              </div>
+            </div>
+
+            <div className="faq-schedule-box">
+              <Calendar size={22} className="text-azure" />
+              <div>
+                <strong>Ready for an In-Person Evaluation?</strong>
+                <p>Guaranteed on-time 45-minute consultation slots.</p>
+                <Link to="/appointment" className="faq-book-link">
+                  Book Appointment Online &rarr;
+                </Link>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </main>
   );
 }

@@ -1,0 +1,516 @@
+/* ==========================================================================
+   APPOINTMENT PAGE - EXECUTIVE NAVY & AZURE MEDICAL THEME
+   ========================================================================== */
+
+.appointment-page {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #0f172a;
+  background-color: #ffffff;
+  overflow-x: hidden;
+}
+
+.appointment-container {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section-padding {
+  padding: 85px 0;
+}
+
+.appointment-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #0284c7;
+  background-color: #e0f2fe;
+  padding: 5px 14px;
+  border-radius: 99px;
+  margin-bottom: 14px;
+}
+
+.text-azure {
+  color: #0284c7;
+}
+
+.text-highlight {
+  color: #0284c7;
+}
+
+/* ─── 1. HERO ─── */
+.appointment-hero-section {
+  padding: 70px 0 60px;
+  background: 
+    radial-gradient(circle at 10% 20%, rgba(224, 242, 254, 0.6) 0%, transparent 45%),
+    #f8fafc;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.appointment-hero-content {
+  text-align: center;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.appointment-hero-content h1 {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(34px, 4vw, 50px);
+  font-weight: 900;
+  line-height: 1.15;
+  color: #081a2e;
+  letter-spacing: -0.02em;
+  margin: 0 0 16px;
+}
+
+.appointment-hero-lead {
+  font-size: 17px;
+  color: #475569;
+  line-height: 1.7;
+  margin-bottom: 10px;
+}
+
+/* ─── 2. PORTAL & SIDEBAR LAYOUT ─── */
+.appointment-portal-section {
+  background-color: #ffffff;
+}
+
+.appointment-layout-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: 48px;
+  align-items: flex-start;
+}
+
+/* Form Card */
+.booking-form-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 4px 24px rgba(10, 37, 64, 0.06);
+}
+
+.form-card-header {
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 20px;
+  margin-bottom: 24px;
+}
+
+.form-card-header h3 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  color: #081a2e;
+  margin: 0 0 4px;
+}
+
+.form-card-header p {
+  font-size: 14px;
+  color: #64748b;
+  margin: 0;
+}
+
+.form-section-group {
+  margin-bottom: 24px;
+}
+
+.section-label {
+  display: block;
+  font-size: 13.5px;
+  font-weight: 750;
+  color: #081a2e;
+  margin-bottom: 10px;
+}
+
+.mode-toggle-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.mode-option-card {
+  border: 1.5px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  background-color: #f8fafc;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.mode-option-card input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+}
+
+.mode-option-card.selected {
+  border-color: #0284c7;
+  background-color: #f0f9ff;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.15);
+}
+
+.mode-option-card strong {
+  display: block;
+  font-size: 14px;
+  color: #081a2e;
+}
+
+.mode-option-card span {
+  display: block;
+  font-size: 11.5px;
+  color: #64748b;
+}
+
+.form-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 18px;
+}
+
+.form-field label {
+  font-size: 13px;
+  font-weight: 700;
+  color: #081a2e;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea,
+.form-section-group select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 14px;
+  color: #0f172a;
+  background-color: #f8fafc;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus,
+.form-section-group select:focus {
+  border-color: #0284c7;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+}
+
+.btn-submit-appointment {
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  margin-top: 10px;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
+  transition: all 0.25s ease;
+}
+
+.btn-submit-appointment:hover {
+  background: linear-gradient(135deg, #0369a1 0%, #075985 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(2, 132, 199, 0.45);
+}
+
+.form-disclaimer-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #64748b;
+  margin-top: 14px;
+  text-align: center;
+}
+
+/* ─── SUCCESS SCREEN ─── */
+.booking-success-card {
+  background-color: #ffffff;
+  border: 1px solid #bae6fd;
+  border-radius: 20px;
+  padding: 44px 36px;
+  box-shadow: 0 12px 36px rgba(2, 132, 199, 0.15);
+  text-align: center;
+}
+
+.success-icon-badge {
+  color: #0284c7;
+  margin-bottom: 16px;
+}
+
+.booking-success-card h2 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  color: #081a2e;
+  margin: 0 0 8px;
+}
+
+.success-lead {
+  font-size: 15.5px;
+  color: #475569;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto 28px;
+}
+
+.booking-summary-box {
+  background-color: #f0f9ff;
+  border: 1px solid #bae6fd;
+  border-radius: 12px;
+  padding: 20px 24px;
+  max-width: 540px;
+  margin: 0 auto 24px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13.5px;
+  border-bottom: 1px solid #e0f2fe;
+  padding-bottom: 8px;
+}
+
+.summary-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.summary-row span {
+  color: #64748b;
+}
+
+.summary-row strong {
+  color: #081a2e;
+}
+
+.success-instruction-box {
+  background-color: #f8fafc;
+  border-left: 3.5px solid #0284c7;
+  padding: 14px 18px;
+  border-radius: 6px;
+  max-width: 540px;
+  margin: 0 auto 28px;
+  text-align: left;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.success-instruction-box p {
+  font-size: 13.5px;
+  color: #334155;
+  margin: 0;
+  line-height: 1.55;
+}
+
+.success-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn-success-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 24px;
+  background-color: #0284c7;
+  color: #ffffff !important;
+  font-weight: 750;
+  font-size: 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+  transition: all 0.2s;
+}
+
+.btn-success-whatsapp:hover {
+  background-color: #0369a1;
+  transform: translateY(-2px);
+}
+
+.btn-success-reset {
+  background-color: transparent;
+  border: 1.5px solid #e2e8f0;
+  color: #475569;
+  font-weight: 700;
+  font-size: 13.5px;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-success-reset:hover {
+  border-color: #0284c7;
+  color: #0284c7;
+}
+
+/* ─── SIDEBAR REASSURANCE ─── */
+.booking-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.sidebar-info-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 28px 24px;
+  box-shadow: 0 2px 10px rgba(10, 37, 64, 0.04);
+}
+
+.sidebar-card-kicker {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #0284c7;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.sidebar-info-card h3 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 19px;
+  font-weight: 800;
+  color: #081a2e;
+  margin: 0 0 18px;
+}
+
+.sidebar-checklist {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sidebar-checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13.5px;
+  color: #334155;
+  line-height: 1.5;
+}
+
+.sidebar-perks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sidebar-perk {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.sidebar-perk strong {
+  display: block;
+  font-size: 13.5px;
+  color: #081a2e;
+}
+
+.sidebar-perk p {
+  font-size: 12px;
+  color: #64748b;
+  margin: 2px 0 0;
+}
+
+.sidebar-urgent-card {
+  background: linear-gradient(135deg, #081a2e 0%, #0e2a4a 100%);
+  color: #ffffff;
+  border-radius: 16px;
+  padding: 26px 22px;
+  display: flex;
+  gap: 16px;
+  box-shadow: 0 8px 24px rgba(10, 37, 64, 0.12);
+}
+
+.urgent-phone-icon {
+  color: #38bdf8;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.sidebar-urgent-card strong {
+  display: block;
+  font-size: 15px;
+  color: #ffffff;
+}
+
+.sidebar-urgent-card p {
+  font-size: 12.5px;
+  color: #cbd5e1;
+  margin: 4px 0 10px;
+  line-height: 1.5;
+}
+
+.urgent-tel-link {
+  font-family: 'Outfit', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  color: #38bdf8 !important;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.urgent-tel-link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 992px) {
+  .appointment-layout-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 600px) {
+  .mode-toggle-grid,
+  .form-grid-2 {
+    grid-template-columns: 1fr;
+  }
+  .booking-form-card {
+    padding: 26px 20px;
+  }
+}

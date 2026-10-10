@@ -1,228 +1,261 @@
-import React from 'react';
-import { 
-  Award, 
-  ShieldCheck, 
-  Target, 
-  Compass, 
-  Heart, 
-  Clock, 
-  Cpu, 
-  CheckCircle2, 
-  ArrowRight, 
-  Calendar,
+import { Link } from "react-router-dom";
+import {
+  ShieldCheck,
+  Award,
   Users,
-  Sparkles
-} from 'lucide-react';
-import AnimatedCounter from '../components/AnimatedCounter';
-import ScrollReveal from '../components/ScrollReveal';
-import { CLINIC_INFO } from '../data/physioData';
+  Building2,
+  CheckCircle2,
+  Calendar,
+  Phone,
+  Activity,
+  HeartPulse,
+  Sparkles,
+  ArrowRight,
+  Clock,
+  MapPin,
+  Check,
+} from "lucide-react";
+import "./AboutPage.css";
 
-export default function AboutPage({ setActivePage }) {
-  const navigateTo = (pageId) => {
-    setActivePage(pageId);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+const CLINICAL_MILESTONES = [
+  { value: "14+", label: "Years of Clinical Excellence", sub: "Established in 2012 in Pune" },
+  { value: "15,000+", label: "Patients Successfully Healed", sub: "Without invasive surgeries" },
+  { value: "94.2%", label: "Surgery Avoidance Rate", sub: "Documented in disc & knee cases" },
+  { value: "4.98★", label: "Patient Satisfaction", sub: "1,450+ verified Google reviews" },
+];
 
-  const milestones = [
-    { year: "2014", title: "Foundation Laid", desc: "Started as a dedicated spine and sports outpatient clinic with 2 treatment suites." },
-    { year: "2017", title: "Advanced Modality Wing", desc: "Integrated Class-IV Laser and Matrix Rhythm Therapy for faster pain elimination." },
-    { year: "2020", title: "Home Rehab Network", desc: "Launched sanitized home visit rehabilitation across Delhi NCR during post-op crises." },
-    { year: "2023", title: "5000+ Milestone", desc: "Crossed 5,000 successful surgeries averted and sports injuries rehabilitated." },
-    { year: "2026", title: "Biomechanical Motion Lab", desc: "Expanded with high-speed gait analysis and computerized spinal decompression." }
-  ];
+const CLINICAL_PILLARS = [
+  {
+    icon: Activity,
+    title: "Root-Cause Biomechanical Diagnostics",
+    description:
+      "We never mask symptoms with temporary painkillers or electrical pads alone. Every patient receives a comprehensive 45-minute musculoskeletal assessment to pinpoint joint misalignment, nerve tension, and muscle firing deficits.",
+  },
+  {
+    icon: Sparkles,
+    title: "European Advanced Non-Invasive Technology",
+    description:
+      "We invest in FDA-cleared and German-certified rehabilitation technologies, including Class-IV High-Power Laser, Computerized Spinal Decompression, and Matrix Rhythm Therapy (MaRhyThe®) for accelerated cellular healing.",
+  },
+  {
+    icon: Users,
+    title: "Exclusively 1-on-1 Specialist Care",
+    description:
+      "Your recovery is guided directly by Master’s-qualified (MPT) physiotherapists with international fellowships — never handed over to untrained gym trainers or junior assistants.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Milestone-Driven Relapse Prevention",
+    description:
+      "Healing doesn't end when the pain stops. We prescribe custom video-guided home exercise programs and workstation ergonomic audits to ensure your joint stays resilient for life.",
+  },
+];
 
-  const equipmentList = [
-    {
-      name: "High-Power Class-IV Laser",
-      usage: "Accelerated cellular repair, tendon regeneration, and acute pain relief.",
-      icon: "Cpu"
-    },
-    {
-      name: "Matrix Rhythm Therapy (MaRhyThe)",
-      usage: "Biological cell oscillation restoring muscle micro-circulation and lymphatic drainage.",
-      icon: "Cpu"
-    },
-    {
-      name: "Digital Cervical & Lumbar Traction",
-      usage: "Calibrated decompression for slipped discs and pinched sciatica nerves.",
-      icon: "Cpu"
-    },
-    {
-      name: "Therapeutic Ultrasound & IFT",
-      usage: "Deep heat acoustic wave delivery to soften stubborn collagen scar tissue.",
-      icon: "Cpu"
-    },
-    {
-      name: "Myofascial Dry Needling & Cupping",
-      usage: "Targeted release of deep muscular trigger knots and myofascial restriction.",
-      icon: "Cpu"
-    },
-    {
-      name: "Computerized Gait & Balance Mats",
-      usage: "Objective fall-risk screening and foot posture pressure mapping.",
-      icon: "Cpu"
-    }
-  ];
+const CLINIC_FACILITIES = [
+  {
+    title: "Private Treatment Suites",
+    desc: "Individual acoustic & visual privacy cabins for manual therapy, dry needling, and laser procedures.",
+  },
+  {
+    title: "Computerized Decompression Lab",
+    desc: "Calibrated motorized traction units for cervical and lumbar disc herniation treatment.",
+  },
+  {
+    title: "Kinetic Rehabilitation Gym",
+    desc: "Equipped with Swiss balls, balance boards, functional resistance cables, and gait tracks.",
+  },
+  {
+    title: "Hospital-Grade Hygiene",
+    desc: "Daily UV disinfection, single-use sterilized dry needles, and medical-grade sanitized linens.",
+  },
+];
 
+export default function AboutPage() {
   return (
-    <div className="about-page-container page-transition">
-      {/* Page Header */}
-      <section className="page-header-banner">
-        <div className="container text-center">
-          <span className="section-badge">ABOUT REVITAPHYSIO CARE</span>
-          <h1 className="page-header-title">Restoring Movement. Rebuilding Lives.</h1>
-          <p className="page-header-subtitle">
-            Founded with a singular mission: to provide world-class, surgery-free physical rehabilitation 
-            grounded in clinical evidence and compassionate patient empathy.
+    <main className="about-page">
+      {/* ─── 1. HERO HEADER ─── */}
+      <section className="about-hero-section">
+        <div className="about-container">
+          <div className="about-hero-grid">
+            <div className="about-hero-text">
+              <span className="about-kicker">
+                <ShieldCheck size={14} /> ABOUT REVITAORTHO CLINIC
+              </span>
+              <h1>
+                Dedicated to Evidence-Based Healing.
+                <br />
+                <span className="text-highlight">Committed to Avoiding Surgery.</span>
+              </h1>
+              <p className="about-hero-lead">
+                Founded with a clinical mission to bring world-class non-invasive orthopedic rehabilitation to Pune, RevitaOrtho combines certified Master’s-level clinical expertise with advanced German and European rehabilitation technologies.
+              </p>
+
+              <div className="about-hero-actions">
+                <Link to="/appointment" className="btn-about-primary">
+                  <Calendar size={18} />
+                  <span>Book Initial Assessment</span>
+                  <ArrowRight size={17} />
+                </Link>
+                <Link to="/team" className="btn-about-secondary">
+                  <span>Meet Our Clinical Team</span>
+                </Link>
+              </div>
+            </div>
+
+            <div className="about-hero-visual">
+              <div className="about-img-frame">
+                <img
+                  src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1000&q=80"
+                  alt="Physiotherapist providing hands-on orthopedic care"
+                  className="about-main-img"
+                />
+                <div className="about-floating-badge">
+                  <Award size={22} className="text-azure" />
+                  <div>
+                    <strong>NABH Quality Protocols</strong>
+                    <p>ISO 9001:2015 Certified Center</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── 2. CLINICAL MILESTONES RIBBON ─── */}
+      <section className="about-milestones-bar">
+        <div className="about-container milestones-grid">
+          {CLINICAL_MILESTONES.map((item, idx) => (
+            <div key={idx} className="milestone-box">
+              <strong className="milestone-value">{item.value}</strong>
+              <span className="milestone-title">{item.label}</span>
+              <p className="milestone-sub">{item.sub}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ─── 3. CLINICAL PHILOSOPHY / FOUNDER'S NOTE ─── */}
+      <section className="about-founder-section section-padding">
+        <div className="about-container founder-grid">
+          <div className="founder-image-col">
+            <div className="founder-photo-wrap">
+              <img
+                src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=800&q=80"
+                alt="Dr. Sumit Gupta, PT - Clinical Director"
+                className="founder-photo"
+              />
+              <div className="founder-nameplate">
+                <strong>Dr. Sumit Gupta, PT</strong>
+                <span>Chief Orthopedic Physiotherapist • MPT (Musculoskeletal)</span>
+                <p>14+ Years Clinical Experience • Ex-Consultant, Apollo Health City</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="founder-content-col">
+            <span className="about-kicker">CLINICAL DIRECTOR'S PHILOSOPHY</span>
+            <h2>"Our First Mission Is Always to Prevent Unnecessary Joint & Spine Surgeries."</h2>
+            <div className="founder-quote-body">
+              <p>
+                In today's fast-paced healthcare environment, patients struggling with slip discs, knee osteoarthritis, or shoulder impingement are often pushed into invasive microdiscectomies, steroid injections, or joint replacements far too early.
+              </p>
+              <p>
+                At RevitaOrtho, we believe the human musculoskeletal system has immense regenerative capacity when unloaded and rehabilitated properly. By combining precision biomechanical assessments with high-power laser therapy, computerized spinal decompression, and targeted manual therapy, we have helped over 94% of our patients achieve complete, pain-free mobility without going under the surgeon's knife.
+              </p>
+              <p>
+                Every treatment plan we design is transparent, ethical, and customized to your specific lifestyle goals — whether that is running a marathon or simply climbing the stairs to your home without pain.
+              </p>
+            </div>
+
+            <div className="founder-signature-row">
+              <div>
+                <strong>Dr. Sumit Gupta, PT</strong>
+                <span>Founder & Clinical Director, RevitaOrtho</span>
+              </div>
+              <div className="credentials-chip">
+                <ShieldCheck size={16} /> MIAP Reg. No. L-28491
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── 4. FOUR CLINICAL PILLARS ─── */}
+      <section className="about-pillars-section section-padding">
+        <div className="about-container">
+          <div className="section-head-center">
+            <span className="about-kicker">OUR CLINICAL FOUNDATION</span>
+            <h2>Why Patients Choose RevitaOrtho</h2>
+            <p>
+              We reject the one-size-fits-all model. Here is how our clinical methodology sets the standard for physical medicine.
+            </p>
+          </div>
+
+          <div className="pillars-cards-grid">
+            {CLINICAL_PILLARS.map((pillar, i) => {
+              const Icon = pillar.icon;
+              return (
+                <div key={i} className="pillar-card">
+                  <div className="pillar-icon-box">
+                    <Icon size={24} />
+                  </div>
+                  <h3>{pillar.title}</h3>
+                  <p>{pillar.description}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── 5. INFRASTRUCTURE & FACILITIES ─── */}
+      <section className="about-facilities-section section-padding">
+        <div className="about-container">
+          <div className="section-head-center">
+            <span className="about-kicker">PATIENT-CENTERED ENVIRONMENT</span>
+            <h2>Modern Clinic Infrastructure in Baner, Pune</h2>
+            <p>
+              Designed to clinical hospital standards with dedicated amenities for maximum comfort, safety, and hygiene.
+            </p>
+          </div>
+
+          <div className="facilities-grid">
+            {CLINIC_FACILITIES.map((fac, idx) => (
+              <div key={idx} className="facility-item-card">
+                <div className="fac-bullet">
+                  <CheckCircle2 size={18} className="text-azure" />
+                </div>
+                <div>
+                  <h4>{fac.title}</h4>
+                  <p>{fac.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── 6. BOTTOM CTA ─── */}
+      <section className="about-cta-section">
+        <div className="about-container about-cta-inner">
+          <span className="about-kicker text-ice">START YOUR RECOVERY</span>
+          <h2>Experience the Difference of True Clinical Care</h2>
+          <p>
+            Schedule your 45-minute comprehensive biomechanical evaluation today and discover a clear, surgery-free path forward.
           </p>
-        </div>
-      </section>
-
-      {/* Clinic Story Section */}
-      <section className="about-story-section">
-        <div className="container">
-          <div className="about-story-grid">
-            <div className="about-story-image-col">
-              <div className="about-image-card">
-                <img src="/doctor_lead.jpg" alt="Chief Physiotherapist" className="about-doc-img" />
-                <div className="about-exp-badge glass-panel">
-                  <Award size={28} className="text-teal-600" />
-                  <div>
-                    <span className="text-xl font-bold">14+ Years</span>
-                    <p className="text-xs text-slate-500">Excellence in Clinical Care</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="about-story-text-col">
-              <span className="section-badge">OUR GENESIS</span>
-              <h2 className="section-title">A Decade of Healing Without Invasiveness</h2>
-              <p className="about-p">
-                At <strong>RevitaPhysio Care</strong>, we believe the human body possesses an incredible natural capacity 
-                to heal and regenerate when guided by proper biomechanical alignment and clinical therapy.
-              </p>
-              <p className="about-p">
-                Too often, patients suffering from slip discs, frozen shoulders, or arthritis are advised surgery or forced 
-                to rely indefinitely on heavy painkillers with dangerous gastrointestinal side-effects. 
-                Our clinic was established to offer a definitive, science-backed alternative.
-              </p>
-              <p className="about-p">
-                Every patient who walks through our doors receives a comprehensive 60-minute biomechanical evaluation 
-                conducted by Master of Physiotherapy (MPT) specialists. We do not offer cookie-cutter exercises; 
-                we design targeted therapy pathways calibrated to your body's exact recovery phase.
-              </p>
-
-              <div className="about-values-grid">
-                <div className="about-value-item">
-                  <div className="val-icon"><Target size={20} className="text-teal-600" /></div>
-                  <div>
-                    <h4 className="font-bold">Our Mission</h4>
-                    <p className="text-sm text-slate-600">Empower people to lead pain-free, active lives with zero dependence on surgery.</p>
-                  </div>
-                </div>
-                <div className="about-value-item">
-                  <div className="val-icon"><Compass size={20} className="text-teal-600" /></div>
-                  <div>
-                    <h4 className="font-bold">Our Vision</h4>
-                    <p className="text-sm text-slate-600">To be the gold standard in evidence-based non-surgical orthopedic & neuro rehab.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div className="about-cta-btn-group">
+            <Link to="/appointment" className="btn-about-white">
+              <Calendar size={18} />
+              <span>Book Your Evaluation</span>
+            </Link>
+            <a href="tel:+919876543210" className="btn-about-outline-white">
+              <Phone size={18} />
+              <span>Call Helpline: +91 98765 43210</span>
+            </a>
           </div>
         </div>
       </section>
-
-      {/* Stats Ribbon */}
-      <section className="about-stats-ribbon">
-        <div className="container">
-          <div className="stats-grid">
-            {CLINIC_INFO.stats.map((st) => (
-              <div key={st.id} className="stat-box text-center">
-                <div className="stat-number-wrap">
-                  <AnimatedCounter end={st.value} suffix={st.suffix} />
-                </div>
-                <h4 className="stat-label">{st.label}</h4>
-                <p className="stat-desc">{st.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Modern Rehab Technology & Equipment */}
-      <section className="about-equipment-section">
-        <div className="container">
-          <div className="text-center section-head-wrap">
-            <span className="section-badge">ADVANCED INFRASTRUCTURE</span>
-            <h2 className="section-title">Modern Clinical Equipment & Modalities</h2>
-            <p className="section-subtitle">
-              We invest continuously in top-tier medical rehabilitation technology to accelerate tissue healing 
-              and ensure safe, comfortable treatment.
-            </p>
-          </div>
-
-          <div className="equipment-grid">
-            {equipmentList.map((eq, idx) => (
-              <ScrollReveal key={idx} delay={idx * 80} className="equipment-card interactive-card glass-panel">
-                <div className="eq-icon-circle">
-                  <Cpu size={24} className="text-teal-600" />
-                </div>
-                <h4 className="eq-name">{eq.name}</h4>
-                <p className="eq-usage">{eq.usage}</p>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Milestones Timeline */}
-      <section className="about-timeline-section">
-        <div className="container">
-          <div className="text-center section-head-wrap">
-            <span className="section-badge">OUR JOURNEY</span>
-            <h2 className="section-title">Milestones of Compassionate Care</h2>
-            <p className="section-subtitle">
-              How we grew from a boutique spine clinic into one of the region's most reputable physical therapy centers.
-            </p>
-          </div>
-
-          <div className="timeline-flow">
-            {milestones.map((ms, idx) => (
-              <ScrollReveal key={idx} delay={idx * 100} className="timeline-node">
-                <div className="timeline-year-tag">{ms.year}</div>
-                <div className="timeline-card glass-panel">
-                  <h4 className="timeline-title">{ms.title}</h4>
-                  <p className="timeline-desc">{ms.desc}</p>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Accreditations & Quality Assurance */}
-      <section className="about-accred-section">
-        <div className="container">
-          <div className="accred-banner glass-panel">
-            <div className="accred-text">
-              <span className="accred-tag">CLINICAL EXCELLENCE</span>
-              <h3 className="accred-title">Member of Indian Association of Physiotherapists (MIAP)</h3>
-              <p className="accred-desc">
-                All physical therapists on our roster hold active registrations with the Indian Association of 
-                Physiotherapists (IAP) and maintain mandatory continuing medical education (CME) credentials.
-              </p>
-            </div>
-            <div className="accred-cta">
-              <button onClick={() => navigateTo('appointment')} className="btn-primary">
-                <Calendar size={18} />
-                <span>Schedule Consultation</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
+    </main>
   );
 }

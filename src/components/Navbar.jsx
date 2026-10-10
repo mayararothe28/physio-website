@@ -1,160 +1,146 @@
-import React, { useState, useEffect } from 'react';
-import { 
-  Phone, 
-  Clock, 
-  Calendar, 
-  Menu, 
-  X, 
-  Activity, 
-  MessageCircle, 
-  ShieldCheck,
-  ChevronRight 
-} from 'lucide-react';
-import { CLINIC_INFO } from '../data/physioData';
 
-export default function Navbar({ activePage, setActivePage }) {
-  const [scrolled, setScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import {
+  Menu,
+  X,
+  ChevronDown,
+  Calendar,
+  Phone,
+} from "lucide-react";
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 25) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+import "./Navbar.css";
+
+export default function Navbar() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
 
   const navLinks = [
-    { id: 'home', label: 'Home' },
-    { id: 'about', label: 'About Us' },
-    { id: 'services', label: 'Services' },
-    { id: 'treatments', label: 'Treatments' },
-    { id: 'work', label: 'Our Work' },
-    { id: 'team', label: 'Our Team' },
-    { id: 'testimonials', label: 'Reviews' },
-    { id: 'faq', label: 'FAQ' },
-    { id: 'contact', label: 'Contact' }
+    { name: "Home", href: "/" },
+    { name: "About Us", href: "/about" },
+    { name: "Treatments", href: "/treatments" },
+    { name: "Our Doctors", href: "/team" },
+    { name: "Contact", href: "/contact" },
   ];
 
-  const handleNavClick = (pageId) => {
-    setActivePage(pageId);
-    setMobileMenuOpen(false);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  function closeMenus() {
+    setMenuOpen(false);
+    setServicesOpen(false);
+  }
 
   return (
     <>
-      {/* Main Sticky Navbar (Top bar removed per user request) */}
-      <header className={`main-header ${scrolled ? 'header-scrolled' : ''}`}>
-        <div className="container header-container">
-          {/* Logo */}
-          <div className="logo-wrapper" onClick={() => handleNavClick('home')}>
-            <div className="logo-icon-box">
-              <Activity size={24} className="logo-pulse-icon" />
-            </div>
-            <div className="logo-text">
-              <span className="brand-name">Revita<span className="brand-accent">Physio</span></span>
-              <span className="brand-subtitle">Rehab & Spine Clinic</span>
-            </div>
-          </div>
+      {/* Top contact bar */}
+      <div className="top-bar">
+        <div className="navbar-container top-bar-content">
+          <span>Mon–Sat: 9:00 AM – 8:00 PM</span>
 
-          {/* Desktop Navigation Links */}
-          <nav className="desktop-nav">
-            {navLinks.map((link) => (
-              <button
-                key={link.id}
-                onClick={() => handleNavClick(link.id)}
-                className={`nav-link-btn ${activePage === link.id ? 'active' : ''}`}
+          <a href="tel:+919876543210">
+            <Phone size={14} />
+            +91 98765 43210
+          </a>
+        </div>
+      </div>
+
+      {/* Main navbar */}
+      <header className="main-navbar">
+        <div className="navbar-container navbar-content">
+          {/* Logo */}
+          <Link
+            to="/"
+            className="clinic-logo"
+            onClick={closeMenus}
+          >
+            <span className="logo-icon">+</span>
+
+            <span className="logo-text">
+              Revita<span>Ortho</span>
+              <small>ORTHOPEDIC & PHYSIOTHERAPY</small>
+            </span>
+          </Link>
+
+          {/* Navigation links */}
+          <nav
+            className={`navbar-links ${
+              menuOpen ? "show-menu" : ""
+            }`}
+          >
+            {navLinks.slice(0, 2).map((link) => (
+              <Link
+                key={link.name}
+                to={link.href}
+                onClick={closeMenus}
               >
-                {link.label}
-                {activePage === link.id && <span className="nav-active-pill" />}
+                {link.name}
+              </Link>
+            ))}
+
+            {/* Services dropdown */}
+            <div className="services-menu">
+              <button
+                type="button"
+                className="services-toggle"
+                onClick={() => setServicesOpen(!servicesOpen)}
+                aria-expanded={servicesOpen}
+              >
+                Services
+                <ChevronDown size={15} />
               </button>
+
+              {servicesOpen && (
+                <div className="services-dropdown">
+                  <Link to="/services" onClick={closeMenus}>
+                    All Services
+                  </Link>
+
+                  <Link to="/services" onClick={closeMenus}>
+                    Physiotherapy
+                  </Link>
+
+                  <Link to="/treatments" onClick={closeMenus}>
+                    Orthopedic Care
+                  </Link>
+
+                  <Link to="/our-work" onClick={closeMenus}>
+                    Rehabilitation
+                  </Link>
+                </div>
+              )}
+            </div>
+
+            {navLinks.slice(2).map((link) => (
+              <Link
+                key={link.name}
+                to={link.href}
+                onClick={closeMenus}
+              >
+                {link.name}
+              </Link>
             ))}
           </nav>
 
-          {/* Header Action Button */}
-          <div className="header-actions">
-            <button
-              onClick={() => handleNavClick('appointment')}
-              className="btn-primary nav-book-btn pulse-glow"
-            >
-              <Calendar size={16} />
-              <span>Book Appointment</span>
-            </button>
-
-            {/* Mobile Hamburger Button */}
-            <button
-              className="mobile-hamburger-btn"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label="Toggle navigation menu"
-            >
-              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
-        </div>
-      </header>
-
-      {/* Mobile Slide-in Drawer */}
-      <div 
-        className={`mobile-drawer-overlay ${mobileMenuOpen ? 'open' : ''}`}
-        onClick={() => setMobileMenuOpen(false)}
-      />
-      <aside className={`mobile-drawer ${mobileMenuOpen ? 'open' : ''}`}>
-        <div className="mobile-drawer-header">
-          <div className="logo-wrapper">
-            <div className="logo-icon-box">
-              <Activity size={22} />
-            </div>
-            <div className="logo-text">
-              <span className="brand-name">Revita<span className="brand-accent">Physio</span></span>
-            </div>
-          </div>
-          <button 
-            className="mobile-close-btn"
-            onClick={() => setMobileMenuOpen(false)}
+          {/* Appointment button */}
+          <Link
+            to="/appointment"
+            className="appointment-button"
+            onClick={closeMenus}
           >
-            <X size={22} />
+            <Calendar size={17} />
+            <span>Book Appointment</span>
+          </Link>
+
+          {/* Mobile menu button */}
+          <button
+            type="button"
+            className="mobile-menu-button"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={menuOpen}
+          >
+            {menuOpen ? <X size={25} /> : <Menu size={25} />}
           </button>
         </div>
-
-        <div className="mobile-drawer-body">
-          <nav className="mobile-nav-list">
-            {navLinks.map((link) => (
-              <button
-                key={link.id}
-                onClick={() => handleNavClick(link.id)}
-                className={`mobile-nav-item ${activePage === link.id ? 'active' : ''}`}
-              >
-                <span>{link.label}</span>
-                <ChevronRight size={18} className="mobile-nav-arrow" />
-              </button>
-            ))}
-          </nav>
-
-          <div className="mobile-drawer-cta">
-            <button
-              onClick={() => handleNavClick('appointment')}
-              className="btn-primary w-full"
-            >
-              <Calendar size={18} />
-              <span>Book Instant Appointment</span>
-            </button>
-            <div className="mobile-drawer-contacts">
-              <a href={`tel:${CLINIC_INFO.phone}`} className="mobile-contact-pill">
-                <Phone size={15} />
-                <span>Call: {CLINIC_INFO.phone}</span>
-              </a>
-              <p className="mobile-clinic-time">
-                <Clock size={14} /> Mon - Sat: 8:00 AM - 8:00 PM
-              </p>
-            </div>
-          </div>
-        </div>
-      </aside>
+      </header>
     </>
   );
 }

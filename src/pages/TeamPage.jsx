@@ -1,149 +1,261 @@
-import React, { useState } from 'react';
-import { 
-  Star, 
-  Award, 
-  Calendar, 
-  ShieldCheck, 
-  Clock, 
-  Globe, 
-  CheckCircle2, 
+import { Link } from "react-router-dom";
+import {
+  Award,
+  ShieldCheck,
+  Building2,
+  Calendar,
+  Star,
+  CheckCircle2,
   ArrowRight,
-  Mail,
-  Phone
-} from 'lucide-react';
-import ScrollReveal from '../components/ScrollReveal';
-import DoctorModal from '../components/DoctorModal';
-import { DOCTORS_DATA, CLINIC_INFO } from '../data/physioData';
+  Clock,
+  Sparkles,
+} from "lucide-react";
+import "./TeamPage.css";
 
-export default function TeamPage({ setActivePage, onSelectDoctor }) {
-  const [modalDoctor, setModalDoctor] = useState(null);
+const CLINICAL_DOCTORS = [
+  {
+    id: "dr-sumit-gupta",
+    name: "Dr. Sumit Gupta, PT",
+    role: "Founder & Chief Orthopedic Physiotherapist",
+    qualifications: "BPT, MPT (Musculoskeletal Disorders), MIAP",
+    experience: "14+ Years Clinical Leadership",
+    regNo: "MIAP Reg: L-28491",
+    fellowship: "Certified Spinal Decompression & Maitland Manual Therapist",
+    formerHospital: "Ex-Senior Consultant, Apollo Health City & Fortis Healthcare",
+    focus: [
+      "Non-Surgical Disc Bulge & Herniation (L4-L5, L5-S1)",
+      "Severe Radiating Sciatica & Cervical Spondylosis",
+      "Failed Back Surgery Syndrome (FBSS) Rehabilitation",
+      "Complex Biomechanical Postural Alignments",
+    ],
+    opdTimings: "Mon – Sat: 9:00 AM – 2:00 PM & 5:00 PM – 8:00 PM",
+    rating: "4.98",
+    patientCount: "6,500+ Patients Treated",
+    image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=700&q=80",
+    availableToday: true,
+  },
+  {
+    id: "dr-sneha-kulkarni",
+    name: "Dr. Sneha Kulkarni, PT",
+    role: "Head of Sports Rehabilitation & Joint Preservation",
+    qualifications: "BPT, MPT (Sports Medicine), FIFA Medical Diploma",
+    experience: "9+ Years High-Performance Rehab",
+    regNo: "MIAP Reg: L-39104",
+    fellowship: "Fellowship in Athletic Kinetic Chain & Dry Needling (UK)",
+    formerHospital: "Official Physiotherapist, National Badminton & Football Leagues",
+    focus: [
+      "Grade I-II ACL, PCL & Meniscus Rehabilitation",
+      "Knee Osteoarthritis Cartilage Preservation Protocols",
+      "Frozen Shoulder (Adhesive Capsulitis) & Rotator Cuff",
+      "High-Velocity Return-to-Sport Biomechanical Clearance",
+    ],
+    opdTimings: "Mon – Sat: 10:00 AM – 6:00 PM",
+    rating: "4.96",
+    patientCount: "4,200+ Athletes & Patients",
+    image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=700&q=80",
+    availableToday: true,
+  },
+  {
+    id: "dr-vikram-patil",
+    name: "Dr. Vikram Patil, PT",
+    role: "Senior Consultant – Neuro & Post-Surgical Rehab",
+    qualifications: "BPT, MPT (Neurological Sciences), Certified Bobath",
+    experience: "11+ Years Post-Op & Neuro Care",
+    regNo: "MIAP Reg: L-34820",
+    fellowship: "Certified Geriatric Gait Restoration & Vestibular Therapist",
+    formerHospital: "Ex-Head of Physical Therapy, Metro Multi-Speciality Hospital",
+    focus: [
+      "Accelerated Total Knee & Hip Replacement (TKR/THR) Rehab",
+      "Post-Stroke Hemiparesis & Balance Board Drills",
+      "Spinal Fusion & Laminectomy Recovery Programs",
+      "Geriatric Fall-Prevention & Parkinson's Mobility Care",
+    ],
+    opdTimings: "Mon – Sat: 8:00 AM – 4:00 PM",
+    rating: "4.97",
+    patientCount: "3,800+ Post-Op & Rehab Cases",
+    image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=700&q=80",
+    availableToday: true,
+  },
+  {
+    id: "dr-ananya-deshmukh",
+    name: "Dr. Ananya Deshmukh, PT",
+    role: "Consultant – Women's Health & Ergonomic Posture Lead",
+    qualifications: "BPT, MPT (Community Health & Ergonomics), COMT",
+    experience: "8+ Years Ergonomic & Women's Rehab",
+    regNo: "MIAP Reg: L-42189",
+    fellowship: "Certified Mulligan Manual Therapy & Prenatal/Postnatal Rehab",
+    formerHospital: "Ex-Consultant, Columbia Asia Hospital & Corporate Wellness",
+    focus: [
+      "Corporate Tech-Neck & Forward Head Posture Syndrome",
+      "Prenatal & Postnatal Pelvic Floor & Diastasis Recti",
+      "Fibromyalgia & Myofascial Trigger Point Pain",
+      "Workstation Ergonomic Audits & Repetitive Strain",
+    ],
+    opdTimings: "Mon – Sat: 11:00 AM – 7:00 PM",
+    rating: "4.95",
+    patientCount: "2,900+ Consultations",
+    image: "https://images.unsplash.com/photo-1594824813580-b2f5b40cf396?auto=format&fit=crop&w=700&q=80",
+    availableToday: true,
+  },
+];
 
-  const handleBookDoctor = (doc) => {
-    onSelectDoctor(doc);
-    setActivePage('appointment');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+const CLINICAL_STANDARDS = [
+  {
+    title: "100% Master's-Qualified Leadership",
+    desc: "Every department head holds a post-graduate Master of Physiotherapy (MPT) degree with specialized clinical residency.",
+  },
+  {
+    title: "Zero Intern Delegation",
+    desc: "Your hands-on treatment, dry needling, and spinal decompression are performed directly by senior clinicians, never passed to interns.",
+  },
+  {
+    title: "Continuous Medical Education",
+    desc: "Our therapists regularly publish clinical case reports and hold international certifications from Germany, UK, and FIFA.",
+  },
+];
 
+export default function TeamPage() {
   return (
-    <div className="team-page-container page-transition">
-      {/* Header Banner */}
-      <section className="page-header-banner">
-        <div className="container text-center">
-          <span className="section-badge">CLINICAL LEADERSHIP</span>
-          <h1 className="page-header-title">Our Specialist Physiotherapists</h1>
-          <p className="page-header-subtitle">
-            Every member of our medical team holds a Master of Physiotherapy (MPT) degree, 
-            internationally recognized fellowships, and over 8 to 14 years of clinical experience.
-          </p>
+    <main className="team-page">
+      {/* ─── 1. HERO ─── */}
+      <section className="team-hero-section">
+        <div className="team-container">
+          <div className="team-hero-content">
+            <span className="team-kicker">
+              <ShieldCheck size={14} /> QUALIFIED MEDICAL SPECIALISTS
+            </span>
+            <h1>
+              Meet Our Clinical Specialists.
+              <br />
+              <span className="text-highlight">Direct Care from MPT Doctors.</span>
+            </h1>
+            <p className="team-hero-lead">
+              At RevitaOrtho, you are cared for by dedicated clinical leaders who have trained at premier healthcare institutions, published orthopedic research, and healed thousands of complex joint and spine cases without surgery.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* Doctors Grid */}
-      <section className="team-roster-section">
-        <div className="container">
-          <div className="team-roster-grid">
-            {DOCTORS_DATA.map((doc, idx) => (
-              <ScrollReveal key={doc.id} delay={idx * 100} className="team-doc-card-wrap">
-                <div className="team-doc-card interactive-card glass-panel">
-                  <div className="tdc-image-wrapper">
-                    <img src={doc.image} alt={doc.name} className="tdc-image" />
-                    <div className="tdc-exp-badge">
-                      <Award size={14} />
-                      <span>{doc.experience}</span>
+      {/* ─── 2. DOCTORS DIRECTORY ─── */}
+      <section className="team-directory-section section-padding">
+        <div className="team-container">
+          <div className="doctors-list-grid">
+            {CLINICAL_DOCTORS.map((doc) => (
+              <article key={doc.id} className="clinical-doctor-card">
+                <div className="doc-card-inner">
+                  <div className="doc-photo-col">
+                    <div className="doc-photo-frame">
+                      <img
+                        src={doc.image}
+                        alt={doc.name}
+                        className="doc-img"
+                        loading="lazy"
+                      />
+                      {doc.availableToday && (
+                        <span className="doc-duty-badge">
+                          <span className="live-dot-pulse"></span> On Consultation Duty
+                        </span>
+                      )}
+                    </div>
+
+                    <div className="doc-social-creds">
+                      <div className="rating-row">
+                        <Star size={15} className="star-gold fill-gold" />
+                        <strong>{doc.rating} Rating</strong>
+                        <span>({doc.patientCount})</span>
+                      </div>
+                      <span className="reg-number-tag">{doc.regNo}</span>
                     </div>
                   </div>
 
-                  <div className="tdc-body">
-                    <div className="tdc-rating-pill">
-                      <Star size={14} className="text-amber-500 fill-amber-500" />
-                      <span className="font-bold text-sm">{doc.rating}</span>
-                      <span className="text-xs text-slate-500">({doc.reviewCount}+ verified reviews)</span>
-                    </div>
+                  <div className="doc-info-col">
+                    <span className="doc-role-badge">{doc.role}</span>
+                    <h2 className="doc-card-name">{doc.name}</h2>
+                    <p className="doc-degrees-line">{doc.qualifications}</p>
 
-                    <h3 className="tdc-name">{doc.name}</h3>
-                    <p className="tdc-qual">{doc.qualification}</p>
-                    <span className="tdc-spec-tag">{doc.specialization}</span>
-
-                    <p className="tdc-bio-snip">{doc.bio}</p>
-
-                    <div className="tdc-cert-chips">
-                      {doc.certifications.map((cert, cIdx) => (
-                        <span key={cIdx} className="tdc-cert-pill">
-                          <ShieldCheck size={12} className="text-teal-600" />
-                          <span>{cert}</span>
-                        </span>
-                      ))}
-                    </div>
-
-                    <div className="tdc-meta-row">
-                      <div className="tdc-meta-item">
-                        <Clock size={14} className="text-slate-500" />
-                        <span>{doc.timings}</span>
+                    <div className="doc-credentials-stack">
+                      <div className="cred-badge-row">
+                        <Award size={15} className="text-azure" />
+                        <span><strong>Experience:</strong> {doc.experience}</span>
                       </div>
-                      <div className="tdc-meta-item">
-                        <Globe size={14} className="text-slate-500" />
-                        <span>{doc.languages}</span>
+                      <div className="cred-badge-row">
+                        <ShieldCheck size={15} className="text-azure" />
+                        <span><strong>Fellowship:</strong> {doc.fellowship}</span>
+                      </div>
+                      <div className="cred-badge-row">
+                        <Building2 size={15} className="text-azure" />
+                        <span><strong>Formerly:</strong> {doc.formerHospital}</span>
                       </div>
                     </div>
 
-                    <div className="tdc-actions">
-                      <button 
-                        onClick={() => setModalDoctor(doc)}
-                        className="btn-secondary flex-1"
+                    <div className="doc-focus-areas-box">
+                      <strong>Key Clinical Specializations:</strong>
+                      <ul>
+                        {doc.focus.map((f, fIdx) => (
+                          <li key={fIdx}>
+                            <CheckCircle2 size={14} className="text-azure" />
+                            <span>{f}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div className="doc-timing-box">
+                      <Clock size={15} className="text-azure" />
+                      <span><strong>Consultation Hours:</strong> {doc.opdTimings}</span>
+                    </div>
+
+                    <div className="doc-actions-bar">
+                      <Link
+                        to={`/appointment?doctor=${encodeURIComponent(doc.name)}`}
+                        className="btn-doc-book-primary"
                       >
-                        View Full Profile
-                      </button>
-                      <button 
-                        onClick={() => handleBookDoctor(doc)}
-                        className="btn-primary flex-1"
+                        <Calendar size={16} />
+                        <span>Book Appointment with {doc.name.split(" ")[1]}</span>
+                        <ArrowRight size={16} />
+                      </Link>
+
+                      <a
+                        href={`https://wa.me/919876543210?text=Hi,%20I%20would%20like%20to%20consult%20with%20${encodeURIComponent(
+                          doc.name
+                        )}.`}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="btn-doc-whatsapp"
                       >
-                        <Calendar size={15} />
-                        <span>Book Visit</span>
-                      </button>
+                        <span>WhatsApp Triage</span>
+                      </a>
                     </div>
                   </div>
                 </div>
-              </ScrollReveal>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Quality Commitment Section */}
-      <section className="team-credentials-section">
-        <div className="container">
-          <div className="credentials-card glass-panel text-center">
-            <span className="section-badge">ZERO COMPROMISE STANDARDS</span>
-            <h3 className="section-title text-2xl">Our Clinical Care Standards</h3>
-            <div className="standards-grid">
-              <div className="std-item">
-                <CheckCircle2 size={24} className="text-teal-600 mb-2 mx-auto" />
-                <h4 className="font-bold text-base">Verified IAP Registrations</h4>
-                <p className="text-xs text-slate-600">All physiotherapists are registered with the Indian Association of Physiotherapists.</p>
+      {/* ─── 3. CLINICAL STANDARDS ─── */}
+      <section className="team-standards-section section-padding">
+        <div className="team-container">
+          <div className="section-head-center">
+            <span className="team-kicker">OUR ETHICAL COMMITMENT</span>
+            <h2>How Our Care Philosophy Protects You</h2>
+            <p>
+              We believe patients deserve undivided attention from senior clinicians who listen attentively, explain diagnoses clearly, and respect your time.
+            </p>
+          </div>
+
+          <div className="standards-cards-grid">
+            {CLINICAL_STANDARDS.map((std, idx) => (
+              <div key={idx} className="standard-box">
+                <div className="std-num">0{idx + 1}</div>
+                <h3>{std.title}</h3>
+                <p>{std.desc}</p>
               </div>
-              <div className="std-item">
-                <CheckCircle2 size={24} className="text-teal-600 mb-2 mx-auto" />
-                <h4 className="font-bold text-base">Continued Medical Education</h4>
-                <p className="text-xs text-slate-600">Minimum 50 hours of annual training in advanced biomechanics and manual techniques.</p>
-              </div>
-              <div className="std-item">
-                <CheckCircle2 size={24} className="text-teal-600 mb-2 mx-auto" />
-                <h4 className="font-bold text-base">Ethical, Non-Surgical Care</h4>
-                <p className="text-xs text-slate-600">We prioritize conservative physical rehabilitation over unnecessary surgical recommendations.</p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
-
-      {/* Doctor Modal */}
-      {modalDoctor && (
-        <DoctorModal 
-          doctor={modalDoctor} 
-          onClose={() => setModalDoctor(null)} 
-          onBookDoctor={handleBookDoctor} 
-        />
-      )}
-    </div>
+    </main>
   );
 }

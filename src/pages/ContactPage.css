@@ -1,0 +1,347 @@
+/* ==========================================================================
+   CONTACT PAGE - EXECUTIVE NAVY & AZURE MEDICAL THEME
+   ========================================================================== */
+
+.contact-page {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #0f172a;
+  background-color: #ffffff;
+  overflow-x: hidden;
+}
+
+.contact-container {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section-padding {
+  padding: 85px 0;
+}
+
+.contact-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #0284c7;
+  background-color: #e0f2fe;
+  padding: 5px 14px;
+  border-radius: 99px;
+  margin-bottom: 14px;
+}
+
+.text-azure {
+  color: #0284c7;
+}
+
+.text-highlight {
+  color: #0284c7;
+}
+
+/* ─── 1. HERO ─── */
+.contact-hero-section {
+  padding: 70px 0 60px;
+  background: 
+    radial-gradient(circle at 10% 20%, rgba(224, 242, 254, 0.6) 0%, transparent 45%),
+    #f8fafc;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.contact-hero-content {
+  text-align: center;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.contact-hero-content h1 {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(34px, 4vw, 50px);
+  font-weight: 900;
+  line-height: 1.15;
+  color: #081a2e;
+  letter-spacing: -0.02em;
+  margin: 0 0 16px;
+}
+
+.contact-hero-lead {
+  font-size: 17px;
+  color: #475569;
+  line-height: 1.7;
+  margin-bottom: 10px;
+}
+
+/* ─── 2. MAIN GRID ─── */
+.contact-main-section {
+  background-color: #ffffff;
+}
+
+.contact-main-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 50px;
+  align-items: flex-start;
+}
+
+/* Location Card */
+.clinic-location-hero-card {
+  background: linear-gradient(135deg, #081a2e 0%, #0e2a4a 100%);
+  color: #ffffff;
+  border-radius: 20px;
+  padding: 36px 32px;
+  box-shadow: 0 12px 36px rgba(10, 37, 64, 0.12);
+  margin-bottom: 30px;
+}
+
+.loc-card-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #38bdf8;
+  background-color: rgba(2, 132, 199, 0.2);
+  padding: 4px 12px;
+  border-radius: 99px;
+  margin-bottom: 14px;
+}
+
+.clinic-location-hero-card h3 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 10px;
+}
+
+.address-text {
+  font-size: 15px;
+  color: #cbd5e1;
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+
+.landmark-text {
+  font-size: 13px;
+  color: #94a3b8;
+  margin-bottom: 22px;
+}
+
+.btn-maps-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 22px;
+  background-color: #ffffff;
+  color: #081a2e !important;
+  font-weight: 750;
+  font-size: 13.5px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.btn-maps-action:hover {
+  background-color: #f0f9ff;
+  transform: translateY(-2px);
+}
+
+/* Channels Grid */
+.contact-channels-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.channel-card {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 22px 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.channel-card strong {
+  display: block;
+  font-size: 14px;
+  color: #081a2e;
+  margin-bottom: 4px;
+}
+
+.channel-card a {
+  display: block;
+  font-size: 13.5px;
+  color: #0284c7;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.channel-card a:hover {
+  color: #0369a1;
+  text-decoration: underline;
+}
+
+.channel-card p {
+  font-size: 12.5px;
+  color: #64748b;
+  margin: 2px 0 0;
+  line-height: 1.45;
+}
+
+.whatsapp-link-btn {
+  display: inline-block;
+  margin-top: 6px;
+  color: #0284c7 !important;
+  font-weight: 750 !important;
+  font-size: 13px !important;
+}
+
+/* ─── FORM COLUMN ─── */
+.contact-form-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 38px 32px;
+  box-shadow: 0 4px 24px rgba(10, 37, 64, 0.06);
+}
+
+.inquiry-form h3 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  color: #081a2e;
+  margin: 0 0 6px;
+}
+
+.inquiry-form p {
+  font-size: 14px;
+  color: #64748b;
+  margin: 0 0 24px;
+}
+
+.form-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 18px;
+}
+
+.form-input-group label {
+  font-size: 13px;
+  font-weight: 700;
+  color: #081a2e;
+}
+
+.form-input-group input,
+.form-input-group select,
+.form-input-group textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 14px;
+  color: #0f172a;
+  background-color: #f8fafc;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.form-input-group input:focus,
+.form-input-group select:focus,
+.form-input-group textarea:focus {
+  border-color: #0284c7;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+}
+
+.form-row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.btn-send-inquiry {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  margin-top: 10px;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
+  transition: all 0.25s ease;
+}
+
+.btn-send-inquiry:hover {
+  background: linear-gradient(135deg, #0369a1 0%, #075985 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(2, 132, 199, 0.45);
+}
+
+/* Success State */
+.contact-success-state {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.contact-success-state h3 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  color: #081a2e;
+  margin: 16px 0 8px;
+}
+
+.contact-success-state p {
+  font-size: 15px;
+  color: #475569;
+  line-height: 1.6;
+  max-width: 400px;
+  margin: 0 auto 24px;
+}
+
+.btn-reset-contact {
+  background-color: transparent;
+  border: 1.5px solid #e2e8f0;
+  color: #081a2e;
+  font-weight: 700;
+  font-size: 13.5px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn-reset-contact:hover {
+  border-color: #0284c7;
+  color: #0284c7;
+}
+
+@media (max-width: 992px) {
+  .contact-main-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 600px) {
+  .contact-channels-grid,
+  .form-row-2 {
+    grid-template-columns: 1fr;
+  }
+}
