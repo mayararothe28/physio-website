@@ -121,82 +121,87 @@ export default function TestimonialsPage() {
             <p className="testimonials-hero-lead">
               Read documented recovery narratives from patients who overcame debilitating slip discs, severe knee osteoarthritis, frozen shoulder, and sports tears without surgery.
             </p>
-
-            {/* Google Stats Ribbon */}
-            <div className="google-metrics-ribbon">
-              <div className="google-stars-item">
-                <div className="google-stars-row">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} size={18} className="star-gold fill-gold" />
-                  ))}
-                  <strong className="rating-num">4.98 / 5.0</strong>
-                </div>
-                <span>Google Verified Clinic Rating</span>
-              </div>
-
-              <div className="ribbon-sep"></div>
-
-              <div className="google-stars-item">
-                <strong className="metric-bold">1,450+</strong>
-                <span>Verified Patient Reviews</span>
-              </div>
-
-              <div className="ribbon-sep"></div>
-
-              <div className="google-stars-item">
-                <strong className="metric-bold">94.2%</strong>
-                <span>Surgery Avoidance Rate</span>
-              </div>
-            </div>
-
-            {/* Category Filter Tabs */}
-            <div className="review-filter-tabs">
-              <button
-                type="button"
-                className={`review-tab-btn ${activeCategory === "all" ? "active" : ""}`}
-                onClick={() => setActiveCategory("all")}
-              >
-                All Stories ({VERIFIED_TESTIMONIALS.length})
-              </button>
-              <button
-                type="button"
-                className={`review-tab-btn ${activeCategory === "spine" ? "active" : ""}`}
-                onClick={() => setActiveCategory("spine")}
-              >
-                Spine & Sciatica
-              </button>
-              <button
-                type="button"
-                className={`review-tab-btn ${activeCategory === "knee" ? "active" : ""}`}
-                onClick={() => setActiveCategory("knee")}
-              >
-                Knee Arthritis
-              </button>
-              <button
-                type="button"
-                className={`review-tab-btn ${activeCategory === "shoulder" ? "active" : ""}`}
-                onClick={() => setActiveCategory("shoulder")}
-              >
-                Frozen Shoulder
-              </button>
-              <button
-                type="button"
-                className={`review-tab-btn ${activeCategory === "sports" ? "active" : ""}`}
-                onClick={() => setActiveCategory("sports")}
-              >
-                Sports & Ligaments
-              </button>
-            </div>
           </div>
         </div>
       </section>
+
+      {/* ─── STATS & FILTER BAR ─── */}
+      <div className="testimonials-filter-bar">
+        <div className="testimonials-container">
+          {/* Google Stats Ribbon */}
+          <div className="google-metrics-ribbon">
+            <div className="google-stars-item">
+              <div className="google-stars-row">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} size={18} className="star-gold fill-gold" />
+                ))}
+                <strong className="rating-num">4.98 / 5.0</strong>
+              </div>
+              <span>Google Verified Clinic Rating</span>
+            </div>
+
+            <div className="ribbon-sep"></div>
+
+            <div className="google-stars-item">
+              <strong className="metric-bold">1,450+</strong>
+              <span>Verified Patient Reviews</span>
+            </div>
+
+            <div className="ribbon-sep"></div>
+
+            <div className="google-stars-item">
+              <strong className="metric-bold">94.2%</strong>
+              <span>Surgery Avoidance Rate</span>
+            </div>
+          </div>
+
+          {/* Category Filter Tabs */}
+          <div className="review-filter-tabs">
+            <button
+              type="button"
+              className={`review-tab-btn ${activeCategory === "all" ? "active" : ""}`}
+              onClick={() => setActiveCategory("all")}
+            >
+              All Stories ({VERIFIED_TESTIMONIALS.length})
+            </button>
+            <button
+              type="button"
+              className={`review-tab-btn ${activeCategory === "spine" ? "active" : ""}`}
+              onClick={() => setActiveCategory("spine")}
+            >
+              Spine & Sciatica
+            </button>
+            <button
+              type="button"
+              className={`review-tab-btn ${activeCategory === "knee" ? "active" : ""}`}
+              onClick={() => setActiveCategory("knee")}
+            >
+              Knee Arthritis
+            </button>
+            <button
+              type="button"
+              className={`review-tab-btn ${activeCategory === "shoulder" ? "active" : ""}`}
+              onClick={() => setActiveCategory("shoulder")}
+            >
+              Frozen Shoulder
+            </button>
+            <button
+              type="button"
+              className={`review-tab-btn ${activeCategory === "sports" ? "active" : ""}`}
+              onClick={() => setActiveCategory("sports")}
+            >
+              Sports & Ligaments
+            </button>
+          </div>
+        </div>
+      </div>
 
       {/* ─── 2. TESTIMONIALS CARDS ─── */}
       <section className="testimonials-grid-section section-padding">
         <div className="testimonials-container">
           <div className="stories-grid-layout">
-            {filteredTestimonials.map((t) => (
-              <article key={t.id} className="patient-story-card">
+            {filteredTestimonials.map((t, idx) => (
+              <article key={t.id} className={`patient-story-card scroll-reveal hover-lift delay-${(idx % 3) + 1}`}>
                 <div className="story-card-header">
                   <div className="stars-row">
                     {[...Array(t.rating)].map((_, s) => (
@@ -247,10 +252,10 @@ export default function TestimonialsPage() {
       {/* ─── 3. BOTTOM CTA ─── */}
       <section className="testimonials-bottom-cta">
         <div className="testimonials-container">
-          <div className="bottom-cta-banner">
+          <div className="bottom-cta-banner scroll-reveal">
             <h2>Ready to Write Your Own Recovery Story?</h2>
             <p>
-              Don’t let chronic joint stiffness or nerve pain become your everyday baseline. Schedule your comprehensive 45-minute clinical assessment today.
+              Don't let chronic joint stiffness or nerve pain become your everyday baseline. Schedule your comprehensive 45-minute clinical assessment today.
             </p>
             <div className="bottom-cta-actions">
               <Link to="/appointment" className="btn-cta-white">
@@ -258,8 +263,8 @@ export default function TestimonialsPage() {
                 <span>Book Your Evaluation</span>
                 <ArrowRight size={17} />
               </Link>
-              <a href="tel:+919876543210" className="btn-cta-outline-white">
-                <span>Call Helpline: +91 98765 43210</span>
+              <a href="tel:+919158347290" className="btn-cta-outline-white">
+                <span>Call Helpline: +91 91583 47290</span>
               </a>
             </div>
           </div>

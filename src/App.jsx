@@ -1,5 +1,6 @@
 
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -17,9 +18,44 @@ import OurWorkPage from "./pages/OurWorkPage";
 
 import "./App.css";
 
+function ScrollAndAnimationHandler() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+
+    const timer = setTimeout(() => {
+      const elements = document.querySelectorAll(".scroll-reveal");
+      if (!elements.length) return;
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          rootMargin: "0px 0px -40px 0px",
+          threshold: 0.1,
+        }
+      );
+
+      elements.forEach((el) => observer.observe(el));
+    }, 50);
+
+    return () => clearTimeout(timer);
+  }, [pathname]);
+
+  return null;
+}
+
 function App() {
   return (
     <BrowserRouter>
+      <ScrollAndAnimationHandler />
       <Navbar />
 
       <Routes>
@@ -33,6 +69,7 @@ function App() {
         <Route path="/contact" Component={ContactPage} />
         <Route path="/faq" Component={FAQPage} />
         <Route path="/our-work" Component={OurWorkPage} />
+        <Route path="/work" Component={OurWorkPage} />
       </Routes>
 
       <Footer />

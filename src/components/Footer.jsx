@@ -66,7 +66,7 @@ export default function Footer() {
 
           <div className="footer-contact-item">
             <Phone size={17} className="contact-ico" />
-            <a href="tel:+919876543210">+91 98765 43210 / +91 98765 43211</a>
+            <a href="tel:+919158347290">+91 91583 47290 / +91 91583 47291</a>
           </div>
 
           <div className="footer-contact-item">
@@ -75,7 +75,7 @@ export default function Footer() {
           </div>
 
           <a
-            href="https://wa.me/919876543210?text=Hello%20RevitaOrtho,%20I%20have%20an%20inquiry."
+            href="https://wa.me/919158347290?text=Hello%20RevitaOrtho,%20I%20have%20an%20inquiry."
             target="_blank"
             rel="noreferrer"
             className="footer-whatsapp-btn"

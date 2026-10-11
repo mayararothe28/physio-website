@@ -115,31 +115,35 @@ export default function FAQPage() {
             <p className="faq-hero-lead">
               Have doubts about avoiding surgery, treatment timelines, or insurance coverage? Here are honest, clinical answers directly from our senior physiotherapists.
             </p>
-
-            {/* Category Filter Pills */}
-            <div className="faq-category-pills">
-              {FAQ_CATEGORIES.map((cat) => (
-                <button
-                  key={cat.id}
-                  type="button"
-                  className={`faq-cat-btn ${selectedCat === cat.id ? "active" : ""}`}
-                  onClick={() => {
-                    setSelectedCat(cat.id);
-                    setOpenIdx(0);
-                  }}
-                >
-                  {cat.label}
-                </button>
-              ))}
-            </div>
           </div>
         </div>
       </section>
 
+      {/* ─── FILTER BAR ─── */}
+      <div className="faq-filter-bar">
+        <div className="faq-container">
+          <div className="faq-category-pills">
+            {FAQ_CATEGORIES.map((cat) => (
+              <button
+                key={cat.id}
+                type="button"
+                className={`faq-cat-btn ${selectedCat === cat.id ? "active" : ""}`}
+                onClick={() => {
+                  setSelectedCat(cat.id);
+                  setOpenIdx(0);
+                }}
+              >
+                {cat.label}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+
       {/* ─── 2. ACCORDION LIST ─── */}
       <section className="faq-list-section section-padding">
         <div className="faq-container faq-layout-grid">
-          <div className="faq-accordion-container">
+          <div className="faq-accordion-container scroll-reveal">
             {filteredFaqs.map((faq, index) => (
               <div
                 key={index}
@@ -168,7 +172,7 @@ export default function FAQPage() {
           </div>
 
           {/* Right Help Card */}
-          <aside className="faq-sidebar-col">
+          <aside className="faq-sidebar-col scroll-reveal delay-2">
             <div className="faq-help-card">
               <MessageCircle size={28} className="text-azure" />
               <h3>Still Have a Medical Doubt?</h3>
@@ -176,7 +180,7 @@ export default function FAQPage() {
                 Our senior duty physiotherapist can answer specific questions regarding your MRI scan, symptoms, or suitable treatment on WhatsApp.
               </p>
               <a
-                href="https://wa.me/919876543210?text=Hello%20RevitaOrtho,%20I%20have%20a%20question%20regarding%20my%20symptoms."
+                href="https://wa.me/919158347290?text=Hello%20RevitaOrtho,%20I%20have%20a%20question%20regarding%20my%20symptoms."
                 target="_blank"
                 rel="noreferrer"
                 className="btn-faq-whatsapp"
@@ -187,7 +191,7 @@ export default function FAQPage() {
 
               <div className="faq-direct-call">
                 <span>Or call our desk directly:</span>
-                <a href="tel:+919876543210">+91 98765 43210</a>
+                <a href="tel:+919158347290">+91 91583 47290</a>
               </div>
             </div>
 

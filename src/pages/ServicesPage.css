@@ -22,15 +22,13 @@
 
 /* ─── STANDARDIZED UNIFORM SUBPAGE HERO ─── */
 .subpage-hero-banner {
-  min-height: 280px;
-  padding: 68px 0 60px;
+  min-height: 370px;
+  height: 370px;
+  padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: 
-    radial-gradient(circle at 10% 20%, rgba(224, 242, 254, 0.65) 0%, transparent 45%),
-    radial-gradient(circle at 90% 80%, rgba(240, 249, 255, 0.8) 0%, transparent 45%),
-    #f8fafc;
+  background: linear-gradient(180deg, #f2f7fc 0%, #ffffff 100%);
   border-bottom: 1px solid #e2e8f0;
   text-align: center;
   box-sizing: border-box;
@@ -47,47 +45,47 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 11.5px;
-  font-weight: 800;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: #0284c7;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  color: #0369a1;
   background-color: #e0f2fe;
   padding: 5px 14px;
-  border-radius: 99px;
-  margin-bottom: 12px;
+  border-radius: 6px;
+  border: 1px solid #bae6fd;
+  margin-bottom: 14px;
 }
 
 .subpage-title {
   font-family: 'Outfit', sans-serif;
-  font-size: clamp(30px, 3.6vw, 44px);
-  font-weight: 900;
-  line-height: 1.18;
-  color: #081a2e;
+  font-size: clamp(30px, 3.6vw, 42px);
+  font-weight: 800;
+  line-height: 1.22;
+  color: #0f2b48;
   letter-spacing: -0.02em;
-  margin: 0 0 12px;
+  margin: 0 0 14px;
 }
 
 .subpage-lead {
-  font-size: 16px;
+  font-size: 16.5px;
   color: #475569;
-  line-height: 1.65;
+  line-height: 1.68;
   margin: 0 auto;
-  max-width: 780px;
+  max-width: 760px;
 }
 
 .services-kicker {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 11.5px;
-  font-weight: 800;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: #0284c7;
-  background-color: #e0f2fe;
-  padding: 5px 14px;
-  border-radius: 99px;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  color: #0369a1;
+  background-color: #f0f9ff;
+  padding: 4px 12px;
+  border-radius: 6px;
+  border: 1px solid #bae6fd;
   margin-bottom: 14px;
 }
 

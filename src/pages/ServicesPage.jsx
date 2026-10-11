@@ -195,10 +195,10 @@ export default function ServicesPage() {
       <section className="services-grid-section section-padding">
         <div className="services-container">
           <div className="clinical-services-grid">
-            {filteredServices.map((service) => {
+            {filteredServices.map((service, index) => {
               const Icon = service.icon;
               return (
-                <article key={service.id} className="service-directory-card">
+                <article key={service.id} className={`service-directory-card scroll-reveal hover-lift delay-${(index % 3) + 1}`}>
                   <div className="service-card-top-row">
                     <div className="service-icon-frame">
                       <Icon size={24} />
@@ -264,7 +264,7 @@ export default function ServicesPage() {
       {/* ─── 4. WHAT YOUR INITIAL EVALUATION INCLUDES ─── */}
       <section className="evaluation-protocol-section section-padding">
         <div className="services-container">
-          <div className="evaluation-card">
+          <div className="evaluation-card scroll-reveal">
             <div className="evaluation-grid">
               <div className="eval-left">
                 <span className="services-kicker text-ice">OUR CLINICAL PROMISE</span>
@@ -278,8 +278,8 @@ export default function ServicesPage() {
                     <Calendar size={18} />
                     <span>Schedule Initial Assessment</span>
                   </Link>
-                  <a href="tel:+919876543210" className="btn-service-outline-white">
-                    <span>Call Helpline: +91 98765 43210</span>
+                  <a href="tel:+919158347290" className="btn-service-outline-white">
+                    <span>Call Helpline: +91 91583 47290</span>
                   </a>
                 </div>
               </div>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
   ArrowRight,
@@ -346,6 +346,31 @@ export default function HomePage() {
 
   const selectedCondition = PAIN_CONDITIONS[activePainTab];
 
+  // ─── SCROLL REVEAL ANIMATION (IntersectionObserver) ───
+  useEffect(() => {
+    const revealElements = document.querySelectorAll(".scroll-reveal");
+    if (!revealElements.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target); // only animate once
+          }
+        });
+      },
+      {
+        rootMargin: "0px 0px -60px 0px", // trigger slightly before fully in view
+        threshold: 0.15,
+      }
+    );
+
+    revealElements.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <main className="modern-home-page">
       {/* ─── LIVE CLINICAL STATUS BANNER ─── */}
@@ -357,12 +382,12 @@ export default function HomePage() {
           </div>
 
           <div className="status-banner-links">
-            <a href="tel:+919876543210" className="banner-tel-link">
+            <a href="tel:+919158347290" className="banner-tel-link">
               <Phone size={14} />
-              <span>Direct Doctor Helpline: <strong>+91 98765 43210</strong></span>
+              <span>Direct Doctor Helpline: <strong>+91 91583 47290</strong></span>
             </a>
             <a
-              href="https://wa.me/919876543210?text=Hello%20RevitaOrtho,%20I%20would%20like%20to%20consult%20regarding%20my%20pain%20issue."
+              href="https://wa.me/919158347290?text=Hello%20RevitaOrtho,%20I%20would%20like%20to%20consult%20regarding%20my%20pain%20issue."
               target="_blank"
               rel="noreferrer"
               className="banner-whatsapp-pill"
@@ -436,7 +461,7 @@ export default function HomePage() {
               </Link>
 
               <a
-                href="https://wa.me/919876543210?text=Hi,%20I%20want%20to%20discuss%20my%20symptoms%20with%20a%20physiotherapist."
+                href="https://wa.me/919158347290?text=Hi,%20I%20want%20to%20discuss%20my%20symptoms%20with%20a%20physiotherapist."
                 target="_blank"
                 rel="noreferrer"
                 className="btn-clinical-secondary"
@@ -560,7 +585,7 @@ export default function HomePage() {
       {/* ─── 2. CLINICAL ACCREDITATION BAR ─── */}
       <section className="clinic-credentials-bar">
         <div className="home-container credentials-bar-inner">
-          <div className="credential-item">
+          <div className="credential-item scroll-reveal">
             <BadgeCheck size={26} className="cred-icon" />
             <div>
               <strong>Indian Association of Physiotherapists</strong>
@@ -568,7 +593,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="credential-item">
+          <div className="credential-item scroll-reveal" style={{ transitionDelay: "0.1s" }}>
             <Award size={26} className="cred-icon" />
             <div>
               <strong>German MaRhyThe® Certified Center</strong>
@@ -576,7 +601,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="credential-item">
+          <div className="credential-item scroll-reveal" style={{ transitionDelay: "0.2s" }}>
             <Shield size={26} className="cred-icon" />
             <div>
               <strong>NABH Quality Protocols</strong>
@@ -584,7 +609,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="credential-item">
+          <div className="credential-item scroll-reveal" style={{ transitionDelay: "0.3s" }}>
             <Building2 size={26} className="cred-icon" />
             <div>
               <strong>Insurance TPA Support</strong>
@@ -597,7 +622,7 @@ export default function HomePage() {
       {/* ─── 3. INTERACTIVE PAIN & SYMPTOM NAVIGATOR ("WHERE DOES IT HURT?") ─── */}
       <section className="pain-navigator-section section-padding">
         <div className="home-container">
-          <div className="section-header-centered">
+          <div className="section-header-centered scroll-reveal">
             <span className="section-kicker">INTERACTIVE CLINICAL TRIAGE</span>
             <h2 className="section-main-title">
               Where Does It Hurt?
@@ -610,7 +635,7 @@ export default function HomePage() {
           </div>
 
           {/* Interactive Navigation Pills */}
-          <div className="pain-nav-tabs">
+          <div className="pain-nav-tabs scroll-reveal">
             {Object.values(PAIN_CONDITIONS).map((cond) => (
               <button
                 key={cond.id}
@@ -625,7 +650,7 @@ export default function HomePage() {
           </div>
 
           {/* Dynamic Interactive Detail Board */}
-          <div className="pain-detail-card">
+          <div className="pain-detail-card scroll-reveal">
             <div className="pain-detail-grid">
               {/* Left Column: Symptoms & Protocol */}
               <div className="pain-detail-content">
@@ -725,7 +750,7 @@ export default function HomePage() {
       {/* ─── 4. ADVANCED CLINICAL TECHNOLOGY & MODALITIES ─── */}
       <section className="clinical-tech-section section-padding">
         <div className="home-container">
-          <div className="section-header-centered">
+          <div className="section-header-centered scroll-reveal">
             <span className="section-kicker">PRECISION MEDICAL INFRASTRUCTURE</span>
             <h2 className="section-main-title">
               Advanced Non-Invasive Technologies
@@ -739,7 +764,7 @@ export default function HomePage() {
 
           <div className="tech-cards-grid">
             {MODALITIES.map((mod, idx) => (
-              <div key={idx} className="tech-modality-card">
+              <div key={idx} className="tech-modality-card scroll-reveal" style={{ transitionDelay: `${idx * 0.1}s` }}>
                 <div className="tech-card-header">
                   <span className="tech-badge">{mod.badge}</span>
                   <Zap size={20} className="tech-icon-spark" />
@@ -770,7 +795,7 @@ export default function HomePage() {
       {/* ─── 5. REAL CLINICAL CASE STUDIES (BEFORE & AFTER EVIDENCE) ─── */}
       <section className="case-studies-section section-padding">
         <div className="home-container">
-          <div className="section-header-centered">
+          <div className="section-header-centered scroll-reveal">
             <span className="section-kicker">CLINICAL DOCUMENTATION & RESULTS</span>
             <h2 className="section-main-title">
               Real Patient Case Studies
@@ -783,8 +808,8 @@ export default function HomePage() {
           </div>
 
           <div className="case-studies-grid">
-            {CLINICAL_CASES.map((item) => (
-              <article key={item.id} className="case-study-card">
+            {CLINICAL_CASES.map((item, idx) => (
+              <article key={item.id} className="case-study-card scroll-reveal" style={{ transitionDelay: `${idx * 0.15}s` }}>
                 <div className="case-card-top">
                   <span className="case-tag-pill">{item.tag}</span>
                   <span className="case-duration-pill">
@@ -832,7 +857,7 @@ export default function HomePage() {
       {/* ─── 6. LEAD CLINICAL DOCTORS & SPECIALISTS ─── */}
       <section className="doctors-team-section section-padding" id="doctors">
         <div className="home-container">
-          <div className="section-header-centered">
+          <div className="section-header-centered scroll-reveal">
             <span className="section-kicker">QUALIFIED MEDICAL LEADERSHIP</span>
             <h2 className="section-main-title">
               Meet Our Senior Physiotherapists
@@ -846,7 +871,7 @@ export default function HomePage() {
 
           <div className="doctors-cards-grid">
             {DOCTORS.map((doc, idx) => (
-              <div key={idx} className="doctor-specialist-card">
+              <div key={idx} className="doctor-specialist-card scroll-reveal" style={{ transitionDelay: `${idx * 0.15}s` }}>
                 <div className="doctor-photo-frame">
                   <img src={doc.image} alt={doc.name} className="doctor-card-photo" loading="lazy" />
                   {doc.availableToday && (
@@ -919,7 +944,7 @@ export default function HomePage() {
       {/* ─── 7. THE 4-STEP SCIENTIFIC RECOVERY PROTOCOL ─── */}
       <section className="protocol-roadmap-section section-padding">
         <div className="home-container">
-          <div className="section-header-centered">
+          <div className="section-header-centered scroll-reveal">
             <span className="section-kicker">STRUCTURED CLINICAL METHODOLOGY</span>
             <h2 className="section-main-title">
               Our 4-Phase Recovery Roadmap
@@ -932,7 +957,7 @@ export default function HomePage() {
           </div>
 
           <div className="roadmap-cards-grid">
-            <div className="roadmap-phase-card">
+            <div className="roadmap-phase-card scroll-reveal">
               <div className="phase-number-badge">01</div>
               <div className="phase-title-wrap">
                 <span className="phase-sub">DAY 1</span>
@@ -948,7 +973,7 @@ export default function HomePage() {
               </ul>
             </div>
 
-            <div className="roadmap-phase-card">
+            <div className="roadmap-phase-card scroll-reveal" style={{ transitionDelay: "0.1s" }}>
               <div className="phase-number-badge">02</div>
               <div className="phase-title-wrap">
                 <span className="phase-sub">WEEKS 1 – 2</span>
@@ -964,7 +989,7 @@ export default function HomePage() {
               </ul>
             </div>
 
-            <div className="roadmap-phase-card">
+            <div className="roadmap-phase-card scroll-reveal" style={{ transitionDelay: "0.2s" }}>
               <div className="phase-number-badge">03</div>
               <div className="phase-title-wrap">
                 <span className="phase-sub">WEEKS 2 – 4</span>
@@ -980,7 +1005,7 @@ export default function HomePage() {
               </ul>
             </div>
 
-            <div className="roadmap-phase-card">
+            <div className="roadmap-phase-card scroll-reveal" style={{ transitionDelay: "0.3s" }}>
               <div className="phase-number-badge">04</div>
               <div className="phase-title-wrap">
                 <span className="phase-sub">WEEKS 4+</span>
@@ -1002,7 +1027,7 @@ export default function HomePage() {
       {/* ─── 8. CLINIC VISIT VS HOME PHYSIOTHERAPY ─── */}
       <section className="care-modes-section section-padding">
         <div className="home-container">
-          <div className="section-header-centered">
+          <div className="section-header-centered scroll-reveal">
             <span className="section-kicker">FLEXIBLE CARE OPTIONS</span>
             <h2 className="section-main-title">
               Two Ways to Receive Exceptional Care
@@ -1016,7 +1041,7 @@ export default function HomePage() {
 
           <div className="care-modes-grid">
             {/* Mode 1: Clinic */}
-            <div className="care-mode-card clinic-card">
+            <div className="care-mode-card clinic-card scroll-reveal">
               <div className="care-card-icon">
                 <Building2 size={28} />
               </div>
@@ -1054,7 +1079,7 @@ export default function HomePage() {
             </div>
 
             {/* Mode 2: Home Care */}
-            <div className="care-mode-card home-card">
+            <div className="care-mode-card home-card scroll-reveal" style={{ transitionDelay: "0.15s" }}>
               <div className="care-card-icon home-icon-wrap">
                 <Home size={28} />
               </div>
@@ -1097,7 +1122,7 @@ export default function HomePage() {
       {/* ─── 9. AUTHENTIC PATIENT EXPERIENCES & REVIEWS ─── */}
       <section className="testimonials-section section-padding">
         <div className="home-container">
-          <div className="section-header-centered">
+          <div className="section-header-centered scroll-reveal">
             <span className="section-kicker">VERIFIED GOOGLE REVIEWS</span>
             <h2 className="section-main-title">
               Loved by Over 15,000+ Patients
@@ -1111,7 +1136,7 @@ export default function HomePage() {
 
           <div className="testimonials-cards-grid">
             {TESTIMONIALS.map((t, idx) => (
-              <div key={idx} className="testimonial-patient-card">
+              <div key={idx} className="testimonial-patient-card scroll-reveal" style={{ transitionDelay: `${idx * 0.15}s` }}>
                 <div className="test-card-stars">
                   {[...Array(t.rating)].map((_, s) => (
                     <Star key={s} size={16} className="star-gold fill-gold" />
@@ -1163,7 +1188,7 @@ export default function HomePage() {
 
       {/* ─── 10. INSURANCE & TRANSPARENT PRICING STRIP ─── */}
       <section className="insurance-pricing-strip">
-        <div className="home-container insurance-strip-inner">
+        <div className="home-container insurance-strip-inner scroll-reveal">
           <div className="insurance-left">
             <span className="insurance-kicker">FINANCIAL CLARITY</span>
             <h3>Zero Hidden Costs. 100% Transparent Care.</h3>
@@ -1196,7 +1221,7 @@ export default function HomePage() {
       {/* ─── 11. CLINICAL FAQS ACCORDION ─── */}
       <section className="faq-accordion-section section-padding">
         <div className="home-container faq-section-grid">
-          <div className="faq-intro-col">
+          <div className="faq-intro-col scroll-reveal">
             <span className="section-kicker">PATIENT QUERIES ANSWERED</span>
             <h2 className="section-main-title">
               Frequently Asked
@@ -1213,7 +1238,7 @@ export default function HomePage() {
                 <strong>Still have doubts?</strong>
                 <p>Speak directly to our senior triage physiotherapist on WhatsApp.</p>
                 <a
-                  href="https://wa.me/919876543210?text=Hello%20Doctor,%20I%20have%20a%20question%20before%20booking."
+                  href="https://wa.me/919158347290?text=Hello%20Doctor,%20I%20have%20a%20question%20before%20booking."
                   target="_blank"
                   rel="noreferrer"
                   className="faq-chat-link"
@@ -1224,7 +1249,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="faq-accordion-col">
+          <div className="faq-accordion-col scroll-reveal" style={{ transitionDelay: "0.15s" }}>
             {FAQS.map((faq, idx) => (
               <div
                 key={idx}
@@ -1254,7 +1279,7 @@ export default function HomePage() {
       {/* ─── 12. CLINIC LOCATION & WORKING HOURS CARD ─── */}
       <section className="clinic-location-section">
         <div className="home-container">
-          <div className="clinic-contact-card">
+          <div className="clinic-contact-card scroll-reveal">
             <div className="contact-card-grid">
               <div className="contact-detail-col">
                 <span className="section-kicker text-white">VISIT OUR CLINIC</span>
@@ -1284,7 +1309,7 @@ export default function HomePage() {
                     <Phone size={20} className="info-icon" />
                     <div>
                       <strong>Direct Phone & Appointments</strong>
-                      <p>+91 98765 43210 / +91 98765 43211</p>
+                      <p>+91 91583 47290 / +91 91583 47291</p>
                     </div>
                   </div>
                 </div>
@@ -1300,7 +1325,7 @@ export default function HomePage() {
                     <span>Get Directions on Google Maps</span>
                   </a>
 
-                  <a href="tel:+919876543210" className="btn-clinical-outline-white">
+                  <a href="tel:+919158347290" className="btn-clinical-outline-white">
                     <Phone size={17} />
                     <span>Call Reception</span>
                   </a>
@@ -1347,7 +1372,7 @@ export default function HomePage() {
 
       {/* ─── 13. MASTER BOTTOM CONVERSION CTA ─── */}
       <section className="master-bottom-cta">
-        <div className="home-container bottom-cta-inner">
+        <div className="home-container bottom-cta-inner scroll-reveal">
           <div className="bottom-cta-text">
             <span className="cta-kicker">TAKE THE FIRST STEP TODAY</span>
             <h2>Don't Settle for Living in Chronic Pain.</h2>
@@ -1364,11 +1389,11 @@ export default function HomePage() {
             </Link>
 
             <a
-              href="tel:+919876543210"
+              href="tel:+919158347290"
               className="btn-clinical-white btn-large"
             >
               <Phone size={19} />
-              <span>Call Helpline: +91 98765 43210</span>
+              <span>Call Helpline: +91 91583 47290</span>
             </a>
           </div>
         </div>

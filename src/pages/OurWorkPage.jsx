@@ -134,8 +134,8 @@ export default function OurWorkPage() {
       <section className="work-cases-section section-padding">
         <div className="work-container">
           <div className="cases-cards-grid">
-            {CLINICAL_CASES.map((item) => (
-              <article key={item.id} className="case-archive-card">
+            {CLINICAL_CASES.map((item, idx) => (
+              <article key={item.id} className={`case-archive-card scroll-reveal hover-lift delay-${(idx % 3) + 1}`}>
                 <div className="case-img-box">
                   <img src={item.image} alt={item.title} className="case-img" loading="lazy" />
                   <span className="case-tag-badge">{item.tag}</span>
@@ -185,7 +185,7 @@ export default function OurWorkPage() {
       {/* ─── 3. BOTTOM CTA ─── */}
       <section className="work-bottom-cta">
         <div className="work-container">
-          <div className="work-cta-card">
+          <div className="work-cta-card scroll-reveal">
             <h2>Struggling with a Similar Orthopedic Condition?</h2>
             <p>
               Don't accept invasive surgery as your only option until you have received a comprehensive 45-minute biomechanical evaluation at RevitaOrtho.
@@ -195,8 +195,8 @@ export default function OurWorkPage() {
                 <Calendar size={18} />
                 <span>Book Initial Evaluation</span>
               </Link>
-              <a href="tel:+919876543210" className="btn-work-outline-white">
-                <span>Call Doctor Helpline: +91 98765 43210</span>
+              <a href="tel:+919158347290" className="btn-work-outline-white">
+                <span>Call Doctor Helpline: +91 91583 47290</span>
               </a>
             </div>
           </div>

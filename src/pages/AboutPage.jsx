@@ -91,7 +91,7 @@ export default function AboutPage() {
       </section>
 
       {/* ─── 2. CLINIC VISUAL SPOTLIGHT ─── */}
-      <section className="about-visual-strip">
+      <section className="about-visual-strip scroll-reveal">
         <div className="about-container">
           <div className="about-img-frame">
             <img
@@ -114,7 +114,7 @@ export default function AboutPage() {
       <section className="about-milestones-bar">
         <div className="about-container milestones-grid">
           {CLINICAL_MILESTONES.map((item, idx) => (
-            <div key={idx} className="milestone-box">
+            <div key={idx} className={`milestone-box scroll-reveal hover-lift delay-${(idx % 4) + 1}`}>
               <strong className="milestone-value">{item.value}</strong>
               <span className="milestone-title">{item.label}</span>
               <p className="milestone-sub">{item.sub}</p>
@@ -126,7 +126,7 @@ export default function AboutPage() {
       {/* ─── 4. CLINICAL PHILOSOPHY / FOUNDER'S NOTE ─── */}
       <section className="about-founder-section section-padding">
         <div className="about-container founder-grid">
-          <div className="founder-image-col">
+          <div className="founder-image-col scroll-reveal reveal-left">
             <div className="founder-photo-wrap">
               <img
                 src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=800&q=80"
@@ -141,7 +141,7 @@ export default function AboutPage() {
             </div>
           </div>
 
-          <div className="founder-content-col">
+          <div className="founder-content-col scroll-reveal reveal-right">
             <span className="about-kicker">CLINICAL DIRECTOR'S PHILOSOPHY</span>
             <h2>"Our First Mission Is Always to Prevent Unnecessary Joint & Spine Surgeries."</h2>
             <div className="founder-quote-body">
@@ -172,7 +172,7 @@ export default function AboutPage() {
       {/* ─── 5. FOUR CLINICAL PILLARS ─── */}
       <section className="about-pillars-section section-padding">
         <div className="about-container">
-          <div className="section-head-center">
+          <div className="section-head-center scroll-reveal">
             <span className="about-kicker">OUR CLINICAL FOUNDATION</span>
             <h2>Why Patients Choose RevitaOrtho</h2>
             <p>
@@ -184,7 +184,7 @@ export default function AboutPage() {
             {CLINICAL_PILLARS.map((pillar, i) => {
               const Icon = pillar.icon;
               return (
-                <div key={i} className="pillar-card">
+                <div key={i} className={`pillar-card scroll-reveal hover-lift delay-${(i % 4) + 1}`}>
                   <div className="pillar-icon-box">
                     <Icon size={24} />
                   </div>
@@ -200,7 +200,7 @@ export default function AboutPage() {
       {/* ─── 6. INFRASTRUCTURE & FACILITIES ─── */}
       <section className="about-facilities-section section-padding">
         <div className="about-container">
-          <div className="section-head-center">
+          <div className="section-head-center scroll-reveal">
             <span className="about-kicker">PATIENT-CENTERED ENVIRONMENT</span>
             <h2>Modern Clinic Infrastructure in Baner, Pune</h2>
             <p>
@@ -210,7 +210,7 @@ export default function AboutPage() {
 
           <div className="facilities-grid">
             {CLINIC_FACILITIES.map((fac, idx) => (
-              <div key={idx} className="facility-item-card">
+              <div key={idx} className={`facility-item-card scroll-reveal hover-lift delay-${(idx % 4) + 1}`}>
                 <div className="fac-bullet">
                   <CheckCircle2 size={18} className="text-azure" />
                 </div>
@@ -237,9 +237,9 @@ export default function AboutPage() {
               <Calendar size={18} />
               <span>Book Your Evaluation</span>
             </Link>
-            <a href="tel:+919876543210" className="btn-about-outline-white">
+            <a href="tel:+919158347290" className="btn-about-outline-white">
               <Phone size={18} />
-              <span>Call Helpline: +91 98765 43210</span>
+              <span>Call Helpline: +91 91583 47290</span>
             </a>
           </div>
         </div>

@@ -61,24 +61,25 @@
 }
 
 .section-kicker {
-  display: inline-block;
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 1.8px;
-  text-transform: uppercase;
-  color: var(--med-azure);
-  margin-bottom: 12px;
-  background-color: var(--med-ice-soft);
-  padding: 5px 16px;
-  border-radius: 99px;
-  border: 1px solid rgba(2, 132, 199, 0.2);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  color: #0369a1;
+  margin-bottom: 14px;
+  background-color: #f0f7ff;
+  padding: 5px 14px;
+  border-radius: 6px;
+  border: 1px solid #bae6fd;
 }
 
 .section-main-title {
   font-family: 'Outfit', 'Manrope', sans-serif;
-  font-size: clamp(28px, 3.4vw, 44px);
+  font-size: clamp(28px, 3.4vw, 42px);
   font-weight: 800;
-  line-height: 1.2;
+  line-height: 1.22;
   color: var(--med-navy-dark);
   letter-spacing: -0.02em;
   margin-bottom: 16px;
@@ -91,7 +92,7 @@
 .section-main-desc {
   font-size: 16.5px;
   color: var(--med-text-muted);
-  line-height: 1.65;
+  line-height: 1.68;
   margin: 0 auto;
 }
 
@@ -108,25 +109,25 @@
   padding: 13px 26px;
   border-radius: var(--med-radius-sm);
   font-size: 14.5px;
-  font-weight: 700;
+  font-weight: 650;
   text-decoration: none;
   cursor: pointer;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   border: 1.5px solid transparent;
 }
 
 .btn-clinical-primary {
-  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  background: #0284c7;
   color: #ffffff !important;
   border-color: #0284c7;
-  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.3);
+  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.25);
 }
 
 .btn-clinical-primary:hover {
-  background: linear-gradient(135deg, #0369a1 0%, #075985 100%);
+  background: #0369a1;
   border-color: #0369a1;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 22px rgba(2, 132, 199, 0.4);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
 }
 
 .btn-clinical-secondary {
@@ -289,11 +290,8 @@
 /* ─── 1. MASTER HERO SECTION ─── */
 .clinical-hero {
   position: relative;
-  background: 
-    radial-gradient(circle at 10% 20%, rgba(224, 242, 254, 0.7) 0%, transparent 45%),
-    radial-gradient(circle at 90% 70%, rgba(240, 249, 255, 0.9) 0%, transparent 50%),
-    #f8fafc;
-  padding: 70px 0 90px;
+  background: linear-gradient(180deg, #f2f7fc 0%, #ffffff 100%);
+  padding: 64px 0 84px;
   border-bottom: 1px solid var(--med-border);
 }
 
@@ -309,14 +307,14 @@
   align-items: center;
   gap: 8px;
   background-color: #ffffff;
-  color: var(--med-azure);
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 1px;
-  padding: 6px 16px;
-  border-radius: 99px;
-  border: 1px solid rgba(2, 132, 199, 0.25);
-  box-shadow: var(--med-shadow-sm);
+  color: #0369a1;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  padding: 5px 14px;
+  border-radius: 6px;
+  border: 1px solid #bae6fd;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
   margin-bottom: 20px;
 }
 
@@ -509,27 +507,27 @@
 }
 
 .triage-submit-btn {
-  height: 52px;
-  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  height: 50px;
+  background: #0284c7;
   color: #ffffff;
   border: none;
   border-radius: var(--med-radius-sm);
   font-size: 15px;
-  font-weight: 800;
+  font-weight: 650;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
   cursor: pointer;
-  transition: all 0.25s ease;
+  transition: all 0.2s ease;
   margin-top: 6px;
-  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
+  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.25);
 }
 
 .triage-submit-btn:hover {
-  background: linear-gradient(135deg, #0369a1 0%, #075985 100%);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(2, 132, 199, 0.45);
+  background: #0369a1;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
 }
 
 .triage-footnote {
@@ -2254,4 +2252,73 @@
   transform: translateX(4px);
   background-color: rgba(255, 255, 255, 0.14);
   border-color: rgba(56, 189, 248, 0.4);
+}
+
+@keyframes testIntro {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.clinical-hero-title {
+  animation: testIntro 2s ease-out !important;
+}
+
+.triage-card {
+  animation: testIntro 2s ease-out !important;
+}
+
+/* Scroll reveal animation */
+
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Variant: slide from left */
+.scroll-reveal.reveal-left {
+  transform: translateX(-50px);
+}
+.scroll-reveal.reveal-left.is-visible {
+  transform: translateX(0);
+}
+
+/* Variant: slide from right */
+.scroll-reveal.reveal-right {
+  transform: translateX(50px);
+}
+.scroll-reveal.reveal-right.is-visible {
+  transform: translateX(0);
+}
+
+/* Variant: scale up */
+.scroll-reveal.reveal-scale {
+  transform: scale(0.92);
+}
+.scroll-reveal.reveal-scale.is-visible {
+  transform: scale(1);
+}
+
+/* Accessibility: respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal,
+  .scroll-reveal.is-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }

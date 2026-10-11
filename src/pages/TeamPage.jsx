@@ -140,8 +140,8 @@ export default function TeamPage() {
       <section className="team-directory-section section-padding">
         <div className="team-container">
           <div className="doctors-list-grid">
-            {CLINICAL_DOCTORS.map((doc) => (
-              <article key={doc.id} className="clinical-doctor-card">
+            {CLINICAL_DOCTORS.map((doc, idx) => (
+              <article key={doc.id} className={`clinical-doctor-card scroll-reveal hover-lift delay-${(idx % 4) + 1}`}>
                 <div className="doc-card-inner">
                   <div className="doc-photo-col">
                     <div className="doc-photo-frame">
@@ -216,7 +216,7 @@ export default function TeamPage() {
                       </Link>
 
                       <a
-                        href={`https://wa.me/919876543210?text=Hi,%20I%20would%20like%20to%20consult%20with%20${encodeURIComponent(
+                        href={`https://wa.me/919158347290?text=Hi,%20I%20would%20like%20to%20consult%20with%20${encodeURIComponent(
                           doc.name
                         )}.`}
                         target="_blank"
@@ -237,7 +237,7 @@ export default function TeamPage() {
       {/* ─── 3. CLINICAL STANDARDS ─── */}
       <section className="team-standards-section section-padding">
         <div className="team-container">
-          <div className="section-head-center">
+          <div className="section-head-center scroll-reveal">
             <span className="team-kicker">OUR ETHICAL COMMITMENT</span>
             <h2>How Our Care Philosophy Protects You</h2>
             <p>
@@ -247,7 +247,7 @@ export default function TeamPage() {
 
           <div className="standards-cards-grid">
             {CLINICAL_STANDARDS.map((std, idx) => (
-              <div key={idx} className="standard-box">
+              <div key={idx} className={`standard-box scroll-reveal hover-lift delay-${(idx % 4) + 1}`}>
                 <div className="std-num">0{idx + 1}</div>
                 <h3>{std.title}</h3>
                 <p>{std.desc}</p>

@@ -2,19 +2,13 @@ import { useState, useEffect } from "react";
 import { useSearchParams, Link } from "react-router-dom";
 import {
   Calendar,
-  Clock,
-  MapPin,
-  Phone,
   ShieldCheck,
   CheckCircle2,
   Building2,
   Home,
   MessageCircle,
-  Sparkles,
   AlertCircle,
   ArrowRight,
-  FileText,
-  UserCheck,
 } from "lucide-react";
 import "./AppointmentPage.css";
 
@@ -42,6 +36,10 @@ export default function AppointmentPage() {
 
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [bookingRef, setBookingRef] = useState("");
+  const [phoneError, setPhoneError] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [dateError, setDateError] = useState("");
+  const [ageError, setAgeError] = useState("");
 
   useEffect(() => {
     // If query params change, update formData
@@ -58,14 +56,103 @@ export default function AppointmentPage() {
 
   function handleChange(e) {
     const { name, value } = e.target;
+    if (name === "phone") {
+      const cleanDigits = value.replace(/\D/g, "").slice(0, 10);
+      setFormData((prev) => ({ ...prev, phone: cleanDigits }));
+      if (cleanDigits.length === 10) {
+        setPhoneError("");
+      }
+      return;
+    }
+    if (name === "email") {
+      setFormData((prev) => ({ ...prev, email: value }));
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!value || emailRegex.test(value)) {
+        setEmailError("");
+      }
+      return;
+    }
+    if (name === "date") {
+      if (value) {
+        const parts = value.split("-");
+        if (parts[0] && parts[0].length > 4) {
+          return;
+        }
+      }
+      setFormData((prev) => ({ ...prev, date: value }));
+      setDateError("");
+      return;
+    }
+    if (name === "age") {
+      const cleanDigits = value.replace(/\D/g, "").slice(0, 3);
+      if (cleanDigits !== "" && Number(cleanDigits) > 100) {
+        setAgeError("Age cannot be more than 100.");
+        setFormData((prev) => ({ ...prev, age: "100" }));
+      } else {
+        setAgeError("");
+        setFormData((prev) => ({ ...prev, age: cleanDigits }));
+      }
+      return;
+    }
     setFormData((prev) => ({ ...prev, [name]: value }));
   }
 
   function handleSubmit(e) {
     e.preventDefault();
+    if (formData.phone.length !== 10) {
+      setPhoneError("Please enter a valid 10-digit mobile number.");
+      return;
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (formData.email && !emailRegex.test(formData.email)) {
+      setEmailError("Please enter a valid email address (e.g. name@gmail.com).");
+      return;
+    }
+    if (!formData.date) {
+      setDateError("Please select a valid appointment date.");
+      return;
+    }
+    const parts = formData.date.split("-");
+    if (!parts[0] || parts[0].length !== 4 || Number(parts[0]) < 2024 || Number(parts[0]) > 2099) {
+      setDateError("Please enter a valid date with a 4-digit year (e.g. 2026).");
+      return;
+    }
+    if (formData.age) {
+      const numAge = Number(formData.age);
+      if (numAge < 1 || numAge > 100) {
+        setAgeError("Age must be between 1 and 100.");
+        return;
+      }
+    }
+    setPhoneError("");
+    setEmailError("");
+    setDateError("");
+    setAgeError("");
     const randomRef = "RO-" + Math.floor(10000 + Math.random() * 90000);
     setBookingRef(randomRef);
     setIsSubmitted(true);
+    window.scrollTo({ top: 100, behavior: "smooth" });
+  }
+
+  function handleResetAppointment() {
+    setFormData({
+      name: "",
+      phone: "",
+      email: "",
+      age: "",
+      condition: searchParams.get("condition") || "spine",
+      careMode: searchParams.get("mode") || "clinic",
+      doctor: searchParams.get("doctor") || "any",
+      date: "",
+      timeSlot: searchParams.get("time") || "evening",
+      notes: "",
+    });
+    setPhoneError("");
+    setEmailError("");
+    setDateError("");
+    setAgeError("");
+    setIsSubmitted(false);
+    setBookingRef("");
     window.scrollTo({ top: 100, behavior: "smooth" });
   }
 
@@ -95,7 +182,7 @@ export default function AppointmentPage() {
         <div className="appointment-container">
           <div className="appointment-layout-grid">
             {/* Form Column */}
-            <div className="booking-card-wrapper">
+            <div className="booking-card-wrapper scroll-reveal">
               {isSubmitted ? (
                 <div className="booking-success-card">
                   <div className="success-icon-badge">
@@ -138,7 +225,7 @@ export default function AppointmentPage() {
 
                   <div className="success-actions">
                     <a
-                      href={`https://wa.me/919876543210?text=Hello%20RevitaOrtho,%20my%20booking%20reference%20is%20${bookingRef}.`}
+                      href={`https://wa.me/919158347290?text=Hello%20RevitaOrtho,%20my%20booking%20reference%20is%20${bookingRef}.`}
                       target="_blank"
                       rel="noreferrer"
                       className="btn-success-whatsapp"
@@ -148,7 +235,7 @@ export default function AppointmentPage() {
                     </a>
                     <button
                       type="button"
-                      onClick={() => setIsSubmitted(false)}
+                      onClick={handleResetAppointment}
                       className="btn-success-reset"
                     >
                       Book Another Appointment
@@ -259,7 +346,7 @@ export default function AppointmentPage() {
                   </div>
 
                   <div className="form-field">
-                    <label htmlFor="date">Preferred Date</label>
+                    <label htmlFor="date">Preferred Date (4-digit Year) *</label>
                     <input
                       type="date"
                       id="date"
@@ -267,8 +354,10 @@ export default function AppointmentPage() {
                       value={formData.date}
                       onChange={handleChange}
                       min={new Date().toISOString().split("T")[0]}
+                      max="2099-12-31"
                       required
                     />
+                    {dateError && <span className="field-error-msg">{dateError}</span>}
                   </div>
 
                   {/* Section 4: Patient Info */}
@@ -287,42 +376,52 @@ export default function AppointmentPage() {
                     </div>
 
                     <div className="form-field">
-                      <label htmlFor="phone">Phone / WhatsApp Number *</label>
+                      <label htmlFor="phone">Phone / WhatsApp Number (10 Digits) *</label>
                       <input
                         type="tel"
                         id="phone"
                         name="phone"
-                        placeholder="e.g. 98765 43210"
+                        placeholder="Enter 10-digit number (e.g. 9158347290)"
                         value={formData.phone}
                         onChange={handleChange}
+                        maxLength={10}
+                        pattern="[0-9]{10}"
+                        inputMode="numeric"
                         required
                       />
+                      {phoneError && <span className="field-error-msg">{phoneError}</span>}
                     </div>
                   </div>
 
                   <div className="form-grid-2">
                     <div className="form-field">
-                      <label htmlFor="email">Email Address</label>
+                      <label htmlFor="email">Email Address (Gmail / Email) *</label>
                       <input
                         type="email"
                         id="email"
                         name="email"
-                        placeholder="e.g. rahul@example.com"
+                        placeholder="e.g. yourname@gmail.com"
                         value={formData.email}
                         onChange={handleChange}
+                        required
                       />
+                      {emailError && <span className="field-error-msg">{emailError}</span>}
                     </div>
 
                     <div className="form-field">
-                      <label htmlFor="age">Patient Age</label>
+                      <label htmlFor="age">Patient Age (Up to 3 Digits, Max 100) *</label>
                       <input
                         type="number"
                         id="age"
                         name="age"
-                        placeholder="e.g. 42"
+                        min="1"
+                        max="100"
+                        placeholder="e.g. 42 (Max 100)"
                         value={formData.age}
                         onChange={handleChange}
+                        required
                       />
+                      {ageError && <span className="field-error-msg">{ageError}</span>}
                     </div>
                   </div>
 
@@ -350,78 +449,6 @@ export default function AppointmentPage() {
                 </form>
               )}
             </div>
-
-            {/* Sidebar Reassurance Column */}
-            <aside className="booking-sidebar">
-              {/* Box 1: What to expect */}
-              <div className="sidebar-info-card">
-                <span className="sidebar-card-kicker">WHAT TO EXPECT</span>
-                <h3>Your First 45-Minute Session</h3>
-                <ul className="sidebar-checklist">
-                  <li>
-                    <CheckCircle2 size={16} className="text-azure" />
-                    <span>Comprehensive orthopedic manual assessment</span>
-                  </li>
-                  <li>
-                    <CheckCircle2 size={16} className="text-azure" />
-                    <span>Detailed review of MRI, X-Ray, or CT reports</span>
-                  </li>
-                  <li>
-                    <CheckCircle2 size={16} className="text-azure" />
-                    <span>Postural & kinetic chain imbalance testing</span>
-                  </li>
-                  <li>
-                    <CheckCircle2 size={16} className="text-azure" />
-                    <span>Immediate first-day therapeutic relief</span>
-                  </li>
-                  <li>
-                    <CheckCircle2 size={16} className="text-azure" />
-                    <span>Written roadmap with expected timeline</span>
-                  </li>
-                </ul>
-              </div>
-
-              {/* Box 2: Clinic Guarantees */}
-              <div className="sidebar-info-card">
-                <span className="sidebar-card-kicker">CLINICAL STANDARDS</span>
-                <h3>Our Patient Guarantees</h3>
-                <div className="sidebar-perks-list">
-                  <div className="sidebar-perk">
-                    <UserCheck size={18} className="text-azure" />
-                    <div>
-                      <strong>Zero Waiting Time Policy</strong>
-                      <p>Your slot is reserved exclusively for you.</p>
-                    </div>
-                  </div>
-                  <div className="sidebar-perk">
-                    <FileText size={18} className="text-azure" />
-                    <div>
-                      <strong>Insurance Claim Support</strong>
-                      <p>Itemized invoices & stamped medical summaries.</p>
-                    </div>
-                  </div>
-                  <div className="sidebar-perk">
-                    <Building2 size={18} className="text-azure" />
-                    <div>
-                      <strong>Dedicated Parking & Ramp</strong>
-                      <p>Full wheelchair and elevator accessibility.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Box 3: Urgent Helpline */}
-              <div className="sidebar-urgent-card">
-                <Phone size={24} className="urgent-phone-icon" />
-                <div>
-                  <strong>Need Urgent Consultation?</strong>
-                  <p>Speak directly to our clinical receptionist for immediate walk-in slots.</p>
-                  <a href="tel:+919876543210" className="urgent-tel-link">
-                    +91 98765 43210
-                  </a>
-                </div>
-              </div>
-            </aside>
           </div>
         </div>
       </section>

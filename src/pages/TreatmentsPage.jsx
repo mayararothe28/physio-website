@@ -220,7 +220,7 @@ export default function TreatmentsPage() {
         <div className="treatments-container">
           <div className="treatments-vertical-flow">
             {displayedTreatments.map((treatment) => (
-              <article key={treatment.id} className="treatment-protocol-card">
+              <article key={treatment.id} className="treatment-protocol-card scroll-reveal hover-lift">
                 <div className="treatment-card-grid">
                   <div className="treatment-image-col">
                     <div className="treatment-img-wrap">
@@ -288,7 +288,7 @@ export default function TreatmentsPage() {
                       </Link>
 
                       <a
-                        href="https://wa.me/919876543210?text=Hi,%20I%20have%20questions%20about%20your%20treatment%20protocols."
+                        href="https://wa.me/919158347290?text=Hi,%20I%20have%20questions%20about%20your%20treatment%20protocols."
                         target="_blank"
                         rel="noreferrer"
                         className="btn-treatment-chat"
@@ -318,8 +318,8 @@ export default function TreatmentsPage() {
                 <Calendar size={18} />
                 <span>Book a Diagnostic Consultation</span>
               </Link>
-              <a href="tel:+919876543210" className="btn-treatment-outline-white">
-                <span>Call Helpline: +91 98765 43210</span>
+              <a href="tel:+919158347290" className="btn-treatment-outline-white">
+                <span>Call Helpline: +91 91583 47290</span>
               </a>
             </div>
           </div>

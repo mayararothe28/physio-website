@@ -35,9 +35,9 @@ export default function Navbar() {
         <div className="navbar-container top-bar-content">
           <span>Mon–Sat: 9:00 AM – 8:00 PM</span>
 
-          <a href="tel:+919876543210">
+          <a href="tel:+919158347290">
             <Phone size={14} />
-            +91 98765 43210
+            +91 91583 47290
           </a>
         </div>
       </div>
@@ -117,9 +117,29 @@ export default function Navbar() {
                 {link.name}
               </Link>
             ))}
+
+            {/* Mobile-only menu actions */}
+            <div className="mobile-nav-actions">
+              <Link
+                to="/appointment"
+                className="mobile-nav-book-btn"
+                onClick={closeMenus}
+              >
+                <Calendar size={16} />
+                <span>Book Appointment Online</span>
+              </Link>
+              <a
+                href="tel:+919158347290"
+                className="mobile-nav-call-btn"
+                onClick={closeMenus}
+              >
+                <Phone size={15} />
+                <span>Call Clinic Desk (+91 91583 47290)</span>
+              </a>
+            </div>
           </nav>
 
-          {/* Appointment button */}
+          {/* Desktop Appointment button */}
           <Link
             to="/appointment"
             className="appointment-button"
@@ -129,17 +149,37 @@ export default function Navbar() {
             <span>Book Appointment</span>
           </Link>
 
-          {/* Mobile menu button */}
-          <button
-            type="button"
-            className="mobile-menu-button"
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-label={menuOpen ? "Close menu" : "Open menu"}
-            aria-expanded={menuOpen}
-          >
-            {menuOpen ? <X size={25} /> : <Menu size={25} />}
-          </button>
+          {/* Right side mobile controls */}
+          <div className="mobile-controls-row">
+            <Link
+              to="/appointment"
+              className="mobile-header-book-btn"
+              onClick={closeMenus}
+            >
+              <Calendar size={15} />
+              <span>Book</span>
+            </Link>
+
+            <button
+              type="button"
+              className="mobile-menu-button"
+              onClick={() => setMenuOpen(!menuOpen)}
+              aria-label={menuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={menuOpen}
+            >
+              {menuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
+
+        {/* Backdrop for mobile drawer */}
+        {menuOpen && (
+          <div
+            className="mobile-menu-backdrop"
+            onClick={closeMenus}
+            aria-hidden="true"
+          />
+        )}
       </header>
     </>
   );

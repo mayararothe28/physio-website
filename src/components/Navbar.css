@@ -1,20 +1,20 @@
 /* ==========================================================================
-   REVITAORTHO CLINICAL NAVBAR - LUXURY NAVY & MEDICAL AZURE PALETTE
+   REVITAORTHO NAVBAR — Warm, human, trustworthy feel
    ========================================================================== */
 
 .navbar-container {
   width: 100%;
   max-width: 1240px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 28px;
 }
 
-/* ─── Top Contact & Emergency Bar ─── */
+/* ── Top Contact Bar — warm, welcoming ── */
 .top-bar {
-  background: #0a1f38;
-  color: #e2e8f0;
+  background: var(--primary, #1a4a6b);
+  color: rgba(255, 255, 255, 0.88);
   font-size: 13px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .top-bar-content {
@@ -29,118 +29,116 @@
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  color: #38bdf8;
+  color: #7dd3fc;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 500;
   transition: color 0.2s;
 }
 
 .top-bar-content a:hover {
-  color: #7dd3fc;
+  color: #bae6fd;
 }
 
-/* ─── Main Header ─── */
+/* ── Main Header — clean white, natural shadow ── */
 .main-navbar {
   position: sticky;
   top: 0;
   z-index: 1000;
   background: #ffffff;
-  box-shadow: 0 4px 20px rgba(10, 37, 64, 0.06);
-  border-bottom: 1px solid #e2e8f0;
-  transition: all 0.2s ease;
+  box-shadow: 0 2px 16px rgba(26, 74, 107, 0.07);
+  border-bottom: 1px solid #e8edf2;
+  transition: box-shadow 0.2s ease;
 }
 
 .navbar-content {
-  min-height: 82px;
+  min-height: 76px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
 }
 
-/* ─── Logo ─── */
+/* ── Logo — natural, not over-styled ── */
 .clinic-logo {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 11px;
   flex-shrink: 0;
   text-decoration: none;
 }
 
 .logo-icon {
-  width: 44px;
-  height: 44px;
+  width: 42px;
+  height: 42px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  background: var(--accent, #0891b2);
   color: #ffffff;
-  border-radius: 11px;
-  font-size: 32px;
+  border-radius: 10px;
+  font-size: 30px;
   font-weight: 400;
   line-height: 1;
-  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
 }
 
 .logo-text {
   display: flex;
   flex-direction: column;
   font-family: 'Outfit', sans-serif;
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 800;
   line-height: 1.1;
-  color: #0a2540;
+  color: var(--primary, #1a4a6b);
   white-space: nowrap;
 }
 
 .logo-text > span {
-  color: #0284c7;
+  color: var(--accent, #0891b2);
 }
 
 .logo-text small {
-  margin-top: 3px;
+  margin-top: 2px;
   font-family: 'Inter', sans-serif;
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  color: #64748b;
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  color: #7f96a8;
 }
 
-/* ─── Desktop Links ─── */
+/* ── Desktop Nav Links — natural underline style ── */
 .navbar-links {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 24px;
+  gap: 6px;
 }
 
 .navbar-links > a,
 .services-toggle {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 6px;
-  padding: 8px 2px;
+  gap: 5px;
+  padding: 8px 12px;
   border: none;
   background: transparent;
-  color: #1e293b;
+  color: var(--heading-color, #1c2b3a);
   font-family: inherit;
   font-size: 14.5px;
-  font-weight: 600;
-  line-height: 1.4;
+  font-weight: 500;
   white-space: nowrap;
   text-decoration: none;
   cursor: pointer;
-  position: relative;
-  transition: color 0.2s;
+  border-radius: 6px;
+  transition: background 0.18s, color 0.18s;
 }
 
 .navbar-links > a:hover,
 .services-toggle:hover {
-  color: #0284c7;
+  background: #f0f9ff;
+  color: var(--accent, #0891b2);
 }
 
-/* ─── Services Dropdown ─── */
+/* ── Services Dropdown ── */
 .services-menu {
   position: relative;
   display: flex;
@@ -149,37 +147,36 @@
 
 .services-dropdown {
   position: absolute;
-  top: calc(100% + 12px);
-  left: -15px;
-  min-width: 220px;
+  top: calc(100% + 8px);
+  left: 0;
+  min-width: 210px;
   padding: 8px;
   background: #ffffff;
   border-radius: 12px;
-  box-shadow: 0 14px 34px rgba(10, 37, 64, 0.14);
-  border: 1px solid #e2e8f0;
+  box-shadow: 0 10px 30px rgba(26, 74, 107, 0.13);
+  border: 1px solid #e0e8f0;
   z-index: 1050;
 }
 
 .services-dropdown a {
   display: block;
-  padding: 10px 14px;
+  padding: 9px 12px;
   border-radius: 7px;
-  color: #1e293b;
+  color: var(--heading-color, #1c2b3a);
   font-size: 13.5px;
-  font-weight: 600;
+  font-weight: 500;
   text-decoration: none;
-  transition: all 0.18s;
+  transition: background 0.15s;
 }
 
 .services-dropdown a:hover {
-  background: #f0f9ff;
-  color: #0284c7;
-  padding-left: 17px;
+  background: var(--accent-light, #e0f7fa);
+  color: var(--accent, #0891b2);
 }
 
-/* ─── Appointment Button ─── */
+/* ── Book Appointment Button — warm, solid, no gradient ── */
 .appointment-button {
-  min-height: 46px;
+  min-height: 44px;
   padding: 0 20px;
   display: inline-flex;
   align-items: center;
@@ -187,37 +184,88 @@
   gap: 8px;
   flex-shrink: 0;
   border-radius: 8px;
-  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  background: var(--accent, #0891b2);
   color: #ffffff !important;
-  font-size: 13.5px;
-  font-weight: 750;
+  font-size: 14px;
+  font-weight: 600;
   white-space: nowrap;
   text-decoration: none;
-  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.3);
-  transition: all 0.25s ease;
+  transition: background 0.2s, transform 0.2s;
 }
 
 .appointment-button:hover {
-  background: linear-gradient(135deg, #0369a1 0%, #075985 100%);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(2, 132, 199, 0.4);
+  background: var(--accent-hover, #0e7490);
+  transform: translateY(-1px);
+  color: #ffffff !important;
 }
 
-/* ─── Mobile Menu ─── */
+/* ── Mobile Controls & Drawer ── */
+.mobile-controls-row {
+  display: none;
+  align-items: center;
+  gap: 10px;
+}
+
 .mobile-menu-button {
   display: none;
   background: transparent;
   border: none;
-  color: #0a2540;
+  color: var(--primary, #1a4a6b);
   cursor: pointer;
   padding: 6px;
+  border-radius: 6px;
+}
+
+.mobile-nav-actions {
+  display: none;
+  width: 100%;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid #e8edf2;
+}
+
+.mobile-menu-backdrop {
+  position: fixed;
+  inset: 0;
+  top: 116px;
+  background-color: rgba(15, 23, 42, 0.4);
+  z-index: 998;
+  backdrop-filter: blur(2px);
 }
 
 @media (max-width: 900px) {
+  .mobile-controls-row {
+    display: flex;
+  }
+
   .mobile-menu-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+  }
+
+  .mobile-header-book-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--accent, #0891b2);
+    color: #ffffff !important;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 7px 14px;
+    border-radius: 7px;
+    transition: background 0.18s;
+  }
+
+  .mobile-header-book-btn:hover {
+    background: var(--accent-hover, #0e7490);
+  }
+
+  .appointment-button {
+    display: none;
   }
 
   .navbar-links {
@@ -228,26 +276,112 @@
     right: 0;
     background: #ffffff;
     flex-direction: column;
-    align-items: flex-start;
-    padding: 20px 24px 28px;
-    border-bottom: 2px solid #e2e8f0;
-    box-shadow: 0 16px 30px rgba(0, 0, 0, 0.12);
-    gap: 16px;
+    align-items: stretch;
+    padding: 16px 20px 24px;
+    border-bottom: 1px solid #e0e8f0;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.09);
+    gap: 6px;
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+    z-index: 1001;
   }
 
   .navbar-links.show-menu {
     display: flex;
   }
 
+  .navbar-links > a,
+  .services-toggle {
+    width: 100%;
+    justify-content: space-between;
+    padding: 11px 14px;
+    font-size: 15px;
+    border-radius: 8px;
+  }
+
+  .services-menu {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
   .services-dropdown {
     position: static;
     box-shadow: none;
-    border: none;
-    padding-left: 12px;
-    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 6px;
+    background-color: #f8fbfc;
+    border-radius: 8px;
+    margin: 4px 0 6px;
+    width: 100%;
+    box-sizing: border-box;
   }
 
-  .appointment-button {
-    display: none;
+  .services-dropdown a {
+    padding: 10px 14px;
+    font-size: 14px;
+  }
+
+  .mobile-nav-actions {
+    display: flex;
+  }
+
+  .mobile-nav-book-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: var(--accent, #0891b2);
+    color: #ffffff !important;
+    text-decoration: none;
+    padding: 13px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 15px;
+  }
+
+  .mobile-nav-call-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: #f1f5f9;
+    color: #1e293b !important;
+    text-decoration: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    border: 1px solid #cbd5e1;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-container {
+    padding: 0 16px;
+  }
+
+  .top-bar-content {
+    font-size: 11.5px;
+    min-height: 34px;
+  }
+
+  .logo-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 24px;
+  }
+
+  .logo-text {
+    font-size: 19px;
+  }
+
+  .logo-text small {
+    font-size: 8px;
+  }
+
+  .mobile-header-book-btn {
+    padding: 6px 10px;
+    font-size: 12px;
   }
 }
