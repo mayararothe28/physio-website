@@ -258,6 +258,7 @@ export default function HomePage() {
             {/* Left Column: Heading + Short Intro + Appointment Button */}
             <div className="hero-text-content">
               <div className="hero-kicker-pill">
+                <span className="kicker-pulse-beacon"></span>
                 <ShieldCheck size={16} className="text-emerald" />
                 <span>{hero.badge || "CERTIFIED HEALTHCARE FACILITY • ADVANCED PHYSIOTHERAPY"}</span>
               </div>
@@ -265,7 +266,7 @@ export default function HomePage() {
               <h1 className="hero-main-title">
                 {hero.title}
                 <br />
-                <span className="text-azure">{hero.highlight}</span>
+                <span className="hero-animated-gradient-text">{hero.highlight}</span>
               </h1>
 
               <p className="hero-description">{hero.description}</p>
@@ -285,11 +286,11 @@ export default function HomePage() {
                 <button
                   type="button"
                   onClick={scrollToAppointment}
-                  className="btn-hero-primary"
+                  className="btn-hero-primary btn-animated-shine"
                 >
                   <Calendar size={18} />
                   <span>Book Appointment</span>
-                  <ArrowRight size={17} />
+                  <ArrowRight size={17} className="btn-arrow-icon" />
                 </button>
 
                 <a
@@ -315,6 +316,32 @@ export default function HomePage() {
 
             {/* Right Column: Lead Therapist Image & Credentials */}
             <div className="hero-doctor-card-col">
+              {/* Background ambient glowing orbs */}
+              <div className="hero-ambient-glow-orb hero-glow-1"></div>
+              <div className="hero-ambient-glow-orb hero-glow-2"></div>
+
+              {/* Floating trust badge 1: Top Right */}
+              <div className="hero-floating-badge badge-top-right">
+                <div className="floating-badge-icon bg-emerald-tint">
+                  <CheckCircle2 size={17} className="text-emerald" />
+                </div>
+                <div>
+                  <strong>10,000+ Recoveries</strong>
+                  <span>94% Surgery Averted</span>
+                </div>
+              </div>
+
+              {/* Floating trust badge 2: Bottom Left */}
+              <div className="hero-floating-badge badge-bottom-left">
+                <div className="floating-badge-icon bg-gold-tint">
+                  <Star size={17} className="text-gold fill-gold" />
+                </div>
+                <div>
+                  <strong>4.98 / 5.0 Rating</strong>
+                  <span>600+ Clinical Reviews</span>
+                </div>
+              </div>
+
               <div className="doctor-hero-showcase-card">
                 <div className="doctor-hero-photo-wrap">
                   <img
