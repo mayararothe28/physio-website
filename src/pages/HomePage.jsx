@@ -314,58 +314,93 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Right Column: Lead Therapist Image & Credentials */}
+            {/* Right Column: Clinical Diagnostic Hub & Specialist Assurances (No Photo) */}
             <div className="hero-doctor-card-col">
-              <div className="doctor-hero-showcase-card">
-                <div className="doctor-hero-photo-wrap">
-                  <img
-                    src={therapist.image}
-                    alt={therapist.name}
-                    className="doctor-hero-photo"
-                  />
-                  <div className="doctor-hero-live-badge">
-                    <span className="live-pulse-dot"></span>
-                    <span>In-Clinic & Home Visits Available</span>
+              <div className="clinical-hero-hub-card">
+                <div className="hub-card-header">
+                  <div className="hub-icon-frame">
+                    <ShieldCheck size={26} className="text-emerald" />
+                  </div>
+                  <div>
+                    <span className="hub-kicker-tag">NON-SURGICAL PHYSICAL MEDICINE</span>
+                    <h3 className="hub-card-title">Specialized Clinical Diagnostic</h3>
                   </div>
                 </div>
 
-                <div className="doctor-hero-details">
-                  <div className="doctor-rating-pill">
-                    <Star size={15} className="star-gold fill-gold" />
-                    <strong>{therapist.rating} Rating</strong>
-                    <span className="review-meta">({therapist.reviewCount})</span>
-                  </div>
+                <div className="hub-live-ribbon">
+                  <span className="live-pulse-dot"></span>
+                  <span>In-Clinic & Home Visits Available Today</span>
+                </div>
 
-                  <h3 className="doctor-hero-name">{therapist.name}</h3>
-                  <p className="doctor-hero-role">{therapist.role}</p>
-                  <p className="doctor-hero-degrees">{therapist.qualifications}</p>
-
-                  <div className="doctor-hero-mini-creds">
-                    <div className="mini-cred-item">
-                      <Award size={15} className="cred-icon-sm" />
-                      <span>{therapist.experience}</span>
+                <div className="hub-feature-list">
+                  <div className="hub-feature-item">
+                    <CheckCircle2 size={16} className="text-azure hub-feat-ico" />
+                    <div>
+                      <strong>45-Min Root-Cause Diagnostic</strong>
+                      <p>Musculoskeletal assessment, provocation tests & nerve screening.</p>
                     </div>
-                    {therapist.affiliations?.map((aff, i) => (
-                      <div key={i} className="mini-cred-item">
-                        <Building2 size={15} className="cred-icon-sm" />
-                        <span>{aff}</span>
-                      </div>
-                    ))}
                   </div>
 
-                  <div className="doctor-card-cta-row">
-                    <button
-                      type="button"
-                      onClick={scrollToAppointment}
-                      className="btn-card-appointment"
-                    >
-                      <Calendar size={15} />
-                      <span>Consult Specialist</span>
-                    </button>
-                    <Link to="/team" className="btn-card-profile">
-                      <span>Doctor Bio</span>
-                    </Link>
+                  <div className="hub-feature-item">
+                    <CheckCircle2 size={16} className="text-azure hub-feat-ico" />
+                    <div>
+                      <strong>Advanced European Modalities</strong>
+                      <p>Computerized spinal decompression & Class-IV deep cold laser.</p>
+                    </div>
                   </div>
+
+                  <div className="hub-feature-item">
+                    <CheckCircle2 size={16} className="text-azure hub-feat-ico" />
+                    <div>
+                      <strong>Dedicated 1-on-1 Specialist Care</strong>
+                      <p>Treated directly by senior MPT clinicians with zero waiting time.</p>
+                    </div>
+                  </div>
+
+                  <div className="hub-feature-item">
+                    <CheckCircle2 size={16} className="text-azure hub-feat-ico" />
+                    <div>
+                      <strong>Insurance & Cashless Support</strong>
+                      <p>Comprehensive paperwork support for all health insurance claims.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="hub-clinician-footer">
+                  <div className="hub-clinician-info">
+                    <div className="hub-clinician-avatar">
+                      <Stethoscope size={19} className="text-azure" />
+                    </div>
+                    <div>
+                      <strong>{therapist.name}</strong>
+                      <span>{therapist.role} • {therapist.experience}</span>
+                    </div>
+                  </div>
+                  <div className="hub-rating-pill">
+                    <Star size={14} className="star-gold fill-gold" />
+                    <span>{therapist.rating}</span>
+                  </div>
+                </div>
+
+                <div className="hub-action-row">
+                  <button
+                    type="button"
+                    onClick={scrollToAppointment}
+                    className="btn-hub-appointment"
+                  >
+                    <Calendar size={15} />
+                    <span>Reserve Evaluation Slot</span>
+                    <ArrowRight size={14} />
+                  </button>
+                  <a
+                    href={`https://wa.me/91${clinicInfo.rawPhone}?text=Hello%20RevitaOrtho,%20I%20would%20like%20to%20consult%20regarding%20an%20evaluation.`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn-hub-whatsapp"
+                    title="WhatsApp Doctor"
+                  >
+                    <MessageCircle size={16} />
+                  </a>
                 </div>
               </div>
             </div>
@@ -417,37 +452,73 @@ export default function HomePage() {
 
           <div className="about-clinic-card scroll-reveal">
             <div className="about-clinic-grid">
-              {/* Left Column: Doctor Profile & Qualifications */}
+              {/* Left Column: Clinical Leadership & Credentials (No Image) */}
               <div className="about-therapist-col">
-                <div className="therapist-image-box">
-                  <img
-                    src={therapist.image}
-                    alt={therapist.name}
-                    className="therapist-photo"
-                  />
-                  <div className="therapist-badge">
-                    <BadgeCheck size={16} />
-                    <span>{therapist.experience}</span>
+                <div className="about-leadership-card">
+                  <div className="leadership-badge-tag">
+                    <Award size={15} className="text-azure" />
+                    <span>CLINICAL EXCELLENCE & LEADERSHIP</span>
                   </div>
-                </div>
 
-                <div className="therapist-creds-box">
-                  <h3>{therapist.name}</h3>
-                  <p className="cred-role">{therapist.role}</p>
-                  <p className="cred-degree">{therapist.qualifications}</p>
+                  <div className="leadership-header">
+                    <div className="leadership-avatar-icon">
+                      <Stethoscope size={28} className="text-azure" />
+                    </div>
+                    <div>
+                      <h3 className="leadership-name">{therapist.name}</h3>
+                      <p className="leadership-role">{therapist.role}</p>
+                      <p className="leadership-degree">{therapist.qualifications}</p>
+                    </div>
+                  </div>
 
-                  <div className="cred-points">
-                    {therapist.affiliations?.map((point, idx) => (
-                      <div key={idx} className="cred-point">
-                        <Award size={15} className="text-azure" />
-                        <span>{point}</span>
+                  <div className="leadership-meta-strip">
+                    <div className="leadership-meta-item">
+                      <Clock size={15} className="text-azure" />
+                      <div>
+                        <strong>{therapist.experience}</strong>
+                        <span>Clinical Practice</span>
                       </div>
-                    ))}
+                    </div>
+                    <div className="leadership-meta-item">
+                      <Users size={15} className="text-azure" />
+                      <div>
+                        <strong>10,000+</strong>
+                        <span>Recoveries</span>
+                      </div>
+                    </div>
+                    <div className="leadership-meta-item">
+                      <Star size={15} className="star-gold fill-gold" />
+                      <div>
+                        <strong>{therapist.rating} / 5.0</strong>
+                        <span>Verified Care</span>
+                      </div>
+                    </div>
                   </div>
 
-                  <Link to="/team" className="btn-team-link">
-                    <span>Meet Our Full Panel of Specialized Clinicians &rarr;</span>
-                  </Link>
+                  <div className="leadership-affiliations-box">
+                    <span className="affiliations-title">Key Clinical Affiliations & Accreditations</span>
+                    <div className="affiliations-list">
+                      {therapist.affiliations?.map((point, idx) => (
+                        <div key={idx} className="affiliation-item">
+                          <CheckCircle2 size={16} className="text-emerald" />
+                          <span>{point}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="leadership-guarantee-box">
+                    <ShieldCheck size={18} className="text-azure" />
+                    <p>
+                      <strong>100% Non-Surgical Protocol:</strong> Evidence-based manual therapy, targeted joint decompression, and functional motor re-education.
+                    </p>
+                  </div>
+
+                  <div className="leadership-actions">
+                    <Link to="/team" className="btn-team-link">
+                      <span>Meet Our Full Panel of Specialized Clinicians &rarr;</span>
+                    </Link>
+                  </div>
                 </div>
               </div>
 
