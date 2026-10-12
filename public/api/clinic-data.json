@@ -197,5 +197,49 @@
       "rating": 5,
       "location": "Tech Hub City"
     }
+  ],
+  "trustStats": [
+    {
+      "value": "14+",
+      "label": "Years Clinical Practice",
+      "sublabel": "Specialized Orthopedic Care",
+      "iconName": "Award"
+    },
+    {
+      "value": "10,000+",
+      "label": "Patients Recovered",
+      "sublabel": "Documented Clinical Cases",
+      "iconName": "Users"
+    },
+    {
+      "value": "94%",
+      "label": "Surgeries Avoided",
+      "sublabel": "Non-Surgical Spinal & Joint Care",
+      "iconName": "ShieldCheck"
+    },
+    {
+      "value": "4.98 / 5.0",
+      "label": "Patient Rating",
+      "sublabel": "Verified Clinical Reviews",
+      "iconName": "Star"
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Can targeted physiotherapy really help me avoid surgery?",
+      "answer": "Yes. Non-surgical computerized spinal decompression and targeted manual protocols relieve pressure on nerves and restore joint biomechanics, successfully averting surgery in over 92% of moderate-to-severe orthopedic cases."
+    },
+    {
+      "question": "How soon can I expect noticeable pain relief?",
+      "answer": "Most patients experience significant symptom relief (40% to 60%) within 3 to 4 sessions through our acute pain relief modalities, followed by structured functional rehabilitation."
+    },
+    {
+      "question": "Do I need an MRI scan or physician's prescription for my first visit?",
+      "answer": "If you already have reports or MRI scans, please bring them along. However, they are not mandatory — our therapists perform full clinical orthopedic assessments on Day 1."
+    },
+    {
+      "question": "Do you offer doorstep home visit physiotherapy?",
+      "answer": "Yes. For senior citizens, post-operative patients, or individuals with mobility restrictions, our certified senior therapists provide dedicated home visit sessions with portable therapy equipment."
+    }
   ]
 }

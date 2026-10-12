@@ -22,6 +22,8 @@ import {
   ExternalLink,
   Users,
   Loader2,
+  ChevronDown,
+  HelpCircle,
 } from "lucide-react";
 import { fetchClinicData, submitAppointmentApi } from "../services/api";
 import "./HomePage.css";
@@ -40,6 +42,9 @@ const ICON_MAP = {
   Users,
   ShieldCheck,
   Building2,
+  Star,
+  ChevronDown,
+  HelpCircle,
 };
 
 function getIcon(name, fallback = Activity) {
@@ -65,6 +70,7 @@ export default function HomePage() {
   const [bookingRef, setBookingRef] = useState("");
   const [phoneError, setPhoneError] = useState("");
   const [dateError, setDateError] = useState("");
+  const [openFaqIdx, setOpenFaqIdx] = useState(0);
 
   // Fetch clinic data from API endpoint
   useEffect(() => {
@@ -197,6 +203,52 @@ export default function HomePage() {
     testimonials,
   } = apiData;
 
+  const trustStats = apiData.trustStats || [
+    {
+      value: "14+",
+      label: "Years Clinical Practice",
+      sublabel: "Specialized Orthopedic Care",
+      iconName: "Award",
+    },
+    {
+      value: "10,000+",
+      label: "Patients Recovered",
+      sublabel: "Documented Clinical Cases",
+      iconName: "Users",
+    },
+    {
+      value: "94%",
+      label: "Surgeries Avoided",
+      sublabel: "Non-Surgical Spinal & Joint Care",
+      iconName: "ShieldCheck",
+    },
+    {
+      value: "4.98 / 5.0",
+      label: "Patient Rating",
+      sublabel: "Verified Clinical Reviews",
+      iconName: "Star",
+    },
+  ];
+
+  const faqs = apiData.faqs || [
+    {
+      question: "Can targeted physiotherapy really help me avoid surgery?",
+      answer: "Yes. Non-surgical computerized spinal decompression and targeted manual protocols relieve pressure on nerves and restore joint biomechanics, successfully averting surgery in over 92% of moderate-to-severe orthopedic cases.",
+    },
+    {
+      question: "How soon can I expect noticeable pain relief?",
+      answer: "Most patients experience significant symptom relief (40% to 60%) within 3 to 4 sessions through our acute pain relief modalities, followed by structured functional rehabilitation.",
+    },
+    {
+      question: "Do I need an MRI scan or physician's prescription for my first visit?",
+      answer: "If you already have reports or MRI scans, please bring them along. However, they are not mandatory — our therapists perform full clinical orthopedic assessments on Day 1.",
+    },
+    {
+      question: "Do you offer doorstep home visit physiotherapy?",
+      answer: "Yes. For senior citizens, post-operative patients, or individuals with mobility restrictions, our certified senior therapists provide dedicated home visit sessions with portable therapy equipment.",
+    },
+  ];
+
   return (
     <main className="modern-home-page">
       {/* ─── 2. HERO SECTION ─── */}
@@ -320,84 +372,34 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ─── 3. MAIN SERVICES (Back pain · Neck pain · Sports injury · Knee pain) ─── */}
-      <section className="main-services-section section-padding" id="services">
+      {/* ─── 3. TRUST INDICATORS (Stats Bar) ─── */}
+      <section className="trust-indicators-section">
         <div className="home-container">
-          <div className="section-header-centered scroll-reveal">
-            <span className="section-kicker">CORE CLINICAL SPECIALTIES</span>
-            <h2 className="section-main-title">
-              Our Main Physiotherapy Services
-              <br />
-              <span className="text-azure">Targeted Non-Surgical Recovery</span>
-            </h2>
-            <p className="section-main-desc">
-              We specialize in diagnosing and treating the root causes of spine, joint, and athletic conditions using evidence-based European technology.
-            </p>
-          </div>
-
-          <div className="services-grid-4 scroll-reveal">
-            {services?.map((srv) => {
-              const ServiceIcon = getIcon(srv.iconName, Activity);
+          <div className="trust-indicators-grid">
+            {trustStats?.map((stat, idx) => {
+              const StatIcon = getIcon(stat.iconName, Award);
               return (
-                <div key={srv.id} className="service-item-card">
-                  <div className="service-card-top">
-                    <div className="service-icon-wrap">
-                      <ServiceIcon size={24} className="service-icon" />
-                    </div>
-                    <span className="service-tag-badge">{srv.tag}</span>
+                <div
+                  key={idx}
+                  className="trust-stat-card scroll-reveal"
+                  style={{ transitionDelay: `${idx * 0.08}s` }}
+                >
+                  <div className="stat-icon-wrap">
+                    <StatIcon size={24} className="stat-ico" />
                   </div>
-
-                  <h3 className="service-card-title">{srv.title}</h3>
-                  <span className="service-card-sub">{srv.subtitle}</span>
-
-                  <p className="service-card-desc">{srv.desc}</p>
-
-                  <div className="service-highlights-list">
-                    {srv.highlights?.map((h, i) => (
-                      <div key={i} className="highlight-row">
-                        <Check size={14} className="text-emerald" />
-                        <span>{h}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="service-bottom-links">
-                    <button
-                      type="button"
-                      onClick={scrollToAppointment}
-                      className="btn-service-book"
-                    >
-                      Book Consult
-                    </button>
-                    <Link to={srv.link} className="service-read-more">
-                      Learn More <ArrowRight size={14} />
-                    </Link>
+                  <div className="stat-content">
+                    <span className="stat-number">{stat.value}</span>
+                    <strong className="stat-label">{stat.label}</strong>
+                    <span className="stat-sublabel">{stat.sublabel}</span>
                   </div>
                 </div>
               );
             })}
           </div>
-
-          <div className="services-all-cta scroll-reveal">
-            <p>Looking for post-surgical rehab, joint restoration, or ergonomic posture correction?</p>
-            <div className="services-cta-actions">
-              <Link to="/services" className="btn-clinical-secondary">
-                <span>View All Services & Modalities</span>
-                <ArrowRight size={16} />
-              </Link>
-              <button
-                type="button"
-                onClick={scrollToAppointment}
-                className="btn-clinical-primary"
-              >
-                <span>Book Direct Evaluation</span>
-              </button>
-            </div>
-          </div>
         </div>
       </section>
 
-      {/* ─── 4. ABOUT THE CLINIC (Clinic intro, treatment approach, therapist qualifications) ─── */}
+      {/* ─── 4. ABOUT THE CLINIC & PHYSIOTHERAPIST ─── */}
       <section className="about-clinic-section section-padding" id="about">
         <div className="home-container">
           <div className="section-header-centered scroll-reveal">
@@ -485,6 +487,83 @@ export default function HomePage() {
                   </Link>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── 5. MAIN SERVICES (Back pain · Neck pain · Sports injury · Knee pain) ─── */}
+      <section className="main-services-section section-padding" id="services">
+        <div className="home-container">
+          <div className="section-header-centered scroll-reveal">
+            <span className="section-kicker">CORE CLINICAL SPECIALTIES</span>
+            <h2 className="section-main-title">
+              Our Main Physiotherapy Services
+              <br />
+              <span className="text-azure">Targeted Non-Surgical Recovery</span>
+            </h2>
+            <p className="section-main-desc">
+              We specialize in diagnosing and treating the root causes of spine, joint, and athletic conditions using evidence-based European technology.
+            </p>
+          </div>
+
+          <div className="services-grid-4 scroll-reveal">
+            {services?.map((srv) => {
+              const ServiceIcon = getIcon(srv.iconName, Activity);
+              return (
+                <div key={srv.id} className="service-item-card">
+                  <div className="service-card-top">
+                    <div className="service-icon-wrap">
+                      <ServiceIcon size={24} className="service-icon" />
+                    </div>
+                    <span className="service-tag-badge">{srv.tag}</span>
+                  </div>
+
+                  <h3 className="service-card-title">{srv.title}</h3>
+                  <span className="service-card-sub">{srv.subtitle}</span>
+
+                  <p className="service-card-desc">{srv.desc}</p>
+
+                  <div className="service-highlights-list">
+                    {srv.highlights?.map((h, i) => (
+                      <div key={i} className="highlight-row">
+                        <Check size={14} className="text-emerald" />
+                        <span>{h}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="service-bottom-links">
+                    <button
+                      type="button"
+                      onClick={scrollToAppointment}
+                      className="btn-service-book"
+                    >
+                      Book Consult
+                    </button>
+                    <Link to={srv.link} className="service-read-more">
+                      Learn More <ArrowRight size={14} />
+                    </Link>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="services-all-cta scroll-reveal">
+            <p>Looking for post-surgical rehab, joint restoration, or ergonomic posture correction?</p>
+            <div className="services-cta-actions">
+              <Link to="/services" className="btn-clinical-secondary">
+                <span>View All Services & Modalities</span>
+                <ArrowRight size={16} />
+              </Link>
+              <button
+                type="button"
+                onClick={scrollToAppointment}
+                className="btn-clinical-primary"
+              >
+                <span>Book Direct Evaluation</span>
+              </button>
             </div>
           </div>
         </div>
@@ -655,7 +734,59 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ─── 8. APPOINTMENT / CONTACT (Contact details · Location · Phone · Appointment form) ─── */}
+      {/* ─── 8. FREQUENTLY ASKED QUESTIONS (FAQ) ─── */}
+      <section className="home-faq-section section-padding" id="faq">
+        <div className="home-container">
+          <div className="section-header-centered scroll-reveal">
+            <span className="section-kicker">PATIENT FAQS</span>
+            <h2 className="section-main-title">
+              Frequently Asked Questions
+              <br />
+              <span className="text-azure">Direct Answers Before Starting Care</span>
+            </h2>
+            <p className="section-main-desc">
+              Have doubts about non-surgical relief, session timelines, or recovery expectations? Here are honest clinical answers.
+            </p>
+          </div>
+
+          <div className="home-faq-accordion-wrap scroll-reveal">
+            {faqs?.map((faq, idx) => (
+              <div
+                key={idx}
+                className={`home-faq-item ${openFaqIdx === idx ? "is-open" : ""}`}
+              >
+                <button
+                  type="button"
+                  className="home-faq-trigger"
+                  onClick={() => setOpenFaqIdx(openFaqIdx === idx ? -1 : idx)}
+                  aria-expanded={openFaqIdx === idx}
+                >
+                  <span className="faq-question-text">{faq.question}</span>
+                  <ChevronDown
+                    size={19}
+                    className={`faq-chevron ${openFaqIdx === idx ? "is-rotated" : ""}`}
+                  />
+                </button>
+                {openFaqIdx === idx && (
+                  <div className="home-faq-answer">
+                    <p>{faq.answer}</p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+
+          <div className="home-faq-footer-bar scroll-reveal">
+            <span>Looking for answers on insurance coverage, specialized protocols, or diagnostics?</span>
+            <Link to="/faq" className="btn-clinical-secondary">
+              <span>View All Frequently Asked Questions</span>
+              <ArrowRight size={16} />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── 9. APPOINTMENT / CONTACT (Contact details · Location · Phone · Appointment form) ─── */}
       <section className="appointment-contact-section section-padding" id="appointment-section">
         <div className="home-container">
           <div className="section-header-centered scroll-reveal">
