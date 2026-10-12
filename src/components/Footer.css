@@ -3,7 +3,7 @@
    ========================================================================== */
 
 .site-footer {
-  background-color: #071526;
+  background-color: #0e243a;
   color: #e2e8f0;
   padding: 70px 0 0;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
@@ -27,7 +27,7 @@
 .footer-logo-cross {
   width: 40px;
   height: 40px;
-  background: #0284c7;
+  background: linear-gradient(135deg, #1b74a8 0%, #155d88 100%);
   color: #ffffff;
   border-radius: 9px;
   font-size: 28px;
@@ -159,7 +159,7 @@
 }
 
 .footer-whatsapp-btn {
-  background-color: #0284c7;
+  background: linear-gradient(135deg, #1b74a8 0%, #155d88 100%);
   color: #ffffff !important;
   text-decoration: none;
   padding: 10px 16px;
@@ -171,11 +171,11 @@
   justify-content: center;
   gap: 8px;
   transition: all 0.2s;
-  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+  box-shadow: 0 3px 12px rgba(27, 116, 168, 0.25);
 }
 
 .footer-whatsapp-btn:hover {
-  background-color: #0369a1;
+  background: linear-gradient(135deg, #166391 0%, #114c70 100%);
   transform: translateY(-2px);
 }
 
