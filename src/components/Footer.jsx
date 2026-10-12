@@ -16,7 +16,7 @@ export default function Footer() {
             </span>
           </div>
           <p className="footer-bio-text">
-            Specialized non-surgical orthopedic rehabilitation, computerized spinal decompression, and sports physical therapy center in Baner, Pune. Directed by certified MPT specialists.
+            Specialized non-surgical orthopedic rehabilitation, computerized spinal decompression, and sports physical therapy center. Directed by certified MPT specialists.
           </p>
 
           <div className="footer-badge-pill">
@@ -54,7 +54,7 @@ export default function Footer() {
           <h4>Clinic Timings & Contact</h4>
           <div className="footer-contact-item">
             <MapPin size={17} className="contact-ico" />
-            <span>Plot 42, High Street Galleria, Baner-Pashan Link Road, Baner, Pune – 411045</span>
+            <span>Suite 302, Health & Wellness Plaza, Medical Center Road, City Center</span>
           </div>
 
           <div className="footer-contact-item">
@@ -83,7 +83,7 @@ export default function Footer() {
               <span>WhatsApp</span>
             </a>
             <a
-              href="https://maps.google.com/?q=Baner+Pune"
+              href="https://maps.google.com"
               target="_blank"
               rel="noreferrer"
               className="footer-social-pill"

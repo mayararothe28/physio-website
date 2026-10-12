@@ -358,7 +358,7 @@ export default function Navbar() {
 
                 <div className="drawer-timing-pill">
                   <Clock size={13} />
-                  <span>Mon–Sat: 9:00 AM – 8:00 PM (Baner, Pune)</span>
+                  <span>Mon–Sat: 8:00 AM – 8:00 PM</span>
                 </div>
               </div>
             </div>

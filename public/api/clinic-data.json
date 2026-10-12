@@ -1,0 +1,201 @@
+{
+  "clinicInfo": {
+    "name": "RevitaOrtho",
+    "tagline": "Orthopedic & Sports Physiotherapy Clinic",
+    "accreditation": "Certified Clinical Facility",
+    "address": "Suite 302, Health & Wellness Plaza, Medical Center Road, City Center",
+    "timings": "Monday – Saturday: 8:00 AM – 8:00 PM | Sunday: By Prior Appointment Only",
+    "phone": "+91 91458 75248",
+    "rawPhone": "9145875248",
+    "email": "care@revitaortho.com",
+    "googleMapsUrl": "https://maps.google.com",
+    "amenities": [
+      "Dedicated Patient Parking",
+      "Wheelchair Ramp & Lift",
+      "Hospital-Grade Sanitization",
+      "Insurance Documentation Support"
+    ]
+  },
+  "hero": {
+    "badge": "CERTIFIED HEALTHCARE FACILITY • ADVANCED PHYSIOTHERAPY",
+    "title": "Advanced Orthopedic & Sports Physiotherapy.",
+    "highlight": "Restore Movement. Relieve Pain.",
+    "description": "Specialized non-surgical physical rehabilitation, computerized spinal decompression, and dedicated 1-on-1 care delivered by qualified clinical physiotherapists. Over 10,000+ recovery cases managed.",
+    "assuranceTags": [
+      "Zero Waiting Time",
+      "Dedicated 1-on-1 Care",
+      "Insurance Assistance Desk"
+    ]
+  },
+  "therapist": {
+    "name": "Dr. S. Gupta, PT",
+    "role": "Chief Orthopedic & Spine Physiotherapist",
+    "qualifications": "BPT, MPT (Musculoskeletal Disorders)",
+    "experience": "14+ Years Clinical Leadership",
+    "rating": "4.98 / 5.0",
+    "reviewCount": "600+ Patient Recoveries",
+    "image": "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=600&q=80",
+    "affiliations": [
+      "Certified Spinal Decompression & Manual Therapist",
+      "Senior Consultant – Multi-Specialty Hospital Network",
+      "Specialized in non-surgical disc relief & spine recovery"
+    ]
+  },
+  "services": [
+    {
+      "id": "back-pain",
+      "title": "Back Pain & Sciatica",
+      "subtitle": "Disc Bulge, Sciatic Nerve Pinch & Lumbar Stiffness",
+      "desc": "Computerized non-surgical spinal decompression, cold laser therapy, and active stabilization protocols relieve compressed discs and eliminate sharp radiating leg pain.",
+      "highlights": [
+        "Non-Surgical Disc Relief",
+        "Computerized Decompression",
+        "Core Stability Retraining"
+      ],
+      "link": "/treatments",
+      "iconName": "Bone",
+      "tag": "Evidence-Based Care"
+    },
+    {
+      "id": "neck-pain",
+      "title": "Neck Pain & Posture",
+      "subtitle": "Cervical Spondylosis, Tech-Neck & Nerve Pressure",
+      "desc": "Cervical mechanical decompression, trigger-point release, and deep flexor retraining alleviate radiating tension and restore natural ergonomic alignment.",
+      "highlights": [
+        "Rapid Nerve Pressure Relief",
+        "Trigger Point Needling",
+        "Workstation Posture Audit"
+      ],
+      "link": "/services",
+      "iconName": "Stethoscope",
+      "tag": "Targeted Posture Care"
+    },
+    {
+      "id": "sports-injury",
+      "title": "Sports Injury & ACL",
+      "subtitle": "Ligament Sprains, Meniscus & Muscle Tears",
+      "desc": "Biomechanical motion analysis, high-velocity neuromuscular drills, and eccentric loading safely accelerate return-to-sport clearance for active individuals.",
+      "highlights": [
+        "Athletic Conditioning",
+        "Neuromuscular Drills",
+        "Return-to-Play Testing"
+      ],
+      "link": "/our-work",
+      "iconName": "Zap",
+      "tag": "Athletic Recovery"
+    },
+    {
+      "id": "knee-pain",
+      "title": "Knee Pain & Preservation",
+      "subtitle": "Joint Cartilage Wear, Mobility & Stair Difficulty",
+      "desc": "Targeted radiofrequency therapy, gentle joint mobilization, and progressive quadriceps bio-loading restore smooth joint glide and functional independence.",
+      "highlights": [
+        "Joint Preservation",
+        "Non-Surgical Approach",
+        "Unassisted Stair Climbing"
+      ],
+      "link": "/treatments",
+      "iconName": "Activity",
+      "tag": "Cartilage Care"
+    }
+  ],
+  "aboutClinic": {
+    "title": "About the Clinic & Treatment Approach",
+    "leadCopy": "RevitaOrtho is a dedicated outpatient physical therapy center equipped with modern European rehabilitation technology and private sanitized treatment suites, focused on helping patients recover naturally without unnecessary invasive procedures.",
+    "approaches": [
+      {
+        "iconName": "Stethoscope",
+        "title": "Comprehensive Diagnostic",
+        "desc": "Detailed evaluation of joint mobility angles, nerve tension signs, and kinetic imbalances before treatment."
+      },
+      {
+        "iconName": "Users",
+        "title": "Dedicated 1-on-1 Specialist Focus",
+        "desc": "Every session is led directly by a qualified therapist with focused individual attention."
+      },
+      {
+        "iconName": "Zap",
+        "title": "Advanced Non-Surgical Technologies",
+        "desc": "Modern photobiomodulation, computerized decompression, and cellular oscillation modalities."
+      },
+      {
+        "iconName": "ShieldCheck",
+        "title": "Long-Term Prevention",
+        "desc": "Structured progressive milestones and ergonomic training to prevent recurrent episodes."
+      }
+    ]
+  },
+  "whyChooseUs": [
+    {
+      "iconName": "Award",
+      "title": "Qualified Therapists",
+      "desc": "All evaluations and therapies are delivered directly by specialized clinical physiotherapists with verified hospital experience — never delegated to uncertified trainees."
+    },
+    {
+      "iconName": "HeartPulse",
+      "title": "Personalized 1-on-1 Care",
+      "desc": "We dedicate full 45-minute sessions to you with tailored, evidence-based rehabilitation protocols. No multitasking and no generic cookie-cutter treatments."
+    },
+    {
+      "iconName": "Clock",
+      "title": "Convenient Appointments",
+      "desc": "Flexible consultation slots from 8:00 AM to 8:00 PM (Monday through Saturday) with zero waiting time at our modern wellness center — plus home visit care options."
+    }
+  ],
+  "treatmentSteps": [
+    {
+      "step": "01",
+      "title": "Book Appointment",
+      "timing": "Immediate Confirmation",
+      "desc": "Select your preferred in-clinic slot or request a home visit easily online or by calling 9145875248.",
+      "iconName": "Calendar"
+    },
+    {
+      "step": "02",
+      "title": "Comprehensive Assessment",
+      "timing": "Day 1 (45 Minutes)",
+      "desc": "Thorough physical and biomechanical evaluation, orthopedic provocation tests, and mobility scoring.",
+      "iconName": "Stethoscope"
+    },
+    {
+      "step": "03",
+      "title": "Targeted Treatment Plan",
+      "timing": "Sessions 1 – 12",
+      "desc": "Hands-on manual therapy, modern pain relief modalities, and guided progressive muscle retraining.",
+      "iconName": "Activity"
+    },
+    {
+      "step": "04",
+      "title": "Progress & Follow-up",
+      "timing": "Long-Term Wellness",
+      "desc": "Custom video home exercise prescription, workplace ergonomic guidance, and periodic maintenance checks.",
+      "iconName": "CheckCircle2"
+    }
+  ],
+  "testimonials": [
+    {
+      "name": "Dr. A. Joshi",
+      "role": "Medical Specialist",
+      "condition": "Cervical Nerve Compression & Arm Discomfort",
+      "text": "Being a medical professional myself, I value evidence-based protocols. The therapist accurately diagnosed the root cause in the first session. Within 3 weeks of targeted decompression and manual mobilization, my symptoms resolved completely.",
+      "rating": 5,
+      "location": "Metro City"
+    },
+    {
+      "name": "M. Deshmukh",
+      "role": "Retired Educator",
+      "condition": "Knee Joint Stiffness & Stair Climbing Difficulty",
+      "text": "I was having severe trouble taking the stairs at home. The team created a gentle, progressive strengthening plan using targeted radiofrequency and joint glides. Today I can climb stairs comfortably and walk every morning without discomfort.",
+      "rating": 5,
+      "location": "Central District"
+    },
+    {
+      "name": "K. Singhania",
+      "role": "Amateur Runner & Executive",
+      "condition": "Chronic Plantar Heel Pain & Achilles Strain",
+      "text": "After months of lingering heel discomfort, the therapist analyzed my movement mechanics and found kinetic imbalances. Combined manual therapy and progressive loading resolved my morning pain in just 4 sessions. Highly recommended!",
+      "rating": 5,
+      "location": "Tech Hub City"
+    }
+  ]
+}
