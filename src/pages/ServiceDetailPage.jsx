@@ -6,13 +6,9 @@ import {
   Zap,
   Activity,
   CheckCircle2,
-  Calendar,
-  Phone,
-  MessageCircle,
-  ArrowRight,
-  ShieldCheck,
   Clock,
-  ChevronRight,
+  ArrowRight,
+  MessageCircle,
 } from "lucide-react";
 import { SERVICE_DETAILS } from "../data/serviceDetailsData";
 import "./ServiceDetailPage.css";
@@ -61,131 +57,20 @@ export default function ServiceDetailPage() {
 
   return (
     <main className="service-detail-page">
-      {/* ─── 1. BREADCRUMB BAR ─── */}
-      <nav className="detail-breadcrumb-bar" aria-label="Breadcrumb">
-        <div className="detail-container">
-          <ol className="breadcrumb-list">
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <ChevronRight size={14} className="crumb-sep" />
-            </li>
-            <li>
-              <Link to="/services">Services</Link>
-            </li>
-            <li>
-              <ChevronRight size={14} className="crumb-sep" />
-            </li>
-            <li className="crumb-current" aria-current="page">
-              {detail.title}
-            </li>
-          </ol>
-        </div>
-      </nav>
-
-      {/* ─── 2. HERO BANNER ─── */}
-      <section className="detail-hero-section">
-        <div className="detail-container">
-          <div className="detail-hero-grid">
-            <div className="detail-hero-content">
-              <div className="detail-kicker-pill">
-                <IconComponent size={16} className="text-azure" />
-                <span>{detail.tag}</span>
-              </div>
-
-              <h1 className="detail-hero-title">
-                {detail.title}
-                <br />
-                <span className="text-highlight-gradient">{detail.highlight}</span>
-              </h1>
-
-              <p className="detail-hero-subtitle">{detail.subtitle}</p>
-
-              {/* Key Clinical Metrics */}
-              <div className="detail-metrics-row">
-                {detail.metrics?.map((m, idx) => (
-                  <div key={idx} className="metric-chip">
-                    <strong className="metric-val">{m.value}</strong>
-                    <span className="metric-lbl">{m.label}</span>
-                    <small className="metric-sub">{m.sub}</small>
-                  </div>
-                ))}
-              </div>
-
-              {/* CTAs */}
-              <div className="detail-cta-row">
-                <Link
-                  to={`/appointment?service=${detail.serviceCode}`}
-                  className="btn-detail-primary"
-                >
-                  <Calendar size={18} />
-                  <span>Book Consultation for {detail.title}</span>
-                  <ArrowRight size={16} />
-                </Link>
-
-                <a href="tel:+919145875248" className="btn-detail-secondary">
-                  <Phone size={17} />
-                  <span>Helpline: 9145875248</span>
-                </a>
-
-                <a
-                  href={`https://wa.me/919145875248?text=Hello%20RevitaOrtho,%20I%20would%20like%20to%20consult%20regarding%20${encodeURIComponent(
-                    detail.title
-                  )}.`}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="btn-detail-whatsapp"
-                >
-                  <MessageCircle size={17} />
-                  <span>WhatsApp Doctor</span>
-                </a>
-              </div>
-            </div>
-
-            {/* Quick Consultation Card */}
-            <div className="detail-hero-sidecard">
-              <div className="condition-summary-card">
-                <div className="summary-card-header">
-                  <ShieldCheck size={26} className="text-emerald" />
-                  <div>
-                    <h3>100% Non-Surgical Care</h3>
-                    <span>Specialized MPT Clinicians</span>
-                  </div>
-                </div>
-
-                <div className="summary-card-points">
-                  <div className="point-item">
-                    <CheckCircle2 size={16} className="text-emerald point-ico" />
-                    <span>Comprehensive 45-Min Biomechanical Diagnostic</span>
-                  </div>
-                  <div className="point-item">
-                    <CheckCircle2 size={16} className="text-emerald point-ico" />
-                    <span>European Laser & Decompression Technology</span>
-                  </div>
-                  <div className="point-item">
-                    <CheckCircle2 size={16} className="text-emerald point-ico" />
-                    <span>Dedicated 1-on-1 Specialist Attention</span>
-                  </div>
-                  <div className="point-item">
-                    <CheckCircle2 size={16} className="text-emerald point-ico" />
-                    <span>Insurance Reimbursement Support</span>
-                  </div>
-                </div>
-
-                <div className="summary-action-box">
-                  <Link
-                    to={`/appointment?service=${detail.serviceCode}`}
-                    className="btn-card-consult"
-                  >
-                    <span>Reserve Evaluation Slot</span>
-                    <ArrowRight size={15} />
-                  </Link>
-                  <span className="guarantee-text">Zero waiting time policy at clinic</span>
-                </div>
-              </div>
-            </div>
-          </div>
+      {/* ─── STANDARDIZED UNIFORM SUBPAGE HERO ─── */}
+      <section className="subpage-hero-banner">
+        <div className="subpage-hero-content">
+          <span className="subpage-kicker">
+            <IconComponent size={14} /> {detail.tag || "CLINICAL SPECIALIZATION"}
+          </span>
+          <h1 className="subpage-title">
+            {detail.title}
+            <br />
+            <span className="text-highlight">{detail.highlight}</span>
+          </h1>
+          <p className="subpage-lead">
+            {detail.subtitle}
+          </p>
         </div>
       </section>
 
