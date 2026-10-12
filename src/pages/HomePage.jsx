@@ -656,13 +656,13 @@ export default function HomePage() {
             <p>
               <strong>Transparent Treatment Roadmap on Day 1:</strong> Following your 45-minute assessment, you receive an objective diagnostic report detailing expected session counts and milestones.
             </p>
-            <button
-              type="button"
-              onClick={scrollToAppointment}
+            <Link
+              to="/appointment"
               className="btn-process-action"
             >
-              Start Step 1
-            </button>
+              <span>Start Step 1</span>
+              <ArrowRight size={14} />
+            </Link>
           </div>
         </div>
       </section>
