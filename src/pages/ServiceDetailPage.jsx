@@ -7,7 +7,7 @@ import {
   Activity,
   CheckCircle2,
   Clock,
-  ArrowRight,
+  Calendar,
   MessageCircle,
 } from "lucide-react";
 import { SERVICE_DETAILS } from "../data/serviceDetailsData";
@@ -74,7 +74,7 @@ export default function ServiceDetailPage() {
         </div>
       </section>
 
-      {/* ─── 3. 6 SPECIALIZED CLINICAL CONDITION & TREATMENT CARDS (OUR-WORK STYLE) ─── */}
+      {/* ─── SPECIALIZED CONDITION & TREATMENT CARDS (COMPACT & DISTINCT DESIGN) ─── */}
       {detail.relatedCards && detail.relatedCards.length > 0 && (
         <section className="detail-section related-cards-section" id="related-conditions">
           <div className="detail-container">
@@ -86,62 +86,67 @@ export default function ServiceDetailPage() {
               </p>
             </div>
 
-            <div className="cases-cards-grid">
+            <div className="treatments-cards-grid">
               {detail.relatedCards.map((card, idx) => (
-                <article key={card.id || idx} className={`case-archive-card scroll-reveal hover-lift delay-${(idx % 3) + 1}`}>
-                  <div className="case-img-box">
-                    <img src={card.image} alt={card.title} className="case-img" loading="lazy" />
-                    <span className="case-tag-badge">{card.badge}</span>
-                    <span className="case-duration-badge">
-                      <Clock size={13} /> {card.duration}
+                <article
+                  key={card.id || idx}
+                  className={`compact-treatment-card scroll-reveal hover-lift delay-${(idx % 3) + 1}`}
+                >
+                  {/* Card Thumbnail */}
+                  <div className="treatment-thumb-wrap">
+                    <img
+                      src={card.image}
+                      alt={card.title}
+                      className="treatment-thumb-img"
+                      loading="lazy"
+                    />
+                    <span className="treatment-pill-tag">{card.badge}</span>
+                    <span className="treatment-time-badge">
+                      <Clock size={11} /> {card.duration}
                     </span>
                   </div>
 
-                  <div className="case-card-body">
-                    <h3 className="case-title">{card.title}</h3>
-                    <span className="case-patient-meta">{card.categoryMeta}</span>
+                  {/* Card Body */}
+                  <div className="treatment-card-content">
+                    <h3 className="treatment-item-title" title={card.title}>
+                      {card.title}
+                    </h3>
 
-                    <div className="case-condition-block">
-                      <strong className="block-head text-danger">Initial Symptoms & Presentation:</strong>
-                      <p>{card.presentation}</p>
+                    <p className="treatment-snippet-desc">
+                      {card.presentation}
+                    </p>
+
+                    <div className="treatment-spec-pill" title={card.protocol}>
+                      <span className="spec-label">Protocol:</span>
+                      <span className="spec-val">{card.protocol}</span>
                     </div>
 
-                    <div className="case-condition-block">
-                      <strong className="block-head text-azure">Targeted Clinical Protocol:</strong>
-                      <p>{card.protocol}</p>
+                    <div className="treatment-outcome-chip" title={card.outcome}>
+                      <CheckCircle2 size={13} className="text-emerald" />
+                      <span>{card.surgeryAvoided || card.outcome}</span>
                     </div>
 
-                    <div className="case-result-box">
-                      <div className="result-icon-dot">
-                        <CheckCircle2 size={18} />
-                      </div>
-                      <div>
-                        <strong>Documented Clinical Outcome:</strong>
-                        <p>{card.outcome}</p>
-                        <span className="recovery-rate-pill">{card.surgeryAvoided}</span>
-                      </div>
-                    </div>
-
-                    <div className="case-action-btn-row">
+                    {/* Book Appointment CTA & WhatsApp at bottom of every card */}
+                    <div className="treatment-action-row">
                       <Link
                         to={`/appointment?service=${detail.serviceCode}&condition=${encodeURIComponent(
                           card.conditionParam || card.title
                         )}`}
-                        className="btn-case-book"
+                        className="btn-card-book-appointment"
                       >
-                        <span>Schedule Consultation</span>
-                        <ArrowRight size={15} />
+                        <Calendar size={14} />
+                        <span>Book Appointment</span>
                       </Link>
                       <a
-                        href={`https://wa.me/919145875248?text=Hello%20RevitaOrtho,%20I%20want%20to%20consult%20regarding%20${encodeURIComponent(
+                        href={`https://wa.me/919145875248?text=Hello%20RevitaOrtho,%20I%20want%20to%20book%20an%20appointment%20for%20${encodeURIComponent(
                           card.title
                         )}.`}
                         target="_blank"
                         rel="noreferrer"
-                        className="btn-case-wa"
+                        className="btn-card-whatsapp"
                         title="Chat on WhatsApp"
                       >
-                        <MessageCircle size={16} />
+                        <MessageCircle size={15} />
                       </a>
                     </div>
                   </div>
