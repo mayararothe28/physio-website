@@ -202,90 +202,79 @@ export default function ServiceDetailPage() {
         </div>
       </section>
 
-      {/* ─── 3. 6 SPECIALIZED CLINICAL CONDITION & TREATMENT CARDS ─── */}
+      {/* ─── 3. 6 SPECIALIZED CLINICAL CONDITION & TREATMENT CARDS (OUR-WORK STYLE) ─── */}
       {detail.relatedCards && detail.relatedCards.length > 0 && (
         <section className="detail-section related-cards-section" id="related-conditions">
           <div className="detail-container">
             <div className="section-title-wrap">
-              <span className="section-kicker-tag">6 SPECIALIZED PROTOCOLS & CONDITIONS</span>
-              <h2>6 Specialized Clinical Conditions We Treat Under {detail.title}</h2>
+              <span className="section-kicker-tag">6 SPECIALIZED PROTOCOLS & DOCUMENTED PATHWAYS</span>
+              <h2>Specialized Clinical Care Under {detail.title}</h2>
               <p>
-                Explore our 6 documented non-surgical treatment pathways. Each protocol is tailored to target the exact anatomical root cause of pain and restore joint freedom.
+                Structured, objective recovery pathways with documented clinical outcomes — designed to eliminate pain and avoid invasive surgeries.
               </p>
             </div>
 
-            <div className="related-cards-grid">
-              {detail.relatedCards.map((card, idx) => {
-                const CardIcon = ICON_MAP[card.iconName] || Activity;
-                return (
-                  <article key={card.id || idx} className="clinical-focus-card scroll-reveal">
-                    <div className="card-top-header">
-                      <div className="card-icon-pill">
-                        <CardIcon size={20} className="text-azure" />
-                      </div>
-                      <span className="card-badge-chip">{card.badge}</span>
+            <div className="cases-cards-grid">
+              {detail.relatedCards.map((card, idx) => (
+                <article key={card.id || idx} className={`case-archive-card scroll-reveal hover-lift delay-${(idx % 3) + 1}`}>
+                  <div className="case-img-box">
+                    <img src={card.image} alt={card.title} className="case-img" loading="lazy" />
+                    <span className="case-tag-badge">{card.badge}</span>
+                    <span className="case-duration-badge">
+                      <Clock size={13} /> {card.duration}
+                    </span>
+                  </div>
+
+                  <div className="case-card-body">
+                    <h3 className="case-title">{card.title}</h3>
+                    <span className="case-patient-meta">{card.categoryMeta}</span>
+
+                    <div className="case-condition-block">
+                      <strong className="block-head text-danger">Initial Symptoms & Presentation:</strong>
+                      <p>{card.presentation}</p>
                     </div>
 
-                    <h3 className="card-title">{card.title}</h3>
-                    <p className="card-desc">{card.shortDesc}</p>
-
-                    {/* Key Indicators / Symptoms */}
-                    <div className="card-symptoms-box">
-                      <strong className="card-box-label">Common Signs & Indications:</strong>
-                      <ul className="card-mini-symptoms">
-                        {card.symptoms?.map((sym, sIdx) => (
-                          <li key={sIdx}>
-                            <CheckCircle2 size={13} className="text-azure flex-shrink-0" />
-                            <span>{sym}</span>
-                          </li>
-                        ))}
-                      </ul>
+                    <div className="case-condition-block">
+                      <strong className="block-head text-azure">Targeted Clinical Protocol:</strong>
+                      <p>{card.protocol}</p>
                     </div>
 
-                    {/* Modality & Recovery */}
-                    <div className="card-meta-chips">
-                      <div className="card-meta-item">
-                        <Clock size={13} className="text-azure" />
-                        <span>{card.recovery}</span>
+                    <div className="case-result-box">
+                      <div className="result-icon-dot">
+                        <CheckCircle2 size={18} />
                       </div>
-                      <div className="card-meta-item">
-                        <ShieldCheck size={13} className="text-emerald" />
-                        <span>Averts: {card.surgeryAvoided}</span>
+                      <div>
+                        <strong>Documented Clinical Outcome:</strong>
+                        <p>{card.outcome}</p>
+                        <span className="recovery-rate-pill">{card.surgeryAvoided}</span>
                       </div>
                     </div>
 
-                    <div className="card-modality-badge">
-                      <strong>Modality:</strong> {card.modality}
-                    </div>
-
-                    {/* Action buttons */}
-                    <div className="card-action-row">
+                    <div className="case-action-btn-row">
                       <Link
                         to={`/appointment?service=${detail.serviceCode}&condition=${encodeURIComponent(
                           card.conditionParam || card.title
                         )}`}
-                        className="btn-card-book"
+                        className="btn-case-book"
                       >
-                        <Calendar size={14} />
-                        <span>Book Slot</span>
-                        <ArrowRight size={13} />
+                        <span>Schedule Consultation</span>
+                        <ArrowRight size={15} />
                       </Link>
-
                       <a
                         href={`https://wa.me/919145875248?text=Hello%20RevitaOrtho,%20I%20want%20to%20consult%20regarding%20${encodeURIComponent(
                           card.title
                         )}.`}
                         target="_blank"
                         rel="noreferrer"
-                        className="btn-card-wa"
+                        className="btn-case-wa"
                         title="Chat on WhatsApp"
                       >
-                        <MessageCircle size={15} />
+                        <MessageCircle size={16} />
                       </a>
                     </div>
-                  </article>
-                );
-              })}
+                  </div>
+                </article>
+              ))}
             </div>
           </div>
         </section>
