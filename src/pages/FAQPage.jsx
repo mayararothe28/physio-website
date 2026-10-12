@@ -77,9 +77,9 @@ const CLINICAL_FAQS = [
   },
   {
     category: "home-care",
-    question: "Do you offer home visit physiotherapy, and which areas in Pune are covered?",
+    question: "Do you offer home visit physiotherapy, and which areas are covered?",
     answer:
-      "Yes! For post-surgery knee/hip replacement patients, stroke recovery, or severe mobility-restricted seniors, our certified senior therapists visit your residence across Pune—including Baner, Aundh, Hinjewadi, Wakad, Balewadi, and Kothrud. Therapists bring portable ultrasound, electrotherapy, and mobilization equipment.",
+      "Yes! For post-surgery knee/hip replacement patients, stroke recovery, or severe mobility-restricted seniors, our certified senior therapists provide doorstep home visits across all central city sectors and nearby residential zones. Therapists bring portable ultrasound, electrotherapy, and mobilization equipment.",
   },
   {
     category: "home-care",

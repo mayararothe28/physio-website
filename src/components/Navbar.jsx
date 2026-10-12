@@ -24,10 +24,12 @@ export default function Navbar() {
   const [drawerServicesOpen, setDrawerServicesOpen] = useState(false);
   const location = useLocation();
 
-  // Desktop primary navigation links (Logo · Home · About · Services · Contact · Book Appointment)
+  // Desktop primary navigation links (Home · About · Services · Our Work · FAQ · Contact)
   const desktopNavLinks = [
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
+    { name: "Our Work", href: "/our-work" },
+    { name: "FAQ", href: "/faq" },
     { name: "Contact", href: "/contact" },
   ];
 

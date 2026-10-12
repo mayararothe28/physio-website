@@ -188,13 +188,85 @@
 }
 
 /* ==========================================================================
-   2. HERO SECTION
-   Clear heading + therapist image + short introduction + appointment button
+   2. HERO SECTION ANIMATIONS & STYLES
+   Smooth entrance motion, gentle floating card, and breathing live badge
    ========================================================================== */
+
+@keyframes heroKickerEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(-12px) scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes heroFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroTagPop {
+  0% {
+    opacity: 0;
+    transform: translateY(10px) scale(0.94);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes heroCardEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(24px) scale(0.97);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes heroCardGentleFloat {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseLiveGlow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.65);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
+}
+
 .clean-hero-section {
-  background: linear-gradient(180deg, #f2f7fb 0%, #fafcff 55%, #ffffff 100%);
+  position: relative;
+  background: radial-gradient(circle at 85% 15%, rgba(27, 116, 168, 0.05) 0%, transparent 55%),
+              linear-gradient(180deg, #f2f7fb 0%, #fafcff 55%, #ffffff 100%);
   padding: 60px 0 72px;
   border-bottom: 1px solid #e5edf4;
+  overflow: hidden;
 }
 
 .clean-hero-grid {
@@ -224,6 +296,8 @@
   margin-bottom: 18px;
   align-self: flex-start;
   box-shadow: var(--med-shadow-sm);
+  animation: heroKickerEntrance 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both;
+  will-change: transform, opacity;
 }
 
 .hero-main-title {
@@ -234,6 +308,8 @@
   color: var(--med-navy);
   letter-spacing: -0.025em;
   margin-bottom: 16px;
+  animation: heroFadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+  will-change: transform, opacity;
 }
 
 .hero-description {
@@ -242,6 +318,8 @@
   color: var(--med-text-muted);
   margin-bottom: 22px;
   max-width: 600px;
+  animation: heroFadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
+  will-change: transform, opacity;
 }
 
 .hero-assurance-strip {
@@ -263,13 +341,22 @@
   border-radius: 7px;
   border: 1px solid var(--med-border);
   box-shadow: 0 1px 4px rgba(22, 51, 80, 0.03);
+  animation: heroTagPop 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.32s both;
+  will-change: transform, opacity;
 }
+
+.hero-assurance-strip .assurance-tag:nth-child(1) { animation-delay: 0.32s; }
+.hero-assurance-strip .assurance-tag:nth-child(2) { animation-delay: 0.38s; }
+.hero-assurance-strip .assurance-tag:nth-child(3) { animation-delay: 0.44s; }
+.hero-assurance-strip .assurance-tag:nth-child(4) { animation-delay: 0.50s; }
 
 .hero-cta-group {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 12px;
+  animation: heroFadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.42s both;
+  will-change: transform, opacity;
 }
 
 .btn-hero-primary {
@@ -349,11 +436,13 @@
   overflow: hidden;
   width: 100%;
   max-width: 420px;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  animation: heroCardEntrance 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform, opacity;
 }
 
 .doctor-hero-showcase-card:hover {
-  transform: translateY(-2px);
+  transform: translateY(-4px);
   box-shadow: var(--med-shadow-lg);
 }
 
@@ -394,7 +483,21 @@
   background-color: #10b981;
   border-radius: 50%;
   display: inline-block;
-  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.3);
+  animation: pulseLiveGlow 2.2s infinite ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-kicker-pill,
+  .hero-main-title,
+  .hero-description,
+  .assurance-tag,
+  .hero-cta-group,
+  .doctor-hero-showcase-card,
+  .live-pulse-dot {
+    animation: none !important;
+    transform: none !important;
+    transition: none !important;
+  }
 }
 
 .doctor-hero-details {
