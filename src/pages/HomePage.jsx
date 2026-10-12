@@ -1346,16 +1346,16 @@ export default function HomePage() {
 
       {/* ─── 13. MASTER BOTTOM CONVERSION CTA ─── */}
       <section className="master-bottom-cta">
-        <div className="home-container bottom-cta-inner scroll-reveal">
-          <div className="bottom-cta-text">
-            <span className="cta-kicker">TAKE THE FIRST STEP TODAY</span>
-            <h2>Don't Settle for Living in Chronic Pain.</h2>
-            <p>
+        <div className="home-container master-cta-inner scroll-reveal">
+          <div className="master-cta-text">
+            <span className="master-cta-kicker">TAKE THE FIRST STEP TODAY</span>
+            <h2 className="master-cta-heading">Don't Settle for Living in Chronic Pain.</h2>
+            <p className="master-cta-desc">
               Whether it's a nagging back ache, morning knee stiffness, or a sports injury — early intervention prevents permanent joint degeneration. Schedule your comprehensive assessment today.
             </p>
           </div>
 
-          <div className="bottom-cta-buttons">
+          <div className="master-cta-buttons">
             <Link to="/appointment" className="btn-clinical-primary btn-large">
               <Calendar size={20} />
               <span>Book Your In-Depth Assessment</span>
