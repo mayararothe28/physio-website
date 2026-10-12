@@ -52,7 +52,7 @@
         "Computerized Decompression",
         "Core Stability Retraining"
       ],
-      "link": "/treatments",
+      "link": "/services/back-pain",
       "iconName": "Bone",
       "tag": "Evidence-Based Care"
     },
@@ -66,7 +66,7 @@
         "Trigger Point Needling",
         "Workstation Posture Audit"
       ],
-      "link": "/services",
+      "link": "/services/neck-pain",
       "iconName": "Stethoscope",
       "tag": "Targeted Posture Care"
     },
@@ -80,7 +80,7 @@
         "Neuromuscular Drills",
         "Return-to-Play Testing"
       ],
-      "link": "/our-work",
+      "link": "/services/sports-injury",
       "iconName": "Zap",
       "tag": "Athletic Recovery"
     },
@@ -94,7 +94,7 @@
         "Non-Surgical Approach",
         "Unassisted Stair Climbing"
       ],
-      "link": "/treatments",
+      "link": "/services/knee-pain",
       "iconName": "Activity",
       "tag": "Cartilage Care"
     }

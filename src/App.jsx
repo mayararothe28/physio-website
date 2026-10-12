@@ -15,6 +15,7 @@ import TestimonialsPage from "./pages/TestimonialsPage";
 import ContactPage from "./pages/ContactPage";
 import FAQPage from "./pages/FAQPage";
 import OurWorkPage from "./pages/OurWorkPage";
+import ServiceDetailPage from "./pages/ServiceDetailPage";
 
 import "./App.css";
 
@@ -62,7 +63,9 @@ function App() {
         <Route path="/" Component={HomePage} />
         <Route path="/about" Component={AboutPage} />
         <Route path="/services" Component={ServicesPage} />
+        <Route path="/services/:serviceId" Component={ServiceDetailPage} />
         <Route path="/treatments" Component={TreatmentsPage} />
+        <Route path="/treatments/:serviceId" Component={ServiceDetailPage} />
         <Route path="/team" Component={TeamPage} />
         <Route path="/appointment" Component={AppointmentPage} />
         <Route path="/testimonials" Component={TestimonialsPage} />

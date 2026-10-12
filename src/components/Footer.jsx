@@ -44,10 +44,10 @@ export default function Footer() {
         <div className="footer-col-links">
           <h4>Main Services</h4>
           <ul>
-            <li><Link to="/treatments">Back Pain & Sciatica</Link></li>
-            <li><Link to="/services">Neck Pain & Posture</Link></li>
-            <li><Link to="/our-work">Sports Injury & ACL</Link></li>
-            <li><Link to="/treatments">Knee Pain & Preservation</Link></li>
+            <li><Link to="/services/back-pain">Back Pain & Sciatica</Link></li>
+            <li><Link to="/services/neck-pain">Neck Pain & Posture</Link></li>
+            <li><Link to="/services/sports-injury">Sports Injury & ACL</Link></li>
+            <li><Link to="/services/knee-pain">Knee Pain & Preservation</Link></li>
           </ul>
         </div>
 

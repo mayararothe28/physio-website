@@ -93,7 +93,7 @@ const CLINICAL_SERVICES = [
     id: "homecare",
     icon: Home,
     category: "Doorstep Service",
-    title: "Home Visit Physiotherapy Across Pune",
+    title: "Doorstep Home Visit Physiotherapy Care",
     badge: "Convenience at Home",
     description:
       "Senior physiotherapists bring clinical care directly to your residence. Specially designed for seniors, post-TKR patients unable to climb stairs, stroke recovery, and severe acute pain where clinic travel causes distress.",

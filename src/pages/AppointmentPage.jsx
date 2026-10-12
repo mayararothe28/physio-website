@@ -16,7 +16,14 @@ export default function AppointmentPage() {
   const [searchParams] = useSearchParams();
 
   // Read initial values from URL query parameters
-  const initCondition = searchParams.get("condition") || "spine";
+  const COND_MAP = {
+    "back-pain": "spine",
+    "neck-pain": "neck",
+    "sports-injury": "sports",
+    "knee-pain": "knee",
+  };
+  const rawCond = searchParams.get("condition") || searchParams.get("service") || "";
+  const initCondition = COND_MAP[rawCond] || rawCond || "spine";
   const initMode = searchParams.get("mode") || "clinic";
   const initTime = searchParams.get("time") || "evening";
   const initDoctor = searchParams.get("doctor") || "any";
@@ -43,8 +50,10 @@ export default function AppointmentPage() {
 
   useEffect(() => {
     // If query params change, update formData
-    if (searchParams.get("condition")) {
-      setFormData((prev) => ({ ...prev, condition: searchParams.get("condition") }));
+    const newRaw = searchParams.get("condition") || searchParams.get("service");
+    if (newRaw) {
+      const resolved = COND_MAP[newRaw] || newRaw;
+      setFormData((prev) => ({ ...prev, condition: resolved }));
     }
     if (searchParams.get("mode")) {
       setFormData((prev) => ({ ...prev, careMode: searchParams.get("mode") }));
@@ -171,7 +180,7 @@ export default function AppointmentPage() {
               <span className="text-highlight">45-Minute Biomechanical Evaluation</span>
             </h1>
             <p className="appointment-hero-lead">
-              Guaranteed on-time consultation slots. No waiting rooms. Choose between visiting our specialized rehabilitation center in Baner or requesting a certified physiotherapist at your doorstep.
+              Guaranteed on-time consultation slots. No waiting rooms. Choose between visiting our specialized rehabilitation center or requesting a certified physiotherapist at your doorstep.
             </p>
           </div>
         </div>
@@ -200,7 +209,7 @@ export default function AppointmentPage() {
                     </div>
                     <div className="summary-row">
                       <span>Care Mode:</span>
-                      <strong>{formData.careMode === "clinic" ? "In-Clinic (Baner, Pune)" : "Doorstep Home Visit"}</strong>
+                      <strong>{formData.careMode === "clinic" ? "In-Clinic Consultation" : "Doorstep Home Visit"}</strong>
                     </div>
                     <div className="summary-row">
                       <span>Condition / Area:</span>
@@ -266,7 +275,7 @@ export default function AppointmentPage() {
                         <Building2 size={20} className="text-azure" />
                         <div>
                           <strong>In-Clinic Visit</strong>
-                          <span>Central Clinic in Baner, Pune</span>
+                          <span>Modern Private Treatment Suites</span>
                         </div>
                       </label>
 
