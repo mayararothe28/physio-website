@@ -220,7 +220,7 @@ export default function TeamPage() {
                       </Link>
 
                       <a
-                        href={`https://wa.me/919158347290?text=Hi,%20I%20would%20like%20to%20consult%20with%20${encodeURIComponent(
+                        href={`https://wa.me/919145875248?text=Hi,%20I%20would%20like%20to%20consult%20with%20${encodeURIComponent(
                           doc.name
                         )}.`}
                         target="_blank"

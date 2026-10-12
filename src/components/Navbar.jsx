@@ -73,9 +73,9 @@ export default function Navbar() {
       <div className="top-bar">
         <div className="navbar-container top-bar-content">
           <span>Mon–Sat: 9:00 AM – 8:00 PM</span>
-          <a href="tel:+919158347290">
+          <a href="tel:+919145875248">
             <Phone size={14} />
-            +91 91583 47290
+            +91 91458 75248
           </a>
         </div>
       </div>
@@ -339,16 +339,16 @@ export default function Navbar() {
                 </Link>
 
                 <a
-                  href="tel:+919158347290"
+                  href="tel:+919145875248"
                   className="drawer-call-btn"
                   onClick={closeMenus}
                 >
                   <Phone size={16} />
-                  <span>Call Helpline: +91 91583 47290</span>
+                  <span>Call Helpline: +91 91458 75248</span>
                 </a>
 
                 <a
-                  href="https://wa.me/919158347290?text=Hello%20RevitaOrtho,%20I%20would%20like%20to%20consult%20regarding%20my%20pain%20issue."
+                  href="https://wa.me/919145875248?text=Hello%20RevitaOrtho,%20I%20would%20like%20to%20consult%20regarding%20my%20pain%20issue."
                   target="_blank"
                   rel="noreferrer"
                   className="drawer-wa-btn"

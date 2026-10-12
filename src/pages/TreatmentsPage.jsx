@@ -288,7 +288,7 @@ export default function TreatmentsPage() {
                       </Link>
 
                       <a
-                        href="https://wa.me/919158347290?text=Hi,%20I%20have%20questions%20about%20your%20treatment%20protocols."
+                        href="https://wa.me/919145875248?text=Hi,%20I%20have%20questions%20about%20your%20treatment%20protocols."
                         target="_blank"
                         rel="noreferrer"
                         className="btn-treatment-chat"
@@ -318,8 +318,8 @@ export default function TreatmentsPage() {
                 <Calendar size={18} />
                 <span>Book a Diagnostic Consultation</span>
               </Link>
-              <a href="tel:+919158347290" className="btn-treatment-outline-white">
-                <span>Call Helpline: +91 91583 47290</span>
+              <a href="tel:+919145875248" className="btn-treatment-outline-white">
+                <span>Call Helpline: +91 91458 75248</span>
               </a>
             </div>
           </div>

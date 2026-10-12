@@ -180,7 +180,7 @@ export default function FAQPage() {
                 Our senior duty physiotherapist can answer specific questions regarding your MRI scan, symptoms, or suitable treatment on WhatsApp.
               </p>
               <a
-                href="https://wa.me/919158347290?text=Hello%20RevitaOrtho,%20I%20have%20a%20question%20regarding%20my%20symptoms."
+                href="https://wa.me/919145875248?text=Hello%20RevitaOrtho,%20I%20have%20a%20question%20regarding%20my%20symptoms."
                 target="_blank"
                 rel="noreferrer"
                 className="btn-faq-whatsapp"
@@ -191,7 +191,7 @@ export default function FAQPage() {
 
               <div className="faq-direct-call">
                 <span>Or call our desk directly:</span>
-                <a href="tel:+919158347290">+91 91583 47290</a>
+                <a href="tel:+919145875248">+91 91458 75248</a>
               </div>
             </div>
 

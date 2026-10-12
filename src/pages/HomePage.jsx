@@ -448,7 +448,7 @@ export default function HomePage() {
               </Link>
 
               <a
-                href="https://wa.me/919158347290?text=Hi,%20I%20want%20to%20discuss%20my%20symptoms%20with%20a%20physiotherapist."
+                href="https://wa.me/919145875248?text=Hi,%20I%20want%20to%20discuss%20my%20symptoms%20with%20a%20physiotherapist."
                 target="_blank"
                 rel="noreferrer"
                 className="btn-clinical-secondary"
@@ -1234,7 +1234,7 @@ export default function HomePage() {
                 <strong>Still have doubts?</strong>
                 <p>Speak directly to our senior triage physiotherapist on WhatsApp.</p>
                 <a
-                  href="https://wa.me/919158347290?text=Hello%20Doctor,%20I%20have%20a%20question%20before%20booking."
+                  href="https://wa.me/919145875248?text=Hello%20Doctor,%20I%20have%20a%20question%20before%20booking."
                   target="_blank"
                   rel="noreferrer"
                   className="faq-chat-link"
@@ -1305,7 +1305,7 @@ export default function HomePage() {
                     <Phone size={20} className="info-icon" />
                     <div>
                       <strong>Direct Phone & Appointments</strong>
-                      <p>+91 91583 47290 / +91 91583 47291</p>
+                      <p>+91 91458 75248</p>
                     </div>
                   </div>
                 </div>
@@ -1321,7 +1321,7 @@ export default function HomePage() {
                     <span>Get Directions on Google Maps</span>
                   </a>
 
-                  <a href="tel:+919158347290" className="btn-clinical-outline-white">
+                  <a href="tel:+919145875248" className="btn-clinical-outline-white">
                     <Phone size={17} />
                     <span>Call Reception</span>
                   </a>
@@ -1385,11 +1385,11 @@ export default function HomePage() {
             </Link>
 
             <a
-              href="tel:+919158347290"
+              href="tel:+919145875248"
               className="btn-clinical-white btn-large"
             >
               <Phone size={19} />
-              <span>Call Helpline: +91 91583 47290</span>
+              <span>Call Helpline: +91 91458 75248</span>
             </a>
           </div>
         </div>

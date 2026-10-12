@@ -237,9 +237,9 @@ export default function AboutPage() {
               <Calendar size={18} />
               <span>Book Your Evaluation</span>
             </Link>
-            <a href="tel:+919158347290" className="btn-about-outline-white">
+            <a href="tel:+919145875248" className="btn-about-outline-white">
               <Phone size={18} />
-              <span>Call Helpline: +91 91583 47290</span>
+              <span>Call Helpline: +91 91458 75248</span>
             </a>
           </div>
         </div>

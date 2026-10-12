@@ -136,7 +136,7 @@ export default function ContactPage() {
                         type="tel"
                         id="c-phone"
                         name="phone"
-                        placeholder="Enter 10-digit number (e.g. 9158347290)"
+                        placeholder="Enter 10-digit number (e.g. 9145875248)"
                         value={formData.phone}
                         onChange={handleChange}
                         maxLength={10}

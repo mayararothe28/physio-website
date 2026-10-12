@@ -225,7 +225,7 @@ export default function AppointmentPage() {
 
                   <div className="success-actions">
                     <a
-                      href={`https://wa.me/919158347290?text=Hello%20RevitaOrtho,%20my%20booking%20reference%20is%20${bookingRef}.`}
+                      href={`https://wa.me/919145875248?text=Hello%20RevitaOrtho,%20my%20booking%20reference%20is%20${bookingRef}.`}
                       target="_blank"
                       rel="noreferrer"
                       className="btn-success-whatsapp"
@@ -381,7 +381,7 @@ export default function AppointmentPage() {
                         type="tel"
                         id="phone"
                         name="phone"
-                        placeholder="Enter 10-digit number (e.g. 9158347290)"
+                        placeholder="Enter 10-digit number (e.g. 9145875248)"
                         value={formData.phone}
                         onChange={handleChange}
                         maxLength={10}

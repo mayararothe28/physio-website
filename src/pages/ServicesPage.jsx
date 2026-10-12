@@ -278,8 +278,8 @@ export default function ServicesPage() {
                     <Calendar size={18} />
                     <span>Schedule Initial Assessment</span>
                   </Link>
-                  <a href="tel:+919158347290" className="btn-service-outline-white">
-                    <span>Call Helpline: +91 91583 47290</span>
+                  <a href="tel:+919145875248" className="btn-service-outline-white">
+                    <span>Call Helpline: +91 91458 75248</span>
                   </a>
                 </div>
               </div>
