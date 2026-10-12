@@ -373,32 +373,6 @@ export default function HomePage() {
 
   return (
     <main className="modern-home-page">
-      {/* ─── LIVE CLINICAL STATUS BANNER ─── */}
-      <div className="live-status-banner">
-        <div className="home-container status-banner-inner">
-          <div className="status-live-pill">
-            <span className="live-pulse-dot"></span>
-            <strong>CLINIC OPEN TODAY:</strong> 8:00 AM – 8:00 PM • Same-Day Walk-ins & Urgent Care Available
-          </div>
-
-          <div className="status-banner-links">
-            <a href="tel:+919158347290" className="banner-tel-link">
-              <Phone size={14} />
-              <span>Direct Doctor Helpline: <strong>+91 91583 47290</strong></span>
-            </a>
-            <a
-              href="https://wa.me/919158347290?text=Hello%20RevitaOrtho,%20I%20would%20like%20to%20consult%20regarding%20my%20pain%20issue."
-              target="_blank"
-              rel="noreferrer"
-              className="banner-whatsapp-pill"
-            >
-              <MessageCircle size={14} />
-              <span>WhatsApp Instant Chat</span>
-            </a>
-          </div>
-        </div>
-      </div>
-
       {/* ─── 1. MASTER HERO SECTION ─── */}
       <section className="clinical-hero">
         <div className="home-container clinical-hero-grid">
