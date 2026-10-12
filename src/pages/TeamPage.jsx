@@ -94,7 +94,7 @@ const CLINICAL_DOCTORS = [
     opdTimings: "Mon – Sat: 11:00 AM – 7:00 PM",
     rating: "4.95",
     patientCount: "2,900+ Consultations",
-    image: "https://images.unsplash.com/photo-1594824813580-b2f5b40cf396?auto=format&fit=crop&w=700&q=80",
+    image: "/images/dr-ananya-deshmukh.jpg",
     availableToday: true,
   },
 ];
@@ -150,6 +150,10 @@ export default function TeamPage() {
                         alt={doc.name}
                         className="doc-img"
                         loading="lazy"
+                        onError={(e) => {
+                          e.target.onerror = null;
+                          e.target.src = "/images/dr-ananya-deshmukh.jpg";
+                        }}
                       />
                       {doc.availableToday && (
                         <span className="doc-duty-badge">

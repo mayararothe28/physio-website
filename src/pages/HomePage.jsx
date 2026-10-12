@@ -227,6 +227,19 @@ const DOCTORS = [
     availableToday: true,
     image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=600&q=80",
   },
+  {
+    name: "Dr. Ananya Deshmukh, PT",
+    role: "Consultant – Women's Health & Ergonomic Posture Lead",
+    qualifications: "BPT, MPT (Community Health & Ergonomics), COMT",
+    experience: "8+ Years Clinical Experience",
+    fellowship: "Certified Mulligan Manual Therapy & Prenatal/Postnatal Rehab",
+    formerlyAt: "Ex-Consultant, Columbia Asia Hospital & Corporate Wellness",
+    focus: "Corporate Tech-Neck, Ergonomic Posture, Prenatal/Postnatal Pelvic Floor Care",
+    rating: "4.95",
+    reviews: "380+ Consultations",
+    availableToday: true,
+    image: "/images/dr-ananya-deshmukh.jpg",
+  },
 ];
 
 // ─── 4. CLINICAL CASE STUDIES ───
@@ -847,7 +860,16 @@ export default function HomePage() {
             {DOCTORS.map((doc, idx) => (
               <div key={idx} className="doctor-specialist-card scroll-reveal" style={{ transitionDelay: `${idx * 0.15}s` }}>
                 <div className="doctor-photo-frame">
-                  <img src={doc.image} alt={doc.name} className="doctor-card-photo" loading="lazy" />
+                  <img
+                    src={doc.image}
+                    alt={doc.name}
+                    className="doctor-card-photo"
+                    loading="lazy"
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.src = "/images/dr-ananya-deshmukh.jpg";
+                    }}
+                  />
                   {doc.availableToday && (
                     <span className="doctor-availability-tag">
                       <span className="live-dot-mini"></span> Available for Consultation
