@@ -24,12 +24,10 @@ export default function Navbar() {
   const [drawerServicesOpen, setDrawerServicesOpen] = useState(false);
   const location = useLocation();
 
-  // Desktop primary navigation links
+  // Desktop primary navigation links (Logo · Home · About · Services · Contact · Book Appointment)
   const desktopNavLinks = [
     { name: "Home", href: "/" },
-    { name: "About Us", href: "/about" },
-    { name: "Treatments", href: "/treatments" },
-    { name: "Our Doctors", href: "/team" },
+    { name: "About", href: "/about" },
     { name: "Contact", href: "/contact" },
   ];
 
@@ -233,7 +231,7 @@ export default function Navbar() {
                   onClick={closeMenus}
                 >
                   <Info size={18} className="drawer-item-icon" />
-                  <span>About Us</span>
+                  <span>About</span>
                 </Link>
 
                 {/* Services Collapsible Group */}
@@ -323,7 +321,7 @@ export default function Navbar() {
                   onClick={closeMenus}
                 >
                   <Mail size={18} className="drawer-item-icon" />
-                  <span>Contact Us</span>
+                  <span>Contact</span>
                 </Link>
               </nav>
 

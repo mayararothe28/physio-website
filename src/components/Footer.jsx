@@ -25,35 +25,33 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Col 2: Clinical Care Areas */}
+        {/* Col 2: Quick Links */}
         <div className="footer-col-links">
-          <h4>Clinical Specializations</h4>
+          <h4>Quick Links</h4>
           <ul>
-            <li><Link to="/treatments">Spinal Decompression & Sciatica</Link></li>
-            <li><Link to="/treatments">Knee Osteoarthritis & Preservation</Link></li>
-            <li><Link to="/treatments">Frozen Shoulder & Rotator Cuff</Link></li>
-            <li><Link to="/services">Cervical Spondylosis & Neck Pain</Link></li>
-            <li><Link to="/our-work">Sports Injury & ACL Rehabilitation</Link></li>
-            <li><Link to="/services">Post-Surgical TKR / THR Rehab</Link></li>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/about">About Us</Link></li>
+            <li><Link to="/services">Services</Link></li>
+            <li><Link to="/contact">Contact</Link></li>
+            <li><Link to="/appointment">Book Appointment</Link></li>
+            <li><Link to="/testimonials">Patient Testimonials</Link></li>
           </ul>
         </div>
 
-        {/* Col 3: Quick Navigation */}
+        {/* Col 3: Main Services */}
         <div className="footer-col-links">
-          <h4>Patient Resources</h4>
+          <h4>Main Services</h4>
           <ul>
-            <li><Link to="/about">About Our Clinic</Link></li>
-            <li><Link to="/team">Our Senior Physiotherapists</Link></li>
-            <li><Link to="/testimonials">Patient Recovery Stories</Link></li>
-            <li><Link to="/appointment">Book an Appointment</Link></li>
-            <li><Link to="/faq">Frequently Asked Questions</Link></li>
-            <li><Link to="/contact">Directions & Contact Desk</Link></li>
+            <li><Link to="/treatments">Back Pain & Sciatica</Link></li>
+            <li><Link to="/services">Neck Pain & Posture</Link></li>
+            <li><Link to="/our-work">Sports Injury & ACL</Link></li>
+            <li><Link to="/treatments">Knee Pain & Preservation</Link></li>
           </ul>
         </div>
 
-        {/* Col 4: Timings & Emergency Contact */}
+        {/* Col 4: Clinic Timings, Contact & Social Links */}
         <div className="footer-col-contact">
-          <h4>Clinic Hours & Helpline</h4>
+          <h4>Clinic Timings & Contact</h4>
           <div className="footer-contact-item">
             <MapPin size={17} className="contact-ico" />
             <span>Plot 42, High Street Galleria, Baner-Pashan Link Road, Baner, Pune – 411045</span>
@@ -74,15 +72,26 @@ export default function Footer() {
             <a href="mailto:care@revitaortho.com">care@revitaortho.com</a>
           </div>
 
-          <a
-            href="https://wa.me/919145875248?text=Hello%20RevitaOrtho,%20I%20have%20an%20inquiry."
-            target="_blank"
-            rel="noreferrer"
-            className="footer-whatsapp-btn"
-          >
-            <MessageCircle size={16} />
-            <span>Chat on WhatsApp</span>
-          </a>
+          <div className="footer-social-row">
+            <a
+              href="https://wa.me/919145875248?text=Hello%20RevitaOrtho,%20I%20have%20an%20inquiry."
+              target="_blank"
+              rel="noreferrer"
+              className="footer-whatsapp-btn"
+            >
+              <MessageCircle size={16} />
+              <span>WhatsApp</span>
+            </a>
+            <a
+              href="https://maps.google.com/?q=Baner+Pune"
+              target="_blank"
+              rel="noreferrer"
+              className="footer-social-pill"
+            >
+              <MapPin size={15} />
+              <span>Directions</span>
+            </a>
+          </div>
         </div>
       </div>
 
