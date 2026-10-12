@@ -316,32 +316,6 @@ export default function HomePage() {
 
             {/* Right Column: Lead Therapist Image & Credentials */}
             <div className="hero-doctor-card-col">
-              {/* Background ambient glowing orbs */}
-              <div className="hero-ambient-glow-orb hero-glow-1"></div>
-              <div className="hero-ambient-glow-orb hero-glow-2"></div>
-
-              {/* Floating trust badge 1: Top Right */}
-              <div className="hero-floating-badge badge-top-right">
-                <div className="floating-badge-icon bg-emerald-tint">
-                  <CheckCircle2 size={17} className="text-emerald" />
-                </div>
-                <div>
-                  <strong>10,000+ Recoveries</strong>
-                  <span>94% Surgery Averted</span>
-                </div>
-              </div>
-
-              {/* Floating trust badge 2: Bottom Left */}
-              <div className="hero-floating-badge badge-bottom-left">
-                <div className="floating-badge-icon bg-gold-tint">
-                  <Star size={17} className="text-gold fill-gold" />
-                </div>
-                <div>
-                  <strong>4.98 / 5.0 Rating</strong>
-                  <span>600+ Clinical Reviews</span>
-                </div>
-              </div>
-
               <div className="doctor-hero-showcase-card">
                 <div className="doctor-hero-photo-wrap">
                   <img
