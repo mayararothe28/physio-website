@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
+  Menu,
   X,
   ChevronDown,
   Calendar,
@@ -160,18 +161,18 @@ export default function Navbar() {
             <span>Book Appointment</span>
           </Link>
 
-          {/* Mobile Right-Side Controls: Book CTA + 3-Line Hamburger Button */}
+          {/* Mobile Right-Side Controls: Full "Book Appointment" CTA + Clean 3 Lines Icon */}
           <div className="mobile-controls-row">
             <Link
               to="/appointment"
               className="mobile-header-book-btn"
               onClick={closeMenus}
             >
-              <Calendar size={15} />
-              <span>Book</span>
+              <Calendar size={14} />
+              <span>Book Appointment</span>
             </Link>
 
-            {/* Authentic 3-Line Hamburger Menu Button on the Right Side */}
+            {/* Clean 3 Lines Icon on the Right Side (No box/border) */}
             <button
               type="button"
               className="mobile-hamburger-btn"
@@ -179,9 +180,7 @@ export default function Navbar() {
               aria-label="Open Navigation Menu"
               aria-expanded={menuOpen}
             >
-              <span className="burger-bar"></span>
-              <span className="burger-bar"></span>
-              <span className="burger-bar"></span>
+              <Menu size={27} strokeWidth={2.4} />
             </button>
           </div>
         </div>
