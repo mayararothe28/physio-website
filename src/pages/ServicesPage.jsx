@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useSearchParams } from "react-router-dom";
 import {
   Activity,
   Bone,
@@ -15,7 +15,10 @@ import {
   ShieldCheck,
   Check,
   Zap,
+  Stethoscope,
+  MessageCircle,
 } from "lucide-react";
+import { SERVICE_DETAILS } from "../data/serviceDetailsData";
 import "./ServicesPage.css";
 
 const CLINICAL_SERVICES = [
@@ -114,8 +117,51 @@ const EVALUATION_INCLUSIONS = [
   "Immediate first-session pain relief treatment (Laser / Mobilization)",
 ];
 
+const CATEGORY_CARDS_MAP = {
+  spine: {
+    key: "back-pain",
+    title: "Spine & Sciatica Care",
+    badge: "6 Non-Surgical Protocols",
+    lead: "Targeted decompression, cold laser photobiomodulation, and core stabilizing protocols for lumbar disc bulge, cervical radiculopathy, and sciatica.",
+    slug: "spine",
+  },
+  sports: {
+    key: "sports-injury",
+    title: "Sports Injuries & ACL Rehab",
+    badge: "6 Athletic Recovery Protocols",
+    lead: "Kinetic chain restoration, high-velocity deceleration drills, and radiofrequency tissue remodeling for ligament sprains, meniscus tears, and muscle pulls.",
+    slug: "sports",
+  },
+  joint: {
+    key: "knee-pain",
+    title: "Joint & Knee Preservation",
+    badge: "6 Cartilage Care Protocols",
+    lead: "Cartilage-unloading biomechanics, Maitland joint glides, and cellular diathermy to eliminate bone-on-bone friction and avert knee replacement surgery.",
+    slug: "knee",
+  },
+};
+
+const ICON_MAP = {
+  Bone,
+  Stethoscope,
+  Zap,
+  Activity,
+};
+
 export default function ServicesPage() {
-  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [searchParams] = useSearchParams();
+  const initCat = searchParams.get("category") || "all";
+  const [selectedCategory, setSelectedCategory] = useState(initCat);
+
+  useEffect(() => {
+    const cat = searchParams.get("category");
+    if (cat) {
+      setSelectedCategory(cat);
+    }
+  }, [searchParams]);
+
+  const activeCategoryInfo = CATEGORY_CARDS_MAP[selectedCategory];
+  const activeDetailData = activeCategoryInfo ? SERVICE_DETAILS[activeCategoryInfo.key] : null;
 
   const filteredServices =
     selectedCategory === "all"
@@ -157,21 +203,21 @@ export default function ServicesPage() {
               className={`filter-tab-btn ${selectedCategory === "spine" ? "active" : ""}`}
               onClick={() => setSelectedCategory("spine")}
             >
-              Spine & Sciatica
+              Spine & Sciatica (6 Cards)
             </button>
             <button
               type="button"
               className={`filter-tab-btn ${selectedCategory === "sports" ? "active" : ""}`}
               onClick={() => setSelectedCategory("sports")}
             >
-              Sports Medicine
+              Sports Medicine (6 Cards)
             </button>
             <button
               type="button"
               className={`filter-tab-btn ${selectedCategory === "joint" ? "active" : ""}`}
               onClick={() => setSelectedCategory("joint")}
             >
-              Joint Preservation
+              Joint Preservation (6 Cards)
             </button>
             <button
               type="button"
@@ -191,9 +237,111 @@ export default function ServicesPage() {
         </div>
       </div>
 
-      {/* ─── 3. SERVICES GRID ─── */}
+      {/* ─── 3. DYNAMIC 6 SPECIALIZED CARDS VIEW (When a service category is selected) ─── */}
+      {activeCategoryInfo && activeDetailData && activeDetailData.relatedCards && (
+        <section className="services-specialized-cards-section section-padding">
+          <div className="services-container">
+            <div className="specialized-category-banner">
+              <div className="specialized-banner-left">
+                <span className="specialized-kicker">{activeCategoryInfo.badge}</span>
+                <h2>{activeCategoryInfo.title} — 6 Specialized Clinical Protocols</h2>
+                <p>{activeCategoryInfo.lead}</p>
+              </div>
+              <div className="specialized-banner-right">
+                <Link
+                  to={`/services/${activeCategoryInfo.slug}`}
+                  className="btn-specialized-fullpage"
+                >
+                  <span>Open Dedicated Clinical Page</span>
+                  <ArrowRight size={15} />
+                </Link>
+              </div>
+            </div>
+
+            <div className="related-cards-grid">
+              {activeDetailData.relatedCards.map((card, idx) => {
+                const CardIcon = ICON_MAP[card.iconName] || Activity;
+                return (
+                  <article key={card.id || idx} className="clinical-focus-card scroll-reveal">
+                    <div className="card-top-header">
+                      <div className="card-icon-pill">
+                        <CardIcon size={20} className="text-azure" />
+                      </div>
+                      <span className="card-badge-chip">{card.badge}</span>
+                    </div>
+
+                    <h3 className="card-title">{card.title}</h3>
+                    <p className="card-desc">{card.shortDesc}</p>
+
+                    <div className="card-symptoms-box">
+                      <strong className="card-box-label">Common Signs & Indications:</strong>
+                      <ul className="card-mini-symptoms">
+                        {card.symptoms?.map((sym, sIdx) => (
+                          <li key={sIdx}>
+                            <CheckCircle2 size={13} className="text-azure flex-shrink-0" />
+                            <span>{sym}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div className="card-meta-chips">
+                      <div className="card-meta-item">
+                        <Clock size={13} className="text-azure" />
+                        <span>{card.recovery}</span>
+                      </div>
+                      <div className="card-meta-item">
+                        <ShieldCheck size={13} className="text-emerald" />
+                        <span>Averts: {card.surgeryAvoided}</span>
+                      </div>
+                    </div>
+
+                    <div className="card-modality-badge">
+                      <strong>Modality:</strong> {card.modality}
+                    </div>
+
+                    <div className="card-action-row">
+                      <Link
+                        to={`/appointment?service=${activeDetailData.serviceCode}&condition=${encodeURIComponent(
+                          card.conditionParam || card.title
+                        )}`}
+                        className="btn-card-book"
+                      >
+                        <Calendar size={14} />
+                        <span>Book Slot</span>
+                        <ArrowRight size={13} />
+                      </Link>
+
+                      <a
+                        href={`https://wa.me/919145875248?text=Hello%20RevitaOrtho,%20I%20want%20to%20consult%20regarding%20${encodeURIComponent(
+                          card.title
+                        )}.`}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="btn-card-wa"
+                        title="Chat on WhatsApp"
+                      >
+                        <MessageCircle size={15} />
+                      </a>
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ─── 4. GENERAL CLINICAL SERVICES DIRECTORY GRID ─── */}
       <section className="services-grid-section section-padding">
         <div className="services-container">
+          <div className="section-header-centered" style={{ marginBottom: "32px" }}>
+            <span className="section-kicker">ALL CORE MODALITIES</span>
+            <h2 className="section-main-title">
+              {selectedCategory === "all" ? "Core Outpatient Services Directory" : `Primary Department: ${filteredServices[0]?.category || "Clinical Care"}`}
+            </h2>
+          </div>
+
           <div className="clinical-services-grid">
             {filteredServices.map((service, index) => {
               const Icon = service.icon;
@@ -246,12 +394,18 @@ export default function ServicesPage() {
 
                   <div className="service-card-cta">
                     <Link
+                      to={`/services/${encodeURIComponent(service.linkParam)}`}
+                      className="btn-service-view-cards"
+                    >
+                      <span>Explore 6 Clinical Cards</span>
+                      <ArrowRight size={14} />
+                    </Link>
+                    <Link
                       to={`/appointment?service=${encodeURIComponent(service.linkParam)}`}
                       className="btn-service-book"
                     >
-                      <Calendar size={16} />
-                      <span>Book Evaluation for {service.category}</span>
-                      <ArrowRight size={16} />
+                      <Calendar size={15} />
+                      <span>Book Evaluation</span>
                     </Link>
                   </div>
                 </article>

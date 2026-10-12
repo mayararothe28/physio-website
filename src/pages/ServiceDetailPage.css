@@ -1080,3 +1080,231 @@
     align-items: stretch;
   }
 }
+
+/* ==========================================================================
+   6 SPECIALIZED CLINICAL CONDITION CARDS SECTION
+   ========================================================================== */
+
+.related-cards-section {
+  background: linear-gradient(180deg, #f7fafd 0%, #ffffff 100%);
+  border-bottom: 1px solid #e2eaf1;
+  padding: 64px 0 76px;
+}
+
+.related-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 36px;
+}
+
+.clinical-focus-card {
+  background: #ffffff;
+  border: 1px solid #e1ecf5;
+  border-radius: 14px;
+  padding: 24px 22px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 18px rgba(15, 33, 55, 0.04);
+  position: relative;
+}
+
+.clinical-focus-card:hover {
+  transform: translateY(-4px);
+  border-color: #9ecced;
+  box-shadow: 0 14px 32px rgba(27, 116, 168, 0.12);
+}
+
+.card-top-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.card-icon-pill {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: #eaf4fb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+
+.clinical-focus-card:hover .card-icon-pill {
+  transform: scale(1.06);
+}
+
+.card-badge-chip {
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: #e8f4fd;
+  color: #155d88;
+  white-space: nowrap;
+}
+
+.card-title {
+  font-size: 17.5px;
+  font-weight: 750;
+  color: #0f2744;
+  line-height: 1.35;
+  margin: 0 0 10px;
+}
+
+.card-desc {
+  font-size: 13.5px;
+  color: #4b637a;
+  line-height: 1.55;
+  margin: 0 0 14px;
+}
+
+.card-symptoms-box {
+  background: #f8fafc;
+  border: 1px solid #edf2f7;
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin-bottom: 14px;
+}
+
+.card-box-label {
+  display: block;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #334e68;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 7px;
+}
+
+.card-mini-symptoms {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.card-mini-symptoms li {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  font-size: 12.5px;
+  color: #243b53;
+  line-height: 1.45;
+}
+
+.card-mini-symptoms li span {
+  flex: 1;
+}
+
+.card-meta-chips {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.card-meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #486581;
+  background: #f0f7fc;
+  padding: 5px 9px;
+  border-radius: 6px;
+}
+
+.card-modality-badge {
+  font-size: 12.5px;
+  color: #1b74a8;
+  background: #f4f9fd;
+  border-left: 3px solid #1b74a8;
+  padding: 7px 10px;
+  border-radius: 0 6px 6px 0;
+  margin-bottom: 18px;
+  margin-top: auto;
+  line-height: 1.45;
+}
+
+.card-modality-badge strong {
+  color: #0f2744;
+}
+
+.card-action-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-card-book {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: linear-gradient(135deg, #1b74a8 0%, #155d88 100%);
+  color: #ffffff !important;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 10px 14px;
+  border-radius: 7px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(27, 116, 168, 0.2);
+}
+
+.btn-card-book:hover {
+  background: linear-gradient(135deg, #166391 0%, #114c70 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(27, 116, 168, 0.32);
+}
+
+.btn-card-wa {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  background: #25d366;
+  color: #ffffff !important;
+  border-radius: 7px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(37, 211, 102, 0.25);
+}
+
+.btn-card-wa:hover {
+  background: #20ba59;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.35);
+}
+
+@media (max-width: 1024px) {
+  .related-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .related-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .clinical-focus-card {
+    padding: 20px 16px;
+  }
+}
+

@@ -36,12 +36,19 @@ const ALIAS_MAP = {
   "spine": "back-pain",
   "back": "back-pain",
   "sciatica": "back-pain",
+  "spine-sciatica": "back-pain",
+  "spine-care": "back-pain",
   "neck": "neck-pain",
   "posture": "neck-pain",
   "sports": "sports-injury",
+  "sports-injuries": "sports-injury",
+  "sports-injury": "sports-injury",
   "acl": "sports-injury",
   "knee": "knee-pain",
   "joints": "knee-pain",
+  "joint": "knee-pain",
+  "joint-preservation": "knee-pain",
+  "knee-preservation": "knee-pain",
   "osteoarthritis": "knee-pain",
 };
 
@@ -195,7 +202,96 @@ export default function ServiceDetailPage() {
         </div>
       </section>
 
-      {/* ─── 3. SYMPTOMS CHECKLIST ("ARE YOU EXPERIENCING THESE?") ─── */}
+      {/* ─── 3. 6 SPECIALIZED CLINICAL CONDITION & TREATMENT CARDS ─── */}
+      {detail.relatedCards && detail.relatedCards.length > 0 && (
+        <section className="detail-section related-cards-section" id="related-conditions">
+          <div className="detail-container">
+            <div className="section-title-wrap">
+              <span className="section-kicker-tag">6 SPECIALIZED PROTOCOLS & CONDITIONS</span>
+              <h2>6 Specialized Clinical Conditions We Treat Under {detail.title}</h2>
+              <p>
+                Explore our 6 documented non-surgical treatment pathways. Each protocol is tailored to target the exact anatomical root cause of pain and restore joint freedom.
+              </p>
+            </div>
+
+            <div className="related-cards-grid">
+              {detail.relatedCards.map((card, idx) => {
+                const CardIcon = ICON_MAP[card.iconName] || Activity;
+                return (
+                  <article key={card.id || idx} className="clinical-focus-card scroll-reveal">
+                    <div className="card-top-header">
+                      <div className="card-icon-pill">
+                        <CardIcon size={20} className="text-azure" />
+                      </div>
+                      <span className="card-badge-chip">{card.badge}</span>
+                    </div>
+
+                    <h3 className="card-title">{card.title}</h3>
+                    <p className="card-desc">{card.shortDesc}</p>
+
+                    {/* Key Indicators / Symptoms */}
+                    <div className="card-symptoms-box">
+                      <strong className="card-box-label">Common Signs & Indications:</strong>
+                      <ul className="card-mini-symptoms">
+                        {card.symptoms?.map((sym, sIdx) => (
+                          <li key={sIdx}>
+                            <CheckCircle2 size={13} className="text-azure flex-shrink-0" />
+                            <span>{sym}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* Modality & Recovery */}
+                    <div className="card-meta-chips">
+                      <div className="card-meta-item">
+                        <Clock size={13} className="text-azure" />
+                        <span>{card.recovery}</span>
+                      </div>
+                      <div className="card-meta-item">
+                        <ShieldCheck size={13} className="text-emerald" />
+                        <span>Averts: {card.surgeryAvoided}</span>
+                      </div>
+                    </div>
+
+                    <div className="card-modality-badge">
+                      <strong>Modality:</strong> {card.modality}
+                    </div>
+
+                    {/* Action buttons */}
+                    <div className="card-action-row">
+                      <Link
+                        to={`/appointment?service=${detail.serviceCode}&condition=${encodeURIComponent(
+                          card.conditionParam || card.title
+                        )}`}
+                        className="btn-card-book"
+                      >
+                        <Calendar size={14} />
+                        <span>Book Slot</span>
+                        <ArrowRight size={13} />
+                      </Link>
+
+                      <a
+                        href={`https://wa.me/919145875248?text=Hello%20RevitaOrtho,%20I%20want%20to%20consult%20regarding%20${encodeURIComponent(
+                          card.title
+                        )}.`}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="btn-card-wa"
+                        title="Chat on WhatsApp"
+                      >
+                        <MessageCircle size={15} />
+                      </a>
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ─── 4. SYMPTOMS CHECKLIST ("ARE YOU EXPERIENCING THESE?") ─── */}
       <section className="detail-section symptoms-section">
         <div className="detail-container">
           <div className="section-title-wrap">

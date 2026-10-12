@@ -126,13 +126,13 @@ export default function Navbar() {
                   <Link to="/services" onClick={closeMenus}>
                     All Clinical Services
                   </Link>
-                  <Link to="/services" onClick={closeMenus}>
+                  <Link to="/services/spine" onClick={closeMenus}>
                     Spine & Sciatica Care
                   </Link>
-                  <Link to="/our-work" onClick={closeMenus}>
+                  <Link to="/services/sports" onClick={closeMenus}>
                     Sports Injuries & ACL Rehab
                   </Link>
-                  <Link to="/treatments" onClick={closeMenus}>
+                  <Link to="/services/knee" onClick={closeMenus}>
                     Joint & Knee Preservation
                   </Link>
                 </div>
@@ -259,13 +259,13 @@ export default function Navbar() {
                       <Link to="/services" onClick={closeMenus}>
                         All Clinical Services
                       </Link>
-                      <Link to="/services" onClick={closeMenus}>
+                      <Link to="/services/spine" onClick={closeMenus}>
                         Spine & Sciatica Care
                       </Link>
-                      <Link to="/our-work" onClick={closeMenus}>
+                      <Link to="/services/sports" onClick={closeMenus}>
                         Sports Injuries & ACL Rehab
                       </Link>
-                      <Link to="/treatments" onClick={closeMenus}>
+                      <Link to="/services/knee" onClick={closeMenus}>
                         Joint & Knee Preservation
                       </Link>
                     </div>
