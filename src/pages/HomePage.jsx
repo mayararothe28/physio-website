@@ -1083,7 +1083,7 @@ export default function HomePage() {
               </ul>
 
               <div className="care-card-action">
-                <Link to="/appointment?mode=home" className="btn-clinical-secondary full-w">
+                <Link to="/appointment?mode=home" className="btn-clinical-primary full-w">
                   <span>Request Home Visit Physiotherapist</span>
                   <ArrowRight size={17} />
                 </Link>
