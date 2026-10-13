@@ -27,12 +27,6 @@ import {
 } from "lucide-react";
 import "./AboutPage.css";
 
-const CLINICAL_MILESTONES = [
-  { value: "14+", label: "Years Clinical Excellence", sub: "Established in Pune" },
-  { value: "15,000+", label: "Patients Recovered", sub: "Without invasive surgeries" },
-  { value: "94.2%", label: "Surgery Avoidance Rate", sub: "Documented in disc & knee cases" },
-  { value: "4.98★", label: "Patient Satisfaction", sub: "1,450+ verified Google reviews" },
-];
 
 const PATIENT_JOURNEY_STEPS = [
   {
@@ -182,18 +176,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ─── 2. CLINICAL MILESTONES RIBBON ─── */}
-      <section className="about-milestones-bar">
-        <div className="about-container milestones-grid">
-          {CLINICAL_MILESTONES.map((item, idx) => (
-            <div key={idx} className={`milestone-box scroll-reveal delay-${(idx % 4) + 1}`}>
-              <strong className="milestone-value">{item.value}</strong>
-              <span className="milestone-title">{item.label}</span>
-              <p className="milestone-sub">{item.sub}</p>
-            </div>
-          ))}
-        </div>
-      </section>
 
       {/* ─── 3. OUR MISSION & PATIENT PROMISE ─── */}
       <section className="about-mission-section section-padding">

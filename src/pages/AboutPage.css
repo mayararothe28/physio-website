@@ -132,58 +132,7 @@
   margin: 0;
 }
 
-/* ─── 2. MILESTONES BAR ─── */
-.about-milestones-bar {
-  background-color: #ffffff;
-  border-bottom: 1px solid #e2e8f0;
-  padding: 38px 0;
-}
-
-.milestones-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-}
-
-.milestone-box {
-  display: flex;
-  flex-direction: column;
-  padding: 16px 20px;
-  border-radius: 12px;
-  background-color: #f8fafc;
-  border: 1px solid #e2e8f0;
-  transition: all 0.22s ease;
-}
-
-.milestone-box:hover {
-  transform: translateY(-3px);
-  border-color: #b7d6ed;
-  box-shadow: 0 8px 20px rgba(2, 132, 199, 0.08);
-  background-color: #ffffff;
-}
-
-.milestone-value {
-  font-family: 'Outfit', sans-serif;
-  font-size: 34px;
-  font-weight: 900;
-  color: #0284c7;
-  line-height: 1;
-  margin-bottom: 6px;
-}
-
-.milestone-title {
-  font-size: 14px;
-  font-weight: 800;
-  color: #081a2e;
-}
-
-.milestone-sub {
-  font-size: 12px;
-  color: #64748b;
-  margin: 3px 0 0;
-}
-
-/* ─── 3. OUR MISSION & COMPARISON CARD ─── */
+/* ─── 2. OUR MISSION & COMPARISON CARD ─── */
 .about-mission-section {
   background-color: #ffffff;
 }
@@ -369,7 +318,7 @@
   box-shadow: 0 6px 18px rgba(2, 132, 199, 0.35);
 }
 
-/* ─── 4. 4-STEP PATIENT RECOVERY JOURNEY ─── */
+/* ─── 3. 4-STEP PATIENT RECOVERY JOURNEY ─── */
 .about-journey-section {
   background-color: #f8fafc;
   border-top: 1px solid #e2e8f0;
@@ -481,7 +430,7 @@
   transform: translateX(3px);
 }
 
-/* ─── 5. CONDITIONS WE SPECIALIZE IN ─── */
+/* ─── 4. CONDITIONS WE SPECIALIZE IN ─── */
 .about-conditions-section {
   background-color: #ffffff;
 }
@@ -625,7 +574,7 @@
   border-color: #bae6fd;
 }
 
-/* ─── 6. CLINICAL LEADERSHIP SPOTLIGHT ─── */
+/* ─── 5. CLINICAL LEADERSHIP SPOTLIGHT ─── */
 .about-leadership-section {
   background-color: #f8fafc;
   border-top: 1px solid #e2e8f0;
@@ -795,7 +744,7 @@
   color: #065f46 !important;
 }
 
-/* ─── 7. CLINIC INFRASTRUCTURE & AMENITIES ─── */
+/* ─── 6. CLINIC INFRASTRUCTURE & AMENITIES ─── */
 .about-facilities-section {
   background-color: #ffffff;
 }
@@ -843,7 +792,7 @@
   line-height: 1.55;
 }
 
-/* ─── 8. PATIENT FAQS ACCORDION ─── */
+/* ─── 7. PATIENT FAQS ACCORDION ─── */
 .about-faqs-section {
   background-color: #f8fafc;
   border-top: 1px solid #e2e8f0;
@@ -922,7 +871,7 @@
   margin: 14px 0 0;
 }
 
-/* ─── 9. BOTTOM ACTION CTA ─── */
+/* ─── 8. BOTTOM ACTION CTA ─── */
 .about-cta-section {
   background: linear-gradient(135deg, #081a2e 0%, #0e2a4a 100%);
   color: #ffffff;
@@ -1037,10 +986,6 @@
   .facilities-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-
-  .milestones-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
 }
 
 @media (max-width: 768px) {
@@ -1091,11 +1036,6 @@
 }
 
 @media (max-width: 540px) {
-  .milestones-grid {
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
-
   .journey-steps-grid {
     grid-template-columns: 1fr;
   }
