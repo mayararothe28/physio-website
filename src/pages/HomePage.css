@@ -734,7 +734,7 @@
 
 .btn-guide-appointment {
   background: linear-gradient(135deg, #1b74a8 0%, #155d88 100%);
-  color: #ffffff;
+  color: #ffffff !important;
   border: 1px solid #176593;
   border-radius: 8px;
   padding: 11px 16px;
@@ -745,6 +745,7 @@
   justify-content: center;
   gap: 8px;
   cursor: pointer;
+  text-decoration: none;
   transition: all 0.2s ease;
   box-shadow: 0 4px 12px rgba(27, 116, 168, 0.22);
 }

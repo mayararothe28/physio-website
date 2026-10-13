@@ -412,15 +412,14 @@ export default function HomePage() {
                 </div>
 
                 <div className="guide-action-row">
-                  <button
-                    type="button"
-                    onClick={scrollToAppointment}
+                  <Link
+                    to="/appointment"
                     className="btn-guide-appointment"
                   >
                     <Calendar size={15} />
                     <span>Book Evaluation Slot</span>
                     <ArrowRight size={14} />
-                  </button>
+                  </Link>
                   <a
                     href={`https://wa.me/91${clinicInfo.rawPhone}?text=Hello%20RevitaOrtho,%20I%20would%20like%20to%20consult%20regarding%20my%20pain.`}
                     target="_blank"
