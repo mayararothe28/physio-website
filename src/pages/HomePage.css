@@ -551,19 +551,19 @@
   border-color: #8ed6b4;
 }
 
-/* ─── Hero Clinical Hub Card (No Image) ─── */
+/* ─── Hero Patient Pain Relief Guide Card ─── */
 .hero-doctor-card-col {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.clinical-hero-hub-card {
+.patient-pain-guide-card {
   background: #ffffff;
   border: 1px solid #d9e6f2;
   border-radius: var(--med-radius-lg);
   box-shadow: 0 16px 36px rgba(15, 36, 56, 0.08), 0 2px 8px rgba(15, 36, 56, 0.04);
-  padding: 26px 26px 22px;
+  padding: 24px 22px 20px;
   width: 100%;
   max-width: 440px;
   position: relative;
@@ -572,64 +572,28 @@
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.clinical-hero-hub-card:hover {
+.patient-pain-guide-card:hover {
   transform: translateY(-3px);
   box-shadow: 0 20px 42px rgba(15, 36, 56, 0.12);
 }
 
-.hub-card-header {
-  display: flex;
-  align-items: center;
-  gap: 14px;
+.guide-card-header {
   margin-bottom: 14px;
-  padding-bottom: 14px;
-  border-bottom: 1px solid #f1f5f9;
 }
 
-.hub-icon-frame {
-  width: 46px;
-  height: 46px;
-  border-radius: 12px;
-  background: #ecfdf5;
-  border: 1px solid #a7f3d0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.hub-kicker-tag {
-  display: block;
-  font-size: 10.5px;
-  font-weight: 800;
-  letter-spacing: 0.7px;
-  color: var(--med-azure);
-  text-transform: uppercase;
-  margin-bottom: 2px;
-}
-
-.hub-card-title {
-  font-family: 'Outfit', 'Manrope', sans-serif;
-  font-size: 18px;
-  font-weight: 750;
-  color: var(--med-navy);
-  margin: 0;
-  line-height: 1.25;
-}
-
-.hub-live-ribbon {
+.guide-live-status {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 7px;
   background: #f0fdf4;
   color: #166534;
   border: 1px solid #bbf7d0;
-  padding: 6px 12px;
+  padding: 5px 12px;
   border-radius: 9999px;
-  font-size: 12px;
-  font-weight: 650;
-  margin-bottom: 16px;
-  width: 100%;
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
 }
 
 .live-pulse-dot {
@@ -642,92 +606,116 @@
   flex-shrink: 0;
 }
 
-.hub-feature-list {
-  display: flex;
-  flex-direction: column;
-  gap: 11px;
-  margin-bottom: 18px;
-}
-
-.hub-feature-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-}
-
-.hub-feat-ico {
-  margin-top: 2px;
-  flex-shrink: 0;
-}
-
-.hub-feature-item strong {
-  display: block;
-  font-size: 13px;
-  font-weight: 700;
+.guide-card-title {
+  font-family: 'Outfit', 'Manrope', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
   color: var(--med-navy);
-  line-height: 1.3;
+  margin: 0 0 3px;
+  line-height: 1.25;
 }
 
-.hub-feature-item p {
-  margin: 1px 0 0;
-  font-size: 12px;
+.guide-card-sub {
+  font-size: 12.5px;
   color: var(--med-text-muted);
+  margin: 0;
   line-height: 1.45;
 }
 
-.hub-clinician-footer {
+.guide-conditions-grid {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  border-radius: 10px;
-  padding: 10px 14px;
+  flex-direction: column;
+  gap: 9px;
   margin-bottom: 16px;
 }
 
-.hub-clinician-info {
+.condition-quick-btn {
+  width: 100%;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 10px 12px;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.hub-clinician-avatar {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: var(--med-azure-light);
-  border: 1px solid var(--med-azure-border);
+.condition-quick-btn:hover {
+  background: #f0f7ff;
+  border-color: #93c5fd;
+  transform: translateX(3px);
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.08);
+}
+
+.quick-btn-icon-wrap {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
 }
 
-.hub-clinician-info strong {
-  display: block;
+.quick-btn-text {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.quick-btn-text strong {
   font-size: 13px;
   font-weight: 750;
   color: var(--med-navy);
+  line-height: 1.3;
 }
 
-.hub-clinician-info span {
-  display: block;
-  font-size: 11.5px;
+.quick-btn-text span {
+  font-size: 11px;
   color: var(--med-text-muted);
+  line-height: 1.35;
+  margin-top: 1px;
 }
 
-.hub-rating-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  background: #fffbeb;
-  border: 1px solid #fef3c7;
-  color: #b45309;
-  font-size: 12px;
+.quick-badge {
+  font-size: 10px;
   font-weight: 750;
-  padding: 4px 8px;
+  color: #0369a1;
+  background: #e0f2fe;
+  padding: 3px 7px;
   border-radius: 6px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.quick-badge.badge-emerald {
+  color: #15803d;
+  background: #dcfce7;
+}
+
+.guide-guarantees-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin-bottom: 14px;
+}
+
+.guide-guarantee-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11.5px;
+  font-weight: 650;
+  color: var(--med-navy);
 }
 
 .star-gold {
@@ -738,13 +726,13 @@
   fill: #f59e0b;
 }
 
-.hub-action-row {
+.guide-action-row {
   display: grid;
   grid-template-columns: 1fr auto;
   gap: 10px;
 }
 
-.btn-hub-appointment {
+.btn-guide-appointment {
   background: linear-gradient(135deg, #1b74a8 0%, #155d88 100%);
   color: #ffffff;
   border: 1px solid #176593;
@@ -761,13 +749,13 @@
   box-shadow: 0 4px 12px rgba(27, 116, 168, 0.22);
 }
 
-.btn-hub-appointment:hover {
+.btn-guide-appointment:hover {
   background: linear-gradient(135deg, #166391 0%, #114c70 100%);
   box-shadow: 0 6px 16px rgba(27, 116, 168, 0.3);
   transform: translateY(-1px);
 }
 
-.btn-hub-whatsapp {
+.btn-guide-whatsapp {
   width: 44px;
   height: 44px;
   background: #ecfdf5;
@@ -781,7 +769,7 @@
   transition: all 0.2s ease;
 }
 
-.btn-hub-whatsapp:hover {
+.btn-guide-whatsapp:hover {
   background: #d1fae5;
   color: #065f46;
   transform: translateY(-1px);
@@ -2160,7 +2148,7 @@
     justify-content: flex-start;
   }
 
-  .clinical-hero-hub-card {
+  .patient-pain-guide-card {
     max-width: 100%;
   }
 
@@ -2207,15 +2195,15 @@
     padding: 32px 0 44px;
   }
 
-  .clinical-hero-hub-card {
-    padding: 20px 18px;
+  .patient-pain-guide-card {
+    padding: 20px 16px;
   }
 
-  .hub-action-row {
+  .guide-action-row {
     grid-template-columns: 1fr;
   }
 
-  .btn-hub-whatsapp {
+  .btn-guide-whatsapp {
     width: 100%;
     height: 42px;
   }

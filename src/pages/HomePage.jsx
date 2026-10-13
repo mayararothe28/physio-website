@@ -24,6 +24,7 @@ import {
   Loader2,
   ChevronDown,
   HelpCircle,
+  Accessibility,
 } from "lucide-react";
 import { fetchClinicData, submitAppointmentApi } from "../services/api";
 import "./HomePage.css";
@@ -180,6 +181,11 @@ export default function HomePage() {
     }
   }
 
+  function handleSelectConditionAndScroll(serviceId) {
+    setFormData((prev) => ({ ...prev, service: serviceId }));
+    scrollToAppointment();
+  }
+
   // Graceful loading state
   if (isLoading || !apiData) {
     return (
@@ -314,89 +320,112 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Right Column: Clinical Diagnostic Hub & Specialist Assurances (No Photo) */}
+            {/* Right Column: Patient Quick Pain Relief Guide (Clear & Easy for Patients) */}
             <div className="hero-doctor-card-col">
-              <div className="clinical-hero-hub-card">
-                <div className="hub-card-header">
-                  <div className="hub-icon-frame">
-                    <ShieldCheck size={26} className="text-emerald" />
+              <div className="patient-pain-guide-card">
+                <div className="guide-card-header">
+                  <div className="guide-live-status">
+                    <span className="live-pulse-dot"></span>
+                    <span>DOCTOR AVAILABLE TODAY IN PUNE</span>
                   </div>
-                  <div>
-                    <span className="hub-kicker-tag">NON-SURGICAL PHYSICAL MEDICINE</span>
-                    <h3 className="hub-card-title">Specialized Clinical Diagnostic</h3>
-                  </div>
+                  <h3 className="guide-card-title">Where Is Your Pain?</h3>
+                  <p className="guide-card-sub">
+                    Tap your pain area below to consult a doctor without surgery:
+                  </p>
                 </div>
 
-                <div className="hub-live-ribbon">
-                  <span className="live-pulse-dot"></span>
-                  <span>In-Clinic & Home Visits Available Today</span>
+                <div className="guide-conditions-grid">
+                  <button
+                    type="button"
+                    className="condition-quick-btn"
+                    onClick={() => handleSelectConditionAndScroll("back-pain")}
+                  >
+                    <div className="quick-btn-icon-wrap">
+                      <Bone size={20} className="text-azure" />
+                    </div>
+                    <div className="quick-btn-text">
+                      <strong>Back Pain & Sciatica</strong>
+                      <span>Slip disc, lower back ache, leg tingling</span>
+                    </div>
+                    <span className="quick-badge">94% Avoid Surgery</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    className="condition-quick-btn"
+                    onClick={() => handleSelectConditionAndScroll("knee-pain")}
+                  >
+                    <div className="quick-btn-icon-wrap">
+                      <Accessibility size={20} className="text-emerald" />
+                    </div>
+                    <div className="quick-btn-text">
+                      <strong>Knee & Joint Arthritis</strong>
+                      <span>Pain climbing stairs, joint stiffness</span>
+                    </div>
+                    <span className="quick-badge badge-emerald">Save Cartilage</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    className="condition-quick-btn"
+                    onClick={() => handleSelectConditionAndScroll("neck-pain")}
+                  >
+                    <div className="quick-btn-icon-wrap">
+                      <Activity size={20} className="text-azure" />
+                    </div>
+                    <div className="quick-btn-text">
+                      <strong>Neck & Frozen Shoulder</strong>
+                      <span>Stiff neck, desk posture strain, arm pain</span>
+                    </div>
+                    <span className="quick-badge">Full Mobility</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    className="condition-quick-btn"
+                    onClick={() => handleSelectConditionAndScroll("sports-injury")}
+                  >
+                    <div className="quick-btn-icon-wrap">
+                      <Zap size={20} className="text-emerald" />
+                    </div>
+                    <div className="quick-btn-text">
+                      <strong>Sports & Muscle Sprains</strong>
+                      <span>Ligament twist, muscle pull, sports injury</span>
+                    </div>
+                    <span className="quick-badge badge-emerald">Fast Healing</span>
+                  </button>
                 </div>
 
-                <div className="hub-feature-list">
-                  <div className="hub-feature-item">
-                    <CheckCircle2 size={16} className="text-azure hub-feat-ico" />
-                    <div>
-                      <strong>45-Min Root-Cause Diagnostic</strong>
-                      <p>Musculoskeletal assessment, provocation tests & nerve screening.</p>
-                    </div>
+                <div className="guide-guarantees-row">
+                  <div className="guide-guarantee-item">
+                    <ShieldCheck size={15} className="text-emerald" />
+                    <span>100% Non-Surgical</span>
                   </div>
-
-                  <div className="hub-feature-item">
-                    <CheckCircle2 size={16} className="text-azure hub-feat-ico" />
-                    <div>
-                      <strong>Advanced European Modalities</strong>
-                      <p>Computerized spinal decompression & Class-IV deep cold laser.</p>
-                    </div>
+                  <div className="guide-guarantee-item">
+                    <Clock size={15} className="text-azure" />
+                    <span>Zero Waiting Time</span>
                   </div>
-
-                  <div className="hub-feature-item">
-                    <CheckCircle2 size={16} className="text-azure hub-feat-ico" />
-                    <div>
-                      <strong>Dedicated 1-on-1 Specialist Care</strong>
-                      <p>Treated directly by senior MPT clinicians with zero waiting time.</p>
-                    </div>
-                  </div>
-
-                  <div className="hub-feature-item">
-                    <CheckCircle2 size={16} className="text-azure hub-feat-ico" />
-                    <div>
-                      <strong>Insurance & Cashless Support</strong>
-                      <p>Comprehensive paperwork support for all health insurance claims.</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="hub-clinician-footer">
-                  <div className="hub-clinician-info">
-                    <div className="hub-clinician-avatar">
-                      <Stethoscope size={19} className="text-azure" />
-                    </div>
-                    <div>
-                      <strong>{therapist.name}</strong>
-                      <span>{therapist.role} • {therapist.experience}</span>
-                    </div>
-                  </div>
-                  <div className="hub-rating-pill">
+                  <div className="guide-guarantee-item">
                     <Star size={14} className="star-gold fill-gold" />
-                    <span>{therapist.rating}</span>
+                    <span>4.98 ★ Rated Care</span>
                   </div>
                 </div>
 
-                <div className="hub-action-row">
+                <div className="guide-action-row">
                   <button
                     type="button"
                     onClick={scrollToAppointment}
-                    className="btn-hub-appointment"
+                    className="btn-guide-appointment"
                   >
                     <Calendar size={15} />
-                    <span>Reserve Evaluation Slot</span>
+                    <span>Book Evaluation Slot</span>
                     <ArrowRight size={14} />
                   </button>
                   <a
-                    href={`https://wa.me/91${clinicInfo.rawPhone}?text=Hello%20RevitaOrtho,%20I%20would%20like%20to%20consult%20regarding%20an%20evaluation.`}
+                    href={`https://wa.me/91${clinicInfo.rawPhone}?text=Hello%20RevitaOrtho,%20I%20would%20like%20to%20consult%20regarding%20my%20pain.`}
                     target="_blank"
                     rel="noreferrer"
-                    className="btn-hub-whatsapp"
+                    className="btn-guide-whatsapp"
                     title="WhatsApp Doctor"
                   >
                     <MessageCircle size={16} />
