@@ -95,14 +95,18 @@ export default function ServiceDetailPage() {
                   {/* Card Thumbnail */}
                   <div className="treatment-thumb-wrap">
                     <img
-                      src={card.image}
+                      src={card.image || "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=700&q=80"}
                       alt={card.title}
                       className="treatment-thumb-img"
                       loading="lazy"
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=700&q=80";
+                      }}
                     />
                     <span className="treatment-pill-tag">{card.badge}</span>
                     <span className="treatment-time-badge">
-                      <Clock size={11} /> {card.duration}
+                      <Clock size={11} /> {card.duration || "2–3 Weeks"}
                     </span>
                   </div>
 
@@ -113,17 +117,17 @@ export default function ServiceDetailPage() {
                     </h3>
 
                     <p className="treatment-snippet-desc">
-                      {card.presentation}
+                      {card.presentation || card.shortDesc}
                     </p>
 
-                    <div className="treatment-spec-pill" title={card.protocol}>
+                    <div className="treatment-spec-pill" title={card.protocol || card.modality}>
                       <span className="spec-label">Protocol:</span>
-                      <span className="spec-val">{card.protocol}</span>
+                      <span className="spec-val">{card.protocol || card.modality}</span>
                     </div>
 
-                    <div className="treatment-outcome-chip" title={card.outcome}>
+                    <div className="treatment-outcome-chip" title={card.surgeryAvoided || card.outcome || card.recovery}>
                       <CheckCircle2 size={13} className="text-emerald" />
-                      <span>{card.surgeryAvoided || card.outcome}</span>
+                      <span>{card.surgeryAvoided || card.outcome || card.recovery}</span>
                     </div>
 
                     {/* Book Appointment CTA & WhatsApp at bottom of every card */}

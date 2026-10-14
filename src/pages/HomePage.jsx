@@ -264,40 +264,46 @@ export default function HomePage() {
             {/* Left Column: Heading + Short Intro + Appointment Button */}
             <div className="hero-text-content">
               <div className="hero-kicker-pill">
-                <span className="kicker-pulse-beacon"></span>
                 <ShieldCheck size={16} className="text-emerald" />
-                <span>{hero.badge || "CERTIFIED HEALTHCARE FACILITY • ADVANCED PHYSIOTHERAPY"}</span>
+                <span>PUNE'S TRUSTED SPINE & JOINT CLINIC • 10,000+ RECOVERIES</span>
               </div>
 
               <h1 className="hero-main-title">
-                {hero.title}
+                Say Goodbye to Pain.
                 <br />
-                <span className="hero-animated-gradient-text">{hero.highlight}</span>
+                <span className="hero-highlight">Live Actively Without Surgery.</span>
               </h1>
 
-              <p className="hero-description">{hero.description}</p>
+              <p className="hero-description">
+                Personalized 1-on-1 physiotherapy in Pune. Whether it is chronic back ache, knee stiffness, or neck strain — our qualified doctors find the root cause and help you recover naturally.
+              </p>
 
-              {/* Quick Trust Highlights */}
-              <div className="hero-assurance-strip">
-                {hero.assuranceTags?.map((tag, idx) => (
-                  <span key={idx} className="assurance-tag">
-                    <CheckCircle2 size={16} className="text-emerald" />
-                    {tag}
-                  </span>
-                ))}
+              {/* Social Proof Badges */}
+              <div className="hero-social-proof-strip">
+                <div className="proof-pill">
+                  <Star size={14} className="star-gold fill-gold" />
+                  <span><strong>4.98 ★</strong> (1,200+ Pune Patients)</span>
+                </div>
+                <div className="proof-pill">
+                  <ShieldCheck size={14} className="text-emerald" />
+                  <span><strong>94%</strong> Surgeries Avoided</span>
+                </div>
+                <div className="proof-pill">
+                  <Clock size={14} className="text-azure" />
+                  <span><strong>Zero</strong> Waiting Time</span>
+                </div>
               </div>
 
               {/* Appointment & Contact CTAs */}
               <div className="hero-cta-group">
-                <button
-                  type="button"
-                  onClick={scrollToAppointment}
-                  className="btn-hero-primary btn-animated-shine"
+                <Link
+                  to="/appointment"
+                  className="btn-hero-primary"
                 >
                   <Calendar size={18} />
                   <span>Book Appointment</span>
                   <ArrowRight size={17} className="btn-arrow-icon" />
-                </button>
+                </Link>
 
                 <a
                   href={`tel:+91${clinicInfo.rawPhone}`}
@@ -308,14 +314,14 @@ export default function HomePage() {
                 </a>
 
                 <a
-                  href={`https://wa.me/91${clinicInfo.rawPhone}?text=Hello%20RevitaOrtho,%20I%20would%20like%20to%20consult%20a%20physiotherapist.`}
+                  href={`https://wa.me/91${clinicInfo.rawPhone}?text=Hello%20RevitaOrtho,%20I%20would%20like%20to%20consult%20a%20doctor%20for%20my%20pain.`}
                   target="_blank"
                   rel="noreferrer"
                   className="btn-hero-whatsapp"
                   aria-label="WhatsApp Helpline"
                 >
                   <MessageCircle size={17} />
-                  <span>WhatsApp</span>
+                  <span>WhatsApp Doctor</span>
                 </a>
               </div>
             </div>
@@ -325,75 +331,71 @@ export default function HomePage() {
               <div className="patient-pain-guide-card">
                 <div className="guide-card-header">
                   <div className="guide-live-status">
-                    <span className="live-pulse-dot"></span>
+                    <span className="status-dot"></span>
                     <span>DOCTOR AVAILABLE TODAY IN PUNE</span>
                   </div>
-                  <h3 className="guide-card-title">Where Is Your Pain?</h3>
+                  <h3 className="guide-card-title">Where Does It Hurt?</h3>
                   <p className="guide-card-sub">
-                    Tap your pain area below to consult a doctor without surgery:
+                    Tap your pain area below to book direct consultation:
                   </p>
                 </div>
 
                 <div className="guide-conditions-grid">
-                  <button
-                    type="button"
-                    className="condition-quick-btn"
-                    onClick={() => handleSelectConditionAndScroll("back-pain")}
+                  <Link
+                    to="/appointment?service=back-pain"
+                    className="condition-quick-btn condition-back"
                   >
-                    <div className="quick-btn-icon-wrap">
-                      <Bone size={20} className="text-azure" />
+                    <div className="quick-btn-icon-wrap icon-back">
+                      <Bone size={20} />
                     </div>
                     <div className="quick-btn-text">
                       <strong>Back Pain & Sciatica</strong>
-                      <span>Slip disc, lower back ache, leg tingling</span>
+                      <span>Slip disc, lower back ache, radiating leg pain</span>
                     </div>
-                    <span className="quick-badge">94% Avoid Surgery</span>
-                  </button>
+                    <span className="quick-badge badge-blue">94% Avoid Surgery</span>
+                  </Link>
 
-                  <button
-                    type="button"
-                    className="condition-quick-btn"
-                    onClick={() => handleSelectConditionAndScroll("knee-pain")}
+                  <Link
+                    to="/appointment?service=knee-pain"
+                    className="condition-quick-btn condition-knee"
                   >
-                    <div className="quick-btn-icon-wrap">
-                      <Accessibility size={20} className="text-emerald" />
+                    <div className="quick-btn-icon-wrap icon-knee">
+                      <Accessibility size={20} />
                     </div>
                     <div className="quick-btn-text">
                       <strong>Knee & Joint Arthritis</strong>
                       <span>Pain climbing stairs, joint stiffness</span>
                     </div>
                     <span className="quick-badge badge-emerald">Save Cartilage</span>
-                  </button>
+                  </Link>
 
-                  <button
-                    type="button"
-                    className="condition-quick-btn"
-                    onClick={() => handleSelectConditionAndScroll("neck-pain")}
+                  <Link
+                    to="/appointment?service=neck-pain"
+                    className="condition-quick-btn condition-neck"
                   >
-                    <div className="quick-btn-icon-wrap">
-                      <Activity size={20} className="text-azure" />
+                    <div className="quick-btn-icon-wrap icon-neck">
+                      <Activity size={20} />
                     </div>
                     <div className="quick-btn-text">
                       <strong>Neck & Frozen Shoulder</strong>
                       <span>Stiff neck, desk posture strain, arm pain</span>
                     </div>
-                    <span className="quick-badge">Full Mobility</span>
-                  </button>
+                    <span className="quick-badge badge-indigo">Full Mobility</span>
+                  </Link>
 
-                  <button
-                    type="button"
-                    className="condition-quick-btn"
-                    onClick={() => handleSelectConditionAndScroll("sports-injury")}
+                  <Link
+                    to="/appointment?service=sports-injury"
+                    className="condition-quick-btn condition-sports"
                   >
-                    <div className="quick-btn-icon-wrap">
-                      <Zap size={20} className="text-emerald" />
+                    <div className="quick-btn-icon-wrap icon-sports">
+                      <Zap size={20} />
                     </div>
                     <div className="quick-btn-text">
                       <strong>Sports & Muscle Sprains</strong>
                       <span>Ligament twist, muscle pull, sports injury</span>
                     </div>
-                    <span className="quick-badge badge-emerald">Fast Healing</span>
-                  </button>
+                    <span className="quick-badge badge-amber">Fast Healing</span>
+                  </Link>
                 </div>
 
                 <div className="guide-guarantees-row">
@@ -574,14 +576,13 @@ export default function HomePage() {
                 </div>
 
                 <div className="about-cta-row">
-                  <button
-                    type="button"
-                    onClick={scrollToAppointment}
+                  <Link
+                    to="/appointment"
                     className="btn-clinical-primary"
                   >
                     <Calendar size={17} />
                     <span>Schedule Initial Evaluation</span>
-                  </button>
+                  </Link>
                   <Link to="/about" className="btn-clinical-outline">
                     <span>More About Our Facility</span>
                   </Link>
@@ -610,8 +611,9 @@ export default function HomePage() {
           <div className="services-grid-4 scroll-reveal">
             {services?.map((srv) => {
               const ServiceIcon = getIcon(srv.iconName, Activity);
+              const themeClass = `theme-${srv.id}`;
               return (
-                <div key={srv.id} className="service-item-card">
+                <div key={srv.id} className={`service-item-card ${themeClass}`}>
                   <div className="service-card-top">
                     <div className="service-icon-wrap">
                       <ServiceIcon size={24} className="service-icon" />
@@ -634,15 +636,16 @@ export default function HomePage() {
                   </div>
 
                   <div className="service-bottom-links">
-                    <button
-                      type="button"
-                      onClick={scrollToAppointment}
+                    <Link
+                      to={`/appointment?service=${srv.id}`}
                       className="btn-service-book"
                     >
-                      Book Consult
-                    </button>
+                      <Calendar size={13} />
+                      <span>Book Consult</span>
+                    </Link>
                     <Link to={srv.link} className="service-read-more">
-                      Learn More <ArrowRight size={14} />
+                      <span>Learn More</span>
+                      <ArrowRight size={14} />
                     </Link>
                   </div>
                 </div>
@@ -657,13 +660,12 @@ export default function HomePage() {
                 <span>View All Services & Modalities</span>
                 <ArrowRight size={16} />
               </Link>
-              <button
-                type="button"
-                onClick={scrollToAppointment}
+              <Link
+                to="/appointment"
                 className="btn-clinical-primary"
               >
                 <span>Book Direct Evaluation</span>
-              </button>
+              </Link>
             </div>
           </div>
         </div>
