@@ -25,11 +25,13 @@ import {
   ChevronDown,
   HelpCircle,
   Accessibility,
+  ChevronRight,
+  FileText,
 } from "lucide-react";
 import { fetchClinicData, submitAppointmentApi } from "../services/api";
 import "./HomePage.css";
 
-// Dynamic Lucide icon lookup for data loaded from API
+// Dynamic Lucide icon lookup
 const ICON_MAP = {
   Bone,
   Stethoscope,
@@ -46,11 +48,71 @@ const ICON_MAP = {
   Star,
   ChevronDown,
   HelpCircle,
+  Accessibility,
 };
 
 function getIcon(name, fallback = Activity) {
   return ICON_MAP[name] || fallback;
 }
+
+// 3 Team Doctors for Terapia Team Section
+const TEAM_MEMBERS = [
+  {
+    name: "Dr. Sumit Gupta, PT",
+    role: "Chief Orthopedic & Spine Specialist",
+    qualifications: "BPT, MPT (Musculoskeletal Disorders)",
+    experience: "14+ Years Clinical Leadership",
+    image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=600&q=80",
+    serviceId: "back-pain",
+  },
+  {
+    name: "Dr. Sneha Kulkarni, PT",
+    role: "Head of Sports Rehab & Knee Care",
+    qualifications: "BPT, MPT (Sports Medicine), FIFA Dip.",
+    experience: "9+ Years High-Performance Rehab",
+    image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=600&q=80",
+    serviceId: "knee-pain",
+  },
+  {
+    name: "Dr. Vikram Patil, PT",
+    role: "Senior Consultant – Neuro & Post-Op Rehab",
+    qualifications: "BPT, MPT (Neurological Sciences)",
+    experience: "11+ Years Post-Op Mobility Care",
+    image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=600&q=80",
+    serviceId: "sports-injury",
+  },
+];
+
+// 3 Health & Therapy Blog Posts for Terapia Blog Section
+const BLOG_POSTS = [
+  {
+    id: 1,
+    title: "5 Simple Stretches for Immediate Lower Back Pain Relief",
+    category: "Spine Health",
+    date: "October 10, 2026",
+    excerpt: "Sitting for long hours weakens core muscles and compresses lumbar discs. Learn 5 gentle physical therapy stretches you can do at your desk.",
+    image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=600&q=80",
+    link: "/services/back-pain",
+  },
+  {
+    id: 2,
+    title: "Knee Osteoarthritis: Can Targeted Physiotherapy Avoid Surgery?",
+    category: "Joint Care",
+    date: "September 28, 2026",
+    excerpt: "Discover how non-surgical radiofrequency and cartilage unloading exercises restore walking comfort and delay knee replacement.",
+    image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=600&q=80",
+    link: "/services/knee-pain",
+  },
+  {
+    id: 3,
+    title: "Tech-Neck & Cervical Stiffness: The Modern Desk Posture Guide",
+    category: "Ergonomics",
+    date: "September 15, 2026",
+    excerpt: "Forward head posture adds up to 27kg of extra strain on your cervical spine. Learn ergonomic adjustments and deep flexor drills.",
+    image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=600&q=80",
+    link: "/services/neck-pain",
+  },
+];
 
 export default function HomePage() {
   const [apiData, setApiData] = useState(null);
@@ -91,32 +153,6 @@ export default function HomePage() {
       isMounted = false;
     };
   }, []);
-
-  // Smooth Intersection Observer for subtle scroll reveal
-  useEffect(() => {
-    if (isLoading) return;
-
-    const elements = document.querySelectorAll(".scroll-reveal");
-    if (!elements.length) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      {
-        rootMargin: "0px 0px -40px 0px",
-        threshold: 0.1,
-      }
-    );
-
-    elements.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
-  }, [isLoading]);
 
   function handleInputChange(e) {
     const { name, value } = e.target;
@@ -174,25 +210,13 @@ export default function HomePage() {
     setIsSubmitted(false);
   }
 
-  function scrollToAppointment() {
-    const formEl = document.getElementById("appointment-section");
-    if (formEl) {
-      formEl.scrollIntoView({ behavior: "smooth" });
-    }
-  }
-
-  function handleSelectConditionAndScroll(serviceId) {
-    setFormData((prev) => ({ ...prev, service: serviceId }));
-    scrollToAppointment();
-  }
-
   // Graceful loading state
   if (isLoading || !apiData) {
     return (
       <main className="modern-home-page loading-screen">
         <div className="home-container api-loading-box">
           <Loader2 size={36} className="spin-loader text-azure" />
-          <p>Loading clinic data from API...</p>
+          <p>Loading clinic information...</p>
         </div>
       </main>
     );
@@ -208,33 +232,6 @@ export default function HomePage() {
     treatmentSteps,
     testimonials,
   } = apiData;
-
-  const trustStats = apiData.trustStats || [
-    {
-      value: "14+",
-      label: "Years Clinical Practice",
-      sublabel: "Specialized Orthopedic Care",
-      iconName: "Award",
-    },
-    {
-      value: "10,000+",
-      label: "Patients Recovered",
-      sublabel: "Documented Clinical Cases",
-      iconName: "Users",
-    },
-    {
-      value: "94%",
-      label: "Surgeries Avoided",
-      sublabel: "Non-Surgical Spinal & Joint Care",
-      iconName: "ShieldCheck",
-    },
-    {
-      value: "4.98 / 5.0",
-      label: "Patient Rating",
-      sublabel: "Verified Clinical Reviews",
-      iconName: "Star",
-    },
-  ];
 
   const faqs = apiData.faqs || [
     {
@@ -256,414 +253,240 @@ export default function HomePage() {
   ];
 
   return (
-    <main className="modern-home-page">
-      {/* ─── 2. HERO SECTION ─── */}
-      <section className="clean-hero-section">
+    <main className="terapia-home-page">
+      {/* ─── 1. HERO HEADER (Terapia Bootstrap Carousel / Banner Style) ─── */}
+      <section className="terapia-hero-section">
+        <div className="terapia-hero-overlay"></div>
+        <div className="home-container terapia-hero-container">
+          <div className="terapia-hero-content">
+            <div className="terapia-badge">
+              <ShieldCheck size={16} />
+              <span>BEST PHYSICAL THERAPY & ORTHOPEDIC CLINIC</span>
+            </div>
+
+            <h1 className="terapia-hero-title">
+              Holistic Approach To Health & Non-Surgical Rehabilitation
+            </h1>
+
+            <p className="terapia-hero-desc">
+              Personalized 1-on-1 physical therapy, computerized spinal decompression, and active joint preservation in Pune. Over 10,000+ patient recoveries with 94% avoiding invasive surgery.
+            </p>
+
+            <div className="terapia-hero-cta">
+              <Link to="/appointment" className="btn-terapia-primary">
+                <span>Book Appointment</span>
+                <ArrowRight size={17} />
+              </Link>
+              <a href={`tel:+91${clinicInfo.rawPhone}`} className="btn-terapia-white">
+                <Phone size={17} />
+                <span>Call Helpline: {clinicInfo.rawPhone}</span>
+              </a>
+              <a
+                href={`https://wa.me/91${clinicInfo.rawPhone}?text=Hello%20RevitaOrtho,%20I%20would%20like%20to%20consult%20a%20doctor.`}
+                target="_blank"
+                rel="noreferrer"
+                className="btn-terapia-whatsapp"
+              >
+                <MessageCircle size={17} />
+                <span>WhatsApp Doctor</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── 2. TOP 3 FEATURE CARDS (Overlapping Hero, Terapia Style) ─── */}
+      <section className="terapia-feature-strip">
         <div className="home-container">
-          <div className="clean-hero-grid">
-            {/* Left Column: Heading + Short Intro + Appointment Button */}
-            <div className="hero-text-content">
-              <div className="hero-kicker-pill">
-                <ShieldCheck size={16} className="text-emerald" />
-                <span>PUNE'S TRUSTED SPINE & JOINT CLINIC • 10,000+ RECOVERIES</span>
+          <div className="terapia-feature-grid">
+            <div className="terapia-feature-box">
+              <div className="feature-box-icon">
+                <Award size={30} />
               </div>
+              <div className="feature-box-text">
+                <h3>Certified Specialists</h3>
+                <p>14+ years of clinical excellence led by hospital-experienced MPT orthopedic physiotherapists.</p>
+              </div>
+            </div>
 
-              <h1 className="hero-main-title">
-                Say Goodbye to Pain.
-                <br />
-                <span className="hero-highlight">Live Actively Without Surgery.</span>
-              </h1>
+            <div className="terapia-feature-box">
+              <div className="feature-box-icon">
+                <ShieldCheck size={30} />
+              </div>
+              <div className="feature-box-text">
+                <h3>100% Non-Surgical</h3>
+                <p>Advanced computerized decompression, cold laser, and manual therapy avoiding invasive procedures.</p>
+              </div>
+            </div>
 
-              <p className="hero-description">
-                Personalized 1-on-1 physiotherapy in Pune. Whether it is chronic back ache, knee stiffness, or neck strain — our qualified doctors find the root cause and help you recover naturally.
+            <div className="terapia-feature-box">
+              <div className="feature-box-icon">
+                <Clock size={30} />
+              </div>
+              <div className="feature-box-text">
+                <h3>Zero Waiting Time</h3>
+                <p>Pre-scheduled 45-minute consultation slots from 8 AM to 8 PM, plus doorstep home therapy in Pune.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── 3. ABOUT US SECTION (Image on Left, Text & Checkmarks on Right) ─── */}
+      <section className="terapia-about-section section-padding" id="about">
+        <div className="home-container">
+          <div className="terapia-about-grid">
+            {/* Left Column: Image with Experience Badge */}
+            <div className="terapia-about-img-col">
+              <div className="terapia-about-img-wrap">
+                <img
+                  src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80"
+                  alt="Doctor treating patient at RevitaOrtho Physical Therapy"
+                  className="terapia-about-img"
+                />
+                <div className="terapia-experience-badge">
+                  <span className="exp-number">14+</span>
+                  <span className="exp-label">Years of Clinical Experience</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column: About Details */}
+            <div className="terapia-about-text-col">
+              <span className="terapia-section-subtitle">ABOUT OUR CLINIC</span>
+              <h2 className="terapia-section-title">
+                We Are Here To Optimize Your Health & Physical Mobility
+              </h2>
+              <p className="terapia-lead-text">
+                RevitaOrtho is a dedicated outpatient physical therapy center equipped with modern European rehabilitation technology and private sanitized treatment suites, focused on helping patients recover naturally without unnecessary surgery or painkillers.
               </p>
 
-              {/* Social Proof Badges */}
-              <div className="hero-social-proof-strip">
-                <div className="proof-pill">
-                  <Star size={14} className="star-gold fill-gold" />
-                  <span><strong>4.98 ★</strong> (1,200+ Pune Patients)</span>
+              <div className="terapia-about-points-grid">
+                <div className="about-point-item">
+                  <CheckCircle2 size={20} className="point-icon" />
+                  <div>
+                    <strong>Comprehensive Diagnostic</strong>
+                    <p>Accurate 45-minute orthopedic & nerve evaluation before therapy.</p>
+                  </div>
                 </div>
-                <div className="proof-pill">
-                  <ShieldCheck size={14} className="text-emerald" />
-                  <span><strong>94%</strong> Surgeries Avoided</span>
+
+                <div className="about-point-item">
+                  <CheckCircle2 size={20} className="point-icon" />
+                  <div>
+                    <strong>Dedicated 1-on-1 Focus</strong>
+                    <p>Every session led personally by specialized MPT clinicians.</p>
+                  </div>
                 </div>
-                <div className="proof-pill">
-                  <Clock size={14} className="text-azure" />
-                  <span><strong>Zero</strong> Waiting Time</span>
+
+                <div className="about-point-item">
+                  <CheckCircle2 size={20} className="point-icon" />
+                  <div>
+                    <strong>Modern European Technology</strong>
+                    <p>Motorized spinal decompression and German laser therapy.</p>
+                  </div>
+                </div>
+
+                <div className="about-point-item">
+                  <CheckCircle2 size={20} className="point-icon" />
+                  <div>
+                    <strong>Long-Term Relapse Prevention</strong>
+                    <p>Custom home exercise prescriptions to keep you permanently pain-free.</p>
+                  </div>
                 </div>
               </div>
 
-              {/* Appointment & Contact CTAs */}
-              <div className="hero-cta-group">
-                <Link
-                  to="/appointment"
-                  className="btn-hero-primary"
-                >
-                  <Calendar size={18} />
-                  <span>Book Appointment</span>
-                  <ArrowRight size={17} className="btn-arrow-icon" />
+              <div className="terapia-about-cta">
+                <Link to="/about" className="btn-terapia-primary">
+                  <span>Learn More About Us</span>
+                  <ArrowRight size={16} />
                 </Link>
-
-                <a
-                  href={`tel:+91${clinicInfo.rawPhone}`}
-                  className="btn-hero-secondary"
-                >
-                  <Phone size={17} />
-                  <span>Call: {clinicInfo.rawPhone}</span>
-                </a>
-
-                <a
-                  href={`https://wa.me/91${clinicInfo.rawPhone}?text=Hello%20RevitaOrtho,%20I%20would%20like%20to%20consult%20a%20doctor%20for%20my%20pain.`}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="btn-hero-whatsapp"
-                  aria-label="WhatsApp Helpline"
-                >
-                  <MessageCircle size={17} />
-                  <span>WhatsApp Doctor</span>
-                </a>
-              </div>
-            </div>
-
-            {/* Right Column: Patient Quick Pain Relief Guide (Clear & Easy for Patients) */}
-            <div className="hero-doctor-card-col">
-              <div className="patient-pain-guide-card">
-                <div className="guide-card-header">
-                  <div className="guide-live-status">
-                    <span className="status-dot"></span>
-                    <span>DOCTOR AVAILABLE TODAY IN PUNE</span>
-                  </div>
-                  <h3 className="guide-card-title">Where Does It Hurt?</h3>
-                  <p className="guide-card-sub">
-                    Tap your pain area below to book direct consultation:
-                  </p>
-                </div>
-
-                <div className="guide-conditions-grid">
-                  <Link
-                    to="/appointment?service=back-pain"
-                    className="condition-quick-btn condition-back"
-                  >
-                    <div className="quick-btn-icon-wrap icon-back">
-                      <Bone size={20} />
-                    </div>
-                    <div className="quick-btn-text">
-                      <strong>Back Pain & Sciatica</strong>
-                      <span>Slip disc, lower back ache, radiating leg pain</span>
-                    </div>
-                    <span className="quick-badge badge-blue">94% Avoid Surgery</span>
-                  </Link>
-
-                  <Link
-                    to="/appointment?service=knee-pain"
-                    className="condition-quick-btn condition-knee"
-                  >
-                    <div className="quick-btn-icon-wrap icon-knee">
-                      <Accessibility size={20} />
-                    </div>
-                    <div className="quick-btn-text">
-                      <strong>Knee & Joint Arthritis</strong>
-                      <span>Pain climbing stairs, joint stiffness</span>
-                    </div>
-                    <span className="quick-badge badge-emerald">Save Cartilage</span>
-                  </Link>
-
-                  <Link
-                    to="/appointment?service=neck-pain"
-                    className="condition-quick-btn condition-neck"
-                  >
-                    <div className="quick-btn-icon-wrap icon-neck">
-                      <Activity size={20} />
-                    </div>
-                    <div className="quick-btn-text">
-                      <strong>Neck & Frozen Shoulder</strong>
-                      <span>Stiff neck, desk posture strain, arm pain</span>
-                    </div>
-                    <span className="quick-badge badge-indigo">Full Mobility</span>
-                  </Link>
-
-                  <Link
-                    to="/appointment?service=sports-injury"
-                    className="condition-quick-btn condition-sports"
-                  >
-                    <div className="quick-btn-icon-wrap icon-sports">
-                      <Zap size={20} />
-                    </div>
-                    <div className="quick-btn-text">
-                      <strong>Sports & Muscle Sprains</strong>
-                      <span>Ligament twist, muscle pull, sports injury</span>
-                    </div>
-                    <span className="quick-badge badge-amber">Fast Healing</span>
-                  </Link>
-                </div>
-
-                <div className="guide-guarantees-row">
-                  <div className="guide-guarantee-item">
-                    <ShieldCheck size={15} className="text-emerald" />
-                    <span>100% Non-Surgical</span>
-                  </div>
-                  <div className="guide-guarantee-item">
-                    <Clock size={15} className="text-azure" />
-                    <span>Zero Waiting Time</span>
-                  </div>
-                  <div className="guide-guarantee-item">
-                    <Star size={14} className="star-gold fill-gold" />
-                    <span>4.98 ★ Rated Care</span>
-                  </div>
-                </div>
-
-                <div className="guide-action-row">
-                  <Link
-                    to="/appointment"
-                    className="btn-guide-appointment"
-                  >
-                    <Calendar size={15} />
-                    <span>Book Evaluation Slot</span>
-                    <ArrowRight size={14} />
-                  </Link>
-                  <a
-                    href={`https://wa.me/91${clinicInfo.rawPhone}?text=Hello%20RevitaOrtho,%20I%20would%20like%20to%20consult%20regarding%20my%20pain.`}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="btn-guide-whatsapp"
-                    title="WhatsApp Doctor"
-                  >
-                    <MessageCircle size={16} />
-                  </a>
-                </div>
+                <Link to="/appointment" className="btn-terapia-outline">
+                  <span>Book Initial Assessment</span>
+                </Link>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ─── 3. TRUST INDICATORS (Stats Bar) ─── */}
-      <section className="trust-indicators-section">
+      {/* ─── 4. SERVICES SECTION (Terapia Cards with Real Photos & Floating Icons) ─── */}
+      <section className="terapia-services-section section-padding" id="services">
         <div className="home-container">
-          <div className="trust-indicators-grid">
-            {trustStats?.map((stat, idx) => {
-              const StatIcon = getIcon(stat.iconName, Award);
-              return (
-                <div
-                  key={idx}
-                  className="trust-stat-card scroll-reveal"
-                  style={{ transitionDelay: `${idx * 0.08}s` }}
-                >
-                  <div className="stat-icon-wrap">
-                    <StatIcon size={24} className="stat-ico" />
-                  </div>
-                  <div className="stat-content">
-                    <span className="stat-number">{stat.value}</span>
-                    <strong className="stat-label">{stat.label}</strong>
-                    <span className="stat-sublabel">{stat.sublabel}</span>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* ─── 4. ABOUT THE CLINIC & PHYSIOTHERAPIST ─── */}
-      <section className="about-clinic-section section-padding" id="about">
-        <div className="home-container">
-          <div className="section-header-centered scroll-reveal">
-            <span className="section-kicker">ABOUT REVITAORTHO</span>
-            <h2 className="section-main-title">
-              {aboutClinic.title}
-              <br />
-              <span className="text-azure">Evidence-Based Healing</span>
-            </h2>
-            <p className="section-main-desc">
-              Discover how our clinic philosophy, root-cause treatment approach, and qualified therapists deliver lasting recovery.
-            </p>
-          </div>
-
-          <div className="about-clinic-card scroll-reveal">
-            <div className="about-clinic-grid">
-              {/* Left Column: Clinical Leadership & Credentials (No Image) */}
-              <div className="about-therapist-col">
-                <div className="about-leadership-card">
-                  <div className="leadership-badge-tag">
-                    <Award size={15} className="text-azure" />
-                    <span>CLINICAL EXCELLENCE & LEADERSHIP</span>
-                  </div>
-
-                  <div className="leadership-header">
-                    <div className="leadership-avatar-icon">
-                      <Stethoscope size={28} className="text-azure" />
-                    </div>
-                    <div>
-                      <h3 className="leadership-name">{therapist.name}</h3>
-                      <p className="leadership-role">{therapist.role}</p>
-                      <p className="leadership-degree">{therapist.qualifications}</p>
-                    </div>
-                  </div>
-
-                  <div className="leadership-meta-strip">
-                    <div className="leadership-meta-item">
-                      <Clock size={15} className="text-azure" />
-                      <div>
-                        <strong>{therapist.experience}</strong>
-                        <span>Clinical Practice</span>
-                      </div>
-                    </div>
-                    <div className="leadership-meta-item">
-                      <Users size={15} className="text-azure" />
-                      <div>
-                        <strong>10,000+</strong>
-                        <span>Recoveries</span>
-                      </div>
-                    </div>
-                    <div className="leadership-meta-item">
-                      <Star size={15} className="star-gold fill-gold" />
-                      <div>
-                        <strong>{therapist.rating} / 5.0</strong>
-                        <span>Verified Care</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="leadership-affiliations-box">
-                    <span className="affiliations-title">Key Clinical Affiliations & Accreditations</span>
-                    <div className="affiliations-list">
-                      {therapist.affiliations?.map((point, idx) => (
-                        <div key={idx} className="affiliation-item">
-                          <CheckCircle2 size={16} className="text-emerald" />
-                          <span>{point}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="leadership-guarantee-box">
-                    <ShieldCheck size={18} className="text-azure" />
-                    <p>
-                      <strong>100% Non-Surgical Protocol:</strong> Evidence-based manual therapy, targeted joint decompression, and functional motor re-education.
-                    </p>
-                  </div>
-
-                  <div className="leadership-actions">
-                    <Link to="/team" className="btn-team-link">
-                      <span>Meet Our Full Panel of Specialized Clinicians &rarr;</span>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-
-              {/* Right Column: Clinic Introduction & Treatment Approach */}
-              <div className="about-content-col">
-                <span className="about-subtag">CLINIC INTRODUCTION & TREATMENT APPROACH</span>
-                <h3>We Treat the Root Cause, Not Just the Symptoms</h3>
-                <p className="about-lead-copy">{aboutClinic.leadCopy}</p>
-
-                <div className="approach-grid">
-                  {aboutClinic.approaches?.map((app, idx) => {
-                    const AppIcon = getIcon(app.iconName, Stethoscope);
-                    return (
-                      <div key={idx} className="approach-card">
-                        <div className="approach-icon">
-                          <AppIcon size={20} className="text-azure" />
-                        </div>
-                        <div>
-                          <strong>{app.title}</strong>
-                          <p>{app.desc}</p>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-
-                <div className="about-cta-row">
-                  <Link
-                    to="/appointment"
-                    className="btn-clinical-primary"
-                  >
-                    <Calendar size={17} />
-                    <span>Schedule Initial Evaluation</span>
-                  </Link>
-                  <Link to="/about" className="btn-clinical-outline">
-                    <span>More About Our Facility</span>
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ─── 5. MAIN SERVICES (Back pain · Neck pain · Sports injury · Knee pain) ─── */}
-      <section className="main-services-section section-padding" id="services">
-        <div className="home-container">
-          <div className="section-header-centered scroll-reveal">
-            <span className="section-kicker">CORE CLINICAL SPECIALTIES</span>
-            <h2 className="section-main-title">
-              Our Main Physiotherapy Services
-              <br />
-              <span className="text-azure">Targeted Non-Surgical Recovery</span>
-            </h2>
+          <div className="section-header-centered">
+            <span className="terapia-section-subtitle">OUR SERVICES</span>
+            <h2 className="terapia-section-title">Personalized Physical Therapy Treatments</h2>
             <p className="section-main-desc">
               We specialize in diagnosing and treating the root causes of spine, joint, and athletic conditions using evidence-based European technology.
             </p>
           </div>
 
-          <div className="services-grid-4 scroll-reveal">
+          <div className="terapia-services-grid">
             {services?.map((srv) => {
               const ServiceIcon = getIcon(srv.iconName, Activity);
-              const themeClass = `theme-${srv.id}`;
+              
+              // High quality clinical photo mapping for each service
+              const serviceImages = {
+                "back-pain": "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=600&q=80",
+                "knee-pain": "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=600&q=80",
+                "neck-pain": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=600&q=80",
+                "sports-injury": "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=600&q=80",
+              };
+              const cardImg = serviceImages[srv.id] || "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=600&q=80";
+
               return (
-                <div key={srv.id} className={`service-item-card ${themeClass}`}>
-                  <div className="service-card-top">
-                    <div className="service-icon-wrap">
-                      <ServiceIcon size={24} className="service-icon" />
+                <div key={srv.id} className="terapia-service-card">
+                  {/* Card Image Banner */}
+                  <div className="service-card-image-wrap">
+                    <img src={cardImg} alt={srv.title} className="service-card-img" />
+                    <div className="service-floating-icon">
+                      <ServiceIcon size={24} />
                     </div>
-                    <span className="service-tag-badge">{srv.tag}</span>
                   </div>
 
-                  <h3 className="service-card-title">{srv.title}</h3>
-                  <span className="service-card-sub">{srv.subtitle}</span>
+                  {/* Card Content */}
+                  <div className="service-card-body">
+                    <h3 className="service-card-title">{srv.title}</h3>
+                    <p className="service-card-desc">{srv.desc}</p>
 
-                  <p className="service-card-desc">{srv.desc}</p>
+                    <div className="service-card-bullets">
+                      {srv.highlights?.map((h, i) => (
+                        <div key={i} className="service-bullet-row">
+                          <Check size={14} className="bullet-check" />
+                          <span>{h}</span>
+                        </div>
+                      ))}
+                    </div>
 
-                  <div className="service-highlights-list">
-                    {srv.highlights?.map((h, i) => (
-                      <div key={i} className="highlight-row">
-                        <Check size={14} className="text-emerald" />
-                        <span>{h}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="service-bottom-links">
-                    <Link
-                      to={`/appointment?service=${srv.id}`}
-                      className="btn-service-book"
-                    >
-                      <Calendar size={13} />
-                      <span>Book Consult</span>
-                    </Link>
-                    <Link to={srv.link} className="service-read-more">
-                      <span>Learn More</span>
-                      <ArrowRight size={14} />
-                    </Link>
+                    <div className="service-card-actions">
+                      <Link
+                        to={`/appointment?service=${srv.id}`}
+                        className="btn-card-book"
+                      >
+                        <Calendar size={13} />
+                        <span>Book Consult</span>
+                      </Link>
+                      <Link to={srv.link} className="btn-card-readmore">
+                        <span>Read More</span>
+                        <ChevronRight size={15} />
+                      </Link>
+                    </div>
                   </div>
                 </div>
               );
             })}
           </div>
 
-          <div className="services-all-cta scroll-reveal">
-            <p>Looking for post-surgical rehab, joint restoration, or ergonomic posture correction?</p>
-            <div className="services-cta-actions">
-              <Link to="/services" className="btn-clinical-secondary">
-                <span>View All Services & Modalities</span>
-                <ArrowRight size={16} />
+          {/* Bottom Bar */}
+          <div className="terapia-services-footer-banner">
+            <div>
+              <h4>Looking for post-surgical rehab or ergonomic posture correction?</h4>
+              <p>Connect with our senior physical therapy team for specialized recovery programs.</p>
+            </div>
+            <div className="services-footer-btns">
+              <Link to="/services" className="btn-terapia-outline">
+                <span>View All Services</span>
               </Link>
-              <Link
-                to="/appointment"
-                className="btn-clinical-primary"
-              >
+              <Link to="/appointment" className="btn-terapia-primary">
                 <span>Book Direct Evaluation</span>
               </Link>
             </div>
@@ -671,48 +494,44 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ─── 5. WHY CHOOSE US (Qualified therapists · Personalized care · Convenient appointments) ─── */}
-      <section className="why-choose-section section-padding" id="why-choose-us">
+      {/* ─── 5. WHY CHOOSE US / FEATURES SECTION (Terapia 3 Feature Columns) ─── */}
+      <section className="terapia-why-section section-padding" id="why-choose-us">
         <div className="home-container">
-          <div className="section-header-centered scroll-reveal">
-            <span className="section-kicker">THE REVITAORTHO COMMITMENT</span>
-            <h2 className="section-main-title">
-              Why Choose RevitaOrtho?
-              <br />
-              <span className="text-azure">Patient-Centered Excellence</span>
-            </h2>
+          <div className="section-header-centered">
+            <span className="terapia-section-subtitle">WHY CHOOSE US</span>
+            <h2 className="terapia-section-title">Why Patients Choose Our Rehabilitation Facility</h2>
             <p className="section-main-desc">
               Three core pillars that define our patient experience and ensure predictable, high-quality clinical outcomes.
             </p>
           </div>
 
-          <div className="why-pillars-grid scroll-reveal">
+          <div className="terapia-why-grid">
             {whyChooseUs?.map((pillar, idx) => {
               const PillarIcon = getIcon(pillar.iconName, Award);
               return (
-                <div key={idx} className="why-pillar-card">
-                  <div className="pillar-icon-box">
-                    <PillarIcon size={26} className="pillar-ico" />
+                <div key={idx} className="terapia-why-card">
+                  <div className="why-card-icon-box">
+                    <PillarIcon size={28} />
                   </div>
-                  <h3 className="pillar-card-title">{pillar.title}</h3>
-                  <p className="pillar-card-text">{pillar.desc}</p>
+                  <h3 className="why-card-title">{pillar.title}</h3>
+                  <p className="why-card-text">{pillar.desc}</p>
                 </div>
               );
             })}
           </div>
 
           {/* Reassurance Banner */}
-          <div className="why-banner-strip scroll-reveal" style={{ transitionDelay: "0.15s" }}>
-            <div className="banner-strip-left">
-              <BadgeCheck size={30} className="text-emerald" />
+          <div className="terapia-reassurance-strip">
+            <div className="reassurance-left">
+              <BadgeCheck size={32} className="reassurance-badge-icon" />
               <div>
                 <strong>Over 10,000+ Patients Restored to Active Living</strong>
                 <p>Zero long-term lock-in packages, transparent fee structure, and complete insurance assistance.</p>
               </div>
             </div>
-            <div className="banner-strip-right">
-              <a href={`tel:+91${clinicInfo.rawPhone}`} className="btn-clinical-primary">
-                <Phone size={17} />
+            <div className="reassurance-right">
+              <a href={`tel:+91${clinicInfo.rawPhone}`} className="btn-terapia-primary">
+                <Phone size={16} />
                 <span>Call Helpline: {clinicInfo.rawPhone}</span>
               </a>
             </div>
@@ -720,93 +539,279 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ─── 6. TREATMENT PROCESS (Book appointment → Assessment → Treatment plan → Follow-up) ─── */}
-      <section className="treatment-process-section section-padding" id="treatment-process">
+      {/* ─── 6. APPOINTMENT SECTION (Terapia Split Booking Layout) ─── */}
+      <section className="terapia-appointment-section section-padding" id="appointment-section">
         <div className="home-container">
-          <div className="section-header-centered scroll-reveal">
-            <span className="section-kicker">STRUCTURED CLINICAL JOURNEY</span>
-            <h2 className="section-main-title">
-              Our 4-Step Treatment Process
-              <br />
-              <span className="text-azure">From First Call to Lasting Wellness</span>
-            </h2>
-            <p className="section-main-desc">
-              We follow a transparent, milestone-driven protocol. Every step is clearly explained before you start.
-            </p>
-          </div>
+          <div className="terapia-appointment-grid">
+            {/* Left Column: Why Book + Emergency Contact */}
+            <div className="appointment-left-col">
+              <span className="terapia-section-subtitle light-subtitle">ONLINE BOOKING</span>
+              <h2 className="terapia-section-title light-title">
+                Book Your Direct In-Clinic Or Home Physiotherapy Consultation
+              </h2>
+              <p className="appointment-lead-text">
+                Take the first step toward lasting pain relief. Book your 45-minute comprehensive diagnostic assessment online with zero waiting time.
+              </p>
 
-          <div className="process-flow-grid scroll-reveal">
-            {treatmentSteps?.map((step, idx) => {
-              const StepIcon = getIcon(step.iconName, Calendar);
-              return (
-                <div key={idx} className="process-card">
-                  <div className="process-card-top">
-                    <span className="process-step-num">{step.step}</span>
-                    <StepIcon size={22} className="process-icon" />
-                  </div>
-                  <span className="process-timing-tag">{step.timing}</span>
-                  <h3 className="process-card-title">{step.title}</h3>
-                  <p className="process-card-desc">{step.desc}</p>
+              <div className="appointment-benefits-list">
+                <div className="appt-benefit-item">
+                  <CheckCircle2 size={18} className="benefit-icon" />
+                  <span>Comprehensive 45-minute root-cause orthopedic diagnosis</span>
                 </div>
-              );
-            })}
-          </div>
+                <div className="appt-benefit-item">
+                  <CheckCircle2 size={18} className="benefit-icon" />
+                  <span>Dedicated 1-on-1 treatment with certified senior MPT doctor</span>
+                </div>
+                <div className="appt-benefit-item">
+                  <CheckCircle2 size={18} className="benefit-icon" />
+                  <span>Safe European computerized decompression & cold laser therapy</span>
+                </div>
+                <div className="appt-benefit-item">
+                  <CheckCircle2 size={18} className="benefit-icon" />
+                  <span>Doorstep home visit physiotherapy available across Pune</span>
+                </div>
+              </div>
 
-          <div className="process-bottom-note scroll-reveal" style={{ transitionDelay: "0.2s" }}>
-            <Clock size={22} className="text-emerald" />
-            <p>
-              <strong>Transparent Treatment Roadmap on Day 1:</strong> Following your 45-minute assessment, you receive an objective diagnostic report detailing expected session counts and milestones.
-            </p>
-            <Link
-              to="/appointment"
-              className="btn-process-action"
-            >
-              <span>Start Step 1</span>
-              <ArrowRight size={14} />
-            </Link>
+              {/* Emergency Hotline Card */}
+              <div className="appointment-hotline-card">
+                <div className="hotline-icon">
+                  <Phone size={24} />
+                </div>
+                <div>
+                  <span>Need Immediate Assistance? Call Our Desk:</span>
+                  <a href={`tel:+91${clinicInfo.rawPhone}`} className="hotline-phone">
+                    +91 {clinicInfo.rawPhone}
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column: Appointment Form */}
+            <div className="appointment-right-col">
+              <div className="appointment-form-card">
+                {isSubmitted ? (
+                  <div className="form-success-box">
+                    <CheckCircle2 size={46} className="success-ico" />
+                    <h3>Appointment Request Submitted!</h3>
+                    <p className="booking-ref-code">
+                      Booking Reference: <strong>{bookingRef}</strong>
+                    </p>
+                    <p className="success-instruction">
+                      Thank you, <strong>{formData.name || "Patient"}</strong>. Our clinical coordination desk will contact you at <strong>{formData.phone}</strong> within 30 minutes to confirm your scheduled slot.
+                    </p>
+                    <div className="success-btn-row">
+                      <button
+                        type="button"
+                        onClick={handleResetForm}
+                        className="btn-terapia-outline"
+                      >
+                        Book Another Slot
+                      </button>
+                      <a
+                        href={`https://wa.me/91${clinicInfo.rawPhone}?text=Hello%20RevitaOrtho,%20I%20have%20submitted%20booking%20ref%20${bookingRef}%20for%20appointment.`}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="btn-terapia-primary"
+                      >
+                        <MessageCircle size={16} />
+                        <span>Confirm via WhatsApp</span>
+                      </a>
+                    </div>
+                  </div>
+                ) : (
+                  <form onSubmit={handleFormSubmit} className="terapia-booking-form">
+                    <h3 className="form-header-title">Schedule An Appointment</h3>
+
+                    <div className="form-row-2">
+                      <div className="form-group">
+                        <label htmlFor="patient-name">Your Full Name *</label>
+                        <input
+                          id="patient-name"
+                          type="text"
+                          name="name"
+                          value={formData.name}
+                          onChange={handleInputChange}
+                          placeholder="e.g. Rahul Sharma"
+                          required
+                        />
+                      </div>
+
+                      <div className="form-group">
+                        <label htmlFor="patient-phone">10-Digit Mobile Number *</label>
+                        <input
+                          id="patient-phone"
+                          type="tel"
+                          name="phone"
+                          value={formData.phone}
+                          onChange={handleInputChange}
+                          placeholder="9145875248"
+                          required
+                        />
+                        {phoneError && <span className="input-err-text">{phoneError}</span>}
+                      </div>
+                    </div>
+
+                    <div className="form-row-2">
+                      <div className="form-group">
+                        <label htmlFor="patient-service">Area of Pain / Condition *</label>
+                        <select
+                          id="patient-service"
+                          name="service"
+                          value={formData.service}
+                          onChange={handleInputChange}
+                        >
+                          <option value="back-pain">Back Pain & Sciatica (Spine)</option>
+                          <option value="neck-pain">Neck Pain & Cervical Care</option>
+                          <option value="sports-injury">Sports Injury & Ligament Rehab</option>
+                          <option value="knee-pain">Knee Pain & Arthritis</option>
+                          <option value="other">General Orthopedic Assessment</option>
+                        </select>
+                      </div>
+
+                      <div className="form-group">
+                        <label htmlFor="patient-mode">Consultation Mode *</label>
+                        <select
+                          id="patient-mode"
+                          name="careMode"
+                          value={formData.careMode}
+                          onChange={handleInputChange}
+                        >
+                          <option value="clinic">In-Clinic Consultation (Pune)</option>
+                          <option value="home">Home Visit Physiotherapy</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div className="form-row-2">
+                      <div className="form-group">
+                        <label htmlFor="patient-date">Preferred Date *</label>
+                        <input
+                          id="patient-date"
+                          type="date"
+                          name="date"
+                          value={formData.date}
+                          onChange={handleInputChange}
+                          min={new Date().toISOString().split("T")[0]}
+                          required
+                        />
+                        {dateError && <span className="input-err-text">{dateError}</span>}
+                      </div>
+
+                      <div className="form-group">
+                        <label htmlFor="patient-slot">Preferred Time Slot *</label>
+                        <select
+                          id="patient-slot"
+                          name="timeSlot"
+                          value={formData.timeSlot}
+                          onChange={handleInputChange}
+                        >
+                          <option value="morning">Morning (8:30 AM – 12:00 PM)</option>
+                          <option value="afternoon">Afternoon (12:00 PM – 4:00 PM)</option>
+                          <option value="evening">Evening (4:00 PM – 8:00 PM)</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div className="form-group">
+                      <label htmlFor="patient-notes">Brief Description of Pain (Optional)</label>
+                      <textarea
+                        id="patient-notes"
+                        name="notes"
+                        value={formData.notes}
+                        onChange={handleInputChange}
+                        rows={3}
+                        placeholder="e.g. Pain for 2 weeks, trouble bending or sitting..."
+                      ></textarea>
+                    </div>
+
+                    <button
+                      type="submit"
+                      className="btn-terapia-submit"
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? (
+                        <>
+                          <Loader2 size={18} className="spin-loader" />
+                          <span>Submitting Request...</span>
+                        </>
+                      ) : (
+                        <>
+                          <Calendar size={18} />
+                          <span>Confirm Appointment Request</span>
+                        </>
+                      )}
+                    </button>
+                  </form>
+                )}
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ─── 7. PATIENT TESTIMONIALS (Genuine patient feedback, with permission) ─── */}
-      <section className="patient-testimonials-section section-padding" id="testimonials">
+      {/* ─── 7. TEAM SECTION (Terapia Dedicated Therapists Grid) ─── */}
+      <section className="terapia-team-section section-padding" id="team">
         <div className="home-container">
-          <div className="section-header-centered scroll-reveal">
-            <span className="section-kicker">PATIENT EXPERIENCES</span>
-            <h2 className="section-main-title">
-              Patient Testimonials
-              <br />
-              <span className="text-azure">Feedback Shared with Patient Permission</span>
-            </h2>
+          <div className="section-header-centered">
+            <span className="terapia-section-subtitle">OUR THERAPISTS</span>
+            <h2 className="terapia-section-title">Meet Our Specialized Clinical Team</h2>
             <p className="section-main-desc">
-              Real recovery feedback from active individuals and seniors who regained comfort and mobility at RevitaOrtho.
+              All evaluations and therapies are personally administered by hospital-certified Master's degree physiotherapists.
             </p>
           </div>
 
-          <div className="testimonials-cards-grid scroll-reveal">
-            {testimonials?.map((t, idx) => (
-              <div key={idx} className="testimonial-card">
-                <div className="test-header-row">
-                  <div className="test-stars">
-                    {[...Array(t.rating || 5)].map((_, s) => (
-                      <Star key={s} size={16} className="star-gold fill-gold" />
-                    ))}
-                  </div>
-                  <span className="permission-tag">
-                    <BadgeCheck size={14} /> Shared with Permission
-                  </span>
+          <div className="terapia-team-grid">
+            {TEAM_MEMBERS.map((doc, idx) => (
+              <div key={idx} className="terapia-team-card">
+                <div className="team-card-img-wrap">
+                  <img src={doc.image} alt={doc.name} className="team-card-img" />
                 </div>
+                <div className="team-card-body">
+                  <h3 className="team-card-name">{doc.name}</h3>
+                  <span className="team-card-role">{doc.role}</span>
+                  <p className="team-card-degree">{doc.qualifications}</p>
+                  <span className="team-card-exp">{doc.experience}</span>
+                  <Link
+                    to={`/appointment?service=${doc.serviceId}`}
+                    className="btn-team-consult"
+                  >
+                    <span>Book Consultation</span>
+                    <ArrowRight size={14} />
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-                <p className="test-text">"{t.text}"</p>
+      {/* ─── 8. TESTIMONIALS SECTION (Terapia Patient Reviews) ─── */}
+      <section className="terapia-testimonial-section section-padding" id="testimonials">
+        <div className="home-container">
+          <div className="section-header-centered">
+            <span className="terapia-section-subtitle">TESTIMONIALS</span>
+            <h2 className="terapia-section-title">What Our Patients Say About Us</h2>
+            <p className="section-main-desc">
+              Real recovery stories shared with patient permission from individuals and seniors in Pune.
+            </p>
+          </div>
 
-                <div className="test-condition-badge">
+          <div className="terapia-testimonial-grid">
+            {testimonials?.map((t, idx) => (
+              <div key={idx} className="terapia-test-card">
+                <div className="test-card-stars">
+                  {[...Array(t.rating || 5)].map((_, s) => (
+                    <Star key={s} size={16} className="star-gold fill-gold" />
+                  ))}
+                </div>
+                <p className="test-card-quote">"{t.text}"</p>
+                <div className="test-card-condition">
                   <strong>Treated For:</strong> {t.condition}
                 </div>
-
-                <div className="test-author-box">
+                <div className="test-card-author">
                   <div className="author-circle">{t.name.charAt(0)}</div>
-                  <div className="author-info">
-                    <strong>{t.name}</strong>
+                  <div className="author-details">
+                    <h4>{t.name}</h4>
                     <span>{t.role} • {t.location}</span>
                   </div>
                 </div>
@@ -814,350 +819,95 @@ export default function HomePage() {
             ))}
           </div>
 
-          {/* Rating Summary Strip */}
-          <div className="google-rating-summary scroll-reveal" style={{ transitionDelay: "0.15s" }}>
-            <div className="google-rating-inner">
+          {/* Google Review Badge */}
+          <div className="terapia-google-badge-strip">
+            <div className="google-badge-left">
               <img
                 src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg"
                 alt="Google Reviews"
-                className="google-badge-img"
+                className="google-svg"
               />
-              <div className="google-badge-text">
-                <strong>4.98 Out of 5.0 Rating</strong>
-                <span>Based on verified patient reviews and clinical feedback</span>
+              <div>
+                <strong>4.98 Out of 5.0 Star Rating</strong>
+                <span>Based on verified patient feedback across Pune</span>
               </div>
             </div>
-
-            <Link to="/testimonials" className="btn-clinical-outline">
+            <Link to="/testimonials" className="btn-terapia-outline">
               <span>Read All Patient Reviews</span>
-              <ArrowRight size={16} />
+              <ArrowRight size={15} />
             </Link>
           </div>
         </div>
       </section>
 
-      {/* ─── 8. FREQUENTLY ASKED QUESTIONS (FAQ) ─── */}
-      <section className="home-faq-section section-padding" id="faq">
+      {/* ─── 9. BLOG / HEALTH TIPS SECTION (Terapia Health Articles) ─── */}
+      <section className="terapia-blog-section section-padding" id="blog">
         <div className="home-container">
-          <div className="section-header-centered scroll-reveal">
-            <span className="section-kicker">PATIENT FAQS</span>
-            <h2 className="section-main-title">
-              Frequently Asked Questions
-              <br />
-              <span className="text-azure">Direct Answers Before Starting Care</span>
-            </h2>
+          <div className="section-header-centered">
+            <span className="terapia-section-subtitle">LATEST BLOG</span>
+            <h2 className="terapia-section-title">Physical Therapy & Health Tips</h2>
             <p className="section-main-desc">
-              Have doubts about non-surgical relief, session timelines, or recovery expectations? Here are honest clinical answers.
+              Expert advice, posture ergonomics, and active rehabilitation guides written by our clinical team.
             </p>
           </div>
 
-          <div className="home-faq-accordion-wrap scroll-reveal">
+          <div className="terapia-blog-grid">
+            {BLOG_POSTS.map((post) => (
+              <div key={post.id} className="terapia-blog-card">
+                <div className="blog-card-img-wrap">
+                  <img src={post.image} alt={post.title} className="blog-card-img" />
+                  <span className="blog-card-cat">{post.category}</span>
+                </div>
+                <div className="blog-card-body">
+                  <span className="blog-card-date">{post.date}</span>
+                  <h3 className="blog-card-title">{post.title}</h3>
+                  <p className="blog-card-excerpt">{post.excerpt}</p>
+                  <Link to={post.link} className="btn-blog-readmore">
+                    <span>Read Article</span>
+                    <ArrowRight size={14} />
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── 10. FREQUENTLY ASKED QUESTIONS (FAQ) ─── */}
+      <section className="terapia-faq-section section-padding" id="faq">
+        <div className="home-container">
+          <div className="section-header-centered">
+            <span className="terapia-section-subtitle">PATIENT FAQS</span>
+            <h2 className="terapia-section-title">Frequently Asked Questions</h2>
+            <p className="section-main-desc">
+              Direct, transparent answers regarding treatments, session timelines, and appointment booking.
+            </p>
+          </div>
+
+          <div className="terapia-faq-accordion">
             {faqs?.map((faq, idx) => (
               <div
                 key={idx}
-                className={`home-faq-item ${openFaqIdx === idx ? "is-open" : ""}`}
+                className={`terapia-faq-item ${openFaqIdx === idx ? "is-open" : ""}`}
               >
                 <button
                   type="button"
-                  className="home-faq-trigger"
+                  className="terapia-faq-trigger"
                   onClick={() => setOpenFaqIdx(openFaqIdx === idx ? -1 : idx)}
-                  aria-expanded={openFaqIdx === idx}
                 >
-                  <span className="faq-question-text">{faq.question}</span>
+                  <span className="faq-q-text">{faq.question}</span>
                   <ChevronDown
-                    size={19}
-                    className={`faq-chevron ${openFaqIdx === idx ? "is-rotated" : ""}`}
+                    size={18}
+                    className={`faq-arrow ${openFaqIdx === idx ? "is-rotated" : ""}`}
                   />
                 </button>
                 {openFaqIdx === idx && (
-                  <div className="home-faq-answer">
+                  <div className="terapia-faq-body">
                     <p>{faq.answer}</p>
                   </div>
                 )}
               </div>
             ))}
-          </div>
-
-          <div className="home-faq-footer-bar scroll-reveal">
-            <span>Looking for answers on insurance coverage, specialized protocols, or diagnostics?</span>
-            <Link to="/faq" className="btn-clinical-secondary">
-              <span>View All Frequently Asked Questions</span>
-              <ArrowRight size={16} />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ─── 9. APPOINTMENT / CONTACT (Contact details · Location · Phone · Appointment form) ─── */}
-      <section className="appointment-contact-section section-padding" id="appointment-section">
-        <div className="home-container">
-          <div className="section-header-centered scroll-reveal">
-            <span className="section-kicker">RESERVE YOUR CONSULTATION</span>
-            <h2 className="section-main-title">
-              Appointment & Contact Desk
-              <br />
-              <span className="text-azure">We Are Ready to Help You Heal</span>
-            </h2>
-            <p className="section-main-desc">
-              Book your 45-minute comprehensive diagnostic assessment online, or connect directly with our patient coordination desk.
-            </p>
-          </div>
-
-          <div className="appointment-contact-layout scroll-reveal">
-            {/* Form Column */}
-            <div className="form-card-container">
-              {isSubmitted ? (
-                <div className="form-success-box">
-                  <CheckCircle2 size={46} className="text-emerald success-ico" />
-                  <h3>Appointment Request Submitted!</h3>
-                  <p className="booking-ref-code">
-                    Booking Reference: <strong>{bookingRef}</strong>
-                  </p>
-                  <p className="success-instruction">
-                    Thank you, <strong>{formData.name || "Patient"}</strong>. Our clinical coordination desk will contact you at <strong>{formData.phone}</strong> within 30 minutes to confirm your scheduled slot.
-                  </p>
-
-                  <div className="success-breakdown">
-                    <div>
-                      <span>Condition / Concern:</span>
-                      <strong>
-                        {services?.find((s) => s.id === formData.service)?.title || "General Orthopedic"}
-                      </strong>
-                    </div>
-                    <div>
-                      <span>Consultation Mode:</span>
-                      <strong>{formData.careMode === "clinic" ? "In-Clinic Consultation" : "Home Visit Physiotherapy"}</strong>
-                    </div>
-                    <div>
-                      <span>Preferred Date:</span>
-                      <strong>{formData.date}</strong>
-                    </div>
-                  </div>
-
-                  <div className="success-btn-row">
-                    <button
-                      type="button"
-                      onClick={handleResetForm}
-                      className="btn-clinical-secondary"
-                    >
-                      Book Another Slot
-                    </button>
-                    <a
-                      href={`https://wa.me/91${clinicInfo.rawPhone}?text=Hello%20RevitaOrtho,%20I%20have%20submitted%20booking%20ref%20${bookingRef}%20for%20appointment.`}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="btn-clinical-primary"
-                    >
-                      <MessageCircle size={16} />
-                      <span>Confirm via WhatsApp</span>
-                    </a>
-                  </div>
-                </div>
-              ) : (
-                <form onSubmit={handleFormSubmit} className="in-clinic-form">
-                  <div className="form-legend-strip">
-                    <Calendar size={18} className="text-azure" />
-                    <strong>Book Consultation / In-Clinic Assessment</strong>
-                  </div>
-
-                  <div className="form-grid-2">
-                    <div className="form-group">
-                      <label htmlFor="patient-name">Patient Full Name *</label>
-                      <input
-                        id="patient-name"
-                        type="text"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleInputChange}
-                        placeholder="e.g. Rahul Sharma"
-                        required
-                      />
-                    </div>
-
-                    <div className="form-group">
-                      <label htmlFor="patient-phone">Mobile Number *</label>
-                      <input
-                        id="patient-phone"
-                        type="tel"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleInputChange}
-                        placeholder={clinicInfo.rawPhone || "9145875248"}
-                        required
-                      />
-                      {phoneError && <span className="input-err-text">{phoneError}</span>}
-                    </div>
-                  </div>
-
-                  <div className="form-grid-2">
-                    <div className="form-group">
-                      <label htmlFor="patient-service">Area of Pain / Condition *</label>
-                      <select
-                        id="patient-service"
-                        name="service"
-                        value={formData.service}
-                        onChange={handleInputChange}
-                      >
-                        <option value="back-pain">Back Pain & Sciatica (Spine)</option>
-                        <option value="neck-pain">Neck Pain & Posture Care</option>
-                        <option value="sports-injury">Sports Injury & Ligament Rehab</option>
-                        <option value="knee-pain">Knee Pain & Cartilage Care</option>
-                        <option value="other">General Orthopedic Assessment</option>
-                      </select>
-                    </div>
-
-                    <div className="form-group">
-                      <label htmlFor="patient-mode">Consultation Mode *</label>
-                      <select
-                        id="patient-mode"
-                        name="careMode"
-                        value={formData.careMode}
-                        onChange={handleInputChange}
-                      >
-                        <option value="clinic">In-Clinic Consultation</option>
-                        <option value="home">Home Visit Physiotherapy</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div className="form-grid-2">
-                    <div className="form-group">
-                      <label htmlFor="patient-date">Preferred Date *</label>
-                      <input
-                        id="patient-date"
-                        type="date"
-                        name="date"
-                        value={formData.date}
-                        onChange={handleInputChange}
-                        min={new Date().toISOString().split("T")[0]}
-                        required
-                      />
-                      {dateError && <span className="input-err-text">{dateError}</span>}
-                    </div>
-
-                    <div className="form-group">
-                      <label htmlFor="patient-slot">Preferred Time Slot *</label>
-                      <select
-                        id="patient-slot"
-                        name="timeSlot"
-                        value={formData.timeSlot}
-                        onChange={handleInputChange}
-                      >
-                        <option value="morning">Morning (8:30 AM – 12:00 PM)</option>
-                        <option value="afternoon">Afternoon (12:00 PM – 4:00 PM)</option>
-                        <option value="evening">Evening (4:00 PM – 8:00 PM)</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div className="form-group">
-                    <label htmlFor="patient-notes">Brief Description of Symptoms (Optional)</label>
-                    <textarea
-                      id="patient-notes"
-                      name="notes"
-                      value={formData.notes}
-                      onChange={handleInputChange}
-                      rows={3}
-                      placeholder="e.g. Discomfort for 2 weeks, trouble sitting or bending..."
-                    ></textarea>
-                  </div>
-
-                  <button
-                    type="submit"
-                    className="btn-form-submit"
-                    disabled={isSubmitting}
-                  >
-                    {isSubmitting ? (
-                      <>
-                        <Loader2 size={18} className="spin-loader" />
-                        <span>Sending Request to API...</span>
-                      </>
-                    ) : (
-                      <>
-                        <Calendar size={18} />
-                        <span>Confirm Appointment Request</span>
-                        <ArrowRight size={17} />
-                      </>
-                    )}
-                  </button>
-
-                  <div className="form-guarantee-note">
-                    <ShieldCheck size={14} className="text-emerald" />
-                    <span>Zero waiting time policy. Your medical data is strictly confidential.</span>
-                  </div>
-                </form>
-              )}
-            </div>
-
-            {/* Contact Details & Location Column */}
-            <div className="contact-details-box">
-              <div className="contact-header-strip">
-                <span className="contact-tag">CONTACT & CLINIC LOCATION</span>
-                <h3>{clinicInfo.name} Spine & Joint Clinic</h3>
-                <p>Modern clinical facility featuring private treatment suites, elevator access, and reserved patient parking.</p>
-              </div>
-
-              <div className="contact-details-list">
-                <div className="contact-row">
-                  <MapPin size={20} className="contact-icon text-azure" />
-                  <div>
-                    <strong>Clinic Address & Location</strong>
-                    <p>{clinicInfo.address}</p>
-                  </div>
-                </div>
-
-                <div className="contact-row">
-                  <Clock size={20} className="contact-icon text-azure" />
-                  <div>
-                    <strong>Clinic Consultation Timings</strong>
-                    <p>{clinicInfo.timings}</p>
-                  </div>
-                </div>
-
-                <div className="contact-row">
-                  <Phone size={20} className="contact-icon text-azure" />
-                  <div>
-                    <strong>Direct Helpline & Appointments</strong>
-                    <p>
-                      <a href={`tel:+91${clinicInfo.rawPhone}`} className="phone-bold-link">
-                        {clinicInfo.phone}
-                      </a>
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="contact-direct-actions">
-                <a
-                  href={`https://wa.me/91${clinicInfo.rawPhone}?text=Hello%20RevitaOrtho,%20I%20want%20to%20book%20an%20appointment.`}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="btn-whatsapp-direct"
-                >
-                  <MessageCircle size={18} />
-                  <span>Chat on WhatsApp ({clinicInfo.phone})</span>
-                </a>
-
-                <a
-                  href={clinicInfo.googleMapsUrl || "https://maps.google.com"}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="btn-maps-direct"
-                >
-                  <ExternalLink size={16} />
-                  <span>Get Directions on Google Maps</span>
-                </a>
-              </div>
-
-              <div className="clinic-amenities-row">
-                {clinicInfo.amenities?.map((amenity, idx) => (
-                  <div key={idx} className="amenity-item">
-                    <CheckCircle2 size={15} className="text-emerald" />
-                    <span>{amenity}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
           </div>
         </div>
       </section>
