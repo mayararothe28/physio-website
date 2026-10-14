@@ -179,10 +179,6 @@ export default function HomePage() {
       setPhoneError("Please enter a valid 10-digit mobile number.");
       return;
     }
-    if (!formData.date) {
-      setDateError("Please select a preferred appointment date.");
-      return;
-    }
 
     setIsSubmitting(true);
     try {
@@ -528,211 +524,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="terapia-appointment-section section-padding" id="appointment-section">
-        <div className="home-container">
-          <div className="terapia-appointment-grid">
-            <div className="appointment-left-col">
-              <span className="terapia-section-subtitle light-subtitle">ONLINE BOOKING</span>
-              <h2 className="terapia-section-title light-title">
-                Book Your Direct In-Clinic Or Home Physiotherapy Consultation
-              </h2>
-              <p className="appointment-lead-text">
-                Take the first step toward lasting pain relief. Book your 45-minute comprehensive diagnostic assessment online with zero waiting time.
-              </p>
-
-              <div className="appointment-benefits-list">
-                <div className="appt-benefit-item">
-                  <CheckCircle2 size={18} className="benefit-icon" />
-                  <span>Comprehensive 45-minute root-cause orthopedic diagnosis</span>
-                </div>
-                <div className="appt-benefit-item">
-                  <CheckCircle2 size={18} className="benefit-icon" />
-                  <span>Dedicated 1-on-1 treatment with certified senior MPT doctor</span>
-                </div>
-                <div className="appt-benefit-item">
-                  <CheckCircle2 size={18} className="benefit-icon" />
-                  <span>Safe European computerized decompression & cold laser therapy</span>
-                </div>
-                <div className="appt-benefit-item">
-                  <CheckCircle2 size={18} className="benefit-icon" />
-                  <span>Doorstep home visit physiotherapy available across Pune</span>
-                </div>
-              </div>
-
-              <div className="appointment-hotline-card">
-                <div className="hotline-icon">
-                  <Phone size={24} />
-                </div>
-                <div>
-                  <span>Need Immediate Assistance? Call Our Desk:</span>
-                  <a href={`tel:+91${clinicInfo.rawPhone}`} className="hotline-phone">
-                    +91 {clinicInfo.rawPhone}
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div className="appointment-right-col">
-              <div className="appointment-form-card">
-                {isSubmitted ? (
-                  <div className="form-success-box">
-                    <CheckCircle2 size={46} className="success-ico" />
-                    <h3>Appointment Request Submitted!</h3>
-                    <p className="booking-ref-code">
-                      Booking Reference: <strong>{bookingRef}</strong>
-                    </p>
-                    <p className="success-instruction">
-                      Thank you, <strong>{formData.name || "Patient"}</strong>. Our clinical coordination desk will contact you at <strong>{formData.phone}</strong> within 30 minutes to confirm your scheduled slot.
-                    </p>
-                    <div className="success-btn-row">
-                      <button
-                        type="button"
-                        onClick={handleResetForm}
-                        className="btn-terapia-outline"
-                      >
-                        Book Another Slot
-                      </button>
-                      <a
-                        href={`https://wa.me/91${clinicInfo.rawPhone}?text=Hello%20RevitaOrtho,%20I%20have%20submitted%20booking%20ref%20${bookingRef}%20for%20appointment.`}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="btn-terapia-primary"
-                      >
-                        <MessageCircle size={16} />
-                        <span>Confirm via WhatsApp</span>
-                      </a>
-                    </div>
-                  </div>
-                ) : (
-                  <form onSubmit={handleFormSubmit} className="terapia-booking-form">
-                    <h3 className="form-header-title">Schedule An Appointment</h3>
-
-                    <div className="form-row-2">
-                      <div className="form-group">
-                        <label htmlFor="patient-name">Your Full Name *</label>
-                        <input
-                          id="patient-name"
-                          type="text"
-                          name="name"
-                          value={formData.name}
-                          onChange={handleInputChange}
-                          placeholder="e.g. Rahul Sharma"
-                          required
-                        />
-                      </div>
-
-                      <div className="form-group">
-                        <label htmlFor="patient-phone">10-Digit Mobile Number *</label>
-                        <input
-                          id="patient-phone"
-                          type="tel"
-                          name="phone"
-                          value={formData.phone}
-                          onChange={handleInputChange}
-                          placeholder="9145875248"
-                          required
-                        />
-                        {phoneError && <span className="input-err-text">{phoneError}</span>}
-                      </div>
-                    </div>
-
-                    <div className="form-row-2">
-                      <div className="form-group">
-                        <label htmlFor="patient-service">Area of Pain / Condition *</label>
-                        <select
-                          id="patient-service"
-                          name="service"
-                          value={formData.service}
-                          onChange={handleInputChange}
-                        >
-                          <option value="back-pain">Back Pain & Sciatica (Spine)</option>
-                          <option value="neck-pain">Neck Pain & Cervical Care</option>
-                          <option value="sports-injury">Sports Injury & Ligament Rehab</option>
-                          <option value="knee-pain">Knee Pain & Arthritis</option>
-                          <option value="other">General Orthopedic Assessment</option>
-                        </select>
-                      </div>
-
-                      <div className="form-group">
-                        <label htmlFor="patient-mode">Consultation Mode *</label>
-                        <select
-                          id="patient-mode"
-                          name="careMode"
-                          value={formData.careMode}
-                          onChange={handleInputChange}
-                        >
-                          <option value="clinic">In-Clinic Consultation (Pune)</option>
-                          <option value="home">Home Visit Physiotherapy</option>
-                        </select>
-                      </div>
-                    </div>
-
-                    <div className="form-row-2">
-                      <div className="form-group">
-                        <label htmlFor="patient-date">Preferred Date *</label>
-                        <input
-                          id="patient-date"
-                          type="date"
-                          name="date"
-                          value={formData.date}
-                          onChange={handleInputChange}
-                          min={new Date().toISOString().split("T")[0]}
-                          required
-                        />
-                        {dateError && <span className="input-err-text">{dateError}</span>}
-                      </div>
-
-                      <div className="form-group">
-                        <label htmlFor="patient-slot">Preferred Time Slot *</label>
-                        <select
-                          id="patient-slot"
-                          name="timeSlot"
-                          value={formData.timeSlot}
-                          onChange={handleInputChange}
-                        >
-                          <option value="morning">Morning (8:30 AM – 12:00 PM)</option>
-                          <option value="afternoon">Afternoon (12:00 PM – 4:00 PM)</option>
-                          <option value="evening">Evening (4:00 PM – 8:00 PM)</option>
-                        </select>
-                      </div>
-                    </div>
-
-                    <div className="form-group">
-                      <label htmlFor="patient-notes">Brief Description of Pain (Optional)</label>
-                      <textarea
-                        id="patient-notes"
-                        name="notes"
-                        value={formData.notes}
-                        onChange={handleInputChange}
-                        rows={3}
-                        placeholder="e.g. Pain for 2 weeks, trouble bending or sitting..."
-                      ></textarea>
-                    </div>
-
-                    <button
-                      type="submit"
-                      className="btn-terapia-submit"
-                      disabled={isSubmitting}
-                    >
-                      {isSubmitting ? (
-                        <>
-                          <Loader2 size={18} className="spin-loader" />
-                          <span>Submitting Request...</span>
-                        </>
-                      ) : (
-                        <>
-                          <Calendar size={18} />
-                          <span>Confirm Appointment Request</span>
-                        </>
-                      )}
-                    </button>
-                  </form>
-                )}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       <section className="terapia-team-section section-padding" id="team">
         <div className="home-container">
@@ -851,6 +642,238 @@ export default function HomePage() {
                 )}
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── CONTACT SECTION DIRECTLY ABOVE FOOTER ─── */}
+      <section className="terapia-contact-section section-padding" id="contact">
+        <div className="home-container">
+          <div className="section-header-centered">
+            <span className="terapia-section-subtitle">GET IN TOUCH</span>
+            <h2 className="terapia-section-title">Contact Our Clinical Desk</h2>
+            <p className="section-main-desc">
+              Have questions about your condition or want to schedule a consultation?
+              Connect with our senior physiotherapy team directly or submit an inquiry below.
+            </p>
+          </div>
+
+          <div className="terapia-contact-grid">
+            {/* Left Column: Direct Contact Info & Working Hours */}
+            <div className="contact-info-col">
+              <div className="contact-info-card">
+                <div className="info-icon-box">
+                  <MapPin size={22} />
+                </div>
+                <div className="info-card-text">
+                  <h3>Clinic Location</h3>
+                  <p>{clinicInfo.address}</p>
+                  <a
+                    href={clinicInfo.googleMapsUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="info-card-link"
+                  >
+                    <span>Get Directions on Google Maps</span>
+                    <ExternalLink size={13} />
+                  </a>
+                </div>
+              </div>
+
+              <div className="contact-info-card">
+                <div className="info-icon-box">
+                  <Clock size={22} />
+                </div>
+                <div className="info-card-text">
+                  <h3>Consultation Hours</h3>
+                  <p><strong>Mon – Sat:</strong> 8:00 AM – 8:00 PM</p>
+                  <p><strong>Sunday:</strong> By Prior Appointment</p>
+                </div>
+              </div>
+
+              <div className="contact-info-card">
+                <div className="info-icon-box">
+                  <Phone size={22} />
+                </div>
+                <div className="info-card-text">
+                  <h3>Direct Helpline</h3>
+                  <p>
+                    <a href={`tel:+91${clinicInfo.rawPhone}`} className="info-phone-link">
+                      +91 {clinicInfo.rawPhone}
+                    </a>
+                  </p>
+                  <span className="info-subtext">Immediate clinical triage & queries</span>
+                </div>
+              </div>
+
+              <div className="contact-info-card contact-whatsapp-card">
+                <div className="info-icon-box whatsapp-box">
+                  <MessageCircle size={22} />
+                </div>
+                <div className="info-card-text">
+                  <h3>WhatsApp Medical Desk</h3>
+                  <p>Chat directly with our team for quick guidance and reports review.</p>
+                  <a
+                    href={`https://wa.me/91${clinicInfo.rawPhone}?text=Hello%20RevitaOrtho,%20I%20have%20an%20inquiry%20regarding%20physiotherapy.`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn-whatsapp-direct"
+                  >
+                    <MessageCircle size={15} />
+                    <span>Chat on WhatsApp</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column: Clean Inquiry Form */}
+            <div className="contact-form-col">
+              <div className="contact-form-card">
+                {isSubmitted ? (
+                  <div className="contact-success-state">
+                    <div className="success-icon-wrap">
+                      <CheckCircle2 size={44} className="text-emerald" />
+                    </div>
+                    <h3>Clinical Inquiry Received!</h3>
+                    <p className="success-ref-code">
+                      Reference Number: <strong>{bookingRef}</strong>
+                    </p>
+                    <p className="success-desc">
+                      Thank you, <strong>{formData.name || "Patient"}</strong>. Our clinical coordinator will call you back at <strong>+91 {formData.phone}</strong> within 15–30 minutes to assist you.
+                    </p>
+
+                    <div className="success-actions-row">
+                      <a
+                        href={`https://wa.me/91${clinicInfo.rawPhone}?text=Hello%20RevitaOrtho,%20I%20just%20submitted%20an%20inquiry%20(Ref:%20${bookingRef}).`}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="btn-whatsapp-confirm"
+                      >
+                        <MessageCircle size={16} />
+                        <span>Confirm via WhatsApp</span>
+                      </a>
+                      <button
+                        type="button"
+                        onClick={handleResetForm}
+                        className="btn-reset-form"
+                      >
+                        Send Another Inquiry
+                      </button>
+                    </div>
+                  </div>
+                ) : (
+                  <form onSubmit={handleFormSubmit} className="terapia-contact-form" noValidate>
+                    <div className="contact-form-header">
+                      <h3>Send Clinical Inquiry</h3>
+                      <p>Fill out the details below and our doctor will get back to you.</p>
+                    </div>
+
+                    <div className="form-group-field">
+                      <label htmlFor="contact-name">Patient Full Name *</label>
+                      <input
+                        type="text"
+                        id="contact-name"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleInputChange}
+                        placeholder="e.g. Ramesh Kulkarni"
+                        required
+                        className="contact-input"
+                      />
+                    </div>
+
+                    <div className="form-group-field">
+                      <label htmlFor="contact-phone">10-Digit Mobile Number *</label>
+                      <div className="contact-phone-input-wrap">
+                        <span className="country-code">+91</span>
+                        <input
+                          type="tel"
+                          id="contact-phone"
+                          name="phone"
+                          value={formData.phone}
+                          onChange={handleInputChange}
+                          placeholder="9876543210"
+                          maxLength={10}
+                          required
+                          className={`contact-input ${phoneError ? "has-error" : ""}`}
+                        />
+                      </div>
+                      {phoneError && <span className="field-error-msg">{phoneError}</span>}
+                    </div>
+
+                    <div className="form-row-two-col">
+                      <div className="form-group-field">
+                        <label htmlFor="contact-service">Area of Concern</label>
+                        <select
+                          id="contact-service"
+                          name="service"
+                          value={formData.service}
+                          onChange={handleInputChange}
+                          className="contact-input select-input"
+                        >
+                          <option value="back-pain">Back Pain & Sciatica</option>
+                          <option value="neck-pain">Neck Pain & Cervical</option>
+                          <option value="knee-pain">Knee Pain & Preservation</option>
+                          <option value="sports-injury">Sports Injury & Ligament</option>
+                          <option value="post-surgery">Post-Surgical Rehab</option>
+                          <option value="stroke-neuro">Neuro & Stroke Rehabilitation</option>
+                          <option value="general-consult">General Consultation</option>
+                        </select>
+                      </div>
+
+                      <div className="form-group-field">
+                        <label htmlFor="contact-mode">Care Mode</label>
+                        <select
+                          id="contact-mode"
+                          name="careMode"
+                          value={formData.careMode}
+                          onChange={handleInputChange}
+                          className="contact-input select-input"
+                        >
+                          <option value="clinic">In-Clinic Consultation</option>
+                          <option value="home">Home Visit Physiotherapy</option>
+                          <option value="video">Online Video Consultation</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div className="form-group-field">
+                      <label htmlFor="contact-notes">Symptoms or Message (Optional)</label>
+                      <textarea
+                        id="contact-notes"
+                        name="notes"
+                        value={formData.notes}
+                        onChange={handleInputChange}
+                        rows={3}
+                        placeholder="Briefly describe your symptoms or questions..."
+                        className="contact-input textarea-input"
+                      />
+                    </div>
+
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="btn-submit-contact"
+                    >
+                      {isSubmitting ? (
+                        <>
+                          <Loader2 size={16} className="btn-spinner" />
+                          <span>Sending Inquiry...</span>
+                        </>
+                      ) : (
+                        <>
+                          <span>Submit Clinical Inquiry</span>
+                          <ArrowRight size={16} />
+                        </>
+                      )}
+                    </button>
+                    <p className="form-privacy-note">
+                      Your medical information is strictly confidential. No spam or marketing calls.
+                    </p>
+                  </form>
+                )}
+              </div>
+            </div>
           </div>
         </div>
       </section>

@@ -744,225 +744,6 @@
 }
 
 /* ==========================================================================
-   6. APPOINTMENT SECTION (Terapia High-Impact Blue/Navy Split Layout)
-   ========================================================================== */
-.terapia-appointment-section {
-  background: linear-gradient(135deg, #0f172a 0%, #0369a1 100%);
-  color: #ffffff;
-}
-
-.terapia-appointment-grid {
-  display: grid;
-  grid-template-columns: 1.15fr 0.95fr;
-  gap: 40px;
-  align-items: center;
-}
-
-.appointment-left-col {
-  display: flex;
-  flex-direction: column;
-}
-
-.appointment-lead-text {
-  font-size: 16px;
-  line-height: 1.65;
-  color: #cbd5e1;
-  margin-bottom: 24px;
-}
-
-.appointment-benefits-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-bottom: 30px;
-}
-
-.appt-benefit-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 14px;
-  color: #f1f5f9;
-}
-
-.benefit-icon {
-  color: #38bdf8;
-  flex-shrink: 0;
-}
-
-.appointment-hotline-card {
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: var(--terapia-radius-md);
-  padding: 16px 20px;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  backdrop-filter: blur(8px);
-}
-
-.hotline-icon {
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
-  background-color: var(--terapia-primary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #ffffff;
-  flex-shrink: 0;
-}
-
-.appointment-hotline-card span {
-  display: block;
-  font-size: 12px;
-  color: #cbd5e1;
-}
-
-.hotline-phone {
-  font-family: 'Outfit', -apple-system, sans-serif;
-  font-size: 19px;
-  font-weight: 800;
-  color: #ffffff;
-  text-decoration: none;
-}
-
-.hotline-phone:hover {
-  text-decoration: underline;
-}
-
-/* Right Form Card */
-.appointment-form-card {
-  background-color: #ffffff;
-  border-radius: var(--terapia-radius-lg);
-  padding: 32px 28px;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.25);
-  color: var(--terapia-body);
-}
-
-.form-header-title {
-  font-family: 'Outfit', -apple-system, sans-serif;
-  font-size: 22px;
-  font-weight: 800;
-  color: var(--terapia-dark);
-  margin-bottom: 20px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid var(--terapia-border);
-}
-
-.form-row-2 {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
-  margin-bottom: 14px;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  margin-bottom: 14px;
-}
-
-.form-group label {
-  font-size: 12.5px;
-  font-weight: 700;
-  color: var(--terapia-dark);
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea {
-  width: 100%;
-  padding: 10px 12px;
-  border: 1px solid var(--terapia-border);
-  border-radius: 6px;
-  font-size: 13.5px;
-  color: var(--terapia-dark);
-  background-color: #ffffff;
-  font-family: inherit;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-  outline: none;
-  border-color: var(--terapia-primary);
-  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
-}
-
-.input-err-text {
-  font-size: 11px;
-  color: #dc2626;
-  font-weight: 600;
-}
-
-.btn-terapia-submit {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  background-color: var(--terapia-primary);
-  color: #ffffff;
-  border: none;
-  padding: 13px;
-  border-radius: var(--terapia-radius-sm);
-  font-size: 15px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background-color 0.25s ease;
-  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
-  margin-top: 6px;
-}
-
-.btn-terapia-submit:hover:not(:disabled) {
-  background-color: var(--terapia-primary-dark);
-}
-
-.form-success-box {
-  text-align: center;
-  padding: 20px 10px;
-}
-
-.success-ico {
-  color: var(--terapia-secondary);
-  margin: 0 auto 12px;
-}
-
-.form-success-box h3 {
-  font-family: 'Outfit', -apple-system, sans-serif;
-  font-size: 20px;
-  font-weight: 800;
-  color: var(--terapia-dark);
-  margin-bottom: 6px;
-}
-
-.booking-ref-code {
-  font-size: 13px;
-  color: var(--terapia-muted);
-  margin-bottom: 12px;
-}
-
-.booking-ref-code strong {
-  color: var(--terapia-primary);
-}
-
-.success-instruction {
-  font-size: 13.5px;
-  color: var(--terapia-body);
-  margin-bottom: 20px;
-}
-
-.success-btn-row {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-/* ==========================================================================
    7. TEAM SECTION (Terapia Specialized Physiotherapists)
    ========================================================================== */
 .terapia-team-section {
@@ -1416,9 +1197,6 @@
     grid-template-columns: 1fr;
   }
 
-  .terapia-appointment-grid {
-    grid-template-columns: 1fr;
-  }
 
   .terapia-team-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -1536,3 +1314,416 @@
     transform: rotate(360deg);
   }
 }
+
+/* ==========================================================================
+   12. CONTACT SECTION (DIRECTLY ABOVE FOOTER)
+   Clean, modern, uncluttered, professional medical helpdesk styling
+   ========================================================================== */
+.terapia-contact-section {
+  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+  border-top: 1px solid var(--terapia-border);
+}
+
+.terapia-contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.18fr;
+  gap: 36px;
+  align-items: start;
+}
+
+/* Left Column: Contact Cards */
+.contact-info-col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contact-info-card {
+  background: #ffffff;
+  border: 1px solid var(--terapia-border);
+  border-radius: var(--terapia-radius-md);
+  padding: 20px 22px;
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  box-shadow: var(--terapia-shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.contact-info-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--terapia-shadow-md);
+  border-color: var(--terapia-primary-border);
+}
+
+.info-icon-box {
+  width: 46px;
+  height: 46px;
+  border-radius: 10px;
+  background-color: var(--terapia-primary-light);
+  color: var(--terapia-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.info-card-text {
+  flex: 1;
+}
+
+.info-card-text h3 {
+  font-family: 'Outfit', -apple-system, sans-serif;
+  font-size: 16.5px;
+  font-weight: 700;
+  color: var(--terapia-dark);
+  margin: 0 0 5px 0;
+}
+
+.info-card-text p {
+  font-size: 13.5px;
+  color: var(--terapia-body);
+  margin: 0 0 5px 0;
+  line-height: 1.5;
+}
+
+.info-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--terapia-primary);
+  text-decoration: none;
+  margin-top: 4px;
+}
+
+.info-card-link:hover {
+  text-decoration: underline;
+  color: var(--terapia-primary-dark);
+}
+
+.info-phone-link {
+  font-family: 'Outfit', -apple-system, sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--terapia-primary);
+  text-decoration: none;
+}
+
+.info-phone-link:hover {
+  text-decoration: underline;
+  color: var(--terapia-primary-dark);
+}
+
+.info-subtext {
+  font-size: 12px;
+  color: var(--terapia-muted);
+  display: block;
+}
+
+/* WhatsApp Specialized Card */
+.contact-whatsapp-card {
+  background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);
+  border-color: #a7f3d0;
+}
+
+.info-icon-box.whatsapp-box {
+  background-color: #dcfce7;
+  color: #16a34a;
+}
+
+.btn-whatsapp-direct {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #16a34a;
+  color: #ffffff !important;
+  padding: 8px 16px;
+  border-radius: var(--terapia-radius-sm);
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  margin-top: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.btn-whatsapp-direct:hover {
+  background-color: #15803d;
+}
+
+/* Right Column: Clean Form */
+.contact-form-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-form-card {
+  background: #ffffff;
+  border: 1px solid var(--terapia-border);
+  border-radius: var(--terapia-radius-lg);
+  padding: 34px 30px;
+  box-shadow: var(--terapia-shadow-md);
+}
+
+.contact-form-header {
+  margin-bottom: 22px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--terapia-border);
+}
+
+.contact-form-header h3 {
+  font-family: 'Outfit', -apple-system, sans-serif;
+  font-size: 21px;
+  font-weight: 800;
+  color: var(--terapia-dark);
+  margin: 0 0 6px 0;
+}
+
+.contact-form-header p {
+  font-size: 13.5px;
+  color: var(--terapia-muted);
+  margin: 0;
+}
+
+.form-group-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.form-group-field label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--terapia-dark);
+}
+
+.contact-input {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1px solid var(--terapia-border);
+  border-radius: var(--terapia-radius-sm);
+  font-size: 14px;
+  color: var(--terapia-dark);
+  background-color: #ffffff;
+  font-family: inherit;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact-input:focus {
+  outline: none;
+  border-color: var(--terapia-primary);
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+}
+
+.contact-input.has-error {
+  border-color: #ef4444;
+  background-color: #fef2f2;
+}
+
+.contact-phone-input-wrap {
+  display: flex;
+  align-items: stretch;
+  border: 1px solid var(--terapia-border);
+  border-radius: var(--terapia-radius-sm);
+  overflow: hidden;
+  background-color: #ffffff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact-phone-input-wrap:focus-within {
+  border-color: var(--terapia-primary);
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+}
+
+.country-code {
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  background-color: #f1f5f9;
+  color: var(--terapia-dark);
+  font-weight: 700;
+  font-size: 14px;
+  border-right: 1px solid var(--terapia-border);
+  flex-shrink: 0;
+}
+
+.contact-phone-input-wrap .contact-input {
+  border: none;
+  border-radius: 0;
+  box-shadow: none !important;
+}
+
+.form-row-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.select-input {
+  cursor: pointer;
+  appearance: auto;
+}
+
+.textarea-input {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.field-error-msg {
+  font-size: 11.5px;
+  color: #dc2626;
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+.btn-submit-contact {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: var(--terapia-primary);
+  color: #ffffff;
+  border: none;
+  padding: 13px 20px;
+  border-radius: var(--terapia-radius-sm);
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.3);
+  margin-top: 4px;
+}
+
+.btn-submit-contact:hover:not(:disabled) {
+  background-color: var(--terapia-primary-dark);
+  transform: translateY(-1px);
+}
+
+.btn-spinner {
+  animation: spin 1s linear infinite;
+}
+
+.form-privacy-note {
+  text-align: center;
+  font-size: 12px;
+  color: var(--terapia-muted);
+  margin-top: 12px;
+  margin-bottom: 0;
+}
+
+/* Success State */
+.contact-success-state {
+  text-align: center;
+  padding: 24px 10px;
+}
+
+.success-icon-wrap {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background-color: #ecfdf5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  color: #10b981;
+}
+
+.contact-success-state h3 {
+  font-family: 'Outfit', -apple-system, sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--terapia-dark);
+  margin-bottom: 8px;
+}
+
+.success-ref-code {
+  display: inline-block;
+  background-color: #f0f9ff;
+  border: 1px dashed var(--terapia-primary);
+  color: var(--terapia-dark);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  margin-bottom: 14px;
+}
+
+.success-ref-code strong {
+  color: var(--terapia-primary);
+}
+
+.success-desc {
+  font-size: 14px;
+  color: var(--terapia-body);
+  line-height: 1.6;
+  max-width: 440px;
+  margin: 0 auto 24px;
+}
+
+.success-actions-row {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-whatsapp-confirm {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #16a34a;
+  color: #ffffff !important;
+  padding: 11px 20px;
+  border-radius: var(--terapia-radius-sm);
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.btn-whatsapp-confirm:hover {
+  background-color: #15803d;
+}
+
+.btn-reset-form {
+  background: none;
+  border: 1px solid var(--terapia-border);
+  color: var(--terapia-navy);
+  padding: 11px 20px;
+  border-radius: var(--terapia-radius-sm);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-reset-form:hover {
+  background-color: #f1f5f9;
+}
+
+/* Contact Section Responsive Breakpoints */
+@media (max-width: 992px) {
+  .terapia-contact-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .contact-form-card {
+    padding: 26px 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .form-row-two-col {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .contact-info-card {
+    padding: 18px 16px;
+  }
+}
+
