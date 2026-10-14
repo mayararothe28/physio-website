@@ -107,21 +107,24 @@ export default function TestimonialsPage() {
   return (
     <main className="testimonials-page">
       {/* ─── 1. HERO ─── */}
-      <section className="testimonials-hero-section">
-        <div className="testimonials-container">
-          <div className="testimonials-hero-content">
-            <span className="testimonials-kicker">
-              <BadgeCheck size={14} /> VERIFIED CLINICAL OUTCOMES
-            </span>
-            <h1>
-              Real Patients. Real Recoveries.
-              <br />
-              <span className="text-highlight">Surgeries Averted Across Pune.</span>
-            </h1>
-            <p className="testimonials-hero-lead">
-              Read documented recovery narratives from patients who overcame debilitating slip discs, severe knee osteoarthritis, frozen shoulder, and sports tears without surgery.
-            </p>
+      <section className="subpage-hero-banner">
+        <div className="subpage-hero-content">
+          <div className="subpage-breadcrumb">
+            <Link to="/">Home</Link>
+            <span className="breadcrumb-separator">/</span>
+            <span className="breadcrumb-current">Patient Testimonials</span>
           </div>
+          <span className="subpage-kicker">
+            <BadgeCheck size={14} /> VERIFIED CLINICAL OUTCOMES
+          </span>
+          <h1 className="subpage-title">
+            Real Patients. Real Recoveries.
+            <br />
+            <span className="text-highlight">Surgeries Averted Across Pune.</span>
+          </h1>
+          <p className="subpage-lead">
+            Read documented recovery narratives from patients who overcame debilitating slip discs, severe knee osteoarthritis, frozen shoulder, and sports tears without surgery.
+          </p>
         </div>
       </section>
 

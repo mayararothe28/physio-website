@@ -101,21 +101,24 @@ export default function FAQPage() {
   return (
     <main className="faq-page">
       {/* ─── 1. HERO ─── */}
-      <section className="faq-hero-section">
-        <div className="faq-container">
-          <div className="faq-hero-content">
-            <span className="faq-kicker">
-              <HelpCircle size={14} /> EVIDENCE-BASED PATIENT KNOWLEDGE BASE
-            </span>
-            <h1>
-              Frequently Asked
-              <br />
-              <span className="text-highlight">Clinical & Medical Questions.</span>
-            </h1>
-            <p className="faq-hero-lead">
-              Have doubts about avoiding surgery, treatment timelines, or insurance coverage? Here are honest, clinical answers directly from our senior physiotherapists.
-            </p>
+      <section className="subpage-hero-banner">
+        <div className="subpage-hero-content">
+          <div className="subpage-breadcrumb">
+            <Link to="/">Home</Link>
+            <span className="breadcrumb-separator">/</span>
+            <span className="breadcrumb-current">Patient FAQs</span>
           </div>
+          <span className="subpage-kicker">
+            <HelpCircle size={14} /> EVIDENCE-BASED PATIENT KNOWLEDGE BASE
+          </span>
+          <h1 className="subpage-title">
+            Frequently Asked
+            <br />
+            <span className="text-highlight">Clinical & Medical Questions.</span>
+          </h1>
+          <p className="subpage-lead">
+            Have doubts about avoiding surgery, treatment timelines, or insurance coverage? Here are honest, clinical answers directly from our senior physiotherapists.
+          </p>
         </div>
       </section>
 

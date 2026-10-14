@@ -118,21 +118,24 @@ export default function TeamPage() {
   return (
     <main className="team-page">
       {/* ─── 1. HERO ─── */}
-      <section className="team-hero-section">
-        <div className="team-container">
-          <div className="team-hero-content">
-            <span className="team-kicker">
-              <ShieldCheck size={14} /> QUALIFIED MEDICAL SPECIALISTS
-            </span>
-            <h1>
-              Meet Our Clinical Specialists.
-              <br />
-              <span className="text-highlight">Direct Care from MPT Doctors.</span>
-            </h1>
-            <p className="team-hero-lead">
-              At RevitaOrtho, you are cared for by dedicated clinical leaders who have trained at premier healthcare institutions, published orthopedic research, and healed thousands of complex joint and spine cases without surgery.
-            </p>
+      <section className="subpage-hero-banner">
+        <div className="subpage-hero-content">
+          <div className="subpage-breadcrumb">
+            <Link to="/">Home</Link>
+            <span className="breadcrumb-separator">/</span>
+            <span className="breadcrumb-current">Our Specialists</span>
           </div>
+          <span className="subpage-kicker">
+            <ShieldCheck size={14} /> QUALIFIED MEDICAL SPECIALISTS
+          </span>
+          <h1 className="subpage-title">
+            Meet Our Clinical Specialists.
+            <br />
+            <span className="text-highlight">Direct Care from MPT Doctors.</span>
+          </h1>
+          <p className="subpage-lead">
+            At RevitaOrtho, you are cared for by dedicated clinical leaders who have trained at premier healthcare institutions, published orthopedic research, and healed thousands of complex joint and spine cases without surgery.
+          </p>
         </div>
       </section>
 

@@ -17,6 +17,37 @@
   flex: 1 0 auto;
 }
 
+/* ─── Global Subpage Breadcrumb ─── */
+.subpage-breadcrumb {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #64748b;
+  margin-bottom: 14px;
+}
+
+.subpage-breadcrumb a {
+  color: #0284c7;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.15s ease;
+}
+
+.subpage-breadcrumb a:hover {
+  text-decoration: underline;
+  color: #0369a1;
+}
+
+.breadcrumb-separator {
+  color: #cbd5e1;
+}
+
+.breadcrumb-current {
+  color: #0f172a;
+  font-weight: 600;
+}
+
 /* ─── 1. TOP UTILITY BAR (Matching Dr. Sumitz top-bar) ─── */
 .top-utility-bar {
   background-color: var(--primary-navy);

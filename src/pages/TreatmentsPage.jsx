@@ -151,6 +151,11 @@ export default function TreatmentsPage() {
       {/* ─── 1. STANDARDIZED UNIFORM SUBPAGE HERO ─── */}
       <section className="subpage-hero-banner">
         <div className="subpage-hero-content">
+          <div className="subpage-breadcrumb">
+            <Link to="/">Home</Link>
+            <span className="breadcrumb-separator">/</span>
+            <span className="breadcrumb-current">Treatments</span>
+          </div>
           <span className="subpage-kicker">
             <Bone size={14} /> ADVANCED ORTHOPEDIC PROTOCOLS
           </span>

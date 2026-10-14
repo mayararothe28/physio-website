@@ -112,21 +112,24 @@ export default function OurWorkPage() {
   return (
     <main className="our-work-page">
       {/* ─── 1. HERO ─── */}
-      <section className="work-hero-section">
-        <div className="work-container">
-          <div className="work-hero-content">
-            <span className="work-kicker">
-              <FileText size={14} /> CLINICAL CASE ARCHIVES & DOCUMENTATION
-            </span>
-            <h1>
-              Our Work Speaks Through
-              <br />
-              <span className="text-highlight">Proven Clinical Recoveries.</span>
-            </h1>
-            <p className="work-hero-lead">
-              We believe physical medicine must be measured by objective outcomes: surgeries avoided, degrees of joint mobility unlocked, and athletic freedom restored. Here is our documented clinical record.
-            </p>
+      <section className="subpage-hero-banner">
+        <div className="subpage-hero-content">
+          <div className="subpage-breadcrumb">
+            <Link to="/">Home</Link>
+            <span className="breadcrumb-separator">/</span>
+            <span className="breadcrumb-current">Our Work & Cases</span>
           </div>
+          <span className="subpage-kicker">
+            <FileText size={14} /> CLINICAL CASE ARCHIVES & DOCUMENTATION
+          </span>
+          <h1 className="subpage-title">
+            Our Work Speaks Through
+            <br />
+            <span className="text-highlight">Proven Clinical Recoveries.</span>
+          </h1>
+          <p className="subpage-lead">
+            We believe physical medicine must be measured by objective outcomes: surgeries avoided, degrees of joint mobility unlocked, and athletic freedom restored. Here is our documented clinical record.
+          </p>
         </div>
       </section>
 

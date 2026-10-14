@@ -173,6 +173,11 @@ export default function ServicesPage() {
       {/* ─── 1. STANDARDIZED UNIFORM SUBPAGE HERO ─── */}
       <section className="subpage-hero-banner">
         <div className="subpage-hero-content">
+          <div className="subpage-breadcrumb">
+            <Link to="/">Home</Link>
+            <span className="breadcrumb-separator">/</span>
+            <span className="breadcrumb-current">Our Services</span>
+          </div>
           <span className="subpage-kicker">
             <Sparkles size={14} /> EVIDENCE-BASED CLINICAL DIRECTORY
           </span>
