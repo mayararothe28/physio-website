@@ -12,7 +12,6 @@ export default function Footer() {
             <span className="footer-logo-cross">+</span>
             <span className="footer-brand-title">
               Revita<span>Ortho</span>
-              <small>SPINE & ORTHOPEDIC PHYSIOTHERAPY</small>
             </span>
           </div>
           <p className="footer-bio-text">

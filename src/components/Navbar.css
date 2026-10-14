@@ -84,27 +84,18 @@
 }
 
 .logo-text {
-  display: flex;
-  flex-direction: column;
+  display: inline-flex;
+  align-items: center;
   font-family: 'Outfit', sans-serif;
-  font-size: 22px;
+  font-size: 23px;
   font-weight: 800;
-  line-height: 1.1;
+  line-height: 1;
   color: var(--primary, #163350);
   white-space: nowrap;
 }
 
 .logo-text > span {
-  color: #1b74a8;
-}
-
-.logo-text small {
-  margin-top: 2px;
-  font-family: 'Inter', sans-serif;
-  font-size: 9.5px;
-  font-weight: 600;
-  letter-spacing: 0.8px;
-  color: #7f96a8;
+  color: #0284c7;
 }
 
 /* ── Desktop Navigation Links ── */
@@ -333,23 +324,16 @@
 
 .drawer-logo-text {
   font-family: 'Outfit', sans-serif;
-  font-size: 18px;
+  font-size: 19px;
   font-weight: 800;
   color: var(--primary, #1a4a6b);
-  display: flex;
-  flex-direction: column;
+  display: inline-flex;
+  align-items: center;
   line-height: 1;
 }
 
 .drawer-logo-text span {
   color: var(--accent, #0891b2);
-}
-
-.drawer-logo-text small {
-  font-size: 8px;
-  letter-spacing: 0.6px;
-  color: #64748b;
-  margin-top: 2px;
 }
 
 .drawer-close-btn {

@@ -40,26 +40,17 @@
 }
 
 .footer-brand-title {
-  display: flex;
-  flex-direction: column;
+  display: inline-flex;
+  align-items: center;
   font-family: 'Outfit', sans-serif;
   font-size: 22px;
   font-weight: 800;
   color: #ffffff;
-  line-height: 1.1;
+  line-height: 1;
 }
 
 .footer-brand-title span {
   color: #38bdf8;
-}
-
-.footer-brand-title small {
-  font-family: 'Inter', sans-serif;
-  font-size: 8.5px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  color: #94a3b8;
-  margin-top: 3px;
 }
 
 .footer-bio-text {

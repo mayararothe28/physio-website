@@ -88,7 +88,6 @@ export default function Navbar() {
             <span className="logo-icon">+</span>
             <span className="logo-text">
               Revita<span>Ortho</span>
-              <small>ORTHOPEDIC & PHYSIOTHERAPY</small>
             </span>
           </Link>
 
@@ -202,7 +201,6 @@ export default function Navbar() {
                 <span className="drawer-logo-icon">+</span>
                 <span className="drawer-logo-text">
                   Revita<span>Ortho</span>
-                  <small>CLINICAL DIRECTORY</small>
                 </span>
               </Link>
               <button

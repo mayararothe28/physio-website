@@ -254,7 +254,6 @@ export default function HomePage() {
 
   return (
     <main className="terapia-home-page">
-      {/* ─── 1. HERO HEADER (Terapia Bootstrap Carousel / Banner Style) ─── */}
       <section className="terapia-hero-section">
         <div className="terapia-hero-overlay"></div>
         <div className="home-container terapia-hero-container">
@@ -295,7 +294,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ─── 2. TOP 3 FEATURE CARDS (Overlapping Hero, Terapia Style) ─── */}
       <section className="terapia-feature-strip">
         <div className="home-container">
           <div className="terapia-feature-grid">
@@ -332,11 +330,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ─── 3. ABOUT US SECTION (Image on Left, Text & Checkmarks on Right) ─── */}
       <section className="terapia-about-section section-padding" id="about">
         <div className="home-container">
           <div className="terapia-about-grid">
-            {/* Left Column: Image with Experience Badge */}
             <div className="terapia-about-img-col">
               <div className="terapia-about-img-wrap">
                 <img
@@ -351,7 +347,6 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Right Column: About Details */}
             <div className="terapia-about-text-col">
               <span className="terapia-section-subtitle">ABOUT OUR CLINIC</span>
               <h2 className="terapia-section-title">
@@ -409,7 +404,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ─── 4. SERVICES SECTION (Terapia Cards with Real Photos & Floating Icons) ─── */}
       <section className="terapia-services-section section-padding" id="services">
         <div className="home-container">
           <div className="section-header-centered">
@@ -424,7 +418,6 @@ export default function HomePage() {
             {services?.map((srv) => {
               const ServiceIcon = getIcon(srv.iconName, Activity);
               
-              // High quality clinical photo mapping for each service
               const serviceImages = {
                 "back-pain": "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=600&q=80",
                 "knee-pain": "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=600&q=80",
@@ -435,7 +428,6 @@ export default function HomePage() {
 
               return (
                 <div key={srv.id} className="terapia-service-card">
-                  {/* Card Image Banner */}
                   <div className="service-card-image-wrap">
                     <img src={cardImg} alt={srv.title} className="service-card-img" />
                     <div className="service-floating-icon">
@@ -443,7 +435,6 @@ export default function HomePage() {
                     </div>
                   </div>
 
-                  {/* Card Content */}
                   <div className="service-card-body">
                     <h3 className="service-card-title">{srv.title}</h3>
                     <p className="service-card-desc">{srv.desc}</p>
@@ -476,7 +467,6 @@ export default function HomePage() {
             })}
           </div>
 
-          {/* Bottom Bar */}
           <div className="terapia-services-footer-banner">
             <div>
               <h4>Looking for post-surgical rehab or ergonomic posture correction?</h4>
@@ -494,7 +484,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ─── 5. WHY CHOOSE US / FEATURES SECTION (Terapia 3 Feature Columns) ─── */}
       <section className="terapia-why-section section-padding" id="why-choose-us">
         <div className="home-container">
           <div className="section-header-centered">
@@ -520,7 +509,6 @@ export default function HomePage() {
             })}
           </div>
 
-          {/* Reassurance Banner */}
           <div className="terapia-reassurance-strip">
             <div className="reassurance-left">
               <BadgeCheck size={32} className="reassurance-badge-icon" />
@@ -539,11 +527,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ─── 6. APPOINTMENT SECTION (Terapia Split Booking Layout) ─── */}
       <section className="terapia-appointment-section section-padding" id="appointment-section">
         <div className="home-container">
           <div className="terapia-appointment-grid">
-            {/* Left Column: Why Book + Emergency Contact */}
             <div className="appointment-left-col">
               <span className="terapia-section-subtitle light-subtitle">ONLINE BOOKING</span>
               <h2 className="terapia-section-title light-title">
@@ -572,7 +558,6 @@ export default function HomePage() {
                 </div>
               </div>
 
-              {/* Emergency Hotline Card */}
               <div className="appointment-hotline-card">
                 <div className="hotline-icon">
                   <Phone size={24} />
@@ -586,7 +571,6 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Right Column: Appointment Form */}
             <div className="appointment-right-col">
               <div className="appointment-form-card">
                 {isSubmitted ? (
@@ -749,7 +733,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ─── 7. TEAM SECTION (Terapia Dedicated Therapists Grid) ─── */}
       <section className="terapia-team-section section-padding" id="team">
         <div className="home-container">
           <div className="section-header-centered">
@@ -785,62 +768,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ─── 8. TESTIMONIALS SECTION (Terapia Patient Reviews) ─── */}
-      <section className="terapia-testimonial-section section-padding" id="testimonials">
-        <div className="home-container">
-          <div className="section-header-centered">
-            <span className="terapia-section-subtitle">TESTIMONIALS</span>
-            <h2 className="terapia-section-title">What Our Patients Say About Us</h2>
-            <p className="section-main-desc">
-              Real recovery stories shared with patient permission from individuals and seniors in Pune.
-            </p>
-          </div>
-
-          <div className="terapia-testimonial-grid">
-            {testimonials?.map((t, idx) => (
-              <div key={idx} className="terapia-test-card">
-                <div className="test-card-stars">
-                  {[...Array(t.rating || 5)].map((_, s) => (
-                    <Star key={s} size={16} className="star-gold fill-gold" />
-                  ))}
-                </div>
-                <p className="test-card-quote">"{t.text}"</p>
-                <div className="test-card-condition">
-                  <strong>Treated For:</strong> {t.condition}
-                </div>
-                <div className="test-card-author">
-                  <div className="author-circle">{t.name.charAt(0)}</div>
-                  <div className="author-details">
-                    <h4>{t.name}</h4>
-                    <span>{t.role} • {t.location}</span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Google Review Badge */}
-          <div className="terapia-google-badge-strip">
-            <div className="google-badge-left">
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg"
-                alt="Google Reviews"
-                className="google-svg"
-              />
-              <div>
-                <strong>4.98 Out of 5.0 Star Rating</strong>
-                <span>Based on verified patient feedback across Pune</span>
-              </div>
-            </div>
-            <Link to="/testimonials" className="btn-terapia-outline">
-              <span>Read All Patient Reviews</span>
-              <ArrowRight size={15} />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ─── 9. BLOG / HEALTH TIPS SECTION (Terapia Health Articles) ─── */}
       <section className="terapia-blog-section section-padding" id="blog">
         <div className="home-container">
           <div className="section-header-centered">
@@ -873,7 +800,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ─── 10. FREQUENTLY ASKED QUESTIONS (FAQ) ─── */}
       <section className="terapia-faq-section section-padding" id="faq">
         <div className="home-container">
           <div className="section-header-centered">
