@@ -272,11 +272,7 @@ export default function HomePage() {
             </p>
 
             <div className="terapia-hero-cta">
-              <Link to="/appointment" className="btn-terapia-primary">
-                <span>Book Appointment</span>
-                <ArrowRight size={17} />
-              </Link>
-              <a href={`tel:+91${clinicInfo.rawPhone}`} className="btn-terapia-white">
+              <a href={`tel:+91${clinicInfo.rawPhone}`} className="btn-terapia-primary">
                 <Phone size={17} />
                 <span>Call Helpline: {clinicInfo.rawPhone}</span>
               </a>
