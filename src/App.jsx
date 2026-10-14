@@ -16,6 +16,7 @@ import ContactPage from "./pages/ContactPage";
 import FAQPage from "./pages/FAQPage";
 import OurWorkPage from "./pages/OurWorkPage";
 import ServiceDetailPage from "./pages/ServiceDetailPage";
+import BlogDetailPage from "./pages/BlogDetailPage";
 
 import "./App.css";
 
@@ -73,6 +74,8 @@ function App() {
         <Route path="/faq" Component={FAQPage} />
         <Route path="/our-work" Component={OurWorkPage} />
         <Route path="/work" Component={OurWorkPage} />
+        <Route path="/blog" Component={BlogDetailPage} />
+        <Route path="/blog/:slug" Component={BlogDetailPage} />
       </Routes>
 
       <Footer />

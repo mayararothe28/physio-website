@@ -9,6 +9,14 @@ import {
   Clock,
   Calendar,
   MessageCircle,
+  Phone,
+  ShieldCheck,
+  Award,
+  ChevronRight,
+  ArrowRight,
+  Check,
+  AlertCircle,
+  Sparkles,
 } from "lucide-react";
 import { SERVICE_DETAILS } from "../data/serviceDetailsData";
 import "./ServiceDetailPage.css";
@@ -57,7 +65,20 @@ export default function ServiceDetailPage() {
 
   return (
     <main className="service-detail-page">
-      {/* ─── STANDARDIZED UNIFORM SUBPAGE HERO ─── */}
+      {/* ─── 1. BREADCRUMBS ─── */}
+      <div className="detail-breadcrumb-bar">
+        <div className="detail-container">
+          <nav className="detail-breadcrumb-nav" aria-label="Breadcrumb">
+            <Link to="/">Home</Link>
+            <ChevronRight size={13} />
+            <Link to="/services">Services</Link>
+            <ChevronRight size={13} />
+            <span className="current-crumb">{detail.title}</span>
+          </nav>
+        </div>
+      </div>
+
+      {/* ─── 2. SUBPAGE HERO BANNER ─── */}
       <section className="subpage-hero-banner">
         <div className="subpage-hero-content">
           <span className="subpage-kicker">
@@ -71,10 +92,137 @@ export default function ServiceDetailPage() {
           <p className="subpage-lead">
             {detail.subtitle}
           </p>
+
+          <div className="subpage-hero-actions">
+            <Link
+              to={`/appointment?service=${detail.serviceCode}`}
+              className="btn-hero-book-primary"
+            >
+              <Calendar size={16} />
+              <span>Book 45-Min Assessment</span>
+            </Link>
+            <a
+              href={`https://wa.me/919145875248?text=Hello%20RevitaOrtho,%20I%20would%20like%20to%20consult%20regarding%20${encodeURIComponent(
+                detail.title
+              )}.`}
+              target="_blank"
+              rel="noreferrer"
+              className="btn-hero-whatsapp"
+            >
+              <MessageCircle size={16} />
+              <span>WhatsApp Doctor</span>
+            </a>
+          </div>
         </div>
       </section>
 
-      {/* ─── SPECIALIZED CONDITION & TREATMENT CARDS (COMPACT & DISTINCT DESIGN) ─── */}
+      {/* ─── 3. CLINICAL METRICS STRIP ─── */}
+      {detail.metrics && detail.metrics.length > 0 && (
+        <section className="service-metrics-strip">
+          <div className="detail-container">
+            <div className="metrics-grid">
+              {detail.metrics.map((m, idx) => (
+                <div key={idx} className="metric-box">
+                  <span className="metric-value">{m.value}</span>
+                  <strong className="metric-label">{m.label}</strong>
+                  <span className="metric-sub">{m.sub}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ─── 4. CLINICAL OVERVIEW (Symptoms & Root Causes) ─── */}
+      <section className="detail-section symptoms-causes-section">
+        <div className="detail-container">
+          <div className="two-col-clinical-grid">
+            {/* Left: Symptoms Checklist */}
+            <div className="clinical-col symptoms-col">
+              <span className="section-kicker-tag">SYMPTOM CHECKLIST</span>
+              <h2>Common Symptoms & Daily Limitations</h2>
+              <p className="col-desc">
+                If you experience one or more of these clinical presentations, our targeted manual and non-surgical protocols can help:
+              </p>
+
+              <div className="symptoms-list">
+                {detail.symptoms?.map((symp, idx) => (
+                  <div key={idx} className="symptom-item">
+                    <CheckCircle2 size={18} className="symp-icon text-azure" />
+                    <span>{symp}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Right: Root Causes & Surgeries Avoided */}
+            <div className="clinical-col causes-col">
+              <span className="section-kicker-tag">PATHOLOGY & DIAGNOSIS</span>
+              <h2>Root Causes We Diagnose & Treat</h2>
+              <p className="col-desc">
+                Rather than prescribing temporary painkiller masks, we evaluate the exact biomechanical source:
+              </p>
+
+              <div className="root-causes-stack">
+                {detail.rootCauses?.map((cause, idx) => (
+                  <div key={idx} className="cause-card">
+                    <h4>{cause.title}</h4>
+                    <p>{cause.desc}</p>
+                  </div>
+                ))}
+              </div>
+
+              {/* Surgeries Avoided Box */}
+              {detail.surgeriesAvoided && detail.surgeriesAvoided.length > 0 && (
+                <div className="surgeries-avoided-card">
+                  <div className="avoided-header">
+                    <ShieldCheck size={20} className="text-emerald" />
+                    <strong>Invasive Surgeries Successfully Avoided:</strong>
+                  </div>
+                  <div className="avoided-chips-wrap">
+                    {detail.surgeriesAvoided.map((surg, sIdx) => (
+                      <span key={sIdx} className="avoided-chip">
+                        <Check size={12} /> {surg}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── 5. 4-STEP NON-SURGICAL PROTOCOL ─── */}
+      {detail.protocols && detail.protocols.length > 0 && (
+        <section className="detail-section protocols-section">
+          <div className="detail-container">
+            <div className="section-title-wrap">
+              <span className="section-kicker-tag">EVIDENCE-BASED RECOVERY PATHWAY</span>
+              <h2>Our 4-Stage Clinical Protocol</h2>
+              <p>
+                A documented phase-based progression designed to resolve acute inflammation, restore joint mechanics, and build permanent muscular stability.
+              </p>
+            </div>
+
+            <div className="protocols-grid">
+              {detail.protocols.map((proto) => (
+                <div key={proto.step} className="protocol-card">
+                  <div className="protocol-step-badge">{proto.step}</div>
+                  <h3 className="protocol-title">{proto.title}</h3>
+                  <p className="protocol-desc">{proto.desc}</p>
+                  <div className="protocol-modality">
+                    <strong>Technology / Method:</strong>
+                    <span>{proto.modality}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ─── 6. SPECIALIZED 6 CLINICAL PATHWAYS (Compact Cards) ─── */}
       {detail.relatedCards && detail.relatedCards.length > 0 && (
         <section className="detail-section related-cards-section" id="related-conditions">
           <div className="detail-container">
@@ -90,7 +238,7 @@ export default function ServiceDetailPage() {
               {detail.relatedCards.map((card, idx) => (
                 <article
                   key={card.id || idx}
-                  className={`compact-treatment-card scroll-reveal hover-lift delay-${(idx % 3) + 1}`}
+                  className="compact-treatment-card"
                 >
                   {/* Card Thumbnail */}
                   <div className="treatment-thumb-wrap">
@@ -130,7 +278,6 @@ export default function ServiceDetailPage() {
                       <span>{card.surgeryAvoided || card.outcome || card.recovery}</span>
                     </div>
 
-                    {/* Book Appointment CTA & WhatsApp at bottom of every card */}
                     <div className="treatment-action-row">
                       <Link
                         to={`/appointment?service=${detail.serviceCode}&condition=${encodeURIComponent(
@@ -160,6 +307,59 @@ export default function ServiceDetailPage() {
           </div>
         </section>
       )}
+
+      {/* ─── 7. CASE STUDY SPOTLIGHT ─── */}
+      {detail.caseStudy && (
+        <section className="detail-section case-study-section">
+          <div className="detail-container">
+            <div className="case-study-card">
+              <div className="case-study-left">
+                <span className="case-study-tag">VERIFIED CLINICAL OUTCOME</span>
+                <h3>{detail.caseStudy.title}</h3>
+                <span className="case-study-patient">{detail.caseStudy.patient}</span>
+                <div className="case-study-outcome-badge">
+                  <CheckCircle2 size={16} />
+                  <span>{detail.caseStudy.outcome}</span>
+                </div>
+              </div>
+              <div className="case-study-right">
+                <blockquote className="case-study-quote">
+                  "{detail.caseStudy.quote}"
+                </blockquote>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ─── 8. FINAL CONSULTATION BANNER ─── */}
+      <section className="service-footer-cta-section">
+        <div className="detail-container">
+          <div className="service-cta-banner">
+            <div className="cta-banner-text">
+              <span className="cta-kicker">RECOVER SAFELY WITHOUT SURGERY</span>
+              <h2>Ready for Your Comprehensive 45-Minute Diagnostic Evaluation?</h2>
+              <p>
+                Consult directly with a hospital-experienced Master's degree (MPT) orthopedic physiotherapist with zero waiting time.
+              </p>
+            </div>
+
+            <div className="cta-banner-actions">
+              <Link
+                to={`/appointment?service=${detail.serviceCode}`}
+                className="btn-cta-book-large"
+              >
+                <Calendar size={18} />
+                <span>Book Direct Evaluation</span>
+              </Link>
+              <a href="tel:+919145875248" className="btn-cta-call">
+                <Phone size={17} />
+                <span>Call Helpline: +91 91458 75248</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }

@@ -1,0 +1,782 @@
+/* ==========================================================================
+   BLOG / ARTICLE DETAIL PAGE — Clean, Elegant, Distraction-Free Reading
+   RevitaOrtho Clinic Theme
+   ========================================================================== */
+
+.blog-article-page {
+  background-color: #f8fafc;
+  min-height: 100vh;
+  padding-bottom: 90px;
+  color: #1e293b;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+.article-container {
+  width: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ─── Breadcrumb ─── */
+.article-breadcrumb-bar {
+  background-color: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 14px 0;
+}
+
+.breadcrumb-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13.5px;
+  color: #64748b;
+}
+
+.breadcrumb-nav a {
+  color: #0284c7;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.18s;
+}
+
+.breadcrumb-nav a:hover {
+  color: #0369a1;
+  text-decoration: underline;
+}
+
+.current-crumb {
+  color: #1e293b;
+  font-weight: 600;
+}
+
+/* ─── Header Section ─── */
+.article-header-section {
+  background-color: #ffffff;
+  padding: 42px 0 32px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.article-badge-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.article-cat-badge {
+  display: inline-block;
+  background-color: #e0f2fe;
+  color: #0284c7;
+  font-size: 12px;
+  font-weight: 750;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  border: 1px solid #bae6fd;
+}
+
+.article-read-time {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.article-main-title {
+  font-family: 'Outfit', -apple-system, sans-serif;
+  font-size: clamp(28px, 3.6vw, 42px);
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  margin: 0 0 24px;
+  max-width: 900px;
+}
+
+/* ─── Author Card ─── */
+.article-author-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  max-width: 680px;
+}
+
+.author-avatar-img {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #0284c7;
+  flex-shrink: 0;
+}
+
+.author-text-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.author-name {
+  font-size: 15.5px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.author-credentials {
+  font-size: 13px;
+  color: #475569;
+}
+
+.article-publish-date {
+  font-size: 12px;
+  color: #0284c7;
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+/* ─── Hero Image Frame ─── */
+.article-hero-media {
+  padding: 32px 0 10px;
+}
+
+.article-image-frame {
+  width: 100%;
+  max-height: 440px;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+}
+
+.article-cover-img {
+  width: 100%;
+  height: 100%;
+  max-height: 440px;
+  object-fit: cover;
+  display: block;
+}
+
+/* ─── Main Grid Layout ─── */
+.article-body-section {
+  padding: 30px 0 60px;
+}
+
+.article-layout-grid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 40px;
+  align-items: start;
+}
+
+/* Intro Box */
+.article-intro-box {
+  background-color: #f0fdf4;
+  border-left: 4px solid #16a34a;
+  border-radius: 0 10px 10px 0;
+  padding: 22px 24px;
+  margin-bottom: 36px;
+}
+
+.article-intro-text {
+  font-size: 16.5px;
+  line-height: 1.7;
+  color: #1e293b;
+  margin: 0;
+  font-weight: 450;
+}
+
+/* Steps Section */
+.steps-section-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 24px;
+  font-weight: 750;
+  color: #0f172a;
+  margin: 0 0 24px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.text-primary-blue {
+  color: #0284c7;
+}
+
+.stretches-list-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  margin-bottom: 36px;
+}
+
+.stretch-item-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.stretch-item-card:hover {
+  border-color: #bae6fd;
+  box-shadow: 0 6px 18px rgba(2, 132, 199, 0.08);
+}
+
+.stretch-header-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.stretch-step-num {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.stretch-name {
+  font-family: 'Outfit', sans-serif;
+  font-size: 19px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+}
+
+.stretch-detail-group {
+  margin-bottom: 14px;
+}
+
+.detail-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+
+.stretch-detail-group p {
+  font-size: 15px;
+  line-height: 1.65;
+  color: #334155;
+  margin: 0;
+}
+
+.stretch-specs-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px dashed #e2e8f0;
+}
+
+.spec-pill {
+  font-size: 13.5px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.spec-reps {
+  background-color: #f8fafc;
+  color: #334155;
+  border: 1px solid #e2e8f0;
+}
+
+.spec-why {
+  background-color: #eff6ff;
+  color: #1d4ed8;
+  border: 1px solid #dbeafe;
+}
+
+/* Doctor Advice Banner */
+.doctor-advice-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  background-color: #f0f9ff;
+  border: 1px solid #bae6fd;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 32px;
+}
+
+.advice-icon-wrap {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  background-color: #0284c7;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.advice-content h3 {
+  font-size: 17px;
+  font-weight: 750;
+  color: #0c4a6e;
+  margin: 0 0 6px;
+}
+
+.advice-content p {
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: #0369a1;
+  margin: 0;
+}
+
+/* When to Consult */
+.when-to-consult-card {
+  background-color: #ffffff;
+  border: 1px solid #fee2e2;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 36px;
+}
+
+.consult-card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.text-danger-red {
+  color: #dc2626;
+}
+
+.consult-card-header h3 {
+  font-size: 18px;
+  font-weight: 750;
+  color: #991b1b;
+  margin: 0;
+}
+
+.consult-lead {
+  font-size: 14px;
+  color: #64748b;
+  margin: 0 0 16px;
+}
+
+.consult-bullets-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.consult-bullets-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14.5px;
+  color: #334155;
+  line-height: 1.5;
+}
+
+.bullet-check {
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+/* Article Booking Strip */
+.article-booking-strip {
+  background: linear-gradient(135deg, #0e243a 0%, #163857 100%);
+  color: #ffffff;
+  border-radius: 14px;
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.strip-left h4 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 20px;
+  font-weight: 750;
+  margin: 0 0 6px;
+  color: #ffffff;
+}
+
+.strip-left p {
+  font-size: 14px;
+  color: #94a3b8;
+  margin: 0;
+}
+
+.strip-right {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.btn-article-book {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: #0284c7;
+  color: #ffffff !important;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 12px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn-article-book:hover {
+  background-color: #0369a1;
+  transform: translateY(-2px);
+}
+
+.btn-article-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: #25d366;
+  color: #ffffff !important;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn-article-whatsapp:hover {
+  background-color: #1ebc59;
+}
+
+/* ─── Sidebar ─── */
+.sidebar-sticky-wrap {
+  position: sticky;
+  top: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.sidebar-booking-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+}
+
+.card-kicker {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 800;
+  color: #0284c7;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.sidebar-booking-card h3 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 19px;
+  font-weight: 750;
+  color: #0f172a;
+  margin: 0 0 10px;
+  line-height: 1.3;
+}
+
+.sidebar-booking-card p {
+  font-size: 13.5px;
+  color: #64748b;
+  line-height: 1.6;
+  margin: 0 0 18px;
+}
+
+.btn-sidebar-book {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: #0284c7;
+  color: #ffffff !important;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 12px 18px;
+  border-radius: 8px;
+  text-decoration: none;
+  margin-bottom: 12px;
+  transition: background-color 0.2s;
+}
+
+.btn-sidebar-book:hover {
+  background-color: #0369a1;
+}
+
+.sidebar-phone-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #334155;
+  text-decoration: none;
+  transition: color 0.18s;
+}
+
+.sidebar-phone-link:hover {
+  color: #0284c7;
+}
+
+.sidebar-service-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 22px;
+}
+
+.service-card-tag {
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: #64748b;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.sidebar-service-card h4 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 17px;
+  font-weight: 750;
+  color: #0f172a;
+  margin: 0 0 6px;
+}
+
+.sidebar-service-card p {
+  font-size: 13px;
+  color: #64748b;
+  line-height: 1.5;
+  margin: 0 0 14px;
+}
+
+.service-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #0284c7;
+  font-size: 13.5px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: gap 0.2s;
+}
+
+.service-card-link:hover {
+  gap: 9px;
+  color: #0369a1;
+}
+
+/* ─── More Guides Section ─── */
+.article-more-guides-section {
+  padding: 50px 0 20px;
+  border-top: 1px solid #e2e8f0;
+  background-color: #ffffff;
+}
+
+.more-guides-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+
+.more-guides-header h2 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 26px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 6px 0 0;
+}
+
+.btn-back-home {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #0284c7;
+  text-decoration: none;
+  padding: 8px 16px;
+  border: 1px solid #bae6fd;
+  border-radius: 8px;
+  background-color: #f0f9ff;
+  transition: all 0.2s;
+}
+
+.btn-back-home:hover {
+  background-color: #0284c7;
+  color: #ffffff;
+}
+
+.more-guides-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+
+.other-guide-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.other-guide-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+}
+
+.other-guide-img-wrap {
+  position: relative;
+  height: 200px;
+}
+
+.other-guide-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.other-guide-cat {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background-color: #0284c7;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 750;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+.other-guide-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.other-guide-date {
+  font-size: 12px;
+  color: #64748b;
+  margin-bottom: 6px;
+}
+
+.other-guide-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 17.5px;
+  font-weight: 750;
+  color: #0f172a;
+  line-height: 1.35;
+  margin: 0 0 10px;
+}
+
+.other-guide-excerpt {
+  font-size: 13.5px;
+  color: #475569;
+  line-height: 1.55;
+  margin: 0 0 16px;
+  flex: 1;
+}
+
+.btn-read-other {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #0284c7;
+  text-decoration: none;
+  transition: gap 0.2s;
+}
+
+.btn-read-other:hover {
+  gap: 9px;
+  color: #0369a1;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 900px) {
+  .article-layout-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .sidebar-sticky-wrap {
+    position: static;
+  }
+  
+  .more-guides-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .article-booking-strip {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .strip-right {
+    width: 100%;
+  }
+  
+  .btn-article-book,
+  .btn-article-whatsapp {
+    width: 100%;
+  }
+  
+  .article-main-title {
+    font-size: 24px;
+  }
+  
+  .more-guides-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+}

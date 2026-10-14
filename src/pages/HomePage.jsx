@@ -87,30 +87,33 @@ const TEAM_MEMBERS = [
 const BLOG_POSTS = [
   {
     id: 1,
+    slug: "back-pain-stretches",
     title: "5 Simple Stretches for Immediate Lower Back Pain Relief",
     category: "Spine Health",
     date: "October 10, 2026",
     excerpt: "Sitting for long hours weakens core muscles and compresses lumbar discs. Learn 5 gentle physical therapy stretches you can do at your desk.",
     image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=600&q=80",
-    link: "/services/back-pain",
+    link: "/blog/back-pain-stretches",
   },
   {
     id: 2,
+    slug: "knee-osteoarthritis-guide",
     title: "Knee Osteoarthritis: Can Targeted Physiotherapy Avoid Surgery?",
     category: "Joint Care",
     date: "September 28, 2026",
     excerpt: "Discover how non-surgical radiofrequency and cartilage unloading exercises restore walking comfort and delay knee replacement.",
     image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=600&q=80",
-    link: "/services/knee-pain",
+    link: "/blog/knee-osteoarthritis-guide",
   },
   {
     id: 3,
+    slug: "tech-neck-posture",
     title: "Tech-Neck & Cervical Stiffness: The Modern Desk Posture Guide",
     category: "Ergonomics",
     date: "September 15, 2026",
     excerpt: "Forward head posture adds up to 27kg of extra strain on your cervical spine. Learn ergonomic adjustments and deep flexor drills.",
     image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=600&q=80",
-    link: "/services/neck-pain",
+    link: "/blog/tech-neck-posture",
   },
 ];
 
@@ -293,7 +296,7 @@ export default function HomePage() {
       <section className="terapia-feature-strip">
         <div className="home-container">
           <div className="terapia-feature-grid">
-            <div className="terapia-feature-box">
+            <Link to="/team" className="terapia-feature-box">
               <div className="feature-box-icon">
                 <Award size={30} />
               </div>
@@ -301,9 +304,9 @@ export default function HomePage() {
                 <h3>Certified Specialists</h3>
                 <p>14+ years of clinical excellence led by hospital-experienced MPT orthopedic physiotherapists.</p>
               </div>
-            </div>
+            </Link>
 
-            <div className="terapia-feature-box">
+            <Link to="/services" className="terapia-feature-box">
               <div className="feature-box-icon">
                 <ShieldCheck size={30} />
               </div>
@@ -311,9 +314,9 @@ export default function HomePage() {
                 <h3>100% Non-Surgical</h3>
                 <p>Advanced computerized decompression, cold laser, and manual therapy avoiding invasive procedures.</p>
               </div>
-            </div>
+            </Link>
 
-            <div className="terapia-feature-box">
+            <Link to="/appointment" className="terapia-feature-box">
               <div className="feature-box-icon">
                 <Clock size={30} />
               </div>
@@ -321,7 +324,7 @@ export default function HomePage() {
                 <h3>Zero Waiting Time</h3>
                 <p>Pre-scheduled 45-minute consultation slots from 8 AM to 8 PM, plus doorstep home therapy in Pune.</p>
               </div>
-            </div>
+            </Link>
           </div>
         </div>
       </section>
@@ -424,15 +427,17 @@ export default function HomePage() {
 
               return (
                 <div key={srv.id} className="terapia-service-card">
-                  <div className="service-card-image-wrap">
+                  <Link to={srv.link} className="service-card-image-wrap">
                     <img src={cardImg} alt={srv.title} className="service-card-img" />
                     <div className="service-floating-icon">
                       <ServiceIcon size={24} />
                     </div>
-                  </div>
+                  </Link>
 
                   <div className="service-card-body">
-                    <h3 className="service-card-title">{srv.title}</h3>
+                    <h3 className="service-card-title">
+                      <Link to={srv.link}>{srv.title}</Link>
+                    </h3>
                     <p className="service-card-desc">{srv.desc}</p>
 
                     <div className="service-card-bullets">
@@ -761,6 +766,13 @@ export default function HomePage() {
               </div>
             ))}
           </div>
+
+          <div className="team-footer-cta-row">
+            <Link to="/team" className="btn-terapia-outline">
+              <span>Meet Our Full Specialist Team</span>
+              <ArrowRight size={15} />
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -777,13 +789,15 @@ export default function HomePage() {
           <div className="terapia-blog-grid">
             {BLOG_POSTS.map((post) => (
               <div key={post.id} className="terapia-blog-card">
-                <div className="blog-card-img-wrap">
+                <Link to={post.link} className="blog-card-img-wrap">
                   <img src={post.image} alt={post.title} className="blog-card-img" />
                   <span className="blog-card-cat">{post.category}</span>
-                </div>
+                </Link>
                 <div className="blog-card-body">
                   <span className="blog-card-date">{post.date}</span>
-                  <h3 className="blog-card-title">{post.title}</h3>
+                  <h3 className="blog-card-title">
+                    <Link to={post.link}>{post.title}</Link>
+                  </h3>
                   <p className="blog-card-excerpt">{post.excerpt}</p>
                   <Link to={post.link} className="btn-blog-readmore">
                     <span>Read Article</span>
@@ -792,6 +806,13 @@ export default function HomePage() {
                 </div>
               </div>
             ))}
+          </div>
+
+          <div className="blog-footer-cta-row">
+            <Link to="/blog" className="btn-terapia-outline">
+              <span>Explore All Health & Therapy Guides</span>
+              <ArrowRight size={15} />
+            </Link>
           </div>
         </div>
       </section>
