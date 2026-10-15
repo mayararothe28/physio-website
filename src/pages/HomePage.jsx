@@ -350,10 +350,6 @@ export default function HomePage() {
                 alt="Doctor performing physiotherapy evaluation at RevitaOrtho clinic"
                 className="wor-hero-main-img"
               />
-              <div className="wor-hero-experience-pill">
-                <span className="wor-pill-number">14+</span>
-                <span className="wor-pill-text">Years Clinical Excellence</span>
-              </div>
             </div>
           </div>
         </div>
