@@ -457,40 +457,6 @@ export default function HomePage() {
                 </p>
               </div>
 
-              <div className="wor-about-features-grid">
-                <div className="wor-feature-point">
-                  <CheckCircle2 size={18} className="wor-point-icon" />
-                  <div>
-                    <strong>Comprehensive Diagnostic Evaluation</strong>
-                    <p>45-minute orthopedic & nerve assessment before starting therapy.</p>
-                  </div>
-                </div>
-
-                <div className="wor-feature-point">
-                  <CheckCircle2 size={18} className="wor-point-icon" />
-                  <div>
-                    <strong>Dedicated 1-on-1 Specialist Focus</strong>
-                    <p>Every session personally led by qualified MPT clinicians.</p>
-                  </div>
-                </div>
-
-                <div className="wor-feature-point">
-                  <CheckCircle2 size={18} className="wor-point-icon" />
-                  <div>
-                    <strong>Modern European Technology</strong>
-                    <p>Motorized spinal decompression and Class-IV laser therapy.</p>
-                  </div>
-                </div>
-
-                <div className="wor-feature-point">
-                  <CheckCircle2 size={18} className="wor-point-icon" />
-                  <div>
-                    <strong>Relapse Prevention Drills</strong>
-                    <p>Custom home exercise prescriptions to keep you permanently pain-free.</p>
-                  </div>
-                </div>
-              </div>
-
               <div className="wor-about-buttons-row">
                 <Link to="/about" className="wor-btn-about-more">
                   <span>Learn More About Us</span>
