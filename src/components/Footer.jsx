@@ -15,28 +15,6 @@ import "./Footer.css";
 export default function Footer() {
   return (
     <footer className="wor-footer">
-      {/* ─── Top Callout Banner (World of Rehab style) ─── */}
-      <div className="wor-footer-callout">
-        <div className="wor-footer-container">
-          <div className="wor-callout-inner">
-            <div className="wor-callout-text">
-              <h3>Unlock your body's full potential! Don't let pain define you.</h3>
-              <p>Step into a future of freedom, flexibility, and function. Book your physio session today.</p>
-            </div>
-            <div className="wor-callout-actions">
-              <Link to="/appointment" className="wor-btn-footer-book">
-                <Calendar size={17} />
-                <span>Book Appointment</span>
-              </Link>
-              <a href="tel:+919145875248" className="wor-btn-footer-call">
-                <Phone size={17} />
-                <span>Call Helpline: +91 91458 75248</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* ─── Main Footer Content Columns ─── */}
       <div className="wor-footer-main">
         <div className="wor-footer-container">
