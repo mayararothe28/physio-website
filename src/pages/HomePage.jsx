@@ -417,7 +417,7 @@ export default function HomePage() {
       <section className="wor-about-section" id="about">
         <div className="wor-container">
           <div className="wor-about-grid">
-            {/* Left Column: Clinic Image/Video Showcase with Rating Badges */}
+            {/* Left Column: Clinic Image/Video Showcase */}
             <div className="wor-about-media-col">
               <div className="wor-about-image-card">
                 <img
@@ -430,39 +430,6 @@ export default function HomePage() {
                     <Play size={20} fill="#ffffff" />
                   </div>
                   <span>Virtual Clinic Tour</span>
-                </div>
-              </div>
-
-              {/* Verified Rating Badges (Google, Practo, Justdial) */}
-              <div className="wor-ratings-strip">
-                <div className="wor-rating-item">
-                  <div className="wor-rating-stars">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} size={14} className="star-gold" fill="#f59e0b" />
-                    ))}
-                  </div>
-                  <strong>4.9 / 5.0</strong>
-                  <span>Google Reviews</span>
-                </div>
-
-                <div className="wor-rating-item">
-                  <div className="wor-rating-stars">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} size={14} className="star-gold" fill="#f59e0b" />
-                    ))}
-                  </div>
-                  <strong>4.95 / 5.0</strong>
-                  <span>Practo Verified</span>
-                </div>
-
-                <div className="wor-rating-item">
-                  <div className="wor-rating-stars">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} size={14} className="star-gold" fill="#f59e0b" />
-                    ))}
-                  </div>
-                  <strong>4.8 / 5.0</strong>
-                  <span>Justdial Health</span>
                 </div>
               </div>
             </div>
