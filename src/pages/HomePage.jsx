@@ -641,49 +641,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════════════════
-          7. PATIENT TESTIMONIALS & REVIEWS (Trustindex Google Style)
-         ══════════════════════════════════════════════════════════════ */}
-      <section className="wor-reviews-section" id="reviews">
-        <div className="wor-container">
-          <div className="wor-section-header-center">
-            <div className="wor-section-tag-line center-tag">
-              <span className="wor-divider-line"></span>
-              <span className="wor-section-kicker">PATIENT EXPERIENCES</span>
-              <span className="wor-divider-line"></span>
-            </div>
-            <h2 className="wor-section-title">Patient Reviews & Recovery Stories</h2>
-            <p className="wor-section-subtitle">
-              Read authentic feedback from patients who restored their mobility and avoided invasive orthopedic surgery.
-            </p>
-          </div>
-
-          <div className="wor-reviews-slider-grid">
-            {PATIENT_REVIEWS.map((rev) => (
-              <div key={rev.id} className="wor-review-card">
-                <div className="wor-review-card-head">
-                  <div className="wor-review-stars">
-                    {[...Array(rev.rating)].map((_, i) => (
-                      <Star key={i} size={15} className="star-gold" fill="#f59e0b" />
-                    ))}
-                  </div>
-                  <span className="wor-review-source">{rev.source}</span>
-                </div>
-
-                <p className="wor-review-text">"{rev.text}"</p>
-
-                <div className="wor-review-patient-meta">
-                  <div className="wor-patient-avatar">{rev.avatar}</div>
-                  <div>
-                    <strong className="wor-patient-name">{rev.name}</strong>
-                    <span className="wor-patient-condition">{rev.condition}</span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* ══════════════════════════════════════════════════════════════
           8. QUICK INQUIRY / APPOINTMENT SECTION (Above Footer)
