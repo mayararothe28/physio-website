@@ -130,69 +130,103 @@
 }
 
 /* ══════════════════════════════════════════════════════════════════
-   1. HERO SECTION (Split 2-Columns)
+   1. HERO BANNER (Single Image with Make an Appointment & Call Us)
    ══════════════════════════════════════════════════════════════════ */
-.wor-hero-section {
-  padding: 4.5rem 0 4rem 0;
-  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
-  border-bottom: 1px solid var(--wor-border-light);
-}
-
-.wor-hero-grid {
-  display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
+.wor-hero-single-banner {
+  position: relative;
+  min-height: 560px;
+  display: flex;
   align-items: center;
-  gap: 3.5rem;
+  overflow: hidden;
+  color: #ffffff;
 }
 
-.wor-kicker-tag {
+.wor-hero-banner-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.wor-banner-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  display: block;
+}
+
+.wor-hero-banner-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(15, 43, 72, 0.94) 0%,
+    rgba(15, 43, 72, 0.84) 52%,
+    rgba(15, 43, 72, 0.45) 100%
+  );
+}
+
+.wor-banner-content-wrap {
+  position: relative;
+  z-index: 2;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.wor-banner-content {
+  max-width: 660px;
+}
+
+.wor-banner-kicker {
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
-  background-color: var(--wor-blue-light);
-  color: var(--wor-blue-dark);
-  font-size: 0.75rem;
+  gap: 0.5rem;
+  background: rgba(2, 132, 199, 0.25);
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  color: #38bdf8;
+  font-size: 0.775rem;
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  padding: 0.4rem 0.9rem;
+  padding: 0.45rem 1rem;
   border-radius: var(--wor-radius-pill);
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.35rem;
+  backdrop-filter: blur(4px);
 }
 
-.wor-hero-title {
-  font-size: 3.25rem;
+.wor-banner-title {
+  font-size: 3.4rem;
   font-weight: 800;
   line-height: 1.15;
-  color: var(--wor-navy);
+  color: #ffffff;
   letter-spacing: -0.03em;
-  margin-bottom: 1.25rem;
+  margin: 0 0 1.25rem 0;
 }
 
 .wor-text-accent {
-  color: var(--wor-blue);
+  color: #38bdf8;
   position: relative;
   display: inline-block;
 }
 
-.wor-hero-description {
+.wor-banner-desc {
   font-size: 1.15rem;
-  color: var(--wor-text-body);
+  color: #e2e8f0;
   line-height: 1.65;
-  margin-bottom: 2rem;
+  margin: 0 0 2.25rem 0;
   max-width: 580px;
 }
 
-/* Dual CTAs in Hero */
-.wor-hero-cta-group {
+/* Hero Banner Buttons: Make an Appointment + Call Us */
+.wor-banner-btn-group {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 1rem;
-  margin-bottom: 2.5rem;
+  gap: 1.1rem;
+  margin-bottom: 2.25rem;
 }
 
-.wor-btn-hero-primary {
+.wor-btn-banner-appointment {
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
@@ -200,21 +234,21 @@
   color: #ffffff;
   font-size: 1.05rem;
   font-weight: 700;
-  padding: 0.95rem 1.85rem;
+  padding: 0.95rem 1.95rem;
   border-radius: var(--wor-radius-sm);
   text-decoration: none;
-  box-shadow: 0 6px 18px rgba(2, 132, 199, 0.35);
+  box-shadow: 0 6px 20px rgba(2, 132, 199, 0.4);
   transition: var(--wor-transition);
 }
 
-.wor-btn-hero-primary:hover {
+.wor-btn-banner-appointment:hover {
   background: linear-gradient(135deg, #0369a1 0%, #0c4a6e 100%);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(2, 132, 199, 0.45);
+  box-shadow: 0 8px 26px rgba(2, 132, 199, 0.55);
   color: #ffffff;
 }
 
-.wor-btn-hero-call {
+.wor-btn-banner-call {
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
@@ -222,98 +256,39 @@
   color: #ffffff;
   font-size: 1.05rem;
   font-weight: 700;
-  padding: 0.95rem 1.85rem;
+  padding: 0.95rem 1.95rem;
   border-radius: var(--wor-radius-sm);
   text-decoration: none;
-  box-shadow: 0 6px 18px rgba(5, 150, 105, 0.3);
+  box-shadow: 0 6px 20px rgba(5, 150, 105, 0.35);
   transition: var(--wor-transition);
 }
 
-.wor-btn-hero-call:hover {
+.wor-btn-banner-call:hover {
   background-color: var(--wor-green-call-hover);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(5, 150, 105, 0.4);
+  box-shadow: 0 8px 26px rgba(5, 150, 105, 0.5);
   color: #ffffff;
 }
 
-.wor-hero-trust-row {
+.wor-banner-trust-tags {
   display: flex;
   flex-wrap: wrap;
   gap: 1.5rem;
   padding-top: 1.5rem;
-  border-top: 1px solid var(--wor-border);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
 }
 
-.wor-trust-item {
+.wor-banner-tag {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
   font-size: 0.875rem;
   font-weight: 600;
-  color: var(--wor-text-body);
+  color: #cbd5e1;
 }
 
 .text-emerald {
   color: #10b981;
-}
-
-/* Hero Right Image */
-.wor-hero-image-col {
-  display: flex;
-  justify-content: center;
-}
-
-.wor-hero-image-wrapper {
-  position: relative;
-  width: 100%;
-  max-width: 480px;
-  border-radius: var(--wor-radius-lg);
-  overflow: hidden;
-  box-shadow: var(--wor-shadow-lg);
-  border: 4px solid #ffffff;
-}
-
-.wor-hero-main-img {
-  width: 100%;
-  height: 480px;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.4s ease;
-}
-
-.wor-hero-image-wrapper:hover .wor-hero-main-img {
-  transform: scale(1.02);
-}
-
-.wor-hero-experience-pill {
-  position: absolute;
-  bottom: 1.25rem;
-  left: 1.25rem;
-  background: rgba(15, 43, 72, 0.92);
-  backdrop-filter: blur(8px);
-  color: #ffffff;
-  padding: 0.75rem 1.25rem;
-  border-radius: var(--wor-radius-md);
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-.wor-pill-number {
-  font-size: 1.75rem;
-  font-weight: 800;
-  color: #38bdf8;
-  line-height: 1;
-}
-
-.wor-pill-text {
-  font-size: 0.8125rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  line-height: 1.2;
 }
 
 /* ══════════════════════════════════════════════════════════════════
@@ -1346,15 +1321,6 @@
     gap: 2.5rem;
   }
 
-  .wor-hero-image-col {
-    order: -1;
-  }
-
-  .wor-hero-image-wrapper {
-    max-width: 100%;
-    max-height: 400px;
-  }
-
   .wor-about-grid {
     grid-template-columns: 1fr;
     gap: 2.5rem;
@@ -1366,10 +1332,6 @@
 
   .wor-gallery-grid {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  .wor-reviews-slider-grid {
-    grid-template-columns: 1fr;
   }
 
   .wor-contact-grid {
@@ -1388,12 +1350,34 @@
 }
 
 @media (max-width: 768px) {
-  .wor-hero-section {
-    padding: 3rem 0;
+  .wor-hero-single-banner {
+    min-height: 480px;
   }
 
-  .wor-hero-title {
-    font-size: 2.15rem;
+  .wor-banner-content-wrap {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .wor-banner-title {
+    font-size: 2.2rem;
+  }
+
+  .wor-banner-desc {
+    font-size: 1rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .wor-banner-btn-group {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .wor-btn-banner-appointment,
+  .wor-btn-banner-call {
+    width: 100%;
+    justify-content: center;
   }
 
   .wor-stats-grid {

@@ -292,64 +292,56 @@ export default function HomePage() {
   return (
     <main className="wor-home-page">
       {/* ══════════════════════════════════════════════════════════════
-          1. HERO SECTION (World of Rehab 2-Column Split)
-          Left: Headline, subtext, "Book Appointment" + "Call Us" buttons
-          Right: Large authentic physiotherapy clinic photograph
+          1. HERO BANNER (Single Image with "Make an Appointment" & "Call Us" Buttons)
          ══════════════════════════════════════════════════════════════ */}
-      <section className="wor-hero-section">
-        <div className="wor-container wor-hero-grid">
-          {/* Left Column: Text & Dual CTAs */}
-          <div className="wor-hero-text-col">
-            <span className="wor-kicker-tag">
-              <ShieldCheck size={15} />
+      <section className="wor-hero-single-banner">
+        <div className="wor-hero-banner-bg">
+          <img
+            src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1600&q=85"
+            alt="Physiotherapy treatment at RevitaOrtho clinic"
+            className="wor-banner-image"
+          />
+          <div className="wor-hero-banner-overlay"></div>
+        </div>
+
+        <div className="wor-container wor-banner-content-wrap">
+          <div className="wor-banner-content">
+            <span className="wor-banner-kicker">
+              <ShieldCheck size={16} />
               <span>SPECIALIZED PHYSICAL THERAPY & ORTHOPEDICS</span>
             </span>
 
-            <h1 className="wor-hero-title">
+            <h1 className="wor-banner-title">
               Begin Your Journey <br />
               to <span className="wor-text-accent">Recovery</span>
             </h1>
 
-            <p className="wor-hero-description">
+            <p className="wor-banner-desc">
               Our customized physical therapy treatments provide lasting relief and a proven path to a pain-free life without unnecessary surgery or medication. Over 10,000+ recoveries managed in Pune.
             </p>
 
-            <div className="wor-hero-cta-group">
-              <Link to="/appointment" className="wor-btn-hero-primary">
+            <div className="wor-banner-btn-group">
+              <Link to="/appointment" className="wor-btn-banner-appointment">
                 <Calendar size={18} />
                 <span>Make an Appointment</span>
               </Link>
 
-              <a href={`tel:+91${clinicInfo.rawPhone}`} className="wor-btn-hero-call">
+              <a href={`tel:+91${clinicInfo.rawPhone}`} className="wor-btn-banner-call">
                 <Phone size={18} />
                 <span>Call Us! +91 {clinicInfo.rawPhone}</span>
               </a>
             </div>
 
-            <div className="wor-hero-trust-row">
-              <div className="wor-trust-item">
-                <CheckCircle2 size={16} className="text-emerald" />
-                <span>Zero Waiting Time</span>
-              </div>
-              <div className="wor-trust-item">
-                <CheckCircle2 size={16} className="text-emerald" />
-                <span>Dedicated 1-on-1 MPT Care</span>
-              </div>
-              <div className="wor-trust-item">
-                <CheckCircle2 size={16} className="text-emerald" />
-                <span>94% Avoid Surgery</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Column: Large Physiotherapy Clinical Photo */}
-          <div className="wor-hero-image-col">
-            <div className="wor-hero-image-wrapper">
-              <img
-                src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=900&q=80"
-                alt="Doctor performing physiotherapy evaluation at RevitaOrtho clinic"
-                className="wor-hero-main-img"
-              />
+            <div className="wor-banner-trust-tags">
+              <span className="wor-banner-tag">
+                <CheckCircle2 size={15} className="text-emerald" /> Zero Waiting Time
+              </span>
+              <span className="wor-banner-tag">
+                <CheckCircle2 size={15} className="text-emerald" /> Dedicated 1-on-1 MPT Care
+              </span>
+              <span className="wor-banner-tag">
+                <CheckCircle2 size={15} className="text-emerald" /> 94% Avoid Surgery
+              </span>
             </div>
           </div>
         </div>
