@@ -6,17 +6,13 @@ import {
   Zap,
   Activity,
   CheckCircle2,
-  Clock,
   Calendar,
   MessageCircle,
   Phone,
   ShieldCheck,
-  Award,
-  ChevronRight,
-  ArrowRight,
   Check,
-  AlertCircle,
-  Sparkles,
+  Clock,
+  ArrowRight,
 } from "lucide-react";
 import { SERVICE_DETAILS } from "../data/serviceDetailsData";
 import "./ServiceDetailPage.css";
@@ -26,6 +22,13 @@ const ICON_MAP = {
   Stethoscope,
   Zap,
   Activity,
+};
+
+const SERVICE_IMAGES = {
+  "back-pain": "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&q=80",
+  "neck-pain": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&q=80",
+  "sports-injury": "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=800&q=80",
+  "knee-pain": "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=80",
 };
 
 // Aliases for seamless route matching
@@ -62,33 +65,31 @@ export default function ServiceDetailPage() {
   }, [resolvedId]);
 
   const IconComponent = ICON_MAP[detail.iconName] || Activity;
+  const serviceImage = SERVICE_IMAGES[detail.id] || "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=80";
 
   return (
     <main className="service-detail-page">
-      {/* ─── 1. BREADCRUMBS ─── */}
-      <div className="detail-breadcrumb-bar">
-        <div className="detail-container">
-          <nav className="detail-breadcrumb-nav" aria-label="Breadcrumb">
-            <Link to="/">Home</Link>
-            <ChevronRight size={13} />
-            <Link to="/services">Services</Link>
-            <ChevronRight size={13} />
-            <span className="current-crumb">{detail.title}</span>
-          </nav>
-        </div>
-      </div>
-
-      {/* ─── 2. SUBPAGE HERO BANNER ─── */}
+      {/* ─── 1. STANDARDIZED SUBPAGE HERO BANNER ─── */}
       <section className="subpage-hero-banner">
         <div className="subpage-hero-content">
+          <div className="subpage-breadcrumb">
+            <Link to="/">Home</Link>
+            <span className="breadcrumb-separator">/</span>
+            <Link to="/services">Services</Link>
+            <span className="breadcrumb-separator">/</span>
+            <span className="breadcrumb-current">{detail.title}</span>
+          </div>
+
           <span className="subpage-kicker">
             <IconComponent size={14} /> {detail.tag || "CLINICAL SPECIALIZATION"}
           </span>
+
           <h1 className="subpage-title">
             {detail.title}
             <br />
             <span className="text-highlight">{detail.highlight}</span>
           </h1>
+
           <p className="subpage-lead">
             {detail.subtitle}
           </p>
@@ -116,35 +117,95 @@ export default function ServiceDetailPage() {
         </div>
       </section>
 
-      {/* ─── 3. CLINICAL METRICS STRIP ─── */}
-      {detail.metrics && detail.metrics.length > 0 && (
-        <section className="service-metrics-strip">
-          <div className="detail-container">
-            <div className="metrics-grid">
-              {detail.metrics.map((m, idx) => (
-                <div key={idx} className="metric-box">
-                  <span className="metric-value">{m.value}</span>
-                  <strong className="metric-label">{m.label}</strong>
-                  <span className="metric-sub">{m.sub}</span>
+      {/* ─── 2. CLINICAL OVERVIEW & APPROACH (Split Layout) ─── */}
+      <section className="service-overview-section section-padding">
+        <div className="detail-container">
+          <div className="service-story-grid">
+            {/* Left: Professional Treatment Photo */}
+            <div className="service-img-col">
+              <div className="service-image-wrapper">
+                <img
+                  src={serviceImage}
+                  alt={detail.title}
+                  className="service-feature-img"
+                  loading="lazy"
+                />
+                <div className="service-badge-pill">
+                  <ShieldCheck size={20} className="text-emerald" />
+                  <div>
+                    <strong>94% Surgery Avoidance</strong>
+                    <span>Documented Clinical Outcomes</span>
+                  </div>
                 </div>
-              ))}
+              </div>
+            </div>
+
+            {/* Right: Overview & Clinical Approach */}
+            <div className="service-text-col">
+              <span className="detail-kicker">CLINICAL APPROACH</span>
+              <h2 className="detail-section-heading">
+                Root-Cause Rehabilitation for {detail.title}
+              </h2>
+              <p className="detail-lead-p">
+                At <strong>RevitaOrtho</strong>, our treatment protocols are designed to eliminate pain and restore natural movement by targeting the exact mechanical imbalance — without requiring surgery or long-term medication.
+              </p>
+              <p className="detail-body-p">
+                Every patient undergoes a thorough 45-minute diagnostic evaluation conducted directly by a senior Master's-degree (MPT) physiotherapist. We review your MRI/X-ray reports, perform orthopedic tests, and deliver a transparent, written recovery roadmap.
+              </p>
+
+              <div className="detail-pillars-grid">
+                <div className="detail-pillar-card">
+                  <CheckCircle2 size={18} className="pillar-check-icon" />
+                  <div>
+                    <strong>1-on-1 Doctor Care</strong>
+                    <p>Personally administered by certified senior specialists, never junior helpers.</p>
+                  </div>
+                </div>
+
+                <div className="detail-pillar-card">
+                  <CheckCircle2 size={18} className="pillar-check-icon" />
+                  <div>
+                    <strong>Non-Surgical Technologies</strong>
+                    <p>Computerized spinal decompression, Class-IV laser, and targeted radiofrequency.</p>
+                  </div>
+                </div>
+
+                <div className="detail-pillar-card">
+                  <CheckCircle2 size={18} className="pillar-check-icon" />
+                  <div>
+                    <strong>Zero Confusing Jargon</strong>
+                    <p>Clear explanations of your condition and recovery milestones in simple words.</p>
+                  </div>
+                </div>
+
+                <div className="detail-pillar-card">
+                  <CheckCircle2 size={18} className="pillar-check-icon" />
+                  <div>
+                    <strong>Relapse Prevention</strong>
+                    <p>Custom home exercise prescriptions so your muscles stay strong and pain stays away.</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </section>
-      )}
+        </div>
+      </section>
 
-      {/* ─── 4. CLINICAL OVERVIEW (Symptoms & Root Causes) ─── */}
-      <section className="detail-section symptoms-causes-section">
+      {/* ─── 3. SYMPTOMS & ROOT CAUSES (2-Column Grid) ─── */}
+      <section className="service-symptoms-section section-padding">
         <div className="detail-container">
+          <div className="section-head-center">
+            <span className="detail-kicker">CONDITIONS & DIAGNOSIS</span>
+            <h2>What We Diagnose & Successfully Treat</h2>
+            <p>
+              If you are suffering from any of the following symptoms or have been advised surgery, our evidence-based protocols can help.
+            </p>
+          </div>
+
           <div className="two-col-clinical-grid">
             {/* Left: Symptoms Checklist */}
             <div className="clinical-col symptoms-col">
-              <span className="section-kicker-tag">SYMPTOM CHECKLIST</span>
-              <h2>Common Symptoms & Daily Limitations</h2>
-              <p className="col-desc">
-                If you experience one or more of these clinical presentations, our targeted manual and non-surgical protocols can help:
-              </p>
-
+              <h3>Common Symptoms & Daily Limitations</h3>
               <div className="symptoms-list">
                 {detail.symptoms?.map((symp, idx) => (
                   <div key={idx} className="symptom-item">
@@ -157,12 +218,7 @@ export default function ServiceDetailPage() {
 
             {/* Right: Root Causes & Surgeries Avoided */}
             <div className="clinical-col causes-col">
-              <span className="section-kicker-tag">PATHOLOGY & DIAGNOSIS</span>
-              <h2>Root Causes We Diagnose & Treat</h2>
-              <p className="col-desc">
-                Rather than prescribing temporary painkiller masks, we evaluate the exact biomechanical source:
-              </p>
-
+              <h3>Root Causes We Treat</h3>
               <div className="root-causes-stack">
                 {detail.rootCauses?.map((cause, idx) => (
                   <div key={idx} className="cause-card">
@@ -177,7 +233,7 @@ export default function ServiceDetailPage() {
                 <div className="surgeries-avoided-card">
                   <div className="avoided-header">
                     <ShieldCheck size={20} className="text-emerald" />
-                    <strong>Invasive Surgeries Successfully Avoided:</strong>
+                    <strong>Surgeries Successfully Avoided:</strong>
                   </div>
                   <div className="avoided-chips-wrap">
                     {detail.surgeriesAvoided.map((surg, sIdx) => (
@@ -193,15 +249,15 @@ export default function ServiceDetailPage() {
         </div>
       </section>
 
-      {/* ─── 5. 4-STEP NON-SURGICAL PROTOCOL ─── */}
+      {/* ─── 4. OUR 4-STAGE RECOVERY PATHWAY ─── */}
       {detail.protocols && detail.protocols.length > 0 && (
-        <section className="detail-section protocols-section">
+        <section className="service-protocols-section section-padding">
           <div className="detail-container">
-            <div className="section-title-wrap">
-              <span className="section-kicker-tag">EVIDENCE-BASED RECOVERY PATHWAY</span>
+            <div className="section-head-center">
+              <span className="detail-kicker">RECOVERY ROADMAP</span>
               <h2>Our 4-Stage Clinical Protocol</h2>
               <p>
-                A documented phase-based progression designed to resolve acute inflammation, restore joint mechanics, and build permanent muscular stability.
+                A documented phase-based progression engineered to relieve acute pain, restore joint mobility, and rebuild lasting strength.
               </p>
             </div>
 
@@ -222,95 +278,9 @@ export default function ServiceDetailPage() {
         </section>
       )}
 
-      {/* ─── 6. SPECIALIZED 6 CLINICAL PATHWAYS (Compact Cards) ─── */}
-      {detail.relatedCards && detail.relatedCards.length > 0 && (
-        <section className="detail-section related-cards-section" id="related-conditions">
-          <div className="detail-container">
-            <div className="section-title-wrap">
-              <span className="section-kicker-tag">6 SPECIALIZED PROTOCOLS & DOCUMENTED PATHWAYS</span>
-              <h2>Specialized Clinical Care Under {detail.title}</h2>
-              <p>
-                Structured, objective recovery pathways with documented clinical outcomes — designed to eliminate pain and avoid invasive surgeries.
-              </p>
-            </div>
-
-            <div className="treatments-cards-grid">
-              {detail.relatedCards.map((card, idx) => (
-                <article
-                  key={card.id || idx}
-                  className="compact-treatment-card"
-                >
-                  {/* Card Thumbnail */}
-                  <div className="treatment-thumb-wrap">
-                    <img
-                      src={card.image || "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=700&q=80"}
-                      alt={card.title}
-                      className="treatment-thumb-img"
-                      loading="lazy"
-                      onError={(e) => {
-                        e.target.onerror = null;
-                        e.target.src = "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=700&q=80";
-                      }}
-                    />
-                    <span className="treatment-pill-tag">{card.badge}</span>
-                    <span className="treatment-time-badge">
-                      <Clock size={11} /> {card.duration || "2–3 Weeks"}
-                    </span>
-                  </div>
-
-                  {/* Card Body */}
-                  <div className="treatment-card-content">
-                    <h3 className="treatment-item-title" title={card.title}>
-                      {card.title}
-                    </h3>
-
-                    <p className="treatment-snippet-desc">
-                      {card.presentation || card.shortDesc}
-                    </p>
-
-                    <div className="treatment-spec-pill" title={card.protocol || card.modality}>
-                      <span className="spec-label">Protocol:</span>
-                      <span className="spec-val">{card.protocol || card.modality}</span>
-                    </div>
-
-                    <div className="treatment-outcome-chip" title={card.surgeryAvoided || card.outcome || card.recovery}>
-                      <CheckCircle2 size={13} className="text-emerald" />
-                      <span>{card.surgeryAvoided || card.outcome || card.recovery}</span>
-                    </div>
-
-                    <div className="treatment-action-row">
-                      <Link
-                        to={`/appointment?service=${detail.serviceCode}&condition=${encodeURIComponent(
-                          card.conditionParam || card.title
-                        )}`}
-                        className="btn-card-book-appointment"
-                      >
-                        <Calendar size={14} />
-                        <span>Book Appointment</span>
-                      </Link>
-                      <a
-                        href={`https://wa.me/919145875248?text=Hello%20RevitaOrtho,%20I%20want%20to%20book%20an%20appointment%20for%20${encodeURIComponent(
-                          card.title
-                        )}.`}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="btn-card-whatsapp"
-                        title="Chat on WhatsApp"
-                      >
-                        <MessageCircle size={15} />
-                      </a>
-                    </div>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* ─── 7. CASE STUDY SPOTLIGHT ─── */}
+      {/* ─── 5. CASE STUDY / VERIFIED OUTCOME SPOTLIGHT ─── */}
       {detail.caseStudy && (
-        <section className="detail-section case-study-section">
+        <section className="service-case-study-section section-padding">
           <div className="detail-container">
             <div className="case-study-card">
               <div className="case-study-left">
@@ -332,31 +302,37 @@ export default function ServiceDetailPage() {
         </section>
       )}
 
-      {/* ─── 8. FINAL CONSULTATION BANNER ─── */}
-      <section className="service-footer-cta-section">
-        <div className="detail-container">
-          <div className="service-cta-banner">
-            <div className="cta-banner-text">
-              <span className="cta-kicker">RECOVER SAFELY WITHOUT SURGERY</span>
-              <h2>Ready for Your Comprehensive 45-Minute Diagnostic Evaluation?</h2>
-              <p>
-                Consult directly with a hospital-experienced Master's degree (MPT) orthopedic physiotherapist with zero waiting time.
-              </p>
-            </div>
-
-            <div className="cta-banner-actions">
-              <Link
-                to={`/appointment?service=${detail.serviceCode}`}
-                className="btn-cta-book-large"
-              >
-                <Calendar size={18} />
-                <span>Book Direct Evaluation</span>
-              </Link>
-              <a href="tel:+919145875248" className="btn-cta-call">
-                <Phone size={17} />
-                <span>Call Helpline: +91 91458 75248</span>
-              </a>
-            </div>
+      {/* ─── 6. CLEAN BOTTOM ACTION CTA STRIP (Standardized with all pages) ─── */}
+      <section className="service-bottom-cta-section">
+        <div className="detail-container service-cta-inner">
+          <span className="detail-kicker text-ice">TAKE THE FIRST STEP</span>
+          <h2>Ready to Live Life Without Joint & Spine Pain?</h2>
+          <p>
+            Schedule your comprehensive 45-minute root-cause evaluation today. Experience evidence-based physical medicine with zero waiting time.
+          </p>
+          <div className="service-cta-btn-group">
+            <Link
+              to={`/appointment?service=${detail.serviceCode}`}
+              className="btn-detail-white"
+            >
+              <Calendar size={17} />
+              <span>Book Initial Assessment</span>
+            </Link>
+            <Link to="/contact" className="btn-detail-outline-white">
+              <Phone size={17} />
+              <span>Contact Clinic Desk</span>
+            </Link>
+            <a
+              href={`https://wa.me/919145875248?text=Hello%20RevitaOrtho,%20I%20would%20like%20to%20consult%20regarding%20${encodeURIComponent(
+                detail.title
+              )}.`}
+              target="_blank"
+              rel="noreferrer"
+              className="btn-detail-whatsapp"
+            >
+              <MessageCircle size={17} />
+              <span>WhatsApp Doctor: +91 91458 75248</span>
+            </a>
           </div>
         </div>
       </section>

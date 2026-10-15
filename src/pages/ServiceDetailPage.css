@@ -1,64 +1,31 @@
 /* ==========================================================================
-   REVITAORTHO - SERVICE DETAIL PAGE STYLESHEET
-   Clean, Elegant, Medically Precise & Fully Responsive
+   SERVICE DETAIL PAGE - CLEAN, FOCUSED TERAPIA THEME
+   Dedicated to single condition: clean overview, symptoms, protocol & CTA
    ========================================================================== */
 
 .service-detail-page {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #1e293b;
+  color: #334155;
   background-color: #ffffff;
-  line-height: 1.62;
   overflow-x: hidden;
   width: 100%;
 }
 
 .detail-container {
   width: 100%;
-  max-width: 1240px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 24px;
-  box-sizing: border-box;
+  padding: 0 20px;
 }
 
-.detail-section {
-  padding: 64px 0;
-  border-bottom: 1px solid #e2e8f0;
+.section-padding {
+  padding: 75px 0;
 }
 
-/* ─── Breadcrumbs ─── */
-.detail-breadcrumb-bar {
-  background-color: #ffffff;
-  border-bottom: 1px solid #e2e8f0;
-  padding: 12px 0;
-}
-
-.detail-breadcrumb-nav {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 13px;
-  color: #64748b;
-}
-
-.detail-breadcrumb-nav a {
-  color: #0284c7;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.detail-breadcrumb-nav a:hover {
-  text-decoration: underline;
-}
-
-.current-crumb {
-  color: #0f172a;
-  font-weight: 600;
-}
-
-/* ─── Subpage Hero Banner ─── */
+/* ─── 1. STANDARDIZED SUBPAGE HERO BANNER ─── */
 .subpage-hero-banner {
   padding: 60px 0 50px;
-  background: linear-gradient(180deg, #f0f7fc 0%, #ffffff 100%);
+  background: linear-gradient(180deg, #f0f9ff 0%, #ffffff 100%);
   border-bottom: 1px solid #e2e8f0;
   text-align: center;
   width: 100%;
@@ -68,33 +35,33 @@
   width: 100%;
   max-width: 860px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 20px;
 }
 
 .subpage-kicker {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  font-size: 12px;
-  font-weight: 750;
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
+  gap: 6px;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
   color: #0284c7;
   background-color: #e0f2fe;
   padding: 5px 14px;
-  border-radius: 9999px;
+  border-radius: 6px;
   border: 1px solid #bae6fd;
   margin-bottom: 16px;
+  text-transform: uppercase;
 }
 
 .subpage-title {
-  font-family: 'Outfit', sans-serif;
-  font-size: clamp(30px, 3.8vw, 44px);
+  font-family: 'Outfit', -apple-system, sans-serif;
+  font-size: clamp(28px, 3.6vw, 42px);
   font-weight: 800;
-  line-height: 1.22;
-  color: #0f2b48;
-  letter-spacing: -0.02em;
+  line-height: 1.25;
+  color: #0f172a;
   margin: 0 0 14px;
+  letter-spacing: -0.02em;
 }
 
 .text-highlight {
@@ -102,9 +69,9 @@
 }
 
 .subpage-lead {
-  font-size: 16.5px;
+  font-size: 16px;
   color: #475569;
-  line-height: 1.68;
+  line-height: 1.65;
   margin: 0 auto 28px;
   max-width: 760px;
 }
@@ -126,172 +93,256 @@
   font-size: 14.5px;
   font-weight: 700;
   padding: 12px 24px;
-  border-radius: 8px;
+  border-radius: 6px;
   text-decoration: none;
-  transition: all 0.25s ease;
   box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+  transition: transform 0.15s ease, background-color 0.2s ease;
 }
 
 .btn-hero-book-primary:hover {
   background-color: #0369a1;
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(2, 132, 199, 0.4);
 }
 
 .btn-hero-whatsapp {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background-color: #25d366;
+  background-color: #16a34a;
   color: #ffffff !important;
   font-size: 14.5px;
   font-weight: 700;
   padding: 12px 22px;
-  border-radius: 8px;
+  border-radius: 6px;
   text-decoration: none;
-  transition: all 0.25s ease;
-  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
+  transition: transform 0.15s ease, background-color 0.2s ease;
 }
 
 .btn-hero-whatsapp:hover {
-  background-color: #1ebc59;
+  background-color: #15803d;
   transform: translateY(-2px);
 }
 
-/* ─── Metrics Strip ─── */
-.service-metrics-strip {
-  background-color: #ffffff;
-  border-bottom: 1px solid #e2e8f0;
-  padding: 28px 0;
-}
-
-.metrics-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-}
-
-.metric-box {
-  background-color: #f8fafc;
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  padding: 20px 16px;
-  text-align: center;
-  transition: transform 0.2s ease, border-color 0.2s ease;
-}
-
-.metric-box:hover {
-  border-color: #bae6fd;
-  transform: translateY(-2px);
-}
-
-.metric-value {
-  display: block;
-  font-family: 'Outfit', sans-serif;
-  font-size: 32px;
-  font-weight: 800;
+/* ─── COMMON HEADERS & KICKERS ─── */
+.detail-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
   color: #0284c7;
-  line-height: 1.1;
-  margin-bottom: 4px;
+  background-color: #f0f9ff;
+  padding: 4px 12px;
+  border-radius: 6px;
+  border: 1px solid #bae6fd;
+  margin-bottom: 12px;
+  text-transform: uppercase;
 }
 
-.metric-label {
+.section-head-center {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 46px;
+}
+
+.section-head-center h2 {
+  font-family: 'Outfit', -apple-system, sans-serif;
+  font-size: clamp(26px, 3vw, 36px);
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 12px;
+  line-height: 1.25;
+}
+
+.section-head-center p {
+  font-size: 15.5px;
+  color: #64748b;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ─── 2. CLINICAL OVERVIEW & APPROACH (Split Layout) ─── */
+.service-overview-section {
+  background-color: #ffffff;
+}
+
+.service-story-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 50px;
+  align-items: center;
+}
+
+.service-img-col {
+  position: relative;
+}
+
+.service-image-wrapper {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.1);
+}
+
+.service-feature-img {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  display: block;
+}
+
+.service-badge-pill {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background: rgba(15, 23, 42, 0.92);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  padding: 14px 20px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.service-badge-pill strong {
   display: block;
   font-size: 14px;
-  font-weight: 750;
+  color: #ffffff;
+}
+
+.service-badge-pill span {
+  font-size: 12px;
+  color: #cbd5e1;
+}
+
+.text-emerald {
+  color: #10b981;
+}
+
+.detail-section-heading {
+  font-family: 'Outfit', -apple-system, sans-serif;
+  font-size: clamp(24px, 2.7vw, 34px);
+  font-weight: 800;
   color: #0f172a;
-  margin-bottom: 2px;
+  line-height: 1.25;
+  margin: 0 0 16px;
 }
 
-.metric-sub {
-  display: block;
-  font-size: 11.5px;
+.detail-lead-p {
+  font-size: 15.5px;
+  color: #1e293b;
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+
+.detail-body-p {
+  font-size: 14.5px;
   color: #64748b;
+  line-height: 1.7;
+  margin-bottom: 24px;
 }
 
-/* ─── 2-Column Clinical Section ─── */
-.symptoms-causes-section {
-  background-color: #ffffff;
+.detail-pillars-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.detail-pillar-card {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  transition: border-color 0.2s ease;
+}
+
+.detail-pillar-card:hover {
+  border-color: #bae6fd;
+}
+
+.pillar-check-icon {
+  color: #0d9468;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.detail-pillar-card strong {
+  display: block;
+  font-size: 13.5px;
+  color: #0f172a;
+  margin-bottom: 3px;
+}
+
+.detail-pillar-card p {
+  font-size: 12.5px;
+  color: #64748b;
+  line-height: 1.45;
+  margin: 0;
+}
+
+/* ─── 3. SYMPTOMS & ROOT CAUSES (2-Column Grid) ─── */
+.service-symptoms-section {
+  background-color: #f8fafc;
+  border-top: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
 }
 
 .two-col-clinical-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 48px;
+  gap: 40px;
   align-items: start;
 }
 
-.section-kicker-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 11px;
-  font-weight: 750;
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
-  color: #0284c7;
-  background-color: #e0f2fe;
-  border: 1px solid #bae6fd;
-  padding: 4px 12px;
-  border-radius: 9999px;
-  margin-bottom: 12px;
-}
-
-.clinical-col h2 {
-  font-family: 'Outfit', sans-serif;
-  font-size: 26px;
+.clinical-col h3 {
+  font-family: 'Outfit', -apple-system, sans-serif;
+  font-size: 20px;
   font-weight: 800;
   color: #0f172a;
-  line-height: 1.3;
-  margin: 0 0 10px;
+  margin: 0 0 18px;
 }
 
-.col-desc {
-  font-size: 14.5px;
-  color: #64748b;
-  margin-bottom: 22px;
-  line-height: 1.6;
-}
-
-/* Symptoms List */
 .symptoms-list {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
 
 .symptom-item {
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  background-color: #f8fafc;
+  background-color: #ffffff;
   border: 1px solid #e2e8f0;
   border-radius: 10px;
   padding: 14px 16px;
-  font-size: 14px;
+  font-size: 13.5px;
   color: #1e293b;
-  line-height: 1.55;
+  line-height: 1.5;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.02);
 }
 
 .symp-icon {
-  margin-top: 2px;
-  flex-shrink: 0;
-}
-
-.text-azure {
   color: #0284c7;
+  flex-shrink: 0;
+  margin-top: 2px;
 }
 
-/* Causes Stack */
 .root-causes-stack {
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  margin-bottom: 24px;
+  gap: 12px;
+  margin-bottom: 20px;
 }
 
 .cause-card {
-  background-color: #f8fafc;
+  background-color: #ffffff;
   border: 1px solid #e2e8f0;
   border-left: 4px solid #0284c7;
   border-radius: 0 10px 10px 0;
@@ -299,33 +350,32 @@
 }
 
 .cause-card h4 {
-  font-family: 'Outfit', sans-serif;
-  font-size: 16px;
+  font-family: 'Outfit', -apple-system, sans-serif;
+  font-size: 15.5px;
   font-weight: 750;
   color: #0f172a;
   margin: 0 0 6px;
 }
 
 .cause-card p {
-  font-size: 13.5px;
+  font-size: 13px;
   color: #475569;
   line-height: 1.55;
   margin: 0;
 }
 
-/* Surgeries Avoided Card */
 .surgeries-avoided-card {
-  background-color: #f0fdf4;
-  border: 1px solid #bbf7d0;
+  background-color: #ecfdf5;
+  border: 1px solid #a7f3d0;
   border-radius: 12px;
-  padding: 18px;
+  padding: 18px 20px;
 }
 
 .avoided-header {
   display: flex;
   align-items: center;
   gap: 8px;
-  color: #15803d;
+  color: #047857;
   font-size: 14px;
   font-weight: 750;
   margin-bottom: 12px;
@@ -342,45 +392,23 @@
   align-items: center;
   gap: 6px;
   background-color: #ffffff;
-  border: 1px solid #86efac;
-  color: #166534;
+  border: 1px solid #6ee7b7;
+  color: #065f46;
   font-size: 12px;
   font-weight: 650;
   padding: 5px 12px;
   border-radius: 9999px;
 }
 
-/* ─── Protocols Section ─── */
-.protocols-section {
-  background-color: #f8fafc;
-}
-
-.section-title-wrap {
-  text-align: center;
-  max-width: 780px;
-  margin: 0 auto 36px;
-}
-
-.section-title-wrap h2 {
-  font-family: 'Outfit', sans-serif;
-  font-size: clamp(26px, 3.2vw, 36px);
-  font-weight: 800;
-  color: #0f172a;
-  line-height: 1.25;
-  margin: 8px 0 12px;
-}
-
-.section-title-wrap p {
-  font-size: 15px;
-  color: #64748b;
-  line-height: 1.65;
-  margin: 0;
+/* ─── 4. RECOVERY PROTOCOLS (4-Stage Grid) ─── */
+.service-protocols-section {
+  background-color: #ffffff;
 }
 
 .protocols-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 22px;
+  gap: 20px;
 }
 
 .protocol-card {
@@ -390,287 +418,72 @@
   padding: 24px 20px;
   display: flex;
   flex-direction: column;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 .protocol-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(2, 132, 199, 0.08);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
   border-color: #bae6fd;
 }
 
 .protocol-step-badge {
-  width: 36px;
-  height: 36px;
-  border-radius: 8px;
-  background-color: #0284c7;
-  color: #ffffff;
-  font-size: 15px;
+  font-family: 'Outfit', -apple-system, sans-serif;
+  font-size: 24px;
   font-weight: 800;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 14px;
+  color: #0284c7;
+  margin-bottom: 10px;
+  line-height: 1;
 }
 
 .protocol-title {
-  font-family: 'Outfit', sans-serif;
-  font-size: 17px;
+  font-family: 'Outfit', -apple-system, sans-serif;
+  font-size: 16.5px;
   font-weight: 750;
   color: #0f172a;
   margin: 0 0 10px;
-  line-height: 1.35;
 }
 
 .protocol-desc {
-  font-size: 13.5px;
+  font-size: 13px;
   color: #475569;
   line-height: 1.6;
-  margin: 0 0 16px;
-  flex: 1;
+  margin: 0 0 14px;
+  flex-grow: 1;
 }
 
 .protocol-modality {
-  background-color: #f0f9ff;
-  border: 1px solid #e0f2fe;
-  border-radius: 6px;
-  padding: 8px 10px;
-  font-size: 11.5px;
-  color: #0369a1;
+  padding-top: 12px;
+  border-top: 1px dashed #e2e8f0;
+  font-size: 12px;
+  color: #64748b;
 }
 
 .protocol-modality strong {
   display: block;
-  font-size: 10.5px;
-  text-transform: uppercase;
-  color: #0284c7;
-  letter-spacing: 0.5px;
+  color: #0f172a;
+  font-size: 11.5px;
   margin-bottom: 2px;
 }
 
-/* ─── 6 Specialized Cards Section ─── */
-.related-cards-section {
-  background-color: #ffffff;
-  padding: 64px 0 80px;
-}
-
-.treatments-cards-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 26px;
-}
-
-.compact-treatment-card {
-  background-color: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 14px;
-  overflow: hidden;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
-  display: flex;
-  flex-direction: column;
-  transition: all 0.25s ease;
-}
-
-.compact-treatment-card:hover {
-  border-color: #0284c7;
-  transform: translateY(-4px);
-  box-shadow: 0 10px 24px rgba(2, 132, 199, 0.1);
-}
-
-.treatment-thumb-wrap {
-  position: relative;
-  height: 170px;
-  overflow: hidden;
-  background-color: #e2e8f0;
-}
-
-.treatment-thumb-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.35s ease;
-}
-
-.compact-treatment-card:hover .treatment-thumb-img {
-  transform: scale(1.05);
-}
-
-.treatment-pill-tag {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  background-color: rgba(15, 23, 42, 0.85);
-  color: #38bdf8;
-  font-size: 10.5px;
-  font-weight: 750;
-  letter-spacing: 0.4px;
-  padding: 4px 10px;
-  border-radius: 99px;
-  backdrop-filter: blur(4px);
-}
-
-.treatment-time-badge {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  background-color: #ffffff;
-  color: #0f172a;
-  font-size: 11px;
-  font-weight: 700;
-  padding: 4px 9px;
-  border-radius: 99px;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-}
-
-.treatment-card-content {
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-
-.treatment-item-title {
-  font-family: 'Outfit', sans-serif;
-  font-size: 17px;
-  font-weight: 750;
-  color: #0f172a;
-  line-height: 1.32;
-  margin: 0 0 8px;
-}
-
-.treatment-snippet-desc {
-  font-size: 13.5px;
-  color: #475569;
-  line-height: 1.55;
-  margin: 0 0 12px;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.treatment-spec-pill {
-  background-color: #f0f7fc;
-  border: 1px solid #d4e6f4;
-  border-radius: 7px;
-  padding: 6px 10px;
-  margin-bottom: 9px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 12px;
-  overflow: hidden;
-}
-
-.spec-label {
-  font-weight: 750;
-  color: #0369a1;
-  text-transform: uppercase;
-  font-size: 10.5px;
-  letter-spacing: 0.4px;
-  flex-shrink: 0;
-}
-
-.spec-val {
-  color: #1e293b;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.treatment-outcome-chip {
-  background-color: #ecfdf5;
-  border: 1px solid #bbf7d0;
-  border-radius: 7px;
-  padding: 6px 10px;
-  margin-top: auto;
-  margin-bottom: 14px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 11.5px;
-  font-weight: 700;
-  color: #15803d;
-  overflow: hidden;
-}
-
-.treatment-outcome-chip span {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.text-emerald {
-  color: #10b981 !important;
-  flex-shrink: 0;
-}
-
-.treatment-action-row {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: auto;
-}
-
-.btn-card-book-appointment {
-  flex: 1;
-  min-height: 40px;
-  padding: 10px 14px;
-  background-color: #0284c7;
-  color: #ffffff !important;
-  font-size: 13px;
-  font-weight: 750;
-  border-radius: 7px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 7px;
-  text-decoration: none;
-  transition: all 0.2s ease;
-}
-
-.btn-card-book-appointment:hover {
-  background-color: #0369a1;
-  transform: translateY(-1px);
-}
-
-.btn-card-whatsapp {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  background-color: #25d366;
-  color: #ffffff !important;
-  border-radius: 7px;
-  text-decoration: none;
-  transition: all 0.2s ease;
-  flex-shrink: 0;
-}
-
-.btn-card-whatsapp:hover {
-  background-color: #1ebc59;
-}
-
-/* ─── Case Study Spotlight ─── */
-.case-study-section {
+/* ─── 5. CASE STUDY SPOTLIGHT ─── */
+.service-case-study-section {
   background-color: #f8fafc;
+  border-top: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
 }
 
 .case-study-card {
-  background-color: #ffffff;
+  background: #ffffff;
   border: 1px solid #e2e8f0;
   border-radius: 14px;
-  padding: 36px;
+  padding: 32px 36px;
   display: grid;
-  grid-template-columns: 1fr 1.3fr;
-  gap: 40px;
+  grid-template-columns: 1fr 1.25fr;
+  gap: 36px;
   align-items: center;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
 }
 
 .case-study-tag {
@@ -679,13 +492,15 @@
   font-weight: 800;
   letter-spacing: 0.8px;
   color: #0284c7;
-  text-transform: uppercase;
-  margin-bottom: 8px;
+  background-color: #e0f2fe;
+  padding: 4px 10px;
+  border-radius: 6px;
+  margin-bottom: 10px;
 }
 
 .case-study-left h3 {
-  font-family: 'Outfit', sans-serif;
-  font-size: 22px;
+  font-family: 'Outfit', -apple-system, sans-serif;
+  font-size: 20px;
   font-weight: 800;
   color: #0f172a;
   margin: 0 0 6px;
@@ -701,168 +516,170 @@
 .case-study-outcome-badge {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  background-color: #f0fdf4;
-  color: #15803d;
-  border: 1px solid #bbf7d0;
+  gap: 8px;
+  background-color: #ecfdf5;
+  color: #047857;
   padding: 6px 14px;
-  border-radius: 9999px;
-  font-size: 12.5px;
+  border-radius: 6px;
+  font-size: 13px;
   font-weight: 700;
 }
 
 .case-study-quote {
-  font-size: 16px;
-  font-style: italic;
-  line-height: 1.7;
+  font-size: 15px;
   color: #334155;
+  line-height: 1.7;
+  font-style: italic;
   margin: 0;
   position: relative;
-  border-left: 3px solid #0284c7;
   padding-left: 20px;
+  border-left: 3px solid #0284c7;
 }
 
-/* ─── Service Footer Banner ─── */
-.service-footer-cta-section {
-  padding: 70px 0 90px;
-  background-color: #ffffff;
-}
-
-.service-cta-banner {
-  background: linear-gradient(135deg, #0e243a 0%, #173b5e 100%);
-  border-radius: 16px;
-  padding: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 36px;
+/* ─── 6. BOTTOM ACTION CTA STRIP (Standardized) ─── */
+.service-bottom-cta-section {
+  background: linear-gradient(135deg, #0f172a 0%, #0369a1 100%);
   color: #ffffff;
+  padding: 70px 0;
 }
 
-.cta-kicker {
-  display: inline-block;
-  font-size: 11.5px;
-  font-weight: 800;
-  letter-spacing: 1px;
-  color: #38bdf8;
-  text-transform: uppercase;
-  margin-bottom: 8px;
+.service-cta-inner {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-.cta-banner-text h2 {
-  font-family: 'Outfit', sans-serif;
-  font-size: clamp(24px, 2.8vw, 32px);
+.text-ice {
+  color: #38bdf8 !important;
+  background-color: rgba(2, 132, 199, 0.2) !important;
+  border-color: rgba(56, 189, 248, 0.3) !important;
+}
+
+.service-cta-inner h2 {
+  font-family: 'Outfit', -apple-system, sans-serif;
+  font-size: clamp(26px, 3.2vw, 36px);
   font-weight: 800;
-  margin: 0 0 10px;
-  line-height: 1.3;
   color: #ffffff;
+  margin: 0 0 14px;
+  line-height: 1.25;
 }
 
-.cta-banner-text p {
-  font-size: 15px;
-  color: #94a3b8;
+.service-cta-inner p {
+  font-size: 16px;
+  color: #cbd5e1;
   line-height: 1.6;
-  margin: 0;
-  max-width: 620px;
+  margin: 0 auto 30px;
+  max-width: 650px;
 }
 
-.cta-banner-actions {
+.service-cta-btn-group {
   display: flex;
-  flex-direction: column;
-  gap: 12px;
-  flex-shrink: 0;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
-.btn-cta-book-large {
+.btn-detail-white {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
   gap: 8px;
-  background-color: #0284c7;
-  color: #ffffff !important;
-  font-size: 15px;
-  font-weight: 750;
-  padding: 14px 28px;
-  border-radius: 8px;
+  background-color: #ffffff;
+  color: #0369a1 !important;
+  padding: 13px 24px;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 14.5px;
   text-decoration: none;
-  transition: all 0.2s ease;
-  white-space: nowrap;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+  transition: transform 0.15s ease, background-color 0.2s ease;
 }
 
-.btn-cta-book-large:hover {
-  background-color: #0369a1;
+.btn-detail-white:hover {
+  background-color: #f0f9ff;
   transform: translateY(-2px);
 }
 
-.btn-cta-call {
+.btn-detail-outline-white {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
   gap: 8px;
-  background-color: rgba(255, 255, 255, 0.1);
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.4);
   color: #ffffff !important;
-  font-size: 14px;
-  font-weight: 650;
-  padding: 12px 24px;
-  border-radius: 8px;
+  padding: 13px 22px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14.5px;
   text-decoration: none;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  transition: all 0.2s ease;
-  white-space: nowrap;
+  transition: background 0.2s ease, border-color 0.2s ease;
 }
 
-.btn-cta-call:hover {
-  background-color: rgba(255, 255, 255, 0.18);
+.btn-detail-outline-white:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #ffffff;
 }
 
-/* ─── Responsive Media Queries ─── */
+.btn-detail-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #16a34a;
+  color: #ffffff !important;
+  padding: 13px 22px;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 14.5px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.btn-detail-whatsapp:hover {
+  background-color: #15803d;
+}
+
+/* ─── RESPONSIVE BREAKPOINTS ─── */
 @media (max-width: 1024px) {
-  .metrics-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
   .protocols-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  .treatments-cards-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .case-study-card {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-  .service-cta-banner {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 36px;
-  }
-  .cta-banner-actions {
-    width: 100%;
-  }
 }
 
-@media (max-width: 768px) {
-  .two-col-clinical-grid {
+@media (max-width: 992px) {
+  .service-story-grid {
     grid-template-columns: 1fr;
     gap: 36px;
   }
-  .metrics-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
+
+  .service-feature-img {
+    height: 340px;
   }
-  .metric-value {
-    font-size: 26px;
+
+  .two-col-clinical-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
   }
+
+  .case-study-card {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .detail-pillars-grid {
+    grid-template-columns: 1fr;
+  }
+
   .protocols-grid {
     grid-template-columns: 1fr;
   }
-  .treatments-cards-grid {
-    grid-template-columns: 1fr;
+
+  .service-cta-btn-group {
+    flex-direction: column;
+    align-items: stretch;
   }
-  .service-cta-banner {
-    padding: 28px 20px;
-  }
-  .btn-cta-book-large,
-  .btn-cta-call {
-    width: 100%;
+
+  .section-padding {
+    padding: 50px 0;
   }
 }
