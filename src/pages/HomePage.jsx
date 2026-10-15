@@ -409,19 +409,27 @@ export default function HomePage() {
       <section className="wor-about-section" id="about">
         <div className="wor-container">
           <div className="wor-about-grid">
-            {/* Left Column: Clinic Image/Video Showcase */}
+            {/* Left Column: Playable Virtual Clinic Tour Video */}
             <div className="wor-about-media-col">
-              <div className="wor-about-image-card">
-                <img
-                  src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80"
-                  alt="RevitaOrtho Clinic Treatment Suite"
-                  className="wor-about-image"
-                />
-                <div className="wor-about-video-overlay">
-                  <div className="wor-video-play-btn">
-                    <Play size={20} fill="#ffffff" />
+              <div className="wor-about-video-container">
+                <div className="wor-video-header-bar">
+                  <div className="wor-video-badge">
+                    <Play size={13} fill="#38bdf8" />
+                    <span>Virtual Clinic Tour</span>
                   </div>
-                  <span>Virtual Clinic Tour</span>
+                  <span className="wor-video-duration">2:30 Min Walkthrough</span>
+                </div>
+                <div className="wor-about-video-wrapper">
+                  <iframe
+                    src="https://www.youtube.com/embed/p4J2tQ3yksY?rel=0&modestbranding=1"
+                    title="RevitaOrtho Virtual Clinic Tour"
+                    className="wor-about-video-iframe"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                  ></iframe>
+                </div>
+                <div className="wor-video-caption">
+                  <span>Take a virtual walkthrough of our modern treatment rooms, computerized spinal decompression lab, and recovery suites.</span>
                 </div>
               </div>
             </div>
