@@ -1,622 +1,457 @@
-/* ==========================================================================
-   REVITAORTHO NAVBAR — Professional Healthcare Theme
-   With Clean Desktop Header & Off-Canvas Right-Side Mobile Drawer
-   ========================================================================== */
+/* ══════════════════════════════════════════════════════════════════
+   WORLD OF REHAB-INSPIRED CLEAN & PROFESSIONAL NAVBAR STYLING
+   ══════════════════════════════════════════════════════════════════ */
 
-.navbar-container {
+:root {
+  --wor-navy: #0f2b48;
+  --wor-navy-dark: #0a1e33;
+  --wor-blue: #0284c7;
+  --wor-blue-dark: #0369a1;
+  --wor-blue-light: #e0f2fe;
+  --wor-teal: #0d9488;
+  --wor-teal-dark: #0f766e;
+  --wor-text-dark: #1e293b;
+  --wor-text-muted: #64748b;
+  --wor-border: #e2e8f0;
+  --wor-bg-light: #f8fafc;
+  --wor-white: #ffffff;
+  --wor-shadow: 0 4px 20px -2px rgba(15, 43, 72, 0.08);
+}
+
+/* ─── Top Contact Bar ─── */
+.wor-topbar {
+  background-color: var(--wor-navy);
+  color: #cbd5e1;
+  font-size: 0.8125rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.wor-nav-container {
   width: 100%;
   max-width: 1240px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 1.5rem;
 }
 
-/* ── Top Contact Bar ── */
-.top-bar {
-  background: var(--primary, #1a4a6b);
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 13px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.top-bar-content {
-  min-height: 38px;
+.wor-topbar-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  padding-top: 0.45rem;
+  padding-bottom: 0.45rem;
 }
 
-.top-bar-content a {
+.wor-topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.wor-topbar-item {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  color: #7dd3fc;
+  gap: 0.4rem;
+  color: #cbd5e1;
+}
+
+.wor-topbar-icon {
+  color: #38bdf8;
+  flex-shrink: 0;
+}
+
+.wor-topbar-divider {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.wor-topbar-link {
   text-decoration: none;
-  font-weight: 500;
-  transition: color 0.2s;
+  transition: color 0.2s ease;
 }
 
-.top-bar-content a:hover {
-  color: #bae6fd;
+.wor-topbar-link:hover {
+  color: #ffffff;
 }
 
-/* ── Main Sticky Header ── */
-.main-navbar {
+.wor-topbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.wor-topbar-phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #ffffff;
+  font-weight: 600;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  transition: all 0.2s ease;
+}
+
+.wor-topbar-phone:hover {
+  background: rgba(255, 255, 255, 0.16);
+  color: #38bdf8;
+}
+
+/* ─── Main Header ─── */
+.wor-header {
   position: sticky;
   top: 0;
-  z-index: 1000;
-  background: #ffffff;
-  box-shadow: 0 2px 14px rgba(26, 74, 107, 0.07);
-  border-bottom: 1px solid #e8edf2;
-  transition: box-shadow 0.2s ease;
+  z-index: 100;
+  background-color: var(--wor-white);
+  box-shadow: var(--wor-shadow);
+  border-bottom: 1px solid var(--wor-border);
 }
 
-.navbar-content {
-  min-height: 74px;
+.wor-header-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
+  height: 72px;
 }
 
-/* ── Clinic Logo ── */
-.clinic-logo {
-  display: inline-flex;
+/* ─── Brand Logo ─── */
+.wor-brand-logo {
+  display: flex;
   align-items: center;
-  gap: 11px;
-  flex-shrink: 0;
+  gap: 0.6rem;
   text-decoration: none;
-}
-
-.logo-icon {
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #1b74a8 0%, #155d88 100%);
-  color: #ffffff;
-  border-radius: 9px;
-  font-size: 28px;
-  font-weight: 400;
-  line-height: 1;
-  box-shadow: 0 2px 8px rgba(27, 116, 168, 0.25);
-}
-
-.logo-text {
-  display: inline-flex;
-  align-items: center;
-  font-family: 'Outfit', sans-serif;
-  font-size: 23px;
-  font-weight: 800;
-  line-height: 1;
-  color: var(--primary, #163350);
-  white-space: nowrap;
-}
-
-.logo-text > span {
-  color: #0284c7;
-}
-
-/* ── Desktop Navigation Links ── */
-.desktop-navbar-links {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-}
-
-.desktop-navbar-links > a,
-.services-toggle {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  padding: 8px 13px;
-  border: none;
-  background: transparent;
-  color: var(--heading-color, #1c2b3a);
   font-family: inherit;
-  font-size: 14.5px;
-  font-weight: 550;
-  white-space: nowrap;
-  text-decoration: none;
-  cursor: pointer;
-  border-radius: 7px;
-  transition: background 0.18s, color 0.18s;
 }
 
-.desktop-navbar-links > a:hover,
-.services-toggle:hover,
-.desktop-navbar-links > a.active-link {
-  background: #f0f9ff;
-  color: var(--accent, #0891b2);
-}
-
-/* ── Services Dropdown (Desktop) ── */
-.services-menu {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.services-dropdown {
-  position: absolute;
-  top: calc(100% + 6px);
-  left: 0;
-  min-width: 230px;
-  padding: 8px;
-  background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 12px 32px rgba(26, 74, 107, 0.14);
-  border: 1px solid #e0e8f0;
-  z-index: 1050;
-  animation: fadeIn 0.18s ease-out;
-}
-
-.services-dropdown a {
-  display: block;
-  padding: 10px 14px;
-  border-radius: 7px;
-  color: var(--heading-color, #1c2b3a);
-  font-size: 13.5px;
-  font-weight: 500;
-  text-decoration: none;
-  transition: background 0.15s, color 0.15s;
-}
-
-.services-dropdown a:hover {
-  background: #f0f9ff;
-  color: var(--accent, #0891b2);
-}
-
-/* ── Desktop Book Appointment Button ── */
-.appointment-button {
-  min-height: 44px;
-  padding: 0 20px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  flex-shrink: 0;
-  border-radius: 8px;
-  background: linear-gradient(135deg, #1b74a8 0%, #155d88 100%);
-  color: #ffffff !important;
-  font-size: 14px;
-  font-weight: 650;
-  white-space: nowrap;
-  text-decoration: none;
-  box-shadow: 0 3px 12px rgba(27, 116, 168, 0.22);
-  transition: all 0.22s ease;
-}
-
-.appointment-button:hover {
-  background: linear-gradient(135deg, #166391 0%, #114c70 100%);
-  box-shadow: 0 5px 16px rgba(27, 116, 168, 0.28);
-  transform: translateY(-1px);
-}
-
-/* ── Mobile Controls Container (Right side of navbar) ── */
-.mobile-controls-row {
-  display: none;
-  align-items: center;
-  gap: 8px;
-}
-
-.mobile-header-book-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: linear-gradient(135deg, #1b74a8 0%, #155d88 100%);
-  color: #ffffff !important;
-  text-decoration: none;
-  font-size: 12.5px;
-  font-weight: 650;
-  padding: 8px 13px;
-  border-radius: 8px;
-  white-space: nowrap;
-  box-shadow: 0 2px 8px rgba(27, 116, 168, 0.22);
-  transition: all 0.18s;
-  flex-shrink: 0;
-}
-
-.mobile-header-book-btn:hover {
-  background: linear-gradient(135deg, #166391 0%, #114c70 100%);
-}
-
-/* ── Clean 3-Lines Hamburger Menu Button on the Right Side (Pure 3 lines, NO box/border) ── */
-.mobile-hamburger-btn {
+.wor-logo-cross {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 38px;
   height: 38px;
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-  cursor: pointer;
-  padding: 4px;
-  color: var(--primary, #1a4a6b);
+  background: linear-gradient(135deg, #0284c7 0%, #0d9488 100%);
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: 700;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(2, 132, 199, 0.25);
+  line-height: 1;
+}
+
+.wor-logo-text {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--wor-navy);
+  letter-spacing: -0.02em;
+}
+
+.wor-logo-text span {
+  color: var(--wor-blue);
+  font-weight: 700;
+}
+
+/* ─── Desktop Nav Links ─── */
+.wor-desktop-nav {
+  display: flex;
+  align-items: center;
+  gap: 2.2rem;
+}
+
+.wor-nav-link {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--wor-text-dark);
+  text-decoration: none;
+  padding: 0.4rem 0.2rem;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.wor-nav-link:hover {
+  color: var(--wor-blue);
+}
+
+.wor-nav-link.wor-active-link {
+  color: var(--wor-blue);
+}
+
+.wor-nav-link.wor-active-link::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--wor-blue), var(--wor-teal));
+  border-radius: 2px;
+}
+
+/* ─── Prominent Book Appointment CTA Button ─── */
+.wor-header-right-action {
+  display: flex;
+  align-items: center;
+}
+
+.wor-btn-appointment {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  color: #ffffff;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  padding: 0.72rem 1.4rem;
+  border-radius: 8px;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.3);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.wor-btn-appointment:hover {
+  background: linear-gradient(135deg, #0369a1 0%, #0c4a6e 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(2, 132, 199, 0.4);
+  color: #ffffff;
+}
+
+/* ─── Mobile Controls ─── */
+.wor-mobile-controls {
+  display: none;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.wor-mobile-book-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  color: #ffffff;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  padding: 0.5rem 0.85rem;
   border-radius: 6px;
-  transition: color 0.18s ease, background-color 0.18s ease;
-  flex-shrink: 0;
+  text-decoration: none;
 }
 
-.mobile-hamburger-btn:hover,
-.mobile-hamburger-btn:active {
-  background: rgba(2, 132, 199, 0.08) !important;
-  color: var(--accent, #0891b2);
+.wor-hamburger-btn {
+  background: none;
+  border: none;
+  color: var(--wor-navy);
+  padding: 0.4rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: background 0.2s ease;
 }
 
-.mobile-hamburger-btn svg {
-  display: block;
-  width: 27px;
-  height: 27px;
+.wor-hamburger-btn:hover {
+  background: #f1f5f9;
 }
 
-/* ── Off-Canvas Right-Side Slide Drawer ── */
-.mobile-drawer-overlay {
+/* ─── Off-Canvas Mobile Drawer ─── */
+.wor-drawer-overlay {
   position: fixed;
   inset: 0;
-  background-color: rgba(15, 23, 42, 0.55);
-  backdrop-filter: blur(3px);
+  background-color: rgba(15, 43, 72, 0.55);
+  backdrop-filter: blur(4px);
   z-index: 2000;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.28s ease, visibility 0.28s ease;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-.mobile-drawer-overlay.open {
+.wor-drawer-overlay.is-open {
   opacity: 1;
   visibility: visible;
 }
 
-.mobile-drawer {
+.wor-mobile-drawer {
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
-  width: min(340px, 86vw);
-  height: 100vh;
+  width: 85%;
+  max-width: 360px;
   background-color: #ffffff;
-  box-shadow: -8px 0 32px rgba(15, 23, 42, 0.22);
+  z-index: 2001;
   display: flex;
   flex-direction: column;
   transform: translateX(100%);
-  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
-  z-index: 2001;
-  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: -6px 0 24px rgba(0, 0, 0, 0.15);
 }
 
-.mobile-drawer-overlay.open .mobile-drawer {
+.wor-drawer-overlay.is-open .wor-mobile-drawer {
   transform: translateX(0);
 }
 
-/* Drawer Header */
-.mobile-drawer-header {
+.wor-drawer-head {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 20px;
-  border-bottom: 1px solid #e8edf2;
-  background: #f8fafc;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--wor-border);
 }
 
-.drawer-logo {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  text-decoration: none;
-}
-
-.drawer-logo-icon {
-  width: 32px;
-  height: 32px;
-  background: var(--accent, #0891b2);
-  color: #ffffff;
-  border-radius: 7px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 22px;
-  font-weight: 400;
-  line-height: 1;
-}
-
-.drawer-logo-text {
-  font-family: 'Outfit', sans-serif;
-  font-size: 19px;
-  font-weight: 800;
-  color: var(--primary, #1a4a6b);
-  display: inline-flex;
-  align-items: center;
-  line-height: 1;
-}
-
-.drawer-logo-text span {
-  color: var(--accent, #0891b2);
-}
-
-.drawer-close-btn {
-  width: 38px;
-  height: 38px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 8px;
-  color: #475569;
-  cursor: pointer;
-  transition: all 0.18s;
-}
-
-.drawer-close-btn:hover {
-  background: #fee2e2;
-  color: #dc2626;
-  border-color: #fca5a5;
-}
-
-/* Drawer Body (Scrollable) */
-.mobile-drawer-body {
-  flex: 1;
-  overflow-y: auto;
-  padding: 14px 16px 28px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.mobile-drawer-nav {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.drawer-nav-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 14px;
-  border-radius: 8px;
-  color: #1e293b;
-  text-decoration: none;
-  font-size: 15px;
-  font-weight: 600;
-  transition: background-color 0.18s, color 0.18s;
-}
-
-.drawer-item-icon {
-  color: #0284c7;
-  flex-shrink: 0;
-}
-
-.drawer-nav-item:hover,
-.drawer-nav-item.active {
-  background-color: #f0f9ff;
-  color: #0284c7;
-}
-
-/* Services Dropdown in Drawer */
-.drawer-dropdown-group {
-  display: flex;
-  flex-direction: column;
-  border-radius: 8px;
-}
-
-.drawer-dropdown-trigger {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  padding: 12px 14px;
-  border: none;
-  background: transparent;
-  color: #1e293b;
-  font-size: 15px;
-  font-weight: 600;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.18s;
-}
-
-.drawer-trigger-left {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.drawer-chevron {
-  color: #64748b;
-  transition: transform 0.2s ease;
-}
-
-.drawer-chevron.rotate {
-  transform: rotate(180deg);
-}
-
-.drawer-sublinks {
-  display: flex;
-  flex-direction: column;
-  background-color: #f8fafc;
-  border-radius: 8px;
-  padding: 4px 0 4px 40px;
-  margin: 4px 0 6px;
-  border-left: 2px solid #bae6fd;
-}
-
-.drawer-sublinks a {
-  padding: 9px 12px;
-  color: #334155;
-  text-decoration: none;
-  font-size: 13.5px;
-  font-weight: 500;
-  transition: color 0.15s;
-}
-
-.drawer-sublinks a:hover {
-  color: #0284c7;
-}
-
-/* Drawer Bottom Actions */
-.drawer-actions-box {
-  margin-top: auto;
-  padding-top: 18px;
-  border-top: 1px solid #e8edf2;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.drawer-book-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  background: var(--accent, #0891b2);
-  color: #ffffff !important;
-  text-decoration: none;
-  padding: 13px;
-  border-radius: 8px;
-  font-weight: 650;
-  font-size: 14.5px;
-  box-shadow: 0 4px 14px rgba(8, 145, 178, 0.25);
-  transition: background 0.18s;
-}
-
-.drawer-book-btn:hover {
-  background: var(--accent-hover, #0e7490);
-}
-
-.drawer-call-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
+.wor-drawer-close {
   background: #f1f5f9;
-  color: #0f2b48 !important;
-  text-decoration: none;
-  padding: 12px;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 13.5px;
-  border: 1px solid #cbd5e1;
-}
-
-.drawer-wa-btn {
+  border: none;
+  color: var(--wor-text-dark);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  background: #e0f2fe;
-  color: #0369a1 !important;
-  text-decoration: none;
-  padding: 11px;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.2s ease;
 }
 
-.drawer-timing-pill {
+.wor-drawer-close:hover {
+  background: #e2e8f0;
+}
+
+.wor-drawer-body {
+  padding: 1.5rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.wor-drawer-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 1.75rem;
+}
+
+.wor-drawer-link {
+  display: flex;
+  align-items: center;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--wor-text-dark);
+  text-decoration: none;
+  padding: 0.85rem 1rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.wor-drawer-link:hover,
+.wor-drawer-link.is-active {
+  background-color: var(--wor-blue-light);
+  color: var(--wor-blue-dark);
+}
+
+.wor-drawer-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: auto;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--wor-border);
+}
+
+.wor-drawer-book-btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  font-size: 11.5px;
-  color: #64748b;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 0.85rem;
+  border-radius: 8px;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+}
+
+.wor-drawer-call-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: #f1f5f9;
+  color: var(--wor-navy);
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0.75rem;
+  border-radius: 8px;
+  text-decoration: none;
+  border: 1px solid var(--wor-border);
+}
+
+.wor-drawer-wa-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: #25d366;
+  color: #ffffff;
+  font-size: 0.875rem;
+  font-weight: 700;
+  padding: 0.75rem;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+.wor-drawer-footer {
+  margin-top: 1.25rem;
+  font-size: 0.75rem;
+  color: var(--wor-text-muted);
   text-align: center;
-  padding: 4px;
+  line-height: 1.4;
 }
 
-/* ==========================================================================
-   RESPONSIVE BREAKPOINTS: DESKTOP vs TABLET & MOBILE
-   ========================================================================== */
-
-/* ── Tablet & Mobile (<= 1023px) — SHOW 3-LINES, HIDE DESKTOP LINKS ── */
-@media (max-width: 1023px) {
-  .desktop-navbar-links {
-    display: none !important;
-  }
-
-  .appointment-button {
-    display: none !important;
-  }
-
-  .mobile-controls-row {
-    display: flex !important;
-  }
-}
-
-/* ── Mobile Phones (<= 480px) ── */
-@media (max-width: 480px) {
-  .navbar-container {
-    padding: 0 12px;
-    gap: 8px;
-  }
-
-  .top-bar-content {
-    font-size: 11px;
-    min-height: 34px;
-  }
-
-  .logo-icon {
-    width: 32px;
-    height: 32px;
-    font-size: 20px;
-  }
-
-  .logo-text {
-    font-size: 18px;
-    line-height: 1.1;
-  }
-
-  .logo-text small {
+/* ─── Responsive Media Queries ─── */
+@media (max-width: 991px) {
+  .wor-desktop-nav,
+  .wor-header-right-action {
     display: none;
   }
 
-  .mobile-controls-row {
-    gap: 6px;
+  .wor-mobile-controls {
+    display: flex;
   }
 
-  .mobile-header-book-btn {
-    padding: 6.5px 10px;
-    font-size: 11.5px;
-    letter-spacing: -0.1px;
-    border-radius: 7px;
-    gap: 5px;
-  }
-
-  .mobile-header-book-btn svg {
-    width: 13px;
-    height: 13px;
-    flex-shrink: 0;
-  }
-
-  .mobile-hamburger-btn {
-    width: 36px;
-    height: 36px;
-    padding: 3px;
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-  }
-
-  .mobile-hamburger-btn svg {
-    width: 26px;
-    height: 26px;
+  .wor-topbar-divider,
+  .wor-topbar-link {
+    display: none;
   }
 }
 
-@media (max-width: 360px) {
-  .navbar-container {
-    padding: 0 8px;
+@media (max-width: 576px) {
+  .wor-nav-container {
+    padding: 0 1rem;
   }
 
-  .logo-text {
-    font-size: 16px;
+  .wor-header-inner {
+    height: 64px;
   }
 
-  .mobile-header-book-btn {
-    padding: 6px 8px;
-    font-size: 11px;
+  .wor-logo-cross {
+    width: 32px;
+    height: 32px;
+    font-size: 1.25rem;
+    border-radius: 8px;
+  }
+
+  .wor-logo-text {
+    font-size: 1.25rem;
+  }
+
+  .wor-topbar-inner {
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0.35rem 0;
+    text-align: center;
+  }
+
+  .wor-topbar-phone {
+    font-size: 0.75rem;
+    padding: 0.15rem 0.5rem;
   }
 }

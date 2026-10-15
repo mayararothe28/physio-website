@@ -1,247 +1,364 @@
-/* ==========================================================================
-   REVITAORTHO CLINICAL FOOTER - DEEP MIDNIGHT NAVY & AZURE THEME
-   ========================================================================== */
+/* ══════════════════════════════════════════════════════════════════
+   WORLD OF REHAB-INSPIRED FOOTER STYLING
+   ══════════════════════════════════════════════════════════════════ */
 
-.site-footer {
-  background-color: #0e243a;
-  color: #e2e8f0;
-  padding: 70px 0 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+.wor-footer {
+  background-color: var(--wor-navy, #0f2b48);
+  color: #cbd5e1;
+  font-size: 0.9375rem;
+  overflow: hidden;
 }
 
-.footer-main-grid {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr 1.3fr;
-  gap: 40px;
-  padding-bottom: 50px;
+.wor-footer-container {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
 }
 
-/* Brand Column */
-.footer-logo-row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 16px;
-}
-
-.footer-logo-cross {
-  width: 40px;
-  height: 40px;
-  background: linear-gradient(135deg, #1b74a8 0%, #155d88 100%);
+/* ─── Top Callout Banner ─── */
+.wor-footer-callout {
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
   color: #ffffff;
-  border-radius: 9px;
-  font-size: 28px;
-  font-weight: 400;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  line-height: 1;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  padding: 2.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 
-.footer-brand-title {
-  display: inline-flex;
+.wor-callout-inner {
+  display: flex;
   align-items: center;
-  font-family: 'Outfit', sans-serif;
-  font-size: 22px;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.wor-callout-text h3 {
+  font-size: 1.5rem;
   font-weight: 800;
   color: #ffffff;
-  line-height: 1;
+  margin: 0 0 0.35rem 0;
+  line-height: 1.25;
 }
 
-.footer-brand-title span {
+.wor-callout-text p {
+  font-size: 1rem;
+  color: #e0f2fe;
+  margin: 0;
+}
+
+.wor-callout-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.wor-btn-footer-book {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #ffffff;
+  color: #0369a1;
+  font-size: 0.95rem;
+  font-weight: 800;
+  padding: 0.85rem 1.6rem;
+  border-radius: 8px;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+  transition: all 0.2s ease;
+}
+
+.wor-btn-footer-book:hover {
+  background-color: #f8fafc;
+  transform: translateY(-2px);
+  color: #0284c7;
+}
+
+.wor-btn-footer-call {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 0.85rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.2s ease;
+}
+
+.wor-btn-footer-call:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+}
+
+/* ─── Main Footer Columns ─── */
+.wor-footer-main {
+  padding: 4.5rem 0 3.5rem 0;
+}
+
+.wor-footer-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 0.9fr 1fr 1.2fr;
+  gap: 3rem;
+}
+
+.wor-footer-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  margin-bottom: 1.25rem;
+}
+
+.wor-footer-cross {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, #0284c7 0%, #0d9488 100%);
+  color: #ffffff;
+  font-size: 1.4rem;
+  font-weight: 700;
+  border-radius: 8px;
+}
+
+.wor-footer-brand-name {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+}
+
+.wor-footer-brand-name span {
   color: #38bdf8;
 }
 
-.footer-bio-text {
-  font-size: 13.5px;
+.wor-footer-bio {
   color: #94a3b8;
+  font-size: 0.9rem;
   line-height: 1.65;
-  margin-bottom: 20px;
+  margin: 0 0 1.25rem 0;
 }
 
-.footer-badge-pill {
+.wor-footer-accreditation {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  background-color: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  padding: 8px 14px;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.5rem 0.85rem;
   border-radius: 6px;
-  font-size: 12.5px;
-  color: #e2e8f0;
-  font-weight: 500;
+  font-size: 0.775rem;
+  color: #cbd5e1;
+  font-weight: 600;
 }
 
-/* Links Columns */
-.footer-col-links h4,
-.footer-col-contact h4 {
-  font-family: 'Outfit', sans-serif;
-  font-size: 16px;
-  font-weight: 750;
+.wor-footer-heading {
+  font-size: 1.05rem;
+  font-weight: 800;
   color: #ffffff;
-  margin: 0 0 18px;
-  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 0 0 1.35rem 0;
+  position: relative;
+  padding-bottom: 0.65rem;
 }
 
-.footer-col-links ul {
+.wor-footer-heading::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 28px;
+  height: 2px;
+  background-color: #0284c7;
+}
+
+/* Link List */
+.wor-footer-link-list {
   list-style: none;
   padding: 0;
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 11px;
+  gap: 0.75rem;
 }
 
-.footer-col-links ul li a {
+.wor-footer-link-list li a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
   color: #94a3b8;
   text-decoration: none;
-  font-size: 13.5px;
-  transition: all 0.2s;
-  display: inline-block;
+  font-size: 0.925rem;
+  transition: all 0.2s ease;
 }
 
-.footer-col-links ul li a:hover {
+.wor-footer-link-list li a:hover {
   color: #38bdf8;
   transform: translateX(4px);
 }
 
-/* Contact Column */
-.footer-col-contact {
+/* Contact List */
+.wor-footer-contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem 0;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 0.85rem;
 }
 
-.footer-contact-item {
+.wor-footer-contact-list li {
   display: flex;
   align-items: flex-start;
-  gap: 10px;
-  font-size: 13.5px;
+  gap: 0.65rem;
+  color: #cbd5e1;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.wor-footer-contact-list li small {
   color: #94a3b8;
 }
 
-.contact-ico {
-  color: #0ea5e9;
+.wor-f-icon {
+  color: #38bdf8;
   flex-shrink: 0;
-  margin-top: 2px;
+  margin-top: 0.2rem;
 }
 
-.footer-contact-item a {
-  color: #f1f5f9;
+.wor-footer-contact-list li a {
+  color: #ffffff;
   text-decoration: none;
-  transition: color 0.2s;
+  font-weight: 700;
+  transition: color 0.2s ease;
 }
 
-.footer-contact-item a:hover {
+.wor-footer-contact-list li a:hover {
   color: #38bdf8;
 }
 
-.footer-contact-item small {
-  color: #64748b;
-  font-size: 11.5px;
-}
-
-.footer-social-row {
+/* Footer Social & Maps buttons */
+.wor-footer-social-row {
   display: flex;
-  gap: 10px;
+  align-items: center;
+  gap: 0.75rem;
   flex-wrap: wrap;
-  margin-top: 8px;
 }
 
-.footer-whatsapp-btn {
-  background: linear-gradient(135deg, #1b74a8 0%, #155d88 100%);
-  color: #ffffff !important;
-  text-decoration: none;
-  padding: 10px 16px;
-  border-radius: 7px;
-  font-size: 13px;
+.wor-btn-f-wa {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background-color: #25d366;
+  color: #ffffff;
+  font-size: 0.825rem;
   font-weight: 700;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  transition: all 0.2s;
-  box-shadow: 0 3px 12px rgba(27, 116, 168, 0.25);
-}
-
-.footer-whatsapp-btn:hover {
-  background: linear-gradient(135deg, #166391 0%, #114c70 100%);
-  transform: translateY(-2px);
-}
-
-.footer-social-pill {
-  background-color: rgba(255, 255, 255, 0.08);
-  color: #e2e8f0 !important;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 0.55rem 0.95rem;
+  border-radius: 6px;
   text-decoration: none;
-  padding: 10px 16px;
-  border-radius: 7px;
-  font-size: 13px;
-  font-weight: 600;
+  transition: background 0.2s ease;
+}
+
+.wor-btn-f-wa:hover {
+  background-color: #20bd5a;
+  color: #ffffff;
+}
+
+.wor-btn-f-maps {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 7px;
-  transition: all 0.2s;
+  gap: 0.4rem;
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  font-size: 0.825rem;
+  font-weight: 600;
+  padding: 0.55rem 0.95rem;
+  border-radius: 6px;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: background 0.2s ease;
 }
 
-.footer-social-pill:hover {
+.wor-btn-f-maps:hover {
   background-color: rgba(255, 255, 255, 0.16);
-  border-color: #38bdf8;
-  color: #38bdf8 !important;
+  color: #38bdf8;
 }
 
-/* Bottom Bar */
-.footer-bottom-bar {
+/* ─── Bottom Bar ─── */
+.wor-footer-bottom {
+  background-color: #081728;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 24px 0 32px;
-  background-color: #040c17;
+  padding: 1.75rem 0;
+  font-size: 0.8125rem;
+  color: #64748b;
 }
 
-.bottom-inner {
+.wor-bottom-inner {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 0.85rem;
 }
 
-.disclaimer-text {
-  font-size: 11.5px;
-  color: #64748b;
-  line-height: 1.6;
+.wor-medical-disclaimer {
   margin: 0;
-}
-
-.disclaimer-text strong {
+  line-height: 1.5;
   color: #94a3b8;
 }
 
-.copyright-line {
+.wor-medical-disclaimer strong {
+  color: #cbd5e1;
+}
+
+.wor-copyright-row {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  font-size: 12.5px;
-  color: #64748b;
+  justify-content: space-between;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 0.75rem;
+  padding-top: 0.75rem;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
-  padding-top: 14px;
+  color: #94a3b8;
 }
 
+/* ─── Responsive Media Queries ─── */
 @media (max-width: 1024px) {
-  .footer-main-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 36px;
+  .wor-footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+  }
+
+  .wor-callout-inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
   }
 }
 
-@media (max-width: 600px) {
-  .footer-main-grid {
+@media (max-width: 640px) {
+  .wor-footer-grid {
     grid-template-columns: 1fr;
-    gap: 30px;
+    gap: 2rem;
   }
-  .copyright-line {
+
+  .wor-callout-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .wor-btn-footer-book,
+  .wor-btn-footer-call {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .wor-copyright-row {
     flex-direction: column;
     align-items: flex-start;
+    gap: 0.35rem;
   }
 }

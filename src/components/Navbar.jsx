@@ -3,50 +3,38 @@ import { Link, useLocation } from "react-router-dom";
 import {
   Menu,
   X,
-  ChevronDown,
   Calendar,
   Phone,
   MessageCircle,
-  Home,
-  Info,
-  Activity,
-  UserCheck,
-  Award,
-  HelpCircle,
   Mail,
   Clock,
 } from "lucide-react";
 import "./Navbar.css";
 
 export default function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [servicesOpen, setServicesOpen] = useState(false);
-  const [drawerServicesOpen, setDrawerServicesOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
 
-  // Desktop primary navigation links (Home · About · Services · Our Work · FAQ · Contact)
-  const desktopNavLinks = [
+  // Exactly the 4 page links requested by user + prominent Book Appointment button
+  const navLinks = [
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
-    { name: "Our Work", href: "/our-work" },
-    { name: "FAQ", href: "/faq" },
+    { name: "Services", href: "/services" },
     { name: "Contact", href: "/contact" },
   ];
 
-  function closeMenus() {
-    setMenuOpen(false);
-    setServicesOpen(false);
-    setDrawerServicesOpen(false);
+  function closeMenu() {
+    setMobileMenuOpen(false);
   }
 
-  // Auto-close menu when route changes
+  // Auto-close drawer on route change
   useEffect(() => {
-    closeMenus();
+    closeMenu();
   }, [location.pathname]);
 
-  // Lock background scroll when drawer is open
+  // Lock body scroll when mobile menu is open
   useEffect(() => {
-    if (menuOpen) {
+    if (mobileMenuOpen) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "";
@@ -54,312 +42,178 @@ export default function Navbar() {
     return () => {
       document.body.style.overflow = "";
     };
-  }, [menuOpen]);
+  }, [mobileMenuOpen]);
 
-  // Close on Escape key press
+  // Close on Escape key
   useEffect(() => {
     function handleKeyDown(e) {
-      if (e.key === "Escape" && menuOpen) {
-        closeMenus();
+      if (e.key === "Escape" && mobileMenuOpen) {
+        closeMenu();
       }
     }
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [menuOpen]);
+  }, [mobileMenuOpen]);
+
+  const isActive = (path) => {
+    if (path === "/") return location.pathname === "/";
+    return location.pathname.startsWith(path);
+  };
 
   return (
     <>
-      {/* Top contact bar */}
-      <div className="top-bar">
-        <div className="navbar-container top-bar-content">
-          <span>Mon–Sat: 9:00 AM – 8:00 PM</span>
-          <a href="tel:+919145875248">
-            <Phone size={14} />
-            +91 91458 75248
-          </a>
+      {/* ─── TOP CONTACT BAR (World of Rehab style) ─── */}
+      <div className="wor-topbar">
+        <div className="wor-nav-container wor-topbar-inner">
+          <div className="wor-topbar-left">
+            <span className="wor-topbar-item">
+              <Clock size={13} className="wor-topbar-icon" />
+              <span>Mon – Sat: 8:00 AM – 8:00 PM</span>
+            </span>
+            <span className="wor-topbar-divider">|</span>
+            <a href="mailto:care@revitaortho.com" className="wor-topbar-item wor-topbar-link">
+              <Mail size={13} className="wor-topbar-icon" />
+              <span>care@revitaortho.com</span>
+            </a>
+          </div>
+          <div className="wor-topbar-right">
+            <a href="tel:+919145875248" className="wor-topbar-phone">
+              <Phone size={13} className="wor-topbar-icon" />
+              <span>Helpline: +91 91458 75248</span>
+            </a>
+          </div>
         </div>
       </div>
 
-      {/* Main navbar */}
-      <header className="main-navbar">
-        <div className="navbar-container navbar-content">
-          {/* Clinic Logo */}
-          <Link to="/" className="clinic-logo" onClick={closeMenus}>
-            <span className="logo-icon">+</span>
-            <span className="logo-text">
+      {/* ─── MAIN HEADER / NAVBAR ─── */}
+      <header className="wor-header">
+        <div className="wor-nav-container wor-header-inner">
+          {/* Logo on Left */}
+          <Link to="/" className="wor-brand-logo" onClick={closeMenu}>
+            <span className="wor-logo-cross">+</span>
+            <span className="wor-logo-text">
               Revita<span>Ortho</span>
             </span>
           </Link>
 
-          {/* Desktop Navigation links (Hidden on mobile/tablet view) */}
-          <nav className="desktop-navbar-links" aria-label="Desktop Navigation">
-            {desktopNavLinks.slice(0, 2).map((link) => (
+          {/* Desktop Navigation Links: Home · About · Services · Contact */}
+          <nav className="wor-desktop-nav" aria-label="Main Navigation">
+            {navLinks.map((link) => (
               <Link
                 key={link.name}
                 to={link.href}
-                className={location.pathname === link.href ? "active-link" : ""}
-                onClick={closeMenus}
-              >
-                {link.name}
-              </Link>
-            ))}
-
-            {/* Services dropdown on desktop */}
-            <div
-              className="services-menu"
-              onMouseEnter={() => setServicesOpen(true)}
-              onMouseLeave={() => setServicesOpen(false)}
-            >
-              <button
-                type="button"
-                className="services-toggle"
-                onClick={() => setServicesOpen(!servicesOpen)}
-                aria-expanded={servicesOpen}
-              >
-                Services
-                <ChevronDown size={15} />
-              </button>
-
-              {servicesOpen && (
-                <div className="services-dropdown">
-                  <Link to="/services" onClick={closeMenus}>
-                    All Clinical Services
-                  </Link>
-                  <Link to="/services/spine" onClick={closeMenus}>
-                    Spine & Sciatica Care
-                  </Link>
-                  <Link to="/services/sports" onClick={closeMenus}>
-                    Sports Injuries & ACL Rehab
-                  </Link>
-                  <Link to="/services/knee" onClick={closeMenus}>
-                    Joint & Knee Preservation
-                  </Link>
-                </div>
-              )}
-            </div>
-
-            {desktopNavLinks.slice(2).map((link) => (
-              <Link
-                key={link.name}
-                to={link.href}
-                className={location.pathname === link.href ? "active-link" : ""}
-                onClick={closeMenus}
+                className={`wor-nav-link ${isActive(link.href) ? "wor-active-link" : ""}`}
               >
                 {link.name}
               </Link>
             ))}
           </nav>
 
-          {/* Desktop Book Appointment button */}
-          <Link
-            to="/appointment"
-            className="appointment-button"
-            onClick={closeMenus}
-          >
-            <Calendar size={17} />
-            <span>Book Appointment</span>
-          </Link>
-
-          {/* Mobile Right-Side Controls: Full "Book Appointment" CTA + Clean 3 Lines Icon */}
-          <div className="mobile-controls-row">
-            <Link
-              to="/appointment"
-              className="mobile-header-book-btn"
-              onClick={closeMenus}
-            >
-              <Calendar size={14} />
+          {/* Book Appointment CTA on Right */}
+          <div className="wor-header-right-action">
+            <Link to="/appointment" className="wor-btn-appointment">
+              <Calendar size={16} />
               <span>Book Appointment</span>
             </Link>
+          </div>
 
-            {/* Clean 3 Lines Icon on the Right Side (No box/border) */}
+          {/* Mobile Right Controls: Compact Appointment Button + Hamburger Menu */}
+          <div className="wor-mobile-controls">
+            <Link to="/appointment" className="wor-mobile-book-btn" onClick={closeMenu}>
+              <Calendar size={14} />
+              <span>Book</span>
+            </Link>
             <button
               type="button"
-              className="mobile-hamburger-btn"
-              onClick={() => setMenuOpen(true)}
+              className="wor-hamburger-btn"
+              onClick={() => setMobileMenuOpen(true)}
               aria-label="Open Navigation Menu"
-              aria-expanded={menuOpen}
+              aria-expanded={mobileMenuOpen}
             >
-              <Menu size={27} strokeWidth={2.4} />
+              <Menu size={26} strokeWidth={2.4} />
             </button>
           </div>
         </div>
 
-        {/* ─── OFF-CANVAS RIGHT-SIDE SLIDE DRAWER (Opens on touching 3 lines) ─── */}
+        {/* ─── OFF-CANVAS MOBILE DRAWER ─── */}
         <div
-          className={`mobile-drawer-overlay ${menuOpen ? "open" : ""}`}
-          onClick={closeMenus}
-          aria-hidden={!menuOpen}
+          className={`wor-drawer-overlay ${mobileMenuOpen ? "is-open" : ""}`}
+          onClick={closeMenu}
+          aria-hidden={!mobileMenuOpen}
         >
           <aside
-            className={`mobile-drawer ${menuOpen ? "open" : ""}`}
+            className={`wor-mobile-drawer ${mobileMenuOpen ? "is-open" : ""}`}
             onClick={(e) => e.stopPropagation()}
-            aria-label="Mobile Navigation Drawer"
+            aria-label="Mobile Navigation"
           >
-            {/* Drawer Header with Logo & Close (X) */}
-            <div className="mobile-drawer-header">
-              <Link to="/" className="drawer-logo" onClick={closeMenus}>
-                <span className="drawer-logo-icon">+</span>
-                <span className="drawer-logo-text">
+            {/* Drawer Header with Logo & Close button */}
+            <div className="wor-drawer-head">
+              <Link to="/" className="wor-brand-logo" onClick={closeMenu}>
+                <span className="wor-logo-cross">+</span>
+                <span className="wor-logo-text">
                   Revita<span>Ortho</span>
                 </span>
               </Link>
               <button
                 type="button"
-                className="drawer-close-btn"
-                onClick={closeMenus}
+                className="wor-drawer-close"
+                onClick={closeMenu}
                 aria-label="Close menu"
               >
                 <X size={22} />
               </button>
             </div>
 
-            {/* Drawer Scrollable Links Body */}
-            <div className="mobile-drawer-body">
-              <nav className="mobile-drawer-nav">
-                <Link
-                  to="/"
-                  className={`drawer-nav-item ${location.pathname === "/" ? "active" : ""}`}
-                  onClick={closeMenus}
-                >
-                  <Home size={18} className="drawer-item-icon" />
-                  <span>Home</span>
-                </Link>
-
-                <Link
-                  to="/about"
-                  className={`drawer-nav-item ${location.pathname === "/about" ? "active" : ""}`}
-                  onClick={closeMenus}
-                >
-                  <Info size={18} className="drawer-item-icon" />
-                  <span>About</span>
-                </Link>
-
-                {/* Services Collapsible Group */}
-                <div className="drawer-dropdown-group">
-                  <button
-                    type="button"
-                    className="drawer-dropdown-trigger"
-                    onClick={() => setDrawerServicesOpen(!drawerServicesOpen)}
-                    aria-expanded={drawerServicesOpen}
+            {/* Exactly the 4 items requested + Prominent Book Appointment */}
+            <div className="wor-drawer-body">
+              <nav className="wor-drawer-nav">
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.name}
+                    to={link.href}
+                    className={`wor-drawer-link ${isActive(link.href) ? "is-active" : ""}`}
+                    onClick={closeMenu}
                   >
-                    <div className="drawer-trigger-left">
-                      <Activity size={18} className="drawer-item-icon" />
-                      <span>Services</span>
-                    </div>
-                    <ChevronDown
-                      size={17}
-                      className={`drawer-chevron ${drawerServicesOpen ? "rotate" : ""}`}
-                    />
-                  </button>
-
-                  {drawerServicesOpen && (
-                    <div className="drawer-sublinks">
-                      <Link to="/services" onClick={closeMenus}>
-                        All Clinical Services
-                      </Link>
-                      <Link to="/services/spine" onClick={closeMenus}>
-                        Spine & Sciatica Care
-                      </Link>
-                      <Link to="/services/sports" onClick={closeMenus}>
-                        Sports Injuries & ACL Rehab
-                      </Link>
-                      <Link to="/services/knee" onClick={closeMenus}>
-                        Joint & Knee Preservation
-                      </Link>
-                    </div>
-                  )}
-                </div>
-
-                <Link
-                  to="/treatments"
-                  className={`drawer-nav-item ${location.pathname === "/treatments" ? "active" : ""}`}
-                  onClick={closeMenus}
-                >
-                  <Award size={18} className="drawer-item-icon" />
-                  <span>Treatments & Protocols</span>
-                </Link>
-
-                <Link
-                  to="/team"
-                  className={`drawer-nav-item ${location.pathname === "/team" ? "active" : ""}`}
-                  onClick={closeMenus}
-                >
-                  <UserCheck size={18} className="drawer-item-icon" />
-                  <span>Our Doctors (MPT)</span>
-                </Link>
-
-                <Link
-                  to="/our-work"
-                  className={`drawer-nav-item ${location.pathname === "/our-work" || location.pathname === "/work" ? "active" : ""}`}
-                  onClick={closeMenus}
-                >
-                  <Activity size={18} className="drawer-item-icon" />
-                  <span>Our Work & Results</span>
-                </Link>
-
-                <Link
-                  to="/testimonials"
-                  className={`drawer-nav-item ${location.pathname === "/testimonials" ? "active" : ""}`}
-                  onClick={closeMenus}
-                >
-                  <Award size={18} className="drawer-item-icon" />
-                  <span>Patient Testimonials</span>
-                </Link>
-
-                <Link
-                  to="/faq"
-                  className={`drawer-nav-item ${location.pathname === "/faq" ? "active" : ""}`}
-                  onClick={closeMenus}
-                >
-                  <HelpCircle size={18} className="drawer-item-icon" />
-                  <span>FAQs</span>
-                </Link>
-
-                <Link
-                  to="/contact"
-                  className={`drawer-nav-item ${location.pathname === "/contact" ? "active" : ""}`}
-                  onClick={closeMenus}
-                >
-                  <Mail size={18} className="drawer-item-icon" />
-                  <span>Contact</span>
-                </Link>
+                    <span>{link.name}</span>
+                  </Link>
+                ))}
               </nav>
 
-              {/* Drawer Bottom Actions & Helpline */}
-              <div className="drawer-actions-box">
+              {/* Prominent Book Appointment Button in Mobile Drawer */}
+              <div className="wor-drawer-actions">
                 <Link
                   to="/appointment"
-                  className="drawer-book-btn"
-                  onClick={closeMenus}
+                  className="wor-drawer-book-btn"
+                  onClick={closeMenu}
                 >
                   <Calendar size={17} />
-                  <span>Book Appointment Online</span>
+                  <span>Book Appointment</span>
                 </Link>
 
                 <a
                   href="tel:+919145875248"
-                  className="drawer-call-btn"
-                  onClick={closeMenus}
+                  className="wor-drawer-call-btn"
+                  onClick={closeMenu}
                 >
                   <Phone size={16} />
                   <span>Call Helpline: +91 91458 75248</span>
                 </a>
 
                 <a
-                  href="https://wa.me/919145875248?text=Hello%20RevitaOrtho,%20I%20would%20like%20to%20consult%20regarding%20my%20pain%20issue."
+                  href="https://wa.me/919145875248?text=Hello%20RevitaOrtho,%20I%20would%20like%20to%20consult%20regarding%20physiotherapy."
                   target="_blank"
                   rel="noreferrer"
-                  className="drawer-wa-btn"
-                  onClick={closeMenus}
+                  className="wor-drawer-wa-btn"
+                  onClick={closeMenu}
                 >
                   <MessageCircle size={16} />
                   <span>Chat on WhatsApp</span>
                 </a>
+              </div>
 
-                <div className="drawer-timing-pill">
-                  <Clock size={13} />
-                  <span>Mon–Sat: 8:00 AM – 8:00 PM</span>
-                </div>
+              <div className="wor-drawer-footer">
+                <p>Mon – Sat: 8:00 AM – 8:00 PM</p>
+                <p>Suite 302, Health & Wellness Plaza, Pune</p>
               </div>
             </div>
           </aside>

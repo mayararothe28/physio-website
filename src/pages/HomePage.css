@@ -1,1729 +1,1458 @@
-/* ==========================================================================
-   TERAPIA - PHYSICAL THERAPY WEBSITE THEME (HTML CODEX REFERENCE)
-   Exact match for https://demo.htmlcodex.com/3263/physical-therapy-website-template/
-   Clean Bootstrap 5 medical styling, high-impact clinical imagery,
-   no excessive animations, 100% natural and professional.
-   ========================================================================== */
+/* ══════════════════════════════════════════════════════════════════
+   WORLD OF REHAB-INSPIRED HOMEPAGE STYLING
+   RevitaOrtho Clinic (Pune)
+   ══════════════════════════════════════════════════════════════════ */
 
 :root {
-  /* Terapia Primary Healthcare Colors */
-  --terapia-primary: #0284c7;        /* Clean clinical ocean blue */
-  --terapia-primary-dark: #0369a1;   /* Hover blue */
-  --terapia-primary-light: #f0f9ff;  /* Soft sky blue */
-  --terapia-primary-border: #bae6fd;
-  
-  --terapia-secondary: #0d9468;      /* Health emerald */
-  --terapia-secondary-light: #ecfdf5;
-  --terapia-secondary-border: #a7f3d0;
-
-  --terapia-dark: #0f172a;           /* Deep dark slate */
-  --terapia-navy: #1e293b;           /* Slate heading */
-  --terapia-body: #475569;           /* Clean body text */
-  --terapia-muted: #64748b;          /* Secondary captions */
-  
-  --terapia-light-bg: #f8fafc;       /* Light section background */
-  --terapia-white: #ffffff;
-  --terapia-border: #e2e8f0;         /* Clean card border */
-  --terapia-gold: #f59e0b;
-
-  --terapia-radius-sm: 6px;
-  --terapia-radius-md: 10px;
-  --terapia-radius-lg: 14px;
-  --terapia-shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.04);
-  --terapia-shadow-md: 0 6px 20px rgba(15, 23, 42, 0.07);
-  --terapia-shadow-lg: 0 12px 32px rgba(15, 23, 42, 0.1);
+  --wor-navy: #0f2b48;
+  --wor-navy-dark: #0a1e33;
+  --wor-navy-light: #1e3a5f;
+  --wor-blue: #0284c7;
+  --wor-blue-dark: #0369a1;
+  --wor-blue-light: #e0f2fe;
+  --wor-teal: #0d9488;
+  --wor-teal-dark: #0f766e;
+  --wor-green-call: #059669;
+  --wor-green-call-hover: #047857;
+  --wor-text-main: #1e293b;
+  --wor-text-body: #475569;
+  --wor-text-muted: #64748b;
+  --wor-border: #e2e8f0;
+  --wor-border-light: #f1f5f9;
+  --wor-bg-white: #ffffff;
+  --wor-bg-light: #f8fafc;
+  --wor-bg-card: #ffffff;
+  --wor-radius-sm: 8px;
+  --wor-radius-md: 12px;
+  --wor-radius-lg: 16px;
+  --wor-radius-pill: 9999px;
+  --wor-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --wor-shadow-md: 0 4px 20px -2px rgba(15, 43, 72, 0.07);
+  --wor-shadow-lg: 0 10px 30px -4px rgba(15, 43, 72, 0.1);
+  --wor-transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ─── BASE CONTAINER & RESET ─── */
-.terapia-home-page {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: var(--terapia-body);
-  background-color: var(--terapia-white);
-  line-height: 1.65;
+.wor-home-page {
+  background-color: #ffffff;
+  color: var(--wor-text-main);
   overflow-x: hidden;
 }
 
-.home-container {
+.wor-container {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1240px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 1.5rem;
 }
 
-.section-padding {
-  padding: 80px 0;
-}
-
-@media (max-width: 768px) {
-  .section-padding {
-    padding: 50px 0;
-  }
-}
-
-/* ─── SECTION HEADERS (Terapia Style) ─── */
-.section-header-centered {
-  text-align: center;
-  max-width: 740px;
-  margin: 0 auto 48px;
-}
-
-.terapia-section-subtitle {
-  display: inline-block;
-  font-size: 13px;
-  font-weight: 750;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-  color: var(--terapia-primary);
-  background-color: var(--terapia-primary-light);
-  border: 1px solid var(--terapia-primary-border);
-  padding: 4px 14px;
-  border-radius: 9999px;
-  margin-bottom: 12px;
-}
-
-.terapia-section-subtitle.light-subtitle {
-  color: #38bdf8;
-  background-color: rgba(56, 189, 248, 0.12);
-  border-color: rgba(56, 189, 248, 0.3);
-}
-
-.terapia-section-title {
-  font-family: 'Outfit', -apple-system, sans-serif;
-  font-size: clamp(28px, 3.2vw, 38px);
-  font-weight: 800;
-  line-height: 1.25;
-  color: var(--terapia-dark);
-  margin-bottom: 14px;
-  letter-spacing: -0.02em;
-}
-
-.terapia-section-title.light-title {
-  color: #ffffff;
-}
-
-.section-main-desc {
-  font-size: 15.5px;
-  color: var(--terapia-muted);
-  line-height: 1.65;
-  margin: 0 auto;
-}
-
-/* ─── BUTTONS (Terapia Bootstrap Style) ─── */
-.btn-terapia-primary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  background-color: var(--terapia-primary);
-  color: #ffffff !important;
-  border: 1px solid var(--terapia-primary);
-  padding: 13px 26px;
-  border-radius: var(--terapia-radius-sm);
-  font-size: 14.5px;
-  font-weight: 700;
-  text-decoration: none;
-  cursor: pointer;
-  transition: all 0.25s ease;
-  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
-}
-
-.btn-terapia-primary:hover {
-  background-color: var(--terapia-primary-dark);
-  border-color: var(--terapia-primary-dark);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(2, 132, 199, 0.4);
-}
-
-.btn-terapia-outline {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  background-color: transparent;
-  color: var(--terapia-primary) !important;
-  border: 1px solid var(--terapia-primary);
-  padding: 12px 24px;
-  border-radius: var(--terapia-radius-sm);
-  font-size: 14px;
-  font-weight: 700;
-  text-decoration: none;
-  cursor: pointer;
-  transition: all 0.25s ease;
-}
-
-.btn-terapia-outline:hover {
-  background-color: var(--terapia-primary);
-  color: #ffffff !important;
-  transform: translateY(-2px);
-}
-
-.btn-terapia-white {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  background-color: #ffffff;
-  color: var(--terapia-dark) !important;
-  border: 1px solid #ffffff;
-  padding: 13px 24px;
-  border-radius: var(--terapia-radius-sm);
-  font-size: 14.5px;
-  font-weight: 700;
-  text-decoration: none;
-  cursor: pointer;
-  transition: all 0.25s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.btn-terapia-white:hover {
-  background-color: #f1f5f9;
-  transform: translateY(-2px);
-}
-
-.btn-terapia-whatsapp {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  background-color: #25d366;
-  color: #ffffff !important;
-  border: 1px solid #25d366;
-  padding: 13px 22px;
-  border-radius: var(--terapia-radius-sm);
-  font-size: 14.5px;
-  font-weight: 700;
-  text-decoration: none;
-  cursor: pointer;
-  transition: all 0.25s ease;
-  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
-}
-
-.btn-terapia-whatsapp:hover {
-  background-color: #1ebc59;
-  border-color: #1ebc59;
-  transform: translateY(-2px);
-}
-
-/* ==========================================================================
-   1. HERO HEADER (Terapia Carousel / Grand Banner Style)
-   ========================================================================== */
-.terapia-hero-section {
-  position: relative;
-  background: url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1600&q=80') center center / cover no-repeat;
-  padding: 110px 0 130px;
-  min-height: 520px;
-  display: flex;
-  align-items: center;
-}
-
-.terapia-hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(15, 23, 42, 0.88) 0%, rgba(2, 132, 199, 0.75) 100%);
-  z-index: 1;
-}
-
-.terapia-hero-container {
-  position: relative;
-  z-index: 2;
-}
-
-.terapia-hero-content {
-  max-width: 820px;
-}
-
-.terapia-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background-color: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  padding: 6px 16px;
-  border-radius: 9999px;
-  font-size: 12px;
-  font-weight: 750;
-  letter-spacing: 0.8px;
-  color: #ffffff;
-  margin-bottom: 20px;
-}
-
-.terapia-hero-title {
-  font-family: 'Outfit', -apple-system, sans-serif;
-  font-size: clamp(32px, 4.2vw, 52px);
-  font-weight: 800;
-  line-height: 1.18;
-  color: #ffffff;
-  margin-bottom: 18px;
-  letter-spacing: -0.02em;
-}
-
-.terapia-hero-desc {
-  font-size: 17px;
-  line-height: 1.65;
-  color: #e2e8f0;
-  margin-bottom: 30px;
-  max-width: 680px;
-}
-
-.terapia-hero-cta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-  align-items: center;
-}
-
-/* ==========================================================================
-   2. TOP 3 FEATURE BOXES (Overlapping Hero, Terapia Style)
-   ========================================================================== */
-.terapia-feature-strip {
-  position: relative;
-  z-index: 3;
-  margin-top: -55px;
-  padding-bottom: 30px;
-}
-
-.terapia-feature-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-
-.terapia-feature-box {
-  background: #ffffff;
-  border: 1px solid var(--terapia-border);
-  border-radius: var(--terapia-radius-md);
-  padding: 30px 24px;
-  box-shadow: var(--terapia-shadow-md);
-  display: flex;
-  gap: 18px;
-  align-items: flex-start;
-  text-decoration: none;
-  cursor: pointer;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-}
-
-.terapia-feature-box:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--terapia-shadow-lg);
-  border-color: var(--terapia-primary);
-}
-
-.feature-box-icon {
-  width: 58px;
-  height: 58px;
-  border-radius: 12px;
-  background-color: var(--terapia-primary-light);
-  border: 1px solid var(--terapia-primary-border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--terapia-primary);
-  flex-shrink: 0;
-}
-
-.feature-box-text h3 {
-  font-family: 'Outfit', -apple-system, sans-serif;
-  font-size: 18.5px;
-  font-weight: 750;
-  color: var(--terapia-dark);
-  margin-bottom: 6px;
-}
-
-.feature-box-text p {
-  font-size: 13.5px;
-  color: var(--terapia-muted);
-  line-height: 1.55;
-  margin: 0;
-}
-
-/* ==========================================================================
-   3. ABOUT US SECTION (Image on Left, Details & Checkmarks on Right)
-   ========================================================================== */
-.terapia-about-section {
-  background-color: #ffffff;
-  border-bottom: 1px solid var(--terapia-border);
-}
-
-.terapia-about-grid {
-  display: grid;
-  grid-template-columns: 1fr 1.15fr;
-  gap: 50px;
-  align-items: center;
-}
-
-.terapia-about-img-wrap {
-  position: relative;
-  border-radius: var(--terapia-radius-lg);
-  overflow: hidden;
-  box-shadow: var(--terapia-shadow-md);
-}
-
-.terapia-about-img {
-  width: 100%;
-  height: 480px;
-  object-fit: cover;
-  display: block;
-}
-
-.terapia-experience-badge {
-  position: absolute;
-  bottom: 24px;
-  right: 24px;
-  background-color: var(--terapia-primary);
-  color: #ffffff;
-  border-radius: var(--terapia-radius-md);
-  padding: 16px 22px;
-  box-shadow: 0 8px 24px rgba(2, 132, 199, 0.4);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-.exp-number {
-  font-family: 'Outfit', -apple-system, sans-serif;
-  font-size: 32px;
-  font-weight: 800;
-  line-height: 1;
-}
-
-.exp-label {
-  font-size: 12px;
-  font-weight: 650;
-  line-height: 1.3;
-  margin-top: 4px;
-  max-width: 110px;
-}
-
-.terapia-about-text-col {
-  display: flex;
-  flex-direction: column;
-}
-
-.terapia-lead-text {
-  font-size: 16px;
-  line-height: 1.68;
-  color: var(--terapia-body);
-  margin-bottom: 24px;
-}
-
-.terapia-about-points-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 18px;
-  margin-bottom: 28px;
-}
-
-.about-point-item {
-  display: flex;
-  gap: 12px;
-  align-items: flex-start;
-}
-
-.point-icon {
-  color: var(--terapia-secondary);
-  flex-shrink: 0;
-  margin-top: 2px;
-}
-
-.about-point-item strong {
-  display: block;
-  font-size: 14px;
-  font-weight: 750;
-  color: var(--terapia-dark);
-  margin-bottom: 2px;
-}
-
-.about-point-item p {
-  font-size: 12.5px;
-  color: var(--terapia-muted);
-  line-height: 1.45;
-  margin: 0;
-}
-
-.terapia-about-cta {
-  display: flex;
-  gap: 14px;
-  flex-wrap: wrap;
-}
-
-/* ==========================================================================
-   4. SERVICES SECTION (Terapia Cards with Photos & Overlapping Icons)
-   ========================================================================== */
-.terapia-services-section {
-  background-color: var(--terapia-light-bg);
-  border-bottom: 1px solid var(--terapia-border);
-}
-
-.terapia-services-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-  margin-bottom: 40px;
-}
-
-.terapia-service-card {
-  background-color: #ffffff;
-  border: 1px solid var(--terapia-border);
-  border-radius: var(--terapia-radius-md);
-  overflow: hidden;
-  box-shadow: var(--terapia-shadow-sm);
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-}
-
-.terapia-service-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--terapia-shadow-lg);
-  border-color: var(--terapia-primary-border);
-}
-
-.service-card-image-wrap {
-  position: relative;
-  width: 100%;
-  height: 200px;
-  overflow: hidden;
-}
-
-.service-card-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.35s ease;
-}
-
-.terapia-service-card:hover .service-card-img {
-  transform: scale(1.05);
-}
-
-.service-floating-icon {
-  position: absolute;
-  bottom: -22px;
-  right: 20px;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background-color: var(--terapia-primary);
-  border: 3px solid #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #ffffff;
-  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.35);
-  z-index: 2;
-}
-
-.service-card-body {
-  padding: 28px 20px 22px;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-}
-
-.service-card-title {
-  font-family: 'Outfit', -apple-system, sans-serif;
-  font-size: 18px;
-  font-weight: 750;
-  color: var(--terapia-dark);
-  margin-bottom: 8px;
-}
-
-.service-card-title a,
-.blog-card-title a {
-  color: inherit;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.service-card-title a:hover,
-.blog-card-title a:hover {
-  color: var(--terapia-primary);
-}
-
-.service-card-desc {
-  font-size: 13.5px;
-  line-height: 1.55;
-  color: var(--terapia-muted);
-  margin-bottom: 14px;
-  flex-grow: 1;
-}
-
-.service-card-bullets {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  padding: 10px 0;
-  border-top: 1px solid #f1f5f9;
-  border-bottom: 1px solid #f1f5f9;
-  margin-bottom: 16px;
-}
-
-.service-bullet-row {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--terapia-dark);
-}
-
-.bullet-check {
-  color: var(--terapia-secondary);
-}
-
-.service-card-actions {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-}
-
-.btn-card-book {
-  background-color: var(--terapia-primary);
-  color: #ffffff !important;
-  border-radius: 6px;
-  padding: 8px 14px;
-  font-size: 12.5px;
-  font-weight: 700;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  transition: background-color 0.2s ease;
-}
-
-.btn-card-book:hover {
-  background-color: var(--terapia-primary-dark);
-}
-
-.btn-card-readmore {
-  color: var(--terapia-primary);
-  font-size: 12.5px;
-  font-weight: 700;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 2px;
-  transition: gap 0.2s ease, color 0.2s ease;
-}
-
-.btn-card-readmore:hover {
-  color: var(--terapia-primary-dark);
-  gap: 5px;
-}
-
-/* Services Footer Banner */
-.terapia-services-footer-banner {
-  background: #ffffff;
-  border: 1px solid var(--terapia-border);
-  border-radius: var(--terapia-radius-md);
-  padding: 24px 28px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  box-shadow: var(--terapia-shadow-sm);
-  flex-wrap: wrap;
-}
-
-.terapia-services-footer-banner h4 {
-  font-family: 'Outfit', -apple-system, sans-serif;
-  font-size: 17px;
-  font-weight: 750;
-  color: var(--terapia-dark);
-  margin-bottom: 4px;
-}
-
-.terapia-services-footer-banner p {
-  font-size: 13.5px;
-  color: var(--terapia-muted);
-  margin: 0;
-}
-
-.services-footer-btns {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-/* ==========================================================================
-   5. WHY CHOOSE US SECTION (Terapia 3 Feature Cards)
-   ========================================================================== */
-.terapia-why-section {
-  background-color: #ffffff;
-  border-bottom: 1px solid var(--terapia-border);
-}
-
-.terapia-why-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-bottom: 36px;
-}
-
-.terapia-why-card {
-  background-color: var(--terapia-light-bg);
-  border: 1px solid var(--terapia-border);
-  border-radius: var(--terapia-radius-md);
-  padding: 30px 24px;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-}
-
-.terapia-why-card:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--terapia-shadow-md);
-  border-color: var(--terapia-primary-border);
-  background-color: #ffffff;
-}
-
-.why-card-icon-box {
-  width: 52px;
-  height: 52px;
-  border-radius: 12px;
-  background-color: var(--terapia-primary-light);
-  border: 1px solid var(--terapia-primary-border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--terapia-primary);
-  margin-bottom: 18px;
-}
-
-.why-card-title {
-  font-family: 'Outfit', -apple-system, sans-serif;
-  font-size: 19px;
-  font-weight: 750;
-  color: var(--terapia-dark);
-  margin-bottom: 8px;
-}
-
-.why-card-text {
-  font-size: 14px;
-  line-height: 1.6;
-  color: var(--terapia-body);
-  margin: 0;
-}
-
-.terapia-reassurance-strip {
-  background-color: var(--terapia-light-bg);
-  border: 1px solid var(--terapia-border);
-  border-radius: var(--terapia-radius-md);
-  padding: 22px 28px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-}
-
-.reassurance-left {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.reassurance-badge-icon {
-  color: var(--terapia-secondary);
-  flex-shrink: 0;
-}
-
-.reassurance-left strong {
-  font-family: 'Outfit', -apple-system, sans-serif;
-  font-size: 17px;
-  font-weight: 750;
-  color: var(--terapia-dark);
-  display: block;
-  margin-bottom: 2px;
-}
-
-.reassurance-left p {
-  font-size: 13px;
-  color: var(--terapia-muted);
-  margin: 0;
-}
-
-/* ==========================================================================
-   7. TEAM SECTION (Terapia Specialized Physiotherapists)
-   ========================================================================== */
-.terapia-team-section {
-  background-color: var(--terapia-light-bg);
-  border-bottom: 1px solid var(--terapia-border);
-}
-
-.terapia-team-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 26px;
-}
-
-.terapia-team-card {
-  background: #ffffff;
-  border: 1px solid var(--terapia-border);
-  border-radius: var(--terapia-radius-md);
-  overflow: hidden;
-  box-shadow: var(--terapia-shadow-sm);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.terapia-team-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--terapia-shadow-lg);
-  border-color: var(--terapia-primary-border);
-}
-
-.team-card-img-wrap {
-  width: 100%;
-  height: 280px;
-  overflow: hidden;
-}
-
-.team-card-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.35s ease;
-}
-
-.terapia-team-card:hover .team-card-img {
-  transform: scale(1.04);
-}
-
-.team-card-body {
-  padding: 24px 20px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.team-card-name {
-  font-family: 'Outfit', -apple-system, sans-serif;
-  font-size: 18.5px;
-  font-weight: 800;
-  color: var(--terapia-dark);
-  margin: 0 0 3px;
-}
-
-.team-card-role {
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--terapia-primary);
-  margin-bottom: 4px;
-}
-
-.team-card-degree {
-  font-size: 12px;
-  color: var(--terapia-muted);
-  margin-bottom: 6px;
-}
-
-.team-card-exp {
-  font-size: 11.5px;
-  font-weight: 650;
-  color: #065f46;
-  background-color: var(--terapia-secondary-light);
-  padding: 2px 8px;
-  border-radius: 4px;
-  margin-bottom: 16px;
-}
-
-.btn-team-consult {
-  background-color: var(--terapia-primary);
-  color: #ffffff !important;
-  border-radius: 6px;
-  padding: 8px 16px;
-  font-size: 12.5px;
-  font-weight: 700;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  transition: background-color 0.2s ease;
-}
-
-.btn-team-consult:hover {
-  background-color: var(--terapia-primary-dark);
-}
-
-.team-footer-cta-row,
-.blog-footer-cta-row {
-  margin-top: 36px;
-  display: flex;
-  justify-content: center;
-}
-
-/* ==========================================================================
-   8. TESTIMONIALS SECTION (Terapia Patient Reviews)
-   ========================================================================== */
-.terapia-testimonial-section {
-  background-color: #ffffff;
-  border-bottom: 1px solid var(--terapia-border);
-}
-
-.terapia-testimonial-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-bottom: 34px;
-}
-
-.terapia-test-card {
-  background-color: var(--terapia-light-bg);
-  border: 1px solid var(--terapia-border);
-  border-radius: var(--terapia-radius-md);
-  padding: 26px 22px;
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.terapia-test-card:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--terapia-shadow-md);
-  background-color: #ffffff;
-}
-
-.test-card-stars {
-  display: flex;
-  gap: 3px;
-  margin-bottom: 12px;
-}
-
-.star-gold {
-  color: var(--terapia-gold);
-}
-
-.fill-gold {
-  fill: var(--terapia-gold);
-}
-
-.test-card-quote {
-  font-size: 13.5px;
-  line-height: 1.65;
-  color: var(--terapia-body);
-  font-style: italic;
-  margin-bottom: 16px;
-  flex-grow: 1;
-}
-
-.test-card-condition {
-  font-size: 12px;
-  color: var(--terapia-primary-dark);
-  background-color: var(--terapia-primary-light);
-  padding: 4px 9px;
-  border-radius: 4px;
-  margin-bottom: 14px;
-}
-
-.test-card-author {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding-top: 12px;
-  border-top: 1px solid #e2e8f0;
-}
-
-.author-circle {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: var(--terapia-primary);
-  color: #ffffff;
-  font-weight: 750;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 15px;
-  flex-shrink: 0;
-}
-
-.author-details h4 {
-  font-size: 13.5px;
-  font-weight: 750;
-  color: var(--terapia-dark);
-  margin: 0;
-}
-
-.author-details span {
-  font-size: 12px;
-  color: var(--terapia-muted);
-}
-
-.terapia-google-badge-strip {
-  background-color: var(--terapia-light-bg);
-  border: 1px solid var(--terapia-border);
-  border-radius: var(--terapia-radius-md);
-  padding: 18px 26px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-.google-badge-left {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-.google-svg {
-  height: 26px;
-  width: auto;
-}
-
-.google-badge-left strong {
-  display: block;
-  font-size: 14.5px;
-  font-weight: 750;
-  color: var(--terapia-dark);
-}
-
-.google-badge-left span {
-  font-size: 12.5px;
-  color: var(--terapia-muted);
-}
-
-/* ==========================================================================
-   9. BLOG / HEALTH TIPS SECTION (Terapia Health Articles)
-   ========================================================================== */
-.terapia-blog-section {
-  background-color: var(--terapia-light-bg);
-  border-bottom: 1px solid var(--terapia-border);
-}
-
-.terapia-blog-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-
-.terapia-blog-card {
-  background-color: #ffffff;
-  border: 1px solid var(--terapia-border);
-  border-radius: var(--terapia-radius-md);
-  overflow: hidden;
-  box-shadow: var(--terapia-shadow-sm);
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.terapia-blog-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--terapia-shadow-md);
-  border-color: var(--terapia-primary-border);
-}
-
-.blog-card-img-wrap {
-  position: relative;
-  width: 100%;
-  height: 200px;
-  overflow: hidden;
-}
-
-.blog-card-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.35s ease;
-}
-
-.terapia-blog-card:hover .blog-card-img {
-  transform: scale(1.05);
-}
-
-.blog-card-cat {
-  position: absolute;
-  top: 14px;
-  left: 14px;
-  background-color: var(--terapia-primary);
-  color: #ffffff;
-  font-size: 11px;
-  font-weight: 750;
-  padding: 3px 10px;
-  border-radius: 4px;
-}
-
-.blog-card-body {
-  padding: 22px 20px;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-}
-
-.blog-card-date {
-  font-size: 12px;
-  color: var(--terapia-muted);
-  margin-bottom: 6px;
-}
-
-.blog-card-title {
-  font-family: 'Outfit', -apple-system, sans-serif;
-  font-size: 17.5px;
-  font-weight: 750;
-  color: var(--terapia-dark);
-  line-height: 1.35;
-  margin-bottom: 10px;
-}
-
-.blog-card-excerpt {
-  font-size: 13.5px;
-  line-height: 1.55;
-  color: var(--terapia-body);
-  margin-bottom: 16px;
-  flex-grow: 1;
-}
-
-.btn-blog-readmore {
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--terapia-primary);
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  transition: gap 0.2s ease, color 0.2s ease;
-}
-
-.btn-blog-readmore:hover {
-  color: var(--terapia-primary-dark);
-  gap: 8px;
-}
-
-/* ==========================================================================
-   10. FREQUENTLY ASKED QUESTIONS (FAQ)
-   ========================================================================== */
-.terapia-faq-section {
-  background-color: #ffffff;
-}
-
-.terapia-faq-accordion {
-  max-width: 840px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.terapia-faq-item {
-  background-color: var(--terapia-light-bg);
-  border: 1px solid var(--terapia-border);
-  border-radius: var(--terapia-radius-md);
-  overflow: hidden;
-  transition: border-color 0.2s ease;
-}
-
-.terapia-faq-item.is-open {
-  border-color: var(--terapia-primary);
-  background-color: #ffffff;
-}
-
-.terapia-faq-trigger {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 14px;
-  padding: 16px 20px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  text-align: left;
-}
-
-.faq-q-text {
-  font-family: 'Outfit', -apple-system, sans-serif;
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--terapia-dark);
-  line-height: 1.35;
-}
-
-.terapia-faq-item.is-open .faq-q-text {
-  color: var(--terapia-primary);
-}
-
-.faq-arrow {
-  color: var(--terapia-muted);
-  flex-shrink: 0;
-  transition: transform 0.25s ease;
-}
-
-.faq-arrow.is-rotated {
-  transform: rotate(180deg);
-  color: var(--terapia-primary);
-}
-
-.terapia-faq-body {
-  padding: 0 20px 16px;
-  font-size: 13.5px;
-  line-height: 1.6;
-  color: var(--terapia-body);
-}
-
-.terapia-faq-body p {
-  margin: 0;
-}
-
-/* ==========================================================================
-   11. RESPONSIVE BREAKPOINTS (Mobile, Tablet & Desktop)
-   ========================================================================== */
-@media (max-width: 1024px) {
-  .terapia-feature-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-
-  .terapia-feature-strip {
-    margin-top: 20px;
-  }
-
-  .terapia-about-grid {
-    grid-template-columns: 1fr;
-    gap: 36px;
-  }
-
-  .terapia-about-img {
-    height: 380px;
-  }
-
-  .terapia-services-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .terapia-why-grid {
-    grid-template-columns: 1fr;
-  }
-
-
-  .terapia-team-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .terapia-testimonial-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .terapia-blog-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 640px) {
-  .terapia-hero-section {
-    padding: 70px 0 80px;
-  }
-
-  .terapia-hero-title {
-    font-size: 27px;
-  }
-
-  .terapia-hero-desc {
-    font-size: 14.5px;
-  }
-
-  .terapia-hero-cta {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .terapia-hero-cta a {
-    width: 100%;
-    justify-content: center;
-  }
-
-  .terapia-about-points-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .terapia-about-img {
-    height: 300px;
-  }
-
-  .terapia-experience-badge {
-    bottom: 14px;
-    right: 14px;
-    padding: 12px 16px;
-  }
-
-  .exp-number {
-    font-size: 26px;
-  }
-
-  .terapia-services-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .terapia-services-footer-banner {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .terapia-reassurance-strip {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .form-row-2 {
-    grid-template-columns: 1fr;
-  }
-
-  .appointment-form-card {
-    padding: 22px 18px;
-  }
-
-  .terapia-team-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .google-badge-left {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-}
-
-/* ─── API LOADING STATE ─── */
-.loading-screen {
-  min-height: 70vh;
+/* ─── Loading Screen ─── */
+.wor-home-loading {
+  min-height: 60vh;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.api-loading-box {
+.wor-loading-box {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 14px;
-  padding: 60px 20px;
-  text-align: center;
+  gap: 1rem;
+  color: var(--wor-text-muted);
 }
 
-.spin-loader {
+.wor-spinner {
   animation: spin 1s linear infinite;
+  color: var(--wor-blue);
 }
 
 @keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
   to {
     transform: rotate(360deg);
   }
 }
 
-/* ==========================================================================
-   12. CONTACT SECTION (DIRECTLY ABOVE FOOTER)
-   Clean, modern, uncluttered, professional medical helpdesk styling
-   ========================================================================== */
-.terapia-contact-section {
+/* ─── Section Header Common Elements ─── */
+.wor-section-tag-line {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.5rem;
+}
+
+.wor-section-tag-line.center-tag {
+  justify-content: center;
+}
+
+.wor-divider-line {
+  display: inline-block;
+  width: 30px;
+  height: 2px;
+  background-color: var(--wor-blue);
+  border-radius: 2px;
+}
+
+.wor-divider-line.white-line {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.wor-section-kicker {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--wor-blue);
+}
+
+.wor-section-kicker.kicker-white {
+  color: #38bdf8;
+}
+
+.wor-section-header-center {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 3rem auto;
+}
+
+.wor-section-title {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: var(--wor-navy);
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  margin: 0.4rem 0 0.75rem 0;
+}
+
+.wor-section-subtitle {
+  font-size: 1.0625rem;
+  color: var(--wor-text-muted);
+  line-height: 1.6;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   1. HERO SECTION (Split 2-Columns)
+   ══════════════════════════════════════════════════════════════════ */
+.wor-hero-section {
+  padding: 4.5rem 0 4rem 0;
   background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
-  border-top: 1px solid var(--terapia-border);
+  border-bottom: 1px solid var(--wor-border-light);
 }
 
-.terapia-contact-grid {
+.wor-hero-grid {
   display: grid;
-  grid-template-columns: 1fr 1.18fr;
-  gap: 36px;
-  align-items: start;
-}
-
-/* Left Column: Contact Cards */
-.contact-info-col {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.contact-info-card {
-  background: #ffffff;
-  border: 1px solid var(--terapia-border);
-  border-radius: var(--terapia-radius-md);
-  padding: 20px 22px;
-  display: flex;
-  gap: 18px;
-  align-items: flex-start;
-  box-shadow: var(--terapia-shadow-sm);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-}
-
-.contact-info-card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--terapia-shadow-md);
-  border-color: var(--terapia-primary-border);
-}
-
-.info-icon-box {
-  width: 46px;
-  height: 46px;
-  border-radius: 10px;
-  background-color: var(--terapia-primary-light);
-  color: var(--terapia-primary);
-  display: flex;
+  grid-template-columns: 1.15fr 0.85fr;
   align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
+  gap: 3.5rem;
 }
 
-.info-card-text {
-  flex: 1;
-}
-
-.info-card-text h3 {
-  font-family: 'Outfit', -apple-system, sans-serif;
-  font-size: 16.5px;
-  font-weight: 700;
-  color: var(--terapia-dark);
-  margin: 0 0 5px 0;
-}
-
-.info-card-text p {
-  font-size: 13.5px;
-  color: var(--terapia-body);
-  margin: 0 0 5px 0;
-  line-height: 1.5;
-}
-
-.info-card-link {
+.wor-kicker-tag {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--terapia-primary);
-  text-decoration: none;
-  margin-top: 4px;
+  gap: 0.45rem;
+  background-color: var(--wor-blue-light);
+  color: var(--wor-blue-dark);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.4rem 0.9rem;
+  border-radius: var(--wor-radius-pill);
+  margin-bottom: 1.25rem;
 }
 
-.info-card-link:hover {
-  text-decoration: underline;
-  color: var(--terapia-primary-dark);
-}
-
-.info-phone-link {
-  font-family: 'Outfit', -apple-system, sans-serif;
-  font-size: 18px;
+.wor-hero-title {
+  font-size: 3.25rem;
   font-weight: 800;
-  color: var(--terapia-primary);
-  text-decoration: none;
+  line-height: 1.15;
+  color: var(--wor-navy);
+  letter-spacing: -0.03em;
+  margin-bottom: 1.25rem;
 }
 
-.info-phone-link:hover {
-  text-decoration: underline;
-  color: var(--terapia-primary-dark);
+.wor-text-accent {
+  color: var(--wor-blue);
+  position: relative;
+  display: inline-block;
 }
 
-.info-subtext {
-  font-size: 12px;
-  color: var(--terapia-muted);
-  display: block;
+.wor-hero-description {
+  font-size: 1.15rem;
+  color: var(--wor-text-body);
+  line-height: 1.65;
+  margin-bottom: 2rem;
+  max-width: 580px;
 }
 
-/* WhatsApp Specialized Card */
-.contact-whatsapp-card {
-  background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);
-  border-color: #a7f3d0;
+/* Dual CTAs in Hero */
+.wor-hero-cta-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
 }
 
-.info-icon-box.whatsapp-box {
-  background-color: #dcfce7;
-  color: #16a34a;
-}
-
-.btn-whatsapp-direct {
+.wor-btn-hero-primary {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  background-color: #16a34a;
-  color: #ffffff !important;
-  padding: 8px 16px;
-  border-radius: var(--terapia-radius-sm);
-  font-size: 13px;
-  font-weight: 700;
-  text-decoration: none;
-  margin-top: 6px;
-  transition: background-color 0.2s ease;
-}
-
-.btn-whatsapp-direct:hover {
-  background-color: #15803d;
-}
-
-/* Right Column: Clean Form */
-.contact-form-col {
-  display: flex;
-  flex-direction: column;
-}
-
-.contact-form-card {
-  background: #ffffff;
-  border: 1px solid var(--terapia-border);
-  border-radius: var(--terapia-radius-lg);
-  padding: 34px 30px;
-  box-shadow: var(--terapia-shadow-md);
-}
-
-.contact-form-header {
-  margin-bottom: 22px;
-  padding-bottom: 14px;
-  border-bottom: 1px solid var(--terapia-border);
-}
-
-.contact-form-header h3 {
-  font-family: 'Outfit', -apple-system, sans-serif;
-  font-size: 21px;
-  font-weight: 800;
-  color: var(--terapia-dark);
-  margin: 0 0 6px 0;
-}
-
-.contact-form-header p {
-  font-size: 13.5px;
-  color: var(--terapia-muted);
-  margin: 0;
-}
-
-.form-group-field {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  margin-bottom: 16px;
-}
-
-.form-group-field label {
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--terapia-dark);
-}
-
-.contact-input {
-  width: 100%;
-  padding: 11px 14px;
-  border: 1px solid var(--terapia-border);
-  border-radius: var(--terapia-radius-sm);
-  font-size: 14px;
-  color: var(--terapia-dark);
-  background-color: #ffffff;
-  font-family: inherit;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-.contact-input:focus {
-  outline: none;
-  border-color: var(--terapia-primary);
-  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
-}
-
-.contact-input.has-error {
-  border-color: #ef4444;
-  background-color: #fef2f2;
-}
-
-.contact-phone-input-wrap {
-  display: flex;
-  align-items: stretch;
-  border: 1px solid var(--terapia-border);
-  border-radius: var(--terapia-radius-sm);
-  overflow: hidden;
-  background-color: #ffffff;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-.contact-phone-input-wrap:focus-within {
-  border-color: var(--terapia-primary);
-  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
-}
-
-.country-code {
-  display: flex;
-  align-items: center;
-  padding: 0 14px;
-  background-color: #f1f5f9;
-  color: var(--terapia-dark);
-  font-weight: 700;
-  font-size: 14px;
-  border-right: 1px solid var(--terapia-border);
-  flex-shrink: 0;
-}
-
-.contact-phone-input-wrap .contact-input {
-  border: none;
-  border-radius: 0;
-  box-shadow: none !important;
-}
-
-.form-row-two-col {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
-}
-
-.select-input {
-  cursor: pointer;
-  appearance: auto;
-}
-
-.textarea-input {
-  resize: vertical;
-  min-height: 80px;
-}
-
-.field-error-msg {
-  font-size: 11.5px;
-  color: #dc2626;
-  font-weight: 600;
-  margin-top: 2px;
-}
-
-.btn-submit-contact {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  background-color: var(--terapia-primary);
+  gap: 0.6rem;
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
   color: #ffffff;
-  border: none;
-  padding: 13px 20px;
-  border-radius: var(--terapia-radius-sm);
-  font-size: 15px;
+  font-size: 1.05rem;
   font-weight: 700;
-  cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.15s ease;
-  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.3);
-  margin-top: 4px;
+  padding: 0.95rem 1.85rem;
+  border-radius: var(--wor-radius-sm);
+  text-decoration: none;
+  box-shadow: 0 6px 18px rgba(2, 132, 199, 0.35);
+  transition: var(--wor-transition);
 }
 
-.btn-submit-contact:hover:not(:disabled) {
-  background-color: var(--terapia-primary-dark);
-  transform: translateY(-1px);
+.wor-btn-hero-primary:hover {
+  background: linear-gradient(135deg, #0369a1 0%, #0c4a6e 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(2, 132, 199, 0.45);
+  color: #ffffff;
 }
 
-.btn-spinner {
-  animation: spin 1s linear infinite;
-}
-
-.form-privacy-note {
-  text-align: center;
-  font-size: 12px;
-  color: var(--terapia-muted);
-  margin-top: 12px;
-  margin-bottom: 0;
-}
-
-/* Success State */
-.contact-success-state {
-  text-align: center;
-  padding: 24px 10px;
-}
-
-.success-icon-wrap {
-  width: 68px;
-  height: 68px;
-  border-radius: 50%;
-  background-color: #ecfdf5;
-  display: flex;
+.wor-btn-hero-call {
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  margin: 0 auto 16px;
+  gap: 0.6rem;
+  background-color: var(--wor-green-call);
+  color: #ffffff;
+  font-size: 1.05rem;
+  font-weight: 700;
+  padding: 0.95rem 1.85rem;
+  border-radius: var(--wor-radius-sm);
+  text-decoration: none;
+  box-shadow: 0 6px 18px rgba(5, 150, 105, 0.3);
+  transition: var(--wor-transition);
+}
+
+.wor-btn-hero-call:hover {
+  background-color: var(--wor-green-call-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(5, 150, 105, 0.4);
+  color: #ffffff;
+}
+
+.wor-hero-trust-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--wor-border);
+}
+
+.wor-trust-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--wor-text-body);
+}
+
+.text-emerald {
   color: #10b981;
 }
 
-.contact-success-state h3 {
-  font-family: 'Outfit', -apple-system, sans-serif;
-  font-size: 22px;
-  font-weight: 800;
-  color: var(--terapia-dark);
-  margin-bottom: 8px;
-}
-
-.success-ref-code {
-  display: inline-block;
-  background-color: #f0f9ff;
-  border: 1px dashed var(--terapia-primary);
-  color: var(--terapia-dark);
-  padding: 6px 14px;
-  border-radius: 20px;
-  font-size: 13px;
-  margin-bottom: 14px;
-}
-
-.success-ref-code strong {
-  color: var(--terapia-primary);
-}
-
-.success-desc {
-  font-size: 14px;
-  color: var(--terapia-body);
-  line-height: 1.6;
-  max-width: 440px;
-  margin: 0 auto 24px;
-}
-
-.success-actions-row {
+/* Hero Right Image */
+.wor-hero-image-col {
   display: flex;
-  gap: 12px;
   justify-content: center;
-  flex-wrap: wrap;
 }
 
-.btn-whatsapp-confirm {
+.wor-hero-image-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  border-radius: var(--wor-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--wor-shadow-lg);
+  border: 4px solid #ffffff;
+}
+
+.wor-hero-main-img {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.wor-hero-image-wrapper:hover .wor-hero-main-img {
+  transform: scale(1.02);
+}
+
+.wor-hero-experience-pill {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 1.25rem;
+  background: rgba(15, 43, 72, 0.92);
+  backdrop-filter: blur(8px);
+  color: #ffffff;
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--wor-radius-md);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.wor-pill-number {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #38bdf8;
+  line-height: 1;
+}
+
+.wor-pill-text {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   2. EXPERIENCE & ACHIEVEMENTS STRIP (Horizontal Stats Row)
+   ══════════════════════════════════════════════════════════════════ */
+.wor-stats-section {
+  padding: 2.25rem 0;
+  background-color: #ffffff;
+  border-bottom: 1px solid var(--wor-border);
+}
+
+.wor-stats-grid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.wor-stat-box {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+}
+
+.wor-stat-icon-wrap {
+  width: 54px;
+  height: 54px;
+  border-radius: var(--wor-radius-md);
+  background-color: var(--wor-blue-light);
+  color: var(--wor-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.wor-stat-info h3 {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--wor-navy);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.wor-stat-info p {
+  font-size: 0.875rem;
+  color: var(--wor-text-muted);
+  font-weight: 500;
+  margin: 0.2rem 0 0 0;
+}
+
+.wor-stat-divider {
+  width: 1px;
+  height: 48px;
+  background-color: var(--wor-border);
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   3. ABOUT SECTION
+   ══════════════════════════════════════════════════════════════════ */
+.wor-about-section {
+  padding: 5rem 0;
+  background-color: var(--wor-bg-light);
+}
+
+.wor-about-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 3.5rem;
+  align-items: flex-start;
+}
+
+.wor-about-image-card {
+  position: relative;
+  border-radius: var(--wor-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--wor-shadow-md);
+  border: 4px solid #ffffff;
+}
+
+.wor-about-image {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  display: block;
+}
+
+.wor-about-video-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 43, 72, 0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.wor-about-video-overlay:hover {
+  background: rgba(15, 43, 72, 0.25);
+}
+
+.wor-video-play-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: var(--wor-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 18px rgba(2, 132, 199, 0.4);
+  transition: transform 0.25s ease;
+}
+
+.wor-about-video-overlay:hover .wor-video-play-btn {
+  transform: scale(1.1);
+}
+
+/* Rating Badges Row */
+.wor-ratings-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.wor-rating-item {
+  background: #ffffff;
+  border: 1px solid var(--wor-border);
+  border-radius: var(--wor-radius-md);
+  padding: 0.85rem 0.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  box-shadow: var(--wor-shadow-sm);
+}
+
+.wor-rating-stars {
+  display: flex;
+  gap: 2px;
+}
+
+.star-gold {
+  color: #f59e0b;
+}
+
+.wor-rating-item strong {
+  font-size: 0.95rem;
+  color: var(--wor-navy);
+  font-weight: 800;
+}
+
+.wor-rating-item span {
+  font-size: 0.72rem;
+  color: var(--wor-text-muted);
+  font-weight: 600;
+}
+
+/* About Text Col */
+.wor-about-copy p {
+  font-size: 1rem;
+  color: var(--wor-text-body);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.wor-about-features-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin: 1.75rem 0 2rem 0;
+}
+
+.wor-feature-point {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.wor-point-icon {
+  color: var(--wor-teal);
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+}
+
+.wor-feature-point strong {
+  display: block;
+  font-size: 0.925rem;
+  color: var(--wor-navy);
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.wor-feature-point p {
+  font-size: 0.825rem;
+  color: var(--wor-text-muted);
+  line-height: 1.45;
+  margin: 0;
+}
+
+.wor-about-buttons-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.wor-btn-about-more {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  background-color: #16a34a;
-  color: #ffffff !important;
-  padding: 11px 20px;
-  border-radius: var(--terapia-radius-sm);
+  gap: 0.5rem;
+  background: var(--wor-navy);
+  color: #ffffff;
+  font-size: 0.95rem;
   font-weight: 700;
-  font-size: 14px;
+  padding: 0.85rem 1.6rem;
+  border-radius: var(--wor-radius-sm);
   text-decoration: none;
-  transition: background-color 0.2s ease;
+  transition: var(--wor-transition);
 }
 
-.btn-whatsapp-confirm:hover {
-  background-color: #15803d;
+.wor-btn-about-more:hover {
+  background: var(--wor-navy-dark);
+  color: #ffffff;
+  transform: translateY(-2px);
 }
 
-.btn-reset-form {
-  background: none;
-  border: 1px solid var(--terapia-border);
-  color: var(--terapia-navy);
-  padding: 11px 20px;
-  border-radius: var(--terapia-radius-sm);
+.wor-btn-about-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #ffffff;
+  color: var(--wor-navy);
+  border: 1.5px solid var(--wor-navy);
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 0.85rem 1.6rem;
+  border-radius: var(--wor-radius-sm);
+  text-decoration: none;
+  transition: var(--wor-transition);
+}
+
+.wor-btn-about-outline:hover {
+  background: var(--wor-navy);
+  color: #ffffff;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   4. SERVICES SECTION (Image-based Cards)
+   ══════════════════════════════════════════════════════════════════ */
+.wor-services-section {
+  padding: 5rem 0;
+  background-color: #ffffff;
+}
+
+.wor-services-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.wor-service-card {
+  background-color: var(--wor-bg-card);
+  border-radius: var(--wor-radius-md);
+  overflow: hidden;
+  border: 1px solid var(--wor-border);
+  box-shadow: var(--wor-shadow-sm);
+  display: flex;
+  flex-direction: column;
+  transition: var(--wor-transition);
+}
+
+.wor-service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--wor-shadow-md);
+  border-color: #cbd5e1;
+}
+
+.wor-service-thumb-wrap {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  display: block;
+}
+
+.wor-service-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.wor-service-card:hover .wor-service-thumb {
+  transform: scale(1.05);
+}
+
+.wor-service-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.wor-service-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0 0 0.65rem 0;
+  line-height: 1.3;
+}
+
+.wor-service-title a {
+  color: var(--wor-navy);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.wor-service-title a:hover {
+  color: var(--wor-blue);
+}
+
+.wor-service-desc {
+  font-size: 0.925rem;
+  color: var(--wor-text-body);
+  line-height: 1.6;
+  margin: 0 0 1.25rem 0;
+  flex: 1;
+}
+
+.wor-service-action {
+  margin-top: auto;
+}
+
+.wor-service-readmore {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.925rem;
+  font-weight: 700;
+  color: var(--wor-blue);
+  text-decoration: none;
+  transition: gap 0.2s ease, color 0.2s ease;
+}
+
+.wor-service-readmore:hover {
+  color: var(--wor-blue-dark);
+  gap: 0.55rem;
+}
+
+.wor-services-footer-action {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.wor-btn-view-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  background: var(--wor-blue);
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 0.85rem 2rem;
+  border-radius: var(--wor-radius-sm);
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.3);
+  transition: var(--wor-transition);
+}
+
+.wor-btn-view-all:hover {
+  background: var(--wor-blue-dark);
+  transform: translateY(-2px);
+  color: #ffffff;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   5. EXPERT PHYSIOTHERAPISTS SECTION
+   ══════════════════════════════════════════════════════════════════ */
+.wor-doctors-section {
+  padding: 5rem 0;
+  background-color: var(--wor-bg-light);
+}
+
+.wor-doctors-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.25rem;
+}
+
+.wor-doctor-card {
+  background: #ffffff;
+  border-radius: var(--wor-radius-lg);
+  border: 1px solid var(--wor-border);
+  box-shadow: var(--wor-shadow-sm);
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  overflow: hidden;
+  transition: var(--wor-transition);
+}
+
+.wor-doctor-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--wor-shadow-md);
+}
+
+.wor-doctor-img-wrap {
+  width: 100%;
+  height: 100%;
+  min-height: 260px;
+}
+
+.wor-doctor-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.wor-doctor-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.wor-doctor-name {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--wor-navy);
+  margin: 0;
+  line-height: 1.25;
+}
+
+.wor-doctor-role {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--wor-blue);
+  margin-top: 0.25rem;
+}
+
+.wor-doctor-degree {
+  font-size: 0.8rem;
   font-weight: 600;
-  font-size: 14px;
+  color: var(--wor-text-muted);
+  margin: 0.2rem 0 0.85rem 0;
+}
+
+.wor-doctor-bio {
+  font-size: 0.875rem;
+  color: var(--wor-text-body);
+  line-height: 1.55;
+  margin: 0 0 1.25rem 0;
+  flex: 1;
+}
+
+.wor-doctor-actions {
+  margin-top: auto;
+}
+
+.wor-btn-doctor-book {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: #f1f5f9;
+  color: var(--wor-navy);
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.6rem 1.15rem;
+  border-radius: var(--wor-radius-sm);
+  text-decoration: none;
+  border: 1px solid var(--wor-border);
+  transition: var(--wor-transition);
+}
+
+.wor-btn-doctor-book:hover {
+  background: var(--wor-navy);
+  color: #ffffff;
+  border-color: var(--wor-navy);
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   6. CLINIC GALLERY & VIDEO SECTION
+   ══════════════════════════════════════════════════════════════════ */
+.wor-gallery-section {
+  padding: 5rem 0;
+  background-color: #ffffff;
+}
+
+.wor-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.wor-gallery-card {
+  background: #ffffff;
+  border-radius: var(--wor-radius-md);
+  overflow: hidden;
+  border: 1px solid var(--wor-border);
+  box-shadow: var(--wor-shadow-sm);
+  transition: var(--wor-transition);
+}
+
+.wor-gallery-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--wor-shadow-md);
+}
+
+.wor-gallery-img-wrap {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+}
+
+.wor-gallery-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.wor-gallery-card:hover .wor-gallery-img {
+  transform: scale(1.06);
+}
+
+.wor-gallery-badge {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  background: rgba(15, 43, 72, 0.88);
+  color: #ffffff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+}
+
+.wor-gallery-content {
+  padding: 1.1rem;
+}
+
+.wor-gallery-content h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--wor-navy);
+  margin: 0 0 0.35rem 0;
+}
+
+.wor-gallery-content p {
+  font-size: 0.825rem;
+  color: var(--wor-text-muted);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.wor-gallery-footer-action {
+  text-align: center;
+  margin-top: 2.5rem;
+}
+
+.wor-btn-gallery-visit {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #ffffff;
+  color: var(--wor-navy);
+  border: 1.5px solid var(--wor-border);
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 0.75rem 1.75rem;
+  border-radius: var(--wor-radius-sm);
+  text-decoration: none;
+  transition: var(--wor-transition);
+}
+
+.wor-btn-gallery-visit:hover {
+  background: var(--wor-navy);
+  color: #ffffff;
+  border-color: var(--wor-navy);
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   7. PATIENT TESTIMONIALS & REVIEWS
+   ══════════════════════════════════════════════════════════════════ */
+.wor-reviews-section {
+  padding: 5rem 0;
+  background-color: var(--wor-bg-light);
+}
+
+.wor-reviews-slider-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+}
+
+.wor-review-card {
+  background: #ffffff;
+  border-radius: var(--wor-radius-md);
+  padding: 1.75rem;
+  border: 1px solid var(--wor-border);
+  box-shadow: var(--wor-shadow-sm);
+  display: flex;
+  flex-direction: column;
+  transition: var(--wor-transition);
+}
+
+.wor-review-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--wor-shadow-md);
+}
+
+.wor-review-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.wor-review-stars {
+  display: flex;
+  gap: 3px;
+}
+
+.wor-review-source {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--wor-blue);
+  background: var(--wor-blue-light);
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--wor-radius-pill);
+}
+
+.wor-review-text {
+  font-size: 0.95rem;
+  color: var(--wor-text-body);
+  line-height: 1.65;
+  margin: 0 0 1.5rem 0;
+  flex: 1;
+  font-style: italic;
+}
+
+.wor-review-patient-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  border-top: 1px solid var(--wor-border-light);
+  padding-top: 1rem;
+}
+
+.wor-patient-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0284c7 0%, #0d9488 100%);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.wor-patient-name {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--wor-navy);
+}
+
+.wor-patient-condition {
+  display: block;
+  font-size: 0.775rem;
+  color: var(--wor-text-muted);
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   8. QUICK INQUIRY / APPOINTMENT SECTION (Directly Above Footer)
+   ══════════════════════════════════════════════════════════════════ */
+.wor-contact-section {
+  padding: 5rem 0;
+  background-color: #ffffff;
+}
+
+.wor-contact-card-wrap {
+  background: linear-gradient(135deg, #0f2b48 0%, #173b5e 100%);
+  border-radius: var(--wor-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--wor-shadow-lg);
+  color: #ffffff;
+}
+
+.wor-contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+/* Left Details Col */
+.wor-contact-details-col {
+  padding: 3.5rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.wor-contact-title {
+  font-size: 2.25rem;
+  font-weight: 800;
+  line-height: 1.2;
+  color: #ffffff;
+  margin: 0.5rem 0 1rem 0;
+}
+
+.wor-contact-lead {
+  font-size: 1.05rem;
+  color: #cbd5e1;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.wor-contact-info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.wor-info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.wor-info-icon {
+  color: #38bdf8;
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+}
+
+.wor-info-item strong {
+  display: block;
+  font-size: 0.95rem;
+  color: #ffffff;
+  margin-bottom: 0.2rem;
+}
+
+.wor-info-item p {
+  font-size: 0.9rem;
+  color: #cbd5e1;
+  line-height: 1.45;
+  margin: 0;
+}
+
+.wor-maps-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #38bdf8;
+  text-decoration: none;
+  margin-top: 0.35rem;
+}
+
+.wor-maps-link:hover {
+  text-decoration: underline;
+}
+
+.wor-phone-direct {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.wor-phone-direct:hover {
+  color: #38bdf8;
+}
+
+.wor-btn-wa-direct {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background-color: #25d366;
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 0.85rem 1.6rem;
+  border-radius: var(--wor-radius-sm);
+  text-decoration: none;
+  transition: var(--wor-transition);
+}
+
+.wor-btn-wa-direct:hover {
+  background-color: #20bd5a;
+  transform: translateY(-2px);
+  color: #ffffff;
+}
+
+/* Right Form Col */
+.wor-contact-form-col {
+  padding: 3.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.wor-form-inner-card {
+  background: #ffffff;
+  color: var(--wor-text-main);
+  padding: 2.5rem;
+  border-radius: var(--wor-radius-md);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.wor-form-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--wor-navy);
+  margin: 0 0 0.25rem 0;
+}
+
+.wor-form-subtext {
+  font-size: 0.875rem;
+  color: var(--wor-text-muted);
+  margin: 0 0 1.5rem 0;
+}
+
+.wor-field-group {
+  margin-bottom: 1.15rem;
+}
+
+.wor-field-group label {
+  display: block;
+  font-size: 0.825rem;
+  font-weight: 700;
+  color: var(--wor-navy);
+  margin-bottom: 0.4rem;
+}
+
+.wor-input {
+  width: 100%;
+  padding: 0.75rem 0.95rem;
+  font-size: 0.925rem;
+  font-family: inherit;
+  color: var(--wor-text-main);
+  background-color: #ffffff;
+  border: 1.5px solid var(--wor-border);
+  border-radius: var(--wor-radius-sm);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  box-sizing: border-box;
+}
+
+.wor-input:focus {
+  outline: none;
+  border-color: var(--wor-blue);
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+}
+
+.wor-phone-wrap {
+  display: flex;
+  align-items: center;
+}
+
+.wor-phone-prefix {
+  padding: 0.75rem 0.85rem;
+  background: #f1f5f9;
+  border: 1.5px solid var(--wor-border);
+  border-right: none;
+  border-radius: var(--wor-radius-sm) 0 0 var(--wor-radius-sm);
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--wor-text-muted);
+}
+
+.wor-phone-wrap .wor-input {
+  border-radius: 0 var(--wor-radius-sm) var(--wor-radius-sm) 0;
+}
+
+.wor-input-error {
+  border-color: #ef4444;
+}
+
+.wor-field-err {
+  display: block;
+  color: #ef4444;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-top: 0.35rem;
+}
+
+.wor-field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.wor-select {
   cursor: pointer;
-  transition: background-color 0.2s ease;
 }
 
-.btn-reset-form:hover {
-  background-color: #f1f5f9;
+.wor-textarea {
+  resize: vertical;
 }
 
-/* Contact Section Responsive Breakpoints */
-@media (max-width: 992px) {
-  .terapia-contact-grid {
+.wor-btn-submit-inquiry {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 0.95rem;
+  border-radius: var(--wor-radius-sm);
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
+  transition: var(--wor-transition);
+  margin-top: 0.5rem;
+}
+
+.wor-btn-submit-inquiry:hover:not(:disabled) {
+  background: linear-gradient(135deg, #0369a1 0%, #0c4a6e 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(2, 132, 199, 0.45);
+}
+
+.wor-btn-submit-inquiry:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.wor-btn-spinner {
+  animation: spin 1s linear infinite;
+}
+
+.wor-privacy-notice {
+  font-size: 0.75rem;
+  color: var(--wor-text-muted);
+  text-align: center;
+  margin: 0.85rem 0 0 0;
+  line-height: 1.4;
+}
+
+/* Success State */
+.wor-form-success {
+  text-align: center;
+  padding: 1.5rem 0;
+}
+
+.wor-success-icon {
+  margin-bottom: 1rem;
+}
+
+.wor-form-success h3 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--wor-navy);
+  margin: 0 0 0.5rem 0;
+}
+
+.wor-success-ref {
+  font-size: 0.925rem;
+  color: var(--wor-text-muted);
+  background: #f1f5f9;
+  padding: 0.45rem 0.85rem;
+  border-radius: var(--wor-radius-pill);
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.wor-success-desc {
+  font-size: 0.925rem;
+  color: var(--wor-text-body);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.wor-success-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.wor-btn-success-wa {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: #25d366;
+  color: #ffffff;
+  font-size: 0.925rem;
+  font-weight: 700;
+  padding: 0.75rem;
+  border-radius: var(--wor-radius-sm);
+  text-decoration: none;
+}
+
+.wor-btn-success-reset {
+  background: none;
+  border: 1px solid var(--wor-border);
+  color: var(--wor-text-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.65rem;
+  border-radius: var(--wor-radius-sm);
+  cursor: pointer;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   RESPONSIVE BREAKPOINTS
+   ══════════════════════════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .wor-hero-title {
+    font-size: 2.65rem;
+  }
+
+  .wor-hero-grid {
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: 2.5rem;
   }
 
-  .contact-form-card {
-    padding: 26px 20px;
+  .wor-hero-image-col {
+    order: -1;
   }
-}
 
-@media (max-width: 600px) {
-  .form-row-two-col {
+  .wor-hero-image-wrapper {
+    max-width: 100%;
+    max-height: 400px;
+  }
+
+  .wor-about-grid {
     grid-template-columns: 1fr;
-    gap: 0;
+    gap: 2.5rem;
   }
 
-  .contact-info-card {
-    padding: 18px 16px;
+  .wor-services-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .wor-gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .wor-reviews-slider-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .wor-contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .wor-contact-details-col {
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2.5rem;
+  }
+
+  .wor-contact-form-col {
+    padding: 2.5rem;
   }
 }
 
+@media (max-width: 768px) {
+  .wor-hero-section {
+    padding: 3rem 0;
+  }
+
+  .wor-hero-title {
+    font-size: 2.15rem;
+  }
+
+  .wor-stats-grid {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.25rem;
+  }
+
+  .wor-stat-divider {
+    display: none;
+  }
+
+  .wor-stat-box {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--wor-border-light);
+  }
+
+  .wor-stat-box:last-child {
+    border-bottom: none;
+  }
+
+  .wor-section-title {
+    font-size: 1.85rem;
+  }
+
+  .wor-services-cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .wor-doctors-cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .wor-doctor-card {
+    grid-template-columns: 1fr;
+  }
+
+  .wor-doctor-img-wrap {
+    height: 240px;
+  }
+
+  .wor-gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .wor-about-features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .wor-field-row {
+    grid-template-columns: 1fr;
+  }
+
+  .wor-contact-details-col,
+  .wor-contact-form-col {
+    padding: 1.75rem;
+  }
+
+  .wor-form-inner-card {
+    padding: 1.5rem;
+  }
+}
