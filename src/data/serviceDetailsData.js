@@ -759,4 +759,204 @@ export const SERVICE_DETAILS = {
       },
     ],
   },
+
+  "frozen-shoulder": {
+    id: "frozen-shoulder",
+    serviceCode: "frozen-shoulder",
+    title: "Frozen Shoulder & Rotator Cuff",
+    highlight: "Shoulder Mobility Rehabilitation",
+    subtitle:
+      "Individualized assessment and progressive shoulder mobility and strengthening to address stiffness, pain, and difficulty reaching overhead.",
+    symptoms: [
+      "Pain and stiffness when reaching overhead or behind the back.",
+      "Night-time shoulder pain that interrupts sleep.",
+      "Difficulty dressing, washing hair, or reaching a shelf.",
+    ],
+    rootCauses: [
+      { title: "Shoulder Capsule Stiffness", desc: "Capsular restriction can limit shoulder movement in several directions." },
+      { title: "Rotator Cuff Weakness or Irritation", desc: "Reduced cuff capacity may make lifting and rotation painful or difficult." },
+      { title: "Reduced Shoulder Use", desc: "Protecting a painful shoulder for a prolonged period can contribute to loss of mobility." },
+    ],
+    protocols: [
+      { step: "01", title: "Movement & Pain Assessment", desc: "Assess shoulder range, strength, symptoms, and daily activity limitations.", modality: "Clinical shoulder examination" },
+      { step: "02", title: "Comfortable Mobility Work", desc: "Use graded mobility exercises and manual techniques selected for the current stage of symptoms.", modality: "Progressive range-of-motion rehabilitation" },
+      { step: "03", title: "Rotator Cuff Strengthening", desc: "Build shoulder control with appropriately scaled strengthening exercises.", modality: "Progressive resistance exercise" },
+      { step: "04", title: "Daily Activity & Home Plan", desc: "Progress reaching tasks and provide a home program that supports continued mobility.", modality: "Functional retraining and home exercise" },
+    ],
+  },
+
+  "post-operative": {
+    id: "post-operative",
+    serviceCode: "post-operative",
+    title: "Post-Operative Rehabilitation",
+    highlight: "Guided Recovery After Surgery",
+    subtitle:
+      "A staged rehabilitation plan tailored to the procedure, surgeon guidance, healing progress, and the activities you need to return to.",
+    symptoms: [
+      "Stiffness or reduced movement after surgery.",
+      "Swelling, discomfort, or weakness around the operated area.",
+      "Difficulty walking, using stairs, or returning to daily tasks.",
+    ],
+    rootCauses: [
+      { title: "Post-Surgical Swelling", desc: "Healing tissues and reduced activity can temporarily affect comfort and movement." },
+      { title: "Strength Loss", desc: "Reduced loading around surgery can weaken muscles needed for daily function." },
+      { title: "Protective Movement Patterns", desc: "Pain or fear of movement can lead to limping and reduced confidence." },
+    ],
+    protocols: [
+      { step: "01", title: "Procedure-Specific Review", desc: "Review movement restrictions and precautions provided by the treating surgeon.", modality: "Surgical protocol and mobility assessment" },
+      { step: "02", title: "Early Mobility & Swelling Care", desc: "Begin suitable circulation, mobility, and positioning strategies within prescribed limits.", modality: "Graded post-operative movement" },
+      { step: "03", title: "Strength & Balance Progression", desc: "Increase lower- or upper-limb loading as healing milestones allow.", modality: "Progressive strengthening and balance" },
+      { step: "04", title: "Return to Daily Activities", desc: "Practice walking, transfers, stairs, or other tasks relevant to the procedure.", modality: "Task-specific functional rehabilitation" },
+    ],
+  },
+
+  "dry-needling": {
+    id: "dry-needling",
+    serviceCode: "dry-needling",
+    title: "Dry Needling & Cupping",
+    highlight: "Targeted Myofascial Treatment",
+    subtitle:
+      "Clinician-selected dry needling or cupping may be combined with movement and exercise to address muscle tenderness and restricted function.",
+    symptoms: [
+      "Localized muscle tenderness or sensitive trigger points.",
+      "Muscle tightness that limits comfortable movement.",
+      "Recurring muscle discomfort after sport, work, or prolonged posture.",
+    ],
+    rootCauses: [
+      { title: "Repeated Muscle Loading", desc: "High or repetitive demands can leave some muscle groups sensitive and guarded." },
+      { title: "Reduced Movement Variety", desc: "Long periods in one position may contribute to local stiffness and discomfort." },
+      { title: "Incomplete Load Progression", desc: "Returning to activity without gradual conditioning can reproduce muscle symptoms." },
+    ],
+    protocols: [
+      { step: "01", title: "Suitability & Consent Review", desc: "Review symptoms, medical history, treatment options, and whether needling or cupping is appropriate.", modality: "Clinical screening and informed consent" },
+      { step: "02", title: "Targeted Treatment", desc: "Apply the selected technique to the agreed area using appropriate hygiene and safety procedures.", modality: "Dry needling or therapeutic cupping" },
+      { step: "03", title: "Restore Comfortable Movement", desc: "Pair treatment with mobility work suited to the affected muscle group.", modality: "Mobility and movement retraining" },
+      { step: "04", title: "Build Ongoing Capacity", desc: "Progress strengthening and activity habits to support longer-term function.", modality: "Graded exercise and self-management" },
+    ],
+  },
+
+  "hip-pelvis": {
+    id: "hip-pelvis",
+    serviceCode: "hip-pelvis",
+    title: "Hip Joint & Pelvic Alignment",
+    highlight: "Hip Mobility & Strength Restoration",
+    subtitle:
+      "Assessment-led hip and pelvic rehabilitation focused on comfortable movement, strength, balance, and walking function.",
+    symptoms: [
+      "Groin, outer-hip, or buttock discomfort during walking.",
+      "Hip stiffness when getting up, climbing stairs, or putting on footwear.",
+      "Reduced balance or confidence while standing on one leg.",
+    ],
+    rootCauses: [
+      { title: "Restricted Hip Mobility", desc: "Limited joint movement can make bending, walking, and stair use more difficult." },
+      { title: "Reduced Hip Muscle Capacity", desc: "Weakness around the hip may affect pelvic control during standing and walking." },
+      { title: "Activity Load Changes", desc: "A sudden increase or decrease in activity can aggravate sensitive hip tissues." },
+    ],
+    protocols: [
+      { step: "01", title: "Hip & Movement Assessment", desc: "Review hip motion, strength, balance, and the activities that trigger symptoms.", modality: "Functional hip and gait assessment" },
+      { step: "02", title: "Mobility & Symptom Management", desc: "Use comfortable mobility drills and activity adjustments based on findings.", modality: "Graded mobility and manual therapy" },
+      { step: "03", title: "Hip & Pelvic Strengthening", desc: "Progress gluteal and trunk exercises to improve control during daily movement.", modality: "Progressive strength and balance training" },
+      { step: "04", title: "Walking & Activity Progression", desc: "Build tolerance for stairs, longer walks, and other personal goals.", modality: "Task-specific gait retraining" },
+    ],
+  },
+
+  "slip-disc": {
+    id: "slip-disc",
+    serviceCode: "slip-disc",
+    title: "Slip Disc & Spine Decompression",
+    highlight: "Disc-Related Back & Leg Pain Care",
+    subtitle:
+      "A spine-focused assessment and progressive rehabilitation plan for back pain with or without leg symptoms, based on your presentation and clinical findings.",
+    symptoms: [
+      "Lower-back pain that worsens with bending, lifting, or prolonged sitting.",
+      "Pain, tingling, or numbness that travels into the buttock or leg.",
+      "Stiffness or reduced tolerance for walking and daily activities.",
+    ],
+    rootCauses: [
+      { title: "Irritated Spinal Structures", desc: "Disc and nearby tissues can become sensitive and contribute to back or referred leg symptoms." },
+      { title: "Reduced Trunk Capacity", desc: "Lower trunk strength or endurance may make lifting and sustained positions harder to tolerate." },
+      { title: "Aggravating Movement Loads", desc: "Repeated or prolonged positions may increase symptoms when recovery capacity is low." },
+    ],
+    protocols: [
+      { step: "01", title: "Spine & Nerve Symptom Assessment", desc: "Review pain behavior, movement tolerance, and relevant neurological signs.", modality: "Clinical spine and movement examination" },
+      { step: "02", title: "Symptom-Guided Movement", desc: "Select comfortable positions and exercises based on the individual response.", modality: "Directional preference and mobility exercises" },
+      { step: "03", title: "Trunk Strength & Control", desc: "Gradually build trunk and hip capacity for sitting, lifting, and walking.", modality: "Progressive stabilization and strengthening" },
+      { step: "04", title: "Return to Daily Loading", desc: "Practice lifting and activity progression with strategies to manage flare-ups.", modality: "Functional retraining and self-management" },
+    ],
+  },
+
+  "ankle-foot": {
+    id: "ankle-foot",
+    serviceCode: "ankle-foot",
+    title: "Ankle & Foot Rehabilitation",
+    highlight: "Balance, Strength & Walking Support",
+    subtitle:
+      "Progressive ankle and foot rehabilitation for sprains, stiffness, heel discomfort, and difficulty returning to walking or sport.",
+    symptoms: [
+      "Ankle pain, swelling, or stiffness after a sprain.",
+      "Foot or heel discomfort during the first steps or longer walks.",
+      "Repeated ankle rolling or reduced balance on uneven ground.",
+    ],
+    rootCauses: [
+      { title: "Reduced Ankle Mobility", desc: "Stiffness can alter walking and make stairs or squatting uncomfortable." },
+      { title: "Balance & Strength Deficits", desc: "Reduced calf, foot, or ankle control may affect stability during movement." },
+      { title: "Sudden Activity Increase", desc: "A rapid rise in walking, running, or training volume can overload the foot and ankle." },
+    ],
+    protocols: [
+      { step: "01", title: "Foot, Ankle & Gait Assessment", desc: "Review movement, balance, swelling, and activity goals.", modality: "Ankle and functional gait examination" },
+      { step: "02", title: "Mobility & Load Adjustment", desc: "Restore comfortable movement and adjust activity to match current tolerance.", modality: "Graded mobility and load management" },
+      { step: "03", title: "Strength & Balance Training", desc: "Build calf, foot, and ankle strength with progressive balance work.", modality: "Progressive resistance and proprioception" },
+      { step: "04", title: "Walking or Sport Return", desc: "Progress from daily walking toward running or sport-specific tasks when appropriate.", modality: "Functional and return-to-activity drills" },
+    ],
+  },
+
+  "postural-correction": {
+    id: "postural-correction",
+    serviceCode: "postural-correction",
+    title: "Postural Correction & Ergonomics",
+    highlight: "Workstation & Movement Coaching",
+    subtitle:
+      "Practical assessment of work and daily movement habits, with mobility, strength, and ergonomic changes tailored to your routine.",
+    symptoms: [
+      "Neck, shoulder, or upper-back fatigue during desk work.",
+      "Stiffness after long periods of sitting or looking down at a screen.",
+      "Difficulty maintaining comfortable positions during work or study.",
+    ],
+    rootCauses: [
+      { title: "Prolonged Static Positions", desc: "Staying in one position for long periods can increase fatigue and stiffness." },
+      { title: "Workstation Mismatch", desc: "Screen, chair, or desk setup may encourage uncomfortable repeated positions." },
+      { title: "Reduced Strength & Movement Variety", desc: "Limited movement breaks and endurance can make sustained tasks harder." },
+    ],
+    protocols: [
+      { step: "01", title: "Posture & Workstation Review", desc: "Assess work setup, daily habits, movement, and symptom triggers.", modality: "Ergonomic and functional assessment" },
+      { step: "02", title: "Movement Break Plan", desc: "Introduce practical changes and movement breaks that fit the workday.", modality: "Activity and workstation coaching" },
+      { step: "03", title: "Mobility & Strength", desc: "Build upper-back, neck, and shoulder capacity with individualized exercises.", modality: "Progressive mobility and strengthening" },
+      { step: "04", title: "Independent Self-Management", desc: "Review strategies and a home routine to support comfortable work and study.", modality: "Home exercise and ergonomic follow-up" },
+    ],
+  },
+
+  "home-visit": {
+    id: "home-visit",
+    serviceCode: "home-visit",
+    title: "Home Visit Physiotherapy",
+    highlight: "Rehabilitation at Home",
+    subtitle:
+      "Physiotherapy delivered at home, with exercises and mobility practice planned around the patient's needs, abilities, and home environment.",
+    symptoms: [
+      "Difficulty walking or moving safely around the home.",
+      "Reduced strength or balance after illness, injury, or surgery.",
+      "Challenges attending in-clinic appointments or practicing daily tasks.",
+    ],
+    rootCauses: [
+      { title: "Mobility Limitations", desc: "Pain, weakness, or reduced balance may make travel and daily movement difficult." },
+      { title: "Home Environment Barriers", desc: "Stairs, narrow spaces, or limited support can affect safe movement at home." },
+      { title: "Need for Task-Specific Practice", desc: "Practicing transfers and walking in the actual home can help tailor rehabilitation goals." },
+    ],
+    protocols: [
+      { step: "01", title: "Home & Mobility Assessment", desc: "Review movement goals, current ability, and relevant home safety considerations.", modality: "In-home functional assessment" },
+      { step: "02", title: "Safe Movement Practice", desc: "Practice transfers, walking, and daily tasks at an appropriate level of assistance.", modality: "Task-specific mobility training" },
+      { step: "03", title: "Strength & Balance Program", desc: "Use an individualized exercise plan that fits the patient's abilities and available space.", modality: "Progressive home-based exercise" },
+      { step: "04", title: "Caregiver & Progress Review", desc: "Share practical guidance with caregivers and adjust the plan as function changes.", modality: "Caregiver education and goal review" },
+    ],
+  },
 };

@@ -18,6 +18,7 @@ import OurWorkPage from "./pages/OurWorkPage";
 import FacilitiesPage from "./pages/FacilitiesPage";
 import ServiceDetailPage from "./pages/ServiceDetailPage";
 import BlogDetailPage from "./pages/BlogDetailPage";
+import FacilityDetailPage from "./pages/FacilityDetailPage";
 
 import "./App.css";
 
@@ -27,11 +28,21 @@ function ScrollAndAnimationHandler() {
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "instant" });
 
+    let observer;
     const timer = setTimeout(() => {
-      const elements = document.querySelectorAll(".scroll-reveal");
+      const elements = document.querySelectorAll(
+        "main section, main article, .scroll-reveal"
+      );
       if (!elements.length) return;
 
-      const observer = new IntersectionObserver(
+      elements.forEach((element) => element.classList.add("scroll-reveal"));
+
+      if (!("IntersectionObserver" in window)) {
+        elements.forEach((element) => element.classList.add("is-visible"));
+        return;
+      }
+
+      observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
@@ -49,7 +60,10 @@ function ScrollAndAnimationHandler() {
       elements.forEach((el) => observer.observe(el));
     }, 50);
 
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(timer);
+      observer?.disconnect();
+    };
   }, [pathname]);
 
   return null;
@@ -67,7 +81,8 @@ function App() {
         <Route path="/services" Component={ServicesPage} />
         <Route path="/services/:serviceId" Component={ServiceDetailPage} />
         <Route path="/facilities" Component={FacilitiesPage} />
-        <Route path="/clinic-facilities" Component={FacilitiesPage} />
+<Route path="/facilities/:facilityId" Component={FacilityDetailPage} />
+<Route path="/clinic-facilities" Component={FacilitiesPage} />
         <Route path="/treatments" Component={TreatmentsPage} />
         <Route path="/treatments/:serviceId" Component={ServiceDetailPage} />
         <Route path="/team" Component={TeamPage} />

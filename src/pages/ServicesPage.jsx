@@ -86,7 +86,7 @@ const ALL_12_SERVICES = [
     title: "Home Visit Physiotherapy",
     desc: "Dedicated senior physiotherapists bring clinical equipment directly to your doorstep for seniors, post-surgical mobility, and bedridden care.",
     image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=700&q=80",
-    link: "/contact",
+    link: "/services/home-visit",
   },
 ];
 

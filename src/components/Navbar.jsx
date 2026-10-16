@@ -8,11 +8,29 @@ import {
   MessageCircle,
   Mail,
   Clock,
+  ChevronDown,
 } from "lucide-react";
 import "./Navbar.css";
 
+const serviceLinks = [
+  { name: "Back Pain & Sciatica", href: "/services/back-pain" },
+  { name: "Neck Pain & Cervical Care", href: "/services/neck-pain" },
+  { name: "Knee Pain & Preservation", href: "/services/knee-pain" },
+  { name: "Sports Injury & ACL Rehab", href: "/services/sports-injury" },
+  { name: "Frozen Shoulder & Rotator Cuff", href: "/services/frozen-shoulder" },
+  { name: "Post-Operative Rehabilitation", href: "/services/post-operative" },
+  { name: "Dry Needling & Cupping", href: "/services/dry-needling" },
+  { name: "Hip Joint & Pelvic Alignment", href: "/services/hip-pelvis" },
+  { name: "Slip Disc & Spine Decompression", href: "/services/slip-disc" },
+  { name: "Ankle & Foot Rehabilitation", href: "/services/ankle-foot" },
+  { name: "Postural Correction & Ergonomics", href: "/services/postural-correction" },
+  { name: "Home Visit Physiotherapy", href: "/services/home-visit" },
+];
+
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [servicesMenuOpen, setServicesMenuOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const location = useLocation();
 
   // Navigation links including dedicated Clinic Facilities page
@@ -26,6 +44,8 @@ export default function Navbar() {
 
   function closeMenu() {
     setMobileMenuOpen(false);
+    setServicesMenuOpen(false);
+    setMobileServicesOpen(false);
   }
 
   // Auto-close drawer on route change
@@ -99,15 +119,45 @@ export default function Navbar() {
 
           {/* Desktop Navigation Links: Home · About · Services · Contact */}
           <nav className="wor-desktop-nav" aria-label="Main Navigation">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                to={link.href}
-                className={`wor-nav-link ${isActive(link.href) ? "wor-active-link" : ""}`}
-              >
-                {link.name}
-              </Link>
-            ))}
+            {navLinks.map((link) =>
+              link.name === "Services" ? (
+                <div className="wor-services-menu" key={link.name}>
+                  <button
+                    type="button"
+                    className={`wor-nav-link wor-services-trigger ${isActive(link.href) ? "wor-active-link" : ""}`}
+                    onClick={() => setServicesMenuOpen((open) => !open)}
+                    aria-expanded={servicesMenuOpen}
+                    aria-haspopup="true"
+                  >
+                    <span>Services</span>
+                    <ChevronDown size={15} className="wor-services-chevron" />
+                  </button>
+                  {servicesMenuOpen && (
+                    <div className="wor-services-dropdown">
+                      <div className="wor-services-dropdown-heading">
+                        <span>Our Services</span>
+                        <Link to="/services" onClick={closeMenu}>All Services</Link>
+                      </div>
+                      <div className="wor-services-dropdown-list">
+                        {serviceLinks.map((service) => (
+                          <Link key={service.href} to={service.href} onClick={closeMenu}>
+                            {service.name}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <Link
+                  key={link.name}
+                  to={link.href}
+                  className={`wor-nav-link ${isActive(link.href) ? "wor-active-link" : ""}`}
+                >
+                  {link.name}
+                </Link>
+              )
+            )}
           </nav>
 
           {/* Book Appointment CTA on Right */}
@@ -168,16 +218,40 @@ export default function Navbar() {
             {/* Exactly the 4 items requested + Prominent Book Appointment */}
             <div className="wor-drawer-body">
               <nav className="wor-drawer-nav">
-                {navLinks.map((link) => (
-                  <Link
-                    key={link.name}
-                    to={link.href}
-                    className={`wor-drawer-link ${isActive(link.href) ? "is-active" : ""}`}
-                    onClick={closeMenu}
-                  >
-                    <span>{link.name}</span>
-                  </Link>
-                ))}
+                {navLinks.map((link) =>
+                  link.name === "Services" ? (
+                    <div className="wor-drawer-service-group" key={link.name}>
+                      <button
+                        type="button"
+                        className={`wor-drawer-link wor-drawer-service-trigger ${isActive(link.href) ? "is-active" : ""}`}
+                        onClick={() => setMobileServicesOpen((open) => !open)}
+                        aria-expanded={mobileServicesOpen}
+                      >
+                        <span>Services</span>
+                        <ChevronDown size={17} className="wor-services-chevron" />
+                      </button>
+                      {mobileServicesOpen && (
+                        <div className="wor-drawer-service-list">
+                          <Link to="/services" onClick={closeMenu}>All Services</Link>
+                          {serviceLinks.map((service) => (
+                            <Link key={service.href} to={service.href} onClick={closeMenu}>
+                              {service.name}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  ) : (
+                    <Link
+                      key={link.name}
+                      to={link.href}
+                      className={`wor-drawer-link ${isActive(link.href) ? "is-active" : ""}`}
+                      onClick={closeMenu}
+                    >
+                      <span>{link.name}</span>
+                    </Link>
+                  )
+                )}
               </nav>
 
               {/* Prominent Book Appointment Button in Mobile Drawer */}

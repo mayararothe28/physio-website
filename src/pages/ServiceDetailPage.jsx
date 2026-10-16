@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import {
   CheckCircle2,
   Check,
@@ -25,7 +25,7 @@ const SERVICE_IMAGES = {
   "slip-disc": "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=800&q=80",
   "ankle-foot": "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=800&q=80",
   "postural-correction": "https://images.unsplash.com/photo-1594824813637-2900746b14ea?auto=format&fit=crop&w=800&q=80",
-  "home-visit": "https://images.unsplash.com/photo-157609113654-28e377c37b09?auto=format&fit=crop&w=800&q=80",
+  "home-visit": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80",
 };
 
 // Aliases for seamless route matching
@@ -35,33 +35,26 @@ const ALIAS_MAP = {
   "sciatica": "back-pain",
   "spine-sciatica": "back-pain",
   "spine-care": "back-pain",
-  "slip-disc": "back-pain",
-  "dry-needling": "back-pain",
-  "cupping": "back-pain",
+  "cupping": "dry-needling",
+  "cupping-therapy": "dry-needling",
   "neck": "neck-pain",
   "cervical": "neck-pain",
-  "posture": "neck-pain",
-  "postural-correction": "neck-pain",
+  "posture": "postural-correction",
   "sports": "sports-injury",
   "sports-injuries": "sports-injury",
   "sports-injury": "sports-injury",
   "acl": "sports-injury",
-  "shoulder": "sports-injury",
-  "frozen-shoulder": "sports-injury",
-  "ankle": "sports-injury",
-  "ankle-foot": "sports-injury",
+  "shoulder": "frozen-shoulder",
+  "ankle": "ankle-foot",
   "knee": "knee-pain",
   "joints": "knee-pain",
   "joint": "knee-pain",
   "joint-preservation": "knee-pain",
   "knee-preservation": "knee-pain",
   "osteoarthritis": "knee-pain",
-  "postop": "knee-pain",
-  "post-operative": "knee-pain",
-  "hip": "knee-pain",
-  "hip-pelvis": "knee-pain",
-  "homecare": "back-pain",
-  "home-visit": "back-pain",
+  "postop": "post-operative",
+  "hip": "hip-pelvis",
+  "homecare": "home-visit",
 };
 
 const CONCERN_MAP = {
@@ -74,21 +67,26 @@ const CONCERN_MAP = {
   "sports-injury": "sports",
   "frozen-shoulder": "shoulder",
   "post-operative": "postop",
+  "hip-pelvis": "hip",
+  "ankle-foot": "ankle",
   "stroke-neuro": "neuro",
+  "dry-needling": "other",
+  "home-visit": "other",
 };
 
 export default function ServiceDetailPage() {
   const { serviceId } = useParams();
 
   // Normalize id
-  const resolvedId = ALIAS_MAP[serviceId?.toLowerCase()] || serviceId?.toLowerCase() || "back-pain";
-  const detail = SERVICE_DETAILS[resolvedId] || SERVICE_DETAILS["back-pain"];
+  const requestedId = serviceId?.toLowerCase();
+  const resolvedId = ALIAS_MAP[requestedId] || requestedId;
+  const detail = SERVICE_DETAILS[resolvedId];
 
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
     email: "",
-    concern: CONCERN_MAP[resolvedId] || "spine",
+    concern: CONCERN_MAP[resolvedId] || "other",
     careMode: "clinic",
     message: "",
   });
@@ -100,10 +98,17 @@ export default function ServiceDetailPage() {
   // Scroll to top and sync concern on service change
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-    setFormData((prev) => ({
-      ...prev,
-      concern: CONCERN_MAP[resolvedId] || "spine",
-    }));
+    setFormData({
+      name: "",
+      phone: "",
+      email: "",
+      concern: CONCERN_MAP[resolvedId] || "other",
+      careMode: "clinic",
+      message: "",
+    });
+    setSubmitted(false);
+    setPhoneError("");
+    setEmailError("");
   }, [resolvedId]);
 
   function handleChange(e) {
@@ -149,13 +154,27 @@ export default function ServiceDetailPage() {
       name: "",
       phone: "",
       email: "",
-      concern: CONCERN_MAP[resolvedId] || "spine",
+      concern: CONCERN_MAP[resolvedId] || "other",
       careMode: "clinic",
       message: "",
     });
     setPhoneError("");
     setEmailError("");
     setSubmitted(false);
+  }
+
+  if (!detail) {
+    return (
+      <main className="service-detail-page">
+        <section className="subpage-hero-banner">
+          <div className="subpage-hero-content">
+            <h1 className="subpage-title">Service Not Found</h1>
+            <p className="subpage-lead">Choose a service to view its information.</p>
+            <Link to="/services">View all services</Link>
+          </div>
+        </section>
+      </main>
+    );
   }
 
   const serviceImage = SERVICE_IMAGES[detail.id] || "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=80";
@@ -419,7 +438,9 @@ export default function ServiceDetailPage() {
                         <option value="spine">Lower Back / Slip Disc / Sciatica</option>
                         <option value="neck">Neck Pain &amp; Cervical Spondylosis</option>
                         <option value="knee">Knee Pain &amp; Osteoarthritis</option>
+                        <option value="hip">Hip &amp; Pelvic Pain</option>
                         <option value="sports">Sports Injury &amp; Ligament Sprain</option>
+                        <option value="ankle">Ankle &amp; Foot Rehabilitation</option>
                         <option value="shoulder">Frozen Shoulder &amp; Rotator Cuff</option>
                         <option value="postop">Post-Surgical Joint Rehabilitation</option>
                         <option value="neuro">Stroke &amp; Neuro Rehabilitation</option>

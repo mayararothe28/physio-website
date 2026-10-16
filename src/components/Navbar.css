@@ -184,6 +184,91 @@
   border-radius: 2px;
 }
 
+.wor-services-menu {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.wor-services-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  border: 0;
+  background: transparent;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.wor-services-chevron {
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+[aria-expanded="true"] .wor-services-chevron {
+  transform: rotate(180deg);
+}
+
+.wor-services-dropdown {
+  position: absolute;
+  top: calc(100% + 18px);
+  left: 50%;
+  width: min(540px, calc(100vw - 32px));
+  padding: 1rem;
+  transform: translateX(-50%);
+  background: #ffffff;
+  border: 1px solid var(--wor-border);
+  border-radius: 8px;
+  box-shadow: 0 16px 36px rgba(15, 43, 72, 0.16);
+}
+
+.wor-services-dropdown-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.25rem 0.4rem 0.75rem;
+  margin-bottom: 0.35rem;
+  border-bottom: 1px solid var(--wor-border);
+  color: var(--wor-navy);
+  font-weight: 700;
+}
+
+.wor-services-dropdown-heading a {
+  color: var(--wor-blue-dark);
+  font-size: 0.85rem;
+  text-decoration: none;
+}
+
+.wor-services-dropdown-heading a:hover {
+  text-decoration: underline;
+}
+
+.wor-services-dropdown-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.2rem;
+  max-height: min(60vh, 420px);
+  overflow-y: auto;
+}
+
+.wor-services-dropdown-list a {
+  padding: 0.6rem 0.45rem;
+  border-radius: 5px;
+  color: var(--wor-text-dark);
+  font-size: 0.9rem;
+  line-height: 1.35;
+  text-decoration: none;
+  transition: background-color 0.18s ease, color 0.18s ease;
+}
+
+.wor-services-dropdown-list a:hover,
+.wor-services-dropdown-list a:focus-visible {
+  background: var(--wor-blue-light);
+  color: var(--wor-blue-dark);
+  outline: none;
+}
+
 /* ─── Prominent Book Appointment CTA Button ─── */
 .wor-header-right-action {
   display: flex;
@@ -343,6 +428,48 @@
 .wor-drawer-link.is-active {
   background-color: var(--wor-blue-light);
   color: var(--wor-blue-dark);
+}
+
+.wor-drawer-service-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.wor-drawer-service-trigger {
+  width: 100%;
+  justify-content: space-between;
+  border: 0;
+  background: transparent;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.wor-drawer-service-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  max-height: 34vh;
+  margin: 0.25rem 0 0.5rem 0.75rem;
+  padding-left: 0.65rem;
+  overflow-y: auto;
+  border-left: 2px solid var(--wor-blue-light);
+}
+
+.wor-drawer-service-list a {
+  padding: 0.55rem 0.65rem;
+  border-radius: 5px;
+  color: var(--wor-text-muted);
+  font-size: 0.92rem;
+  line-height: 1.35;
+  text-decoration: none;
+}
+
+.wor-drawer-service-list a:hover,
+.wor-drawer-service-list a:focus-visible {
+  background: var(--wor-blue-light);
+  color: var(--wor-blue-dark);
+  outline: none;
 }
 
 .wor-drawer-actions {

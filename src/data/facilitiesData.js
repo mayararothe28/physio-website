@@ -6,7 +6,7 @@ export const ALL_FACILITIES = [
     category: "Spine Care",
     badge: "Spine Care",
     image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=800&q=80",
-    desc: "Targeted non-surgical computerized spinal distraction therapy engineered to relieve pressurized nerve roots, herniated discs, and severe sciatica without surgical intervention.",
+    desc: "Computer-guided spinal traction for disc-related back and nerve pain.",
     fullDesc: "Our Motorized Spinal Decompression Lab utilizes computer-calibrated traction algorithms to gently distract specific lumbar and cervical spinal segments. By creating negative intra-discal vacuum pressure, this advanced technology promotes nutrient imbibition, rehydration of dry discs, and natural retraction of herniated material away from sensitive spinal nerve roots.",
     keyEquipment: [
       "Triton DTS Computerized Spinal Decompression System",
@@ -32,7 +32,7 @@ export const ALL_FACILITIES = [
     category: "1-on-1 Care",
     badge: "1-on-1 Care",
     image: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80",
-    desc: "Soundproof, single-patient examination suites designed for detailed orthopedic diagnostics, private clinical assessments, and medical-grade sanitization protocols.",
+    desc: "Private, sanitized rooms for one-to-one assessment and treatment planning.",
     fullDesc: "Every patient deserves dignity, absolute privacy, and undivided clinical attention. Our consultation suites are private, acoustically isolated chambers equipped with electric multi-sectional examination tables, digital range-of-motion diagnostic instruments, and continuous medical-grade HEPA air purification systems.",
     keyEquipment: [
       "Electric three-section orthopedic examination plinths",
@@ -58,7 +58,7 @@ export const ALL_FACILITIES = [
     category: "Advanced Modalities",
     badge: "Advanced Modalities",
     image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=80",
-    desc: "High-intensity Class-IV photobiomodulation and multi-frequency electrotherapy for fast pain deactivation and accelerated soft-tissue tissue regeneration.",
+    desc: "Class-IV laser and electrotherapy for pain relief and tissue rehabilitation.",
     fullDesc: "Our electrotherapy and photobiomodulation bay brings together hospital-grade modalities that stimulate tissue repair at the cellular level. High-intensity Class-IV laser photons penetrate up to 8 centimeters into deep tendon sheaths and joint capsules to boost ATP synthesis, reduce inflammatory mediators, and break chronic pain cycles.",
     keyEquipment: [
       "Dual-wavelength Class-IV High Power Medical Laser",
@@ -84,7 +84,7 @@ export const ALL_FACILITIES = [
     category: "Mobility & Strength",
     badge: "Mobility & Strength",
     image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&q=80",
-    desc: "Purpose-built active recovery zone equipped with clinical resistance apparatus, core stabilizers, and kinetic chain re-education systems under therapist supervision.",
+    desc: "Supervised strength and movement training for functional recovery.",
     fullDesc: "Passive therapy relieves pain, but active functional movement creates permanent resilience. Our functional gym features clinical cable pulleys, progressive resistance stations, neuromuscular proprioceptive equipment, and posture stabilization aids that prepare your body for pain-free daily living, work, and sports performance.",
     keyEquipment: [
       "Multi-vector medical pulley and cable resistance apparatus",
@@ -110,7 +110,7 @@ export const ALL_FACILITIES = [
     category: "Cervical & Posture",
     badge: "Cervical & Posture",
     image: "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&q=80",
-    desc: "Specialized motorized cervical decompression and ergonomic postural realignment suite for desk workers, neck stiffness, and radiating arm numbness.",
+    desc: "Cervical traction and ergonomic coaching for neck and posture concerns.",
     fullDesc: "Modern professionals frequently suffer from forward-head posture and compressive cervical disc issues. Our Cervical Traction & Posture Lab combines gentle motorized traction with clinical posture realignment devices to unburden pinched cervical nerve roots, alleviate cervicogenic headaches, and re-educate deep neck flexors.",
     keyEquipment: [
       "Microprocessor-controlled Cervical Decompression Cradle",
@@ -136,7 +136,7 @@ export const ALL_FACILITIES = [
     category: "Pain & Swelling",
     badge: "Pain & Swelling",
     image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&q=80",
-    desc: "Active pneumatic cold compression and controlled contrast temperature systems to rapidly flush joint effusion, acute sports hematomas, and post-surgical edema.",
+    desc: "Cold compression and contrast therapy to support swelling and post-op recovery.",
     fullDesc: "Excessive joint swelling hinders muscle activation and delays recovery. Our Cryotherapy & Contrast Suite provides continuous temperature-regulated cold therapy combined with cyclical pneumatic compression sleeves that mimic physiological venous pumping, drastically flushing out edema and resolving inflammatory effusion.",
     keyEquipment: [
       "Game Ready Active Cold & Compression Therapy Console",
@@ -162,7 +162,7 @@ export const ALL_FACILITIES = [
     category: "Manual Rehab",
     badge: "Manual Rehab",
     image: "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=800&q=80",
-    desc: "Quiet, dedicated clinical cabins for hands-on Maitland oscillations, Mulligan mobilization with movement, sterile dry needling, and targeted myofascial release.",
+    desc: "Private cabins for hands-on joint care and myofascial treatment.",
     fullDesc: "Hands-on physical therapy is the bedrock of rapid joint restoration. Our private manual therapy cabins allow senior therapists to perform specialized articular glides, capsular stretches, trigger-point dry needling, and soft-tissue fascial manipulation without distraction in an ultra-hygienic setting.",
     keyEquipment: [
       "High-low hydraulic clinical manipulation plinths",
@@ -188,7 +188,7 @@ export const ALL_FACILITIES = [
     category: "Neuro & Mobility",
     badge: "Neuro & Mobility",
     image: "https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?auto=format&fit=crop&w=800&q=80",
-    desc: "Safe rehabilitative environment with overhead zero-fall bodyweight harnesses, medical parallel bars, and proprioceptive balance plates for safe, limp-free walking.",
+    desc: "Supported gait and balance practice to build walking confidence.",
     fullDesc: "Regaining walking confidence after surgery or neurological impairment requires safety and calibrated progression. Our Gait & Balance Studio features ceiling-mounted unweighting harnesses that eliminate fall risk entirely, combined with medical parallel bars and digital balance force plates that retrain symmetric weight bearing.",
     keyEquipment: [
       "Overhead zero-fall dynamic bodyweight suspension track",
@@ -214,7 +214,7 @@ export const ALL_FACILITIES = [
     category: "Aquatic Rehab",
     badge: "Aquatic Rehab",
     image: "https://images.unsplash.com/photo-1576610616656-d3aa5d1f4534?auto=format&fit=crop&w=800&q=80",
-    desc: "Temperature-controlled warm water pool for non-weight-bearing rehabilitation, enabling pain-free joint movement, muscle strengthening, and cardiovascular conditioning for patients unable to bear full body weight on land.",
+    desc: "Warm-water therapy for low-impact movement and guided rehabilitation.",
     fullDesc: "Water's natural buoyancy reduces effective body weight by up to 90%, allowing patients with severe joint pain, post-surgical weakness, or neurological conditions to move freely without pain. Our hydrotherapy pool maintains a therapeutic temperature of 33–35°C to promote muscle relaxation, improve blood circulation, and facilitate comfortable range-of-motion recovery.",
     keyEquipment: [
       "Temperature-regulated therapeutic pool (33–35°C) with underwater jets",
@@ -231,6 +231,81 @@ export const ALL_FACILITIES = [
       "Post-Operative Lower Limb Weakness & Swelling",
       "Cerebral Palsy & Spastic Muscle Rehabilitation",
       "Chronic Fibromyalgia & Generalized Body Pain",
+    ],
+  },
+  {
+    id: "pediatric-rehabilitation",
+    title: "Pediatric Rehabilitation & Play Therapy Room",
+    subtitle: "Child-friendly movement and motor-skill practice",
+    category: "Pediatric Rehab",
+    badge: "Pediatric Rehab",
+    image: "https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=800&q=80",
+    desc: "A welcoming space for guided movement, coordination, and age-appropriate therapy.",
+    fullDesc: "The pediatric rehabilitation room supports child-focused physiotherapy through play-based movement and age-appropriate activities. Sessions are planned around each child's needs and family goals, with caregiver guidance included in the rehabilitation plan.",
+    keyEquipment: [
+      "Soft-play movement and balance equipment",
+      "Child-sized steps, mats, and activity stations",
+      "Fine- and gross-motor coordination tools",
+    ],
+    highlights: [
+      "Play-based practice encourages participation",
+      "Activities can be adapted to a child's abilities and goals",
+      "Caregivers can learn ways to support practice at home",
+    ],
+    conditions: [
+      "Developmental coordination and balance needs",
+      "Strength and mobility after injury or surgery",
+      "Postural and gross-motor skill practice",
+    ],
+  },
+  {
+    id: "sports-performance",
+    title: "Sports Performance & Return-to-Play Studio",
+    subtitle: "Progressive athletic movement and conditioning",
+    category: "Sports Rehab",
+    badge: "Sports Rehab",
+    image: "https://images.unsplash.com/photo-1538805060514-97d9cc17730c?auto=format&fit=crop&w=800&q=80",
+    desc: "Sports-specific strength, agility, and movement training guided by a therapist.",
+    fullDesc: "This studio provides a structured setting for athletes rebuilding strength, speed, and confidence after injury. Training progresses from foundational movement to sport-specific drills based on symptoms, physical testing, and return-to-play goals.",
+    keyEquipment: [
+      "Agility ladders, cones, and reaction markers",
+      "Resistance bands and progressive strength stations",
+      "Jump and landing assessment area",
+    ],
+    highlights: [
+      "Training is progressed to match the athlete's recovery stage",
+      "Movement quality and control are emphasized",
+      "Sport-specific drills support a gradual return to activity",
+    ],
+    conditions: [
+      "Return to sport after ligament or muscle injury",
+      "Strength and agility deficits after rehabilitation",
+      "Movement coaching for injury-risk reduction",
+    ],
+  },
+  {
+    id: "movement-assessment",
+    title: "Digital Movement Assessment Studio",
+    subtitle: "Posture, mobility, and functional movement review",
+    category: "Assessment",
+    badge: "Assessment",
+    image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=80",
+    desc: "A focused assessment space for movement screening and progress reviews.",
+    fullDesc: "The movement assessment studio gives therapists a dedicated area to observe posture, joint mobility, balance, and functional tasks. Findings help guide an individualized plan and track changes over the course of rehabilitation.",
+    keyEquipment: [
+      "Posture grid and movement reference markers",
+      "Digital inclinometers and goniometers",
+      "Balance and functional movement testing tools",
+    ],
+    highlights: [
+      "Assessment focuses on movements relevant to daily activities",
+      "Findings help shape individualized rehabilitation goals",
+      "Repeat reviews can help track functional progress",
+    ],
+    conditions: [
+      "Movement limitation after injury or surgery",
+      "Postural discomfort and mobility concerns",
+      "Balance and functional movement deficits",
     ],
   },
 ];

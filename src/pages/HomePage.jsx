@@ -285,7 +285,7 @@ export default function HomePage() {
       title: "Home Visit Physiotherapy",
       desc: "Dedicated senior physiotherapists bring clinical equipment to your home for senior citizens, post-operative mobility, and bedridden patients.",
       image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=600&q=80",
-      link: "/contact",
+      link: "/services/home-visit",
     },
   ];
 
