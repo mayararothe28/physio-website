@@ -307,7 +307,6 @@ export default function HomePage() {
         <div className="wor-container wor-banner-content-wrap">
           <div className="wor-banner-content">
             <span className="wor-banner-kicker">
-              <ShieldCheck size={16} />
               <span>SPECIALIZED PHYSICAL THERAPY & ORTHOPEDICS</span>
             </span>
 
