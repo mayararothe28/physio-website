@@ -1,28 +1,12 @@
 import { useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import {
-  Bone,
-  Stethoscope,
-  Zap,
-  Activity,
   CheckCircle2,
-  Calendar,
-  MessageCircle,
-  Phone,
   ShieldCheck,
   Check,
-  Clock,
-  ArrowRight,
 } from "lucide-react";
 import { SERVICE_DETAILS } from "../data/serviceDetailsData";
 import "./ServiceDetailPage.css";
-
-const ICON_MAP = {
-  Bone,
-  Stethoscope,
-  Zap,
-  Activity,
-};
 
 const SERVICE_IMAGES = {
   "back-pain": "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&q=80",
@@ -87,7 +71,6 @@ export default function ServiceDetailPage() {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }, [resolvedId]);
 
-  const IconComponent = ICON_MAP[detail.iconName] || Activity;
   const serviceImage = SERVICE_IMAGES[detail.id] || "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=80";
 
   return (
@@ -95,18 +78,6 @@ export default function ServiceDetailPage() {
       {/* ─── 1. STANDARDIZED SUBPAGE HERO BANNER ─── */}
       <section className="subpage-hero-banner">
         <div className="subpage-hero-content">
-          <div className="subpage-breadcrumb">
-            <Link to="/">Home</Link>
-            <span className="breadcrumb-separator">/</span>
-            <Link to="/services">Services</Link>
-            <span className="breadcrumb-separator">/</span>
-            <span className="breadcrumb-current">{detail.title}</span>
-          </div>
-
-          <span className="subpage-kicker">
-            <IconComponent size={14} /> {detail.tag || "CLINICAL SPECIALIZATION"}
-          </span>
-
           <h1 className="subpage-title">
             {detail.title}
             <br />
@@ -116,27 +87,6 @@ export default function ServiceDetailPage() {
           <p className="subpage-lead">
             {detail.subtitle}
           </p>
-
-          <div className="subpage-hero-actions">
-            <Link
-              to={`/appointment?service=${detail.serviceCode}`}
-              className="btn-hero-book-primary"
-            >
-              <Calendar size={16} />
-              <span>Book 45-Min Assessment</span>
-            </Link>
-            <a
-              href={`https://wa.me/919145875248?text=Hello%20RevitaOrtho,%20I%20would%20like%20to%20consult%20regarding%20${encodeURIComponent(
-                detail.title
-              )}.`}
-              target="_blank"
-              rel="noreferrer"
-              className="btn-hero-whatsapp"
-            >
-              <MessageCircle size={16} />
-              <span>WhatsApp Doctor</span>
-            </a>
-          </div>
         </div>
       </section>
 
@@ -325,40 +275,6 @@ export default function ServiceDetailPage() {
         </section>
       )}
 
-      {/* ─── 6. CLEAN BOTTOM ACTION CTA STRIP (Standardized with all pages) ─── */}
-      <section className="service-bottom-cta-section">
-        <div className="detail-container service-cta-inner">
-          <span className="detail-kicker text-ice">TAKE THE FIRST STEP</span>
-          <h2>Ready to Live Life Without Joint & Spine Pain?</h2>
-          <p>
-            Schedule your comprehensive 45-minute root-cause evaluation today. Experience evidence-based physical medicine with zero waiting time.
-          </p>
-          <div className="service-cta-btn-group">
-            <Link
-              to={`/appointment?service=${detail.serviceCode}`}
-              className="btn-detail-white"
-            >
-              <Calendar size={17} />
-              <span>Book Initial Assessment</span>
-            </Link>
-            <Link to="/contact" className="btn-detail-outline-white">
-              <Phone size={17} />
-              <span>Contact Clinic Desk</span>
-            </Link>
-            <a
-              href={`https://wa.me/919145875248?text=Hello%20RevitaOrtho,%20I%20would%20like%20to%20consult%20regarding%20${encodeURIComponent(
-                detail.title
-              )}.`}
-              target="_blank"
-              rel="noreferrer"
-              className="btn-detail-whatsapp"
-            >
-              <MessageCircle size={17} />
-              <span>WhatsApp Doctor: +91 91458 75248</span>
-            </a>
-          </div>
-        </div>
-      </section>
     </main>
   );
 }
