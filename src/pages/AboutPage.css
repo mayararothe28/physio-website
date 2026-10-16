@@ -212,87 +212,226 @@
   margin: 0;
 }
 
-/* ─── 4. OUR PROCESS (4 STEPS) ─── */
+/* ─── 4. OUR PROCESS (4 STEP STANDARDIZED WITH SCROLLSPY) ─── */
 .wor-process-section {
-  padding: 5rem 0;
+  padding: 5rem 0 6rem;
   background-color: #ffffff;
   border-top: 1px solid var(--wor-border, #e2e8f0);
+  position: relative;
 }
 
-.wor-process-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
+/* Sticky Navigation Tabs */
+.wor-process-tabs-wrapper {
+  position: sticky;
+  top: 72px;
+  z-index: 40;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 0.85rem 0 1rem;
+  border-bottom: 1px solid var(--wor-border, #e2e8f0);
+  margin-bottom: 3.5rem;
+  box-shadow: 0 4px 20px rgba(15, 43, 72, 0.04);
 }
 
-.wor-process-card {
-  background-color: var(--wor-bg-light, #f8fafc);
-  border: 1px solid var(--wor-border, #e2e8f0);
-  border-radius: var(--wor-radius-md, 10px);
-  padding: 2rem 1.75rem;
-  box-shadow: 0 2px 10px rgba(15, 43, 72, 0.03);
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+.wor-process-tabs-sticky {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.wor-process-tab-btn {
+  background: #ffffff;
+  border: 1.5px solid var(--wor-border, #e2e8f0);
+  color: var(--wor-navy, #0f2b48);
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.6rem 1.25rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  box-shadow: 0 2px 6px rgba(15, 43, 72, 0.03);
+}
+
+.wor-process-tab-btn .wor-tab-num {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #f1f5f9;
+  color: var(--wor-navy, #0f2b48);
+  font-size: 0.75rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.wor-process-tab-btn:hover {
+  border-color: var(--wor-blue, #0284c7);
+  color: var(--wor-blue, #0284c7);
+  transform: translateY(-1px);
+}
+
+.wor-process-tab-btn.active {
+  background: var(--wor-blue, #0284c7);
+  border-color: var(--wor-blue, #0284c7);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
+  font-weight: 700;
+}
+
+.wor-process-tab-btn.active .wor-tab-num {
+  background: #ffffff;
+  color: var(--wor-blue, #0284c7);
+}
+
+/* Detailed Step Cards */
+.wor-process-steps-list {
   display: flex;
   flex-direction: column;
+  gap: 2.25rem;
+  max-width: 980px;
+  margin: 0 auto;
 }
 
-.wor-process-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 24px rgba(15, 43, 72, 0.08);
-  border-color: var(--wor-blue, #0284c7);
+.wor-process-detail-card {
   background-color: #ffffff;
+  border: 1.5px solid var(--wor-border, #e2e8f0);
+  border-radius: 16px;
+  padding: 2.5rem 2.25rem;
+  box-shadow: 0 4px 16px rgba(15, 43, 72, 0.03);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  scroll-margin-top: 160px;
 }
 
-.wor-process-top {
+.wor-process-detail-card.is-active {
+  border-color: var(--wor-blue, #0284c7);
+  box-shadow: 0 12px 32px rgba(2, 132, 199, 0.12);
+  transform: translateY(-2px);
+}
+
+.wor-process-card-top-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
 }
 
-.wor-process-num {
+.wor-process-pill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.wor-process-step-num-pill {
+  background-color: var(--wor-blue, #0284c7);
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.3rem 0.75rem;
+  border-radius: 9999px;
+}
+
+.wor-process-category-kicker {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--wor-text-muted, #64748b);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.wor-process-watermark {
   font-family: 'Outfit', sans-serif;
-  font-size: 1.75rem;
-  font-weight: 800;
-  color: var(--wor-blue, #0284c7);
+  font-size: 3rem;
+  font-weight: 900;
+  color: #f1f5f9;
   line-height: 1;
-  letter-spacing: -0.02em;
+  user-select: none;
+  transition: color 0.3s ease;
 }
 
-.wor-process-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 10px;
-  background-color: #ffffff;
-  border: 1px solid var(--wor-border, #e2e8f0);
+.wor-process-detail-card.is-active .wor-process-watermark {
+  color: rgba(2, 132, 199, 0.14);
+}
+
+.wor-process-card-main {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.75rem;
+}
+
+.wor-process-icon-box {
+  width: 58px;
+  height: 58px;
+  border-radius: 14px;
+  background-color: rgba(2, 132, 199, 0.08);
+  border: 1px solid rgba(2, 132, 199, 0.15);
   color: var(--wor-blue, #0284c7);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 6px rgba(15, 43, 72, 0.04);
-  transition: all 0.25s ease;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
 }
 
-.wor-process-card:hover .wor-process-icon {
+.wor-process-detail-card.is-active .wor-process-icon-box {
   background-color: var(--wor-blue, #0284c7);
   color: #ffffff;
-  border-color: var(--wor-blue, #0284c7);
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.3);
 }
 
-.wor-process-card-title {
+.wor-process-content {
+  flex: 1;
+}
+
+.wor-process-step-heading {
   font-family: 'Outfit', sans-serif;
-  font-size: 1.15rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: var(--wor-navy, #0f2b48);
-  margin: 0 0 0.75rem 0;
-  line-height: 1.35;
+  margin: 0 0 0.85rem 0;
+  line-height: 1.3;
 }
 
-.wor-process-card-desc {
-  font-size: 0.885rem;
+.wor-process-step-paragraph {
+  font-size: 0.95rem;
   color: var(--wor-text-body, #334155);
-  line-height: 1.6;
-  margin: 0;
+  line-height: 1.7;
+  margin: 0 0 1.5rem 0;
+}
+
+.wor-process-highlights-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.wor-process-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: var(--wor-bg-light, #f8fafc);
+  border: 1px solid var(--wor-border, #e2e8f0);
+  border-radius: 8px;
+  padding: 0.45rem 0.85rem;
+  font-size: 0.825rem;
+  font-weight: 600;
+  color: var(--wor-navy, #0f2b48);
+}
+
+.wor-chip-check {
+  color: var(--wor-blue, #0284c7);
+  flex-shrink: 0;
 }
 
 /* ─── RESPONSIVE BREAKPOINTS ─── */
@@ -314,9 +453,8 @@
     gap: 1.5rem;
   }
 
-  .wor-process-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.25rem;
+  .wor-process-detail-card {
+    padding: 2rem 1.75rem;
   }
 }
 
@@ -333,11 +471,36 @@
     grid-template-columns: 1fr;
     gap: 1rem;
   }
-}
 
-@media (max-width: 640px) {
-  .wor-process-grid {
-    grid-template-columns: 1fr;
+  .wor-process-tabs-wrapper {
+    top: 60px;
+    padding: 0.65rem 0;
+    margin-bottom: 2rem;
+  }
+
+  .wor-process-tab-btn {
+    font-size: 0.8rem;
+    padding: 0.5rem 0.95rem;
+  }
+
+  .wor-process-card-main {
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .wor-process-icon-box {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+  }
+
+  .wor-process-step-heading {
+    font-size: 1.3rem;
+  }
+
+  .wor-process-step-paragraph {
+    font-size: 0.9rem;
   }
 }
+
 
