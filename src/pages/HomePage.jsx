@@ -589,9 +589,6 @@ export default function HomePage() {
                       <span>View Details</span>
                       <ChevronRight size={14} />
                     </Link>
-                    <Link to={`/appointment?facility=${facility.id}`} className="wor-btn-gallery-book">
-                      <span>Book Appointment</span>
-                    </Link>
                   </div>
                 </div>
               </div>
