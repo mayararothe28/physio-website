@@ -1,15 +1,11 @@
 import {
   ShieldCheck,
   Award,
-  Users,
   CheckCircle2,
   Building2,
   HeartPulse,
   Sparkles,
   Accessibility,
-  Clock,
-  Zap,
-  Activity,
 } from "lucide-react";
 import "./AboutPage.css";
 
@@ -107,52 +103,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ─── 3. CLINICAL ACHIEVEMENTS & STATS STRIP ─── */}
-      <section className="wor-about-stats-section">
-        <div className="wor-container">
-          <div className="wor-about-stats-grid">
-            <div className="wor-about-stat-box">
-              <div className="wor-stat-icon-circle">
-                <Users size={24} />
-              </div>
-              <div className="wor-stat-data">
-                <h3>10,000+</h3>
-                <p>Successful Recoveries</p>
-              </div>
-            </div>
-
-            <div className="wor-about-stat-box">
-              <div className="wor-stat-icon-circle">
-                <ShieldCheck size={24} />
-              </div>
-              <div className="wor-stat-data">
-                <h3>94% Surgeries</h3>
-                <p>Successfully Avoided</p>
-              </div>
-            </div>
-
-            <div className="wor-about-stat-box">
-              <div className="wor-stat-icon-circle">
-                <Award size={24} />
-              </div>
-              <div className="wor-stat-data">
-                <h3>14+ Years</h3>
-                <p>Clinical Leadership</p>
-              </div>
-            </div>
-
-            <div className="wor-about-stat-box">
-              <div className="wor-stat-icon-circle">
-                <Activity size={24} />
-              </div>
-              <div className="wor-stat-data">
-                <h3>100% MPT</h3>
-                <p>Specialist Leadership</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* ─── 4. OUR MISSION, VISION & CORE VALUES ─── */}
       <section className="wor-values-section">

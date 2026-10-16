@@ -154,60 +154,11 @@
   margin: 0;
 }
 
-/* ─── 3. CLINICAL ACHIEVEMENTS / STATS STRIP ─── */
-.wor-about-stats-section {
-  padding: 2.75rem 0;
-  background-color: var(--wor-bg-light, #f8fafc);
-  border-top: 1px solid var(--wor-border, #e2e8f0);
-  border-bottom: 1px solid var(--wor-border, #e2e8f0);
-}
-
-.wor-about-stats-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
-  align-items: center;
-}
-
-.wor-about-stat-box {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 0.75rem 1rem;
-}
-
-.wor-stat-icon-circle {
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  background-color: rgba(2, 132, 199, 0.1);
-  color: var(--wor-blue, #0284c7);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.wor-stat-data h3 {
-  font-family: 'Outfit', sans-serif;
-  font-size: 1.55rem;
-  font-weight: 800;
-  color: var(--wor-navy, #0f2b48);
-  margin: 0;
-  line-height: 1.15;
-}
-
-.wor-stat-data p {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--wor-text-muted, #64748b);
-  margin: 0.2rem 0 0 0;
-}
-
-/* ─── 4. MISSION, VISION & CORE VALUES ─── */
+/* ─── 3. MISSION, VISION & CORE VALUES ─── */
 .wor-values-section {
   padding: 5rem 0;
-  background-color: #ffffff;
+  background-color: var(--wor-bg-light, #f8fafc);
+  border-top: 1px solid var(--wor-border, #e2e8f0);
 }
 
 .wor-values-grid {
@@ -331,11 +282,6 @@
     min-height: 380px;
   }
 
-  .wor-about-stats-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.25rem;
-  }
-
   .wor-values-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
@@ -352,11 +298,6 @@
   }
 
   .wor-about-pillars-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
-  .wor-about-stats-grid {
     grid-template-columns: 1fr;
     gap: 1rem;
   }
