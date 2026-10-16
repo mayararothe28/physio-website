@@ -22,6 +22,7 @@ import {
   HeartPulse,
 } from "lucide-react";
 import { fetchClinicData, submitAppointmentApi } from "../services/api";
+import drAnanyaImg from "../assets/dr-ananya-deshmukh.jpg";
 import "./HomePage.css";
 
 // Verified Doctor Profiles for RevitaOrtho (matching World of Rehab doctor layout)
@@ -62,7 +63,7 @@ const EXPERT_DOCTORS = [
     role: "Consultant – Ergonomics & Posture Care",
     qualifications: "BPT, MPT (Ergonomics & Posture)",
     experience: "8+ Years Desk Worker Pain Solutions",
-    image: "https://images.unsplash.com/photo-1594824813637-2900746b14ea?auto=format&fit=crop&w=700&q=80",
+    image: drAnanyaImg,
     serviceId: "neck-pain",
     bio: "Dr. Ananya Deshmukh focuses on modern desk-worker posture syndromes, cervical spondylosis, and myofascial trigger-point therapy. She designs workplace ergonomic interventions and targeted deep cervical flexor drills that eliminate chronic headaches and persistent neck stiffness.",
   },
@@ -524,7 +525,15 @@ export default function HomePage() {
             {EXPERT_DOCTORS.map((doc) => (
               <div key={doc.id} className="wor-doctor-card">
                 <div className="wor-doctor-img-wrap">
-                  <img src={doc.image} alt={doc.name} className="wor-doctor-img" />
+                  <img
+                    src={doc.image}
+                    alt={doc.name}
+                    className="wor-doctor-img"
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.src = "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=700&q=80";
+                    }}
+                  />
                 </div>
                 <div className="wor-doctor-body">
                   <h3 className="wor-doctor-name">{doc.name}</h3>

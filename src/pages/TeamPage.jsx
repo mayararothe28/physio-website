@@ -10,6 +10,7 @@ import {
   Clock,
   Sparkles,
 } from "lucide-react";
+import drAnanyaImg from "../assets/dr-ananya-deshmukh.jpg";
 import "./TeamPage.css";
 
 const CLINICAL_DOCTORS = [
@@ -94,7 +95,7 @@ const CLINICAL_DOCTORS = [
     opdTimings: "Mon – Sat: 11:00 AM – 7:00 PM",
     rating: "4.95",
     patientCount: "2,900+ Consultations",
-    image: "/images/dr-ananya-deshmukh.jpg",
+    image: drAnanyaImg,
     availableToday: true,
   },
 ];
@@ -155,7 +156,7 @@ export default function TeamPage() {
                         loading="lazy"
                         onError={(e) => {
                           e.target.onerror = null;
-                          e.target.src = "/images/dr-ananya-deshmukh.jpg";
+                          e.target.src = "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=700&q=80";
                         }}
                       />
                       {doc.availableToday && (
