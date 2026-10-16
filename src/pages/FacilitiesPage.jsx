@@ -5,13 +5,7 @@ import {
   Calendar,
   CheckCircle2,
   X,
-  Phone,
-  ArrowRight,
-  ShieldCheck,
-  Sparkles,
   Layers,
-  Activity,
-  Award,
 } from "lucide-react";
 import { ALL_FACILITIES } from "../data/facilitiesData";
 import "./FacilitiesPage.css";
@@ -19,7 +13,6 @@ import "./FacilitiesPage.css";
 export default function FacilitiesPage() {
   const [searchParams] = useSearchParams();
   const [selectedFacility, setSelectedFacility] = useState(null);
-  const [activeCategory, setActiveCategory] = useState("all");
 
   // Check if a facility was specified in query param (e.g. /facilities?facility=spinal-decompression)
   useEffect(() => {
@@ -43,32 +36,6 @@ export default function FacilitiesPage() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
-  // Filter facilities by category
-  const categories = [
-    { id: "all", label: "All Facilities (8)" },
-    { id: "spine", label: "Spine & Posture" },
-    { id: "modalities", label: "Advanced Modalities" },
-    { id: "rehab", label: "Active Rehab & Gait" },
-    { id: "manual", label: "1-on-1 Manual Suites" },
-  ];
-
-  const filteredFacilities = ALL_FACILITIES.filter((facility) => {
-    if (activeCategory === "all") return true;
-    if (activeCategory === "spine") {
-      return facility.id === "spinal-decompression" || facility.id === "cervical-traction";
-    }
-    if (activeCategory === "modalities") {
-      return facility.id === "laser-electrotherapy" || facility.id === "cryotherapy-contrast";
-    }
-    if (activeCategory === "rehab") {
-      return facility.id === "rehab-gym" || facility.id === "gait-balance";
-    }
-    if (activeCategory === "manual") {
-      return facility.id === "consultation-suites" || facility.id === "manual-therapy";
-    }
-    return true;
-  });
-
   return (
     <main className="wor-facilities-page">
       {/* ─── 1. STANDARDIZED CLEAN SUBPAGE HERO ─── */}
@@ -85,39 +52,6 @@ export default function FacilitiesPage() {
             Explore our European-standard rehabilitation suites, computerized decompression labs, and hygienic treatment rooms designed for patient dignity and rapid recovery in Baner, Pune.
           </p>
 
-          {/* Infrastructure Metrics Bar */}
-          <div className="wor-facilities-metrics-bar">
-            <div className="wor-metric-chip">
-              <ShieldCheck size={18} className="text-blue" />
-              <span>100% Sanitized & HEPA Filtered</span>
-            </div>
-            <div className="wor-metric-chip">
-              <Award size={18} className="text-emerald" />
-              <span>ISO 9001:2015 Registered Clinic</span>
-            </div>
-            <div className="wor-metric-chip">
-              <Activity size={18} className="text-blue" />
-              <span>Computerized Spinal Traction</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ─── 2. CATEGORY FILTER BUTTONS ─── */}
-      <section className="wor-facilities-filter-section">
-        <div className="wor-container">
-          <div className="wor-facilities-filter-nav">
-            {categories.map((cat) => (
-              <button
-                key={cat.id}
-                type="button"
-                className={`wor-filter-pill ${activeCategory === cat.id ? "is-active" : ""}`}
-                onClick={() => setActiveCategory(cat.id)}
-              >
-                {cat.label}
-              </button>
-            ))}
-          </div>
         </div>
       </section>
 
@@ -125,7 +59,7 @@ export default function FacilitiesPage() {
       <section className="wor-facilities-grid-section">
         <div className="wor-container">
           <div className="wor-facilities-cards-grid">
-            {filteredFacilities.map((facility) => (
+            {ALL_FACILITIES.map((facility) => (
               <div key={facility.id} className="wor-facility-card">
                 <div
                   className="wor-facility-thumb-wrap"
