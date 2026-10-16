@@ -79,10 +79,11 @@ const PROCESS_STEPS = [
 
 export default function AboutPage() {
   const [activeStep, setActiveStep] = useState(PROCESS_STEPS[0].id);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + 220;
+      const scrollPosition = window.scrollY + 240;
 
       for (let i = PROCESS_STEPS.length - 1; i >= 0; i--) {
         const step = PROCESS_STEPS[i];
@@ -91,6 +92,7 @@ export default function AboutPage() {
           const top = el.offsetTop;
           if (scrollPosition >= top) {
             setActiveStep(step.id);
+            setActiveIndex(i);
             break;
           }
         }
@@ -102,8 +104,9 @@ export default function AboutPage() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToStep = (id) => {
+  const scrollToStep = (id, index) => {
     setActiveStep(id);
+    setActiveIndex(index);
     const element = document.getElementById(id);
     if (element) {
       const yOffset = -150;
@@ -254,78 +257,66 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ─── 5. OUR PROCESS (4 STEP STANDARDIZED PROCESS WITH SCROLLSPY) ─── */}
-      <section className="wor-process-section" id="revitaortho-process">
+      {/* ─── 5. OUR PROCESS (EXACT RELIVA TIMELINE & BUTTON GROUP DESIGN) ─── */}
+      <section className="reliva-process-section" id="revitaortho-process">
         <div className="wor-container">
-          <div className="wor-section-header-center">
-            <div className="wor-section-tag-line center-tag">
-              <span className="wor-divider-line"></span>
-              <span className="wor-section-kicker">OUR PROCESS</span>
-              <span className="wor-divider-line"></span>
-            </div>
-            <h2 className="wor-section-title">4 Step Standardized RevitaOrtho Process</h2>
-            <p className="wor-section-subtitle">
-              A structured, evidence-based clinical pathway designed to educate, relieve pain, restore functional movement, and ensure lifelong joint health.
-            </p>
+          <div className="reliva-process-header">
+            <p className="reliva-process-tag">Our Process</p>
+            <h2 className="reliva-process-heading">4 Step Standardized RevitaOrtho Process</h2>
           </div>
 
-          {/* Sticky Interactive Navigation Tabs (Updates on scroll down, click to jump) */}
-          <div className="wor-process-tabs-wrapper">
-            <div className="wor-process-tabs-sticky">
-              {PROCESS_STEPS.map((step) => {
+          {/* Sticky ReLiva Button Group (Updates on scroll, click to jump) */}
+          <div className="reliva-btn-group-wrapper">
+            <div className="reliva-btn-group">
+              {PROCESS_STEPS.map((step, idx) => {
                 const isActive = activeStep === step.id;
                 return (
                   <button
                     key={step.id}
                     type="button"
-                    onClick={() => scrollToStep(step.id)}
-                    className={`wor-process-tab-btn ${isActive ? "active" : ""}`}
+                    onClick={() => scrollToStep(step.id, idx)}
+                    className={`reliva-btn-item ${isActive ? "active" : ""}`}
                     aria-label={`Jump to ${step.title}`}
                   >
-                    <span className="wor-tab-num">{step.num}</span>
-                    <span className="wor-tab-text">{step.shortTitle}</span>
+                    <span className="reliva-btn-text">{step.title}</span>
                   </button>
                 );
               })}
             </div>
           </div>
 
-          {/* Detailed Step Cards with Scroll Targets */}
-          <div className="wor-process-steps-list">
-            {PROCESS_STEPS.map((step) => {
-              const isActive = activeStep === step.id;
-              const IconComponent = step.icon;
+          {/* ReLiva Unlimited Vertical Timeline */}
+          <div className="reliva-timeline-track">
+            {PROCESS_STEPS.map((step, index) => {
+              const isCurrent = activeStep === step.id;
+              const isPassed = activeIndex >= index;
               return (
                 <div
                   key={step.id}
                   id={step.id}
-                  className={`wor-process-detail-card ${isActive ? "is-active" : ""}`}
+                  className={`reliva-timeline-item ${isCurrent ? "is-current" : ""} ${isPassed ? "is-passed" : ""}`}
                 >
-                  <div className="wor-process-card-top-row">
-                    <div className="wor-process-pill-badge">
-                      <span className="wor-process-step-num-pill">{step.numLabel}</span>
-                      <span className="wor-process-category-kicker">{step.tag}</span>
+                  {/* Left Column: Number Circle & Vertical Connecting Line */}
+                  <div className="reliva-timeline-icon-col">
+                    <div className="reliva-icon-circle">
+                      <span className="reliva-step-num">{step.num}</span>
                     </div>
-                    <span className="wor-process-watermark">{step.num}</span>
+                    {index < PROCESS_STEPS.length - 1 && (
+                      <div className="reliva-icon-line">
+                        <div
+                          className="reliva-icon-line-mask"
+                          style={{ height: activeIndex > index ? "100%" : "0%" }}
+                        ></div>
+                      </div>
+                    )}
                   </div>
 
-                  <div className="wor-process-card-main">
-                    <div className="wor-process-icon-box">
-                      <IconComponent size={26} />
-                    </div>
-
-                    <div className="wor-process-content">
-                      <h3 className="wor-process-step-heading">{step.title}</h3>
-                      <p className="wor-process-step-paragraph">{step.desc}</p>
-
-                      <div className="wor-process-highlights-chips">
-                        {step.highlights.map((item, idx) => (
-                          <div key={idx} className="wor-process-chip">
-                            <CheckCircle2 size={15} className="wor-chip-check" />
-                            <span>{item}</span>
-                          </div>
-                        ))}
-                      </div>
+                  {/* Right Column: Triangle Pointer & Speech Bubble Card */}
+                  <div className="reliva-timeline-content-col">
+                    <div className="reliva-pointer-triangle"></div>
+                    <div className="reliva-timeline-card">
+                      <h3 className="reliva-card-title">{step.title}</h3>
+                      <p className="reliva-card-desc">{step.desc}</p>
                     </div>
                   </div>
                 </div>
