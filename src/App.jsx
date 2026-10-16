@@ -31,11 +31,16 @@ function ScrollAndAnimationHandler() {
     let observer;
     const timer = setTimeout(() => {
       const elements = document.querySelectorAll(
-        "main section, main article, .scroll-reveal"
+        "main section, main article, main [class*='-card'], main .standard-box, .scroll-reveal"
       );
       if (!elements.length) return;
 
-      elements.forEach((element) => element.classList.add("scroll-reveal"));
+      elements.forEach((element) => {
+        element.classList.add("scroll-reveal");
+        if (element.matches("main article, main [class*='-card'], main .standard-box")) {
+          element.classList.add("reveal-scale");
+        }
+      });
 
       if (!("IntersectionObserver" in window)) {
         elements.forEach((element) => element.classList.add("is-visible"));

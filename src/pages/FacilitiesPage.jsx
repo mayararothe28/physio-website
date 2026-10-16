@@ -34,7 +34,6 @@ export default function FacilitiesPage() {
                     className="wor-facility-thumb"
                     loading="lazy"
                   />
-                  <span className="wor-facility-badge">{facility.badge}</span>
                 </Link>
 
                 <div className="wor-facility-body">

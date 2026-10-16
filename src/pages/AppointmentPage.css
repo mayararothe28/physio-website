@@ -90,8 +90,9 @@
 
 .appointment-layout-grid {
   display: grid;
-  grid-template-columns: 1.25fr 0.85fr;
-  gap: 36px;
+  grid-template-columns: minmax(0, 900px);
+  justify-content: center;
+  gap: 0;
   align-items: start;
 }
 
@@ -369,19 +370,39 @@
   align-items: center;
   gap: 8px;
   padding: 13px 24px;
-  background-color: #0284c7;
+  background-color: #16a34a;
   color: #ffffff !important;
   font-weight: 750;
   font-size: 14px;
   border-radius: 8px;
   text-decoration: none;
-  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+  box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3);
   transition: all 0.2s;
 }
 
 .btn-success-whatsapp:hover {
-  background-color: #0369a1;
+  background-color: #15803d;
   transform: translateY(-2px);
+}
+
+.btn-success-email {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 24px;
+  border: 1px solid #0284c7;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #0369a1 !important;
+  font-size: 14px;
+  font-weight: 750;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-success-email:hover {
+  background: #eff8ff;
+  color: #075985 !important;
 }
 
 .btn-success-reset {

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import {
   Calendar,
@@ -10,52 +10,91 @@ import {
   AlertCircle,
   ArrowRight,
   Phone,
+  Mail,
 } from "lucide-react";
 import "./AppointmentPage.css";
 
+const SERVICE_CONDITIONS = {
+  "back-pain": "spine",
+  "slip-disc": "spine",
+  "neck-pain": "neck",
+  "postural-correction": "neck",
+  "knee-pain": "knee",
+  "sports-injury": "sports",
+  "frozen-shoulder": "shoulder",
+  "post-operative": "postop",
+  "dry-needling": "other",
+  "hip-pelvis": "other",
+  "ankle-foot": "other",
+  "home-visit": "other",
+};
+
+const TREATMENT_CONDITIONS = {
+  decompression: "spine",
+  laser: "other",
+  matrix: "shoulder",
+  tecar: "knee",
+  dryneedling: "other",
+  gaitlab: "stroke",
+};
+
+const FACILITY_CONTEXT = {
+  "spinal-decompression": { condition: "spine", notes: "Interested in: Motorized Spinal Decompression Lab" },
+  "consultation-suites": { condition: "other", notes: "Interested in: Private Sanitized Consultation Suites" },
+  "laser-electrotherapy": { condition: "other", notes: "Interested in: Class-IV Laser & Electrotherapy Bay" },
+  "rehab-gym": { condition: "postop", notes: "Interested in: Active Functional Rehabilitation Gym" },
+  "cervical-traction": { condition: "neck", notes: "Interested in: Computerized Cervical Traction & Posture Lab" },
+  "cryotherapy-contrast": { condition: "sports", notes: "Interested in: Advanced Cryotherapy & Contrast Therapy Suite" },
+  "manual-therapy": { condition: "shoulder", notes: "Interested in: Manual Therapy & Joint Mobilization Cabins" },
+  "gait-balance": { condition: "stroke", notes: "Interested in: Sensor-Equipped Gait & Balance Training Studio" },
+  "hydrotherapy-pool": { condition: "other", notes: "Interested in: Hydrotherapy & Warm Water Rehabilitation Pool" },
+  "pediatric-rehabilitation": { condition: "other", notes: "Interested in: Pediatric Rehabilitation & Play Therapy Room" },
+  "sports-performance": { condition: "sports", notes: "Interested in: Sports Performance & Return-to-Play Studio" },
+  "movement-assessment": { condition: "other", notes: "Interested in: Digital Movement Assessment Studio" },
+};
+
+const VALID_CONDITIONS = new Set([
+  "spine",
+  "knee",
+  "neck",
+  "shoulder",
+  "sports",
+  "postop",
+  "stroke",
+  "other",
+]);
+
+function getAppointmentContext(searchParams) {
+  const doctor = searchParams.get("doctor") || "";
+  if (doctor) return { doctor, condition: "", notes: "" };
+
+  const facility = FACILITY_CONTEXT[searchParams.get("facility")];
+  if (facility) return { doctor: "", ...facility };
+
+  const treatment = searchParams.get("treatment");
+  const service = searchParams.get("condition") || searchParams.get("service") || "";
+  const condition = TREATMENT_CONDITIONS[treatment]
+    || SERVICE_CONDITIONS[service]
+    || (VALID_CONDITIONS.has(service) ? service : "");
+
+  return { doctor: "", condition, notes: "" };
+}
+
 export default function AppointmentPage() {
   const [searchParams] = useSearchParams();
-
-  // Read initial values from URL query parameters
-  const COND_MAP = {
-    "back-pain": "spine",
-    "neck-pain": "neck",
-    "sports-injury": "sports",
-    "knee-pain": "knee",
-  };
-
-  const FACILITY_MAP = {
-    "spinal-decompression": { cond: "spine", note: "Interested in: Motorized Spinal Decompression Lab" },
-    "consultation-suites": { cond: "other", note: "Interested in: Private Sanitized Consultation Suite" },
-    "laser-electrotherapy": { cond: "sports", note: "Interested in: Class-IV Laser & Electrotherapy Bay" },
-    "rehab-gym": { cond: "postop", note: "Interested in: Active Functional Rehabilitation Gym" },
-    "cervical-traction": { cond: "neck", note: "Interested in: Computerized Cervical Traction & Posture Lab" },
-    "cryotherapy-contrast": { cond: "sports", note: "Interested in: Advanced Cryotherapy & Contrast Suite" },
-    "manual-therapy": { cond: "shoulder", note: "Interested in: Manual Therapy & Joint Mobilization Cabins" },
-    "gait-balance": { cond: "stroke", note: "Interested in: Sensor-Equipped Gait & Balance Training Studio" },
-  };
-
-  const rawCond = searchParams.get("condition") || searchParams.get("service") || "";
-  const facilityParam = searchParams.get("facility") || "";
-  const facilityData = FACILITY_MAP[facilityParam];
-
-  const initCondition = facilityData?.cond || COND_MAP[rawCond] || rawCond || "spine";
-  const initMode = searchParams.get("mode") || "clinic";
-  const initTime = searchParams.get("time") || "evening";
-  const initDoctor = searchParams.get("doctor") || "any";
-  const initNotes = facilityData?.note || "";
+  const appointmentContext = getAppointmentContext(searchParams);
 
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
     email: "",
     age: "",
-    condition: initCondition,
-    careMode: initMode,
-    doctor: initDoctor,
+    condition: appointmentContext.condition,
+    careMode: "",
+    doctor: appointmentContext.doctor,
     date: "",
-    timeSlot: initTime,
-    notes: initNotes,
+    timeSlot: "",
+    notes: appointmentContext.notes,
   });
 
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -65,28 +104,36 @@ export default function AppointmentPage() {
   const [dateError, setDateError] = useState("");
   const [ageError, setAgeError] = useState("");
 
-  useEffect(() => {
-    // If query params change, update formData
-    const fac = searchParams.get("facility");
-    if (fac && FACILITY_MAP[fac]) {
-      setFormData((prev) => ({
-        ...prev,
-        condition: FACILITY_MAP[fac].cond,
-        notes: prev.notes || FACILITY_MAP[fac].note,
-      }));
-    }
+  const conditionLabels = {
+    spine: "Lower Back Pain / Slip Disc / Sciatica",
+    knee: "Knee Pain / Osteoarthritis",
+    neck: "Neck Pain / Cervical Spondylosis",
+    shoulder: "Frozen Shoulder / Rotator Cuff",
+    sports: "Sports Injury / ACL Rehab",
+    postop: "Post-Operative Rehabilitation",
+    stroke: "Neurological Rehabilitation",
+    other: "General Joint Pain / Second Opinion",
+  };
+  const appointmentMessage = [
+    "RevitaOrtho appointment request",
+    `Booking reference: ${bookingRef}`,
+    `Name: ${formData.name}`,
+    `Phone: +91 ${formData.phone}`,
+    `Email: ${formData.email || "Not provided"}`,
+    `Age: ${formData.age || "Not provided"}`,
+    `Care mode: ${formData.careMode || "Not selected"}`,
+    `Condition: ${conditionLabels[formData.condition] || "Not selected"}`,
+    `Preferred doctor: ${formData.doctor || "No preference"}`,
+    `Date: ${formData.date || "Not selected"}`,
+    `Time: ${formData.timeSlot || "Not selected"}`,
+    `Notes: ${formData.notes || "None"}`,
+  ].join("\n");
+  const whatsappHref = `https://wa.me/919145875248?text=${encodeURIComponent(appointmentMessage)}`;
+  const emailHref = `mailto:care@revitaortho.com?subject=${encodeURIComponent(`Appointment request ${bookingRef}`)}&body=${encodeURIComponent(appointmentMessage)}`;
 
-    const newRaw = searchParams.get("condition") || searchParams.get("service");
-    if (newRaw) {
-      const resolved = COND_MAP[newRaw] || newRaw;
-      setFormData((prev) => ({ ...prev, condition: resolved }));
-    }
-    if (searchParams.get("mode")) {
-      setFormData((prev) => ({ ...prev, careMode: searchParams.get("mode") }));
-    }
-    if (searchParams.get("doctor")) {
-      setFormData((prev) => ({ ...prev, doctor: searchParams.get("doctor") }));
-    }
+  useEffect(() => {
+    const context = getAppointmentContext(searchParams);
+    setFormData((prev) => ({ ...prev, ...context }));
   }, [searchParams]);
 
   function handleChange(e) {
@@ -175,12 +222,12 @@ export default function AppointmentPage() {
       phone: "",
       email: "",
       age: "",
-      condition: searchParams.get("condition") || "spine",
-      careMode: searchParams.get("mode") || "clinic",
-      doctor: searchParams.get("doctor") || "any",
+      condition: appointmentContext.condition,
+      careMode: "",
+      doctor: appointmentContext.doctor,
       date: "",
-      timeSlot: searchParams.get("time") || "evening",
-      notes: "",
+      timeSlot: "",
+      notes: appointmentContext.notes,
     });
     setPhoneError("");
     setEmailError("");
@@ -218,9 +265,9 @@ export default function AppointmentPage() {
                   <div className="success-icon-badge">
                     <CheckCircle2 size={44} />
                   </div>
-                  <h2>Appointment Request Confirmed!</h2>
+                  <h2>Appointment Request Ready to Send</h2>
                   <p className="success-lead">
-                    Thank you, <strong>{formData.name}</strong>. Your appointment request has been logged in our clinical triage registry.
+                    Thank you, <strong>{formData.name}</strong>. Choose WhatsApp or email below to send your appointment details to our care team.
                   </p>
 
                   <div className="booking-summary-box">
@@ -242,7 +289,7 @@ export default function AppointmentPage() {
                     </div>
                     <div className="summary-row">
                       <span>Assigned Doctor:</span>
-                      <strong>{formData.doctor === "any" ? "First Available Specialist" : formData.doctor}</strong>
+                      <strong>{formData.doctor === "any" ? "First Available Specialist" : formData.doctor || "No preference"}</strong>
                     </div>
                   </div>
 
@@ -255,13 +302,17 @@ export default function AppointmentPage() {
 
                   <div className="success-actions">
                     <a
-                      href={`https://wa.me/919145875248?text=Hello%20RevitaOrtho,%20my%20booking%20reference%20is%20${bookingRef}.`}
+                      href={whatsappHref}
                       target="_blank"
                       rel="noreferrer"
                       className="btn-success-whatsapp"
                     >
                       <MessageCircle size={16} />
-                      <span>Confirm Faster via WhatsApp</span>
+                      <span>Send via WhatsApp</span>
+                    </a>
+                    <a href={emailHref} className="btn-success-email">
+                      <Mail size={16} />
+                      <span>Send via Email</span>
                     </a>
                     <button
                       type="button"
@@ -291,6 +342,7 @@ export default function AppointmentPage() {
                           name="careMode"
                           value="clinic"
                           checked={formData.careMode === "clinic"}
+                          required
                           onChange={handleChange}
                         />
                         <Building2 size={20} className="text-azure" />
@@ -331,6 +383,7 @@ export default function AppointmentPage() {
                       onChange={handleChange}
                       required
                     >
+                      <option value="" disabled>Select a condition</option>
                       <option value="spine">Lower Back Pain / L4-L5 Slip Disc / Sciatica</option>
                       <option value="knee">Knee Pain / Osteoarthritis / Cartilage Stiffness</option>
                       <option value="neck">Neck Pain / Cervical Spondylosis / Tech Neck</option>
@@ -352,6 +405,7 @@ export default function AppointmentPage() {
                         value={formData.doctor}
                         onChange={handleChange}
                       >
+                        <option value="" disabled>Select a specialist (optional)</option>
                         <option value="any">First Available Senior Specialist</option>
                         <option value="Dr. Sumit Gupta, PT">Dr. Sumit Gupta (Chief Ortho & Spine)</option>
                         <option value="Dr. Sneha Kulkarni, PT">Dr. Sneha Kulkarni (Sports & Knee)</option>
@@ -368,6 +422,7 @@ export default function AppointmentPage() {
                         value={formData.timeSlot}
                         onChange={handleChange}
                       >
+                        <option value="" disabled>Select a preferred time (optional)</option>
                         <option value="morning">Morning (8:00 AM – 12:00 PM)</option>
                         <option value="afternoon">Afternoon (12:00 PM – 4:00 PM)</option>
                         <option value="evening">Evening (4:00 PM – 8:00 PM)</option>
@@ -480,61 +535,6 @@ export default function AppointmentPage() {
               )}
             </div>
 
-            {/* Sidebar Column: What to Expect & Helplines */}
-            <aside className="booking-sidebar">
-              <div className="sidebar-info-card">
-                <span className="sidebar-card-kicker">First Consultation</span>
-                <h3>What to Expect</h3>
-                <ul className="sidebar-checklist">
-                  <li>
-                    <CheckCircle2 size={16} className="text-emerald" />
-                    <span><strong>45-Minute 1-on-1 Assessment:</strong> Comprehensive examination by certified MPT specialists.</span>
-                  </li>
-                  <li>
-                    <CheckCircle2 size={16} className="text-emerald" />
-                    <span><strong>Scans Review in Plain English:</strong> We explain your MRI/X-ray reports clearly without confusing jargon.</span>
-                  </li>
-                  <li>
-                    <CheckCircle2 size={16} className="text-emerald" />
-                    <span><strong>Milestone Recovery Roadmap:</strong> Clear timeline of expected sessions and non-surgical outcomes.</span>
-                  </li>
-                  <li>
-                    <CheckCircle2 size={16} className="text-emerald" />
-                    <span><strong>Zero Waiting Time Policy:</strong> Pre-booked slots begin the moment you walk through our doors.</span>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="sidebar-info-card">
-                <span className="sidebar-card-kicker">Checklist</span>
-                <h3>What to Bring on Day 1</h3>
-                <ul className="sidebar-checklist">
-                  <li>
-                    <CheckCircle2 size={16} className="text-emerald" />
-                    <span>Recent MRI, X-ray scans, or doctor prescriptions if you have them.</span>
-                  </li>
-                  <li>
-                    <CheckCircle2 size={16} className="text-emerald" />
-                    <span>Comfortable clothing allowing unrestricted joint movement.</span>
-                  </li>
-                  <li>
-                    <CheckCircle2 size={16} className="text-emerald" />
-                    <span>Health insurance card for cashless or reimbursement assistance.</span>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="sidebar-urgent-card">
-                <Phone size={24} className="urgent-phone-icon" />
-                <div>
-                  <strong>Need Immediate Assistance?</strong>
-                  <p>Our care coordinator is available for instant triage and emergency scheduling.</p>
-                  <a href="tel:+919145875248" className="urgent-tel-link">
-                    +91 91458 75248
-                  </a>
-                </div>
-              </div>
-            </aside>
           </div>
         </div>
       </section>

@@ -757,9 +757,9 @@
 }
 
 .wor-btn-doctor-book:hover {
-  background: var(--wor-navy);
+  background: var(--wor-blue);
   color: #ffffff;
-  border-color: var(--wor-navy);
+  border-color: var(--wor-blue);
 }
 
 /* ══════════════════════════════════════════════════════════════════

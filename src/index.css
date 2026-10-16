@@ -298,6 +298,12 @@ img {
   will-change: opacity, transform;
 }
 
+main .scroll-reveal {
+  transition:
+    opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 .scroll-reveal.is-visible {
   opacity: 1;
   transform: translateY(0);

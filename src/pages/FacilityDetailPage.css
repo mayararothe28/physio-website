@@ -52,19 +52,6 @@
   display: block;
 }
 
-.facility-detail-badge {
-  position: absolute;
-  top: 16px;
-  left: 16px;
-  padding: 8px 13px;
-  background: #0f2b48;
-  color: #fff;
-  border-radius: 5px;
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-}
-
 .facility-detail-eyebrow {
   color: #0284c7;
   font-size: 12px;

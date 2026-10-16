@@ -121,14 +121,6 @@ export default function TeamPage() {
       {/* ─── 1. HERO ─── */}
       <section className="subpage-hero-banner">
         <div className="subpage-hero-content">
-          <div className="subpage-breadcrumb">
-            <Link to="/">Home</Link>
-            <span className="breadcrumb-separator">/</span>
-            <span className="breadcrumb-current">Our Specialists</span>
-          </div>
-          <span className="subpage-kicker">
-            <ShieldCheck size={14} /> QUALIFIED MEDICAL SPECIALISTS
-          </span>
           <h1 className="subpage-title">
             Meet Our Clinical Specialists.
             <br />
@@ -159,11 +151,6 @@ export default function TeamPage() {
                           e.target.src = "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=700&q=80";
                         }}
                       />
-                      {doc.availableToday && (
-                        <span className="doc-duty-badge">
-                          <span className="live-dot-pulse"></span> On Consultation Duty
-                        </span>
-                      )}
                     </div>
 
                     <div className="doc-social-creds">
@@ -177,7 +164,6 @@ export default function TeamPage() {
                   </div>
 
                   <div className="doc-info-col">
-                    <span className="doc-role-badge">{doc.role}</span>
                     <h2 className="doc-card-name">{doc.name}</h2>
                     <p className="doc-degrees-line">{doc.qualifications}</p>
 
@@ -246,7 +232,6 @@ export default function TeamPage() {
       <section className="team-standards-section section-padding">
         <div className="team-container">
           <div className="section-head-center scroll-reveal">
-            <span className="team-kicker">OUR ETHICAL COMMITMENT</span>
             <h2>How Our Care Philosophy Protects You</h2>
             <p>
               We believe patients deserve undivided attention from senior clinicians who listen attentively, explain diagnoses clearly, and respect your time.

@@ -109,8 +109,9 @@
 
 .contact-two-col-grid {
   display: grid;
-  grid-template-columns: 1fr 1.15fr;
-  gap: 36px;
+  grid-template-columns: minmax(0, 860px);
+  justify-content: center;
+  gap: 0;
   align-items: start;
 }
 
@@ -283,6 +284,9 @@
 .contact-form-col {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  max-width: 860px;
+  margin: 0 auto;
 }
 
 .contact-form-card {
@@ -509,6 +513,26 @@
 
 .btn-whatsapp-confirm:hover {
   background-color: #15803d;
+}
+
+.btn-email-confirm {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 20px;
+  border: 1px solid #0284c7;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #0369a1 !important;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-email-confirm:hover {
+  background: #eff8ff;
+  color: #075985 !important;
 }
 
 .btn-reset-form {

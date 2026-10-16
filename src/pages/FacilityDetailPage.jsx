@@ -41,9 +41,6 @@ export default function FacilityDetailPage() {
               alt={facility.title}
               className="facility-detail-image"
             />
-            <span className="facility-detail-badge">
-              {facility.badge}
-            </span>
           </div>
 
           <div className="facility-detail-content">

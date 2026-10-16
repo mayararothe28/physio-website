@@ -38,6 +38,7 @@ export default function Navbar() {
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
     { name: "Services", href: "/services" },
+    { name: "Our Team", href: "/team" },
     { name: "Clinic Facilities", href: "/facilities" },
     { name: "Contact", href: "/contact" },
   ];

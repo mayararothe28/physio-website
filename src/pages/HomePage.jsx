@@ -542,7 +542,7 @@ export default function HomePage() {
                   <p className="wor-doctor-bio">{doc.bio}</p>
                   <div className="wor-doctor-actions">
                     <Link
-                      to={`/appointment?service=${doc.serviceId}`}
+                      to={`/appointment?doctor=${encodeURIComponent(doc.name)}`}
                       className="wor-btn-doctor-book"
                     >
                       <Calendar size={14} />
@@ -552,6 +552,12 @@ export default function HomePage() {
                 </div>
               </div>
             ))}
+          </div>
+          <div className="wor-gallery-footer-action">
+            <Link to="/team" className="wor-btn-gallery-visit">
+              <span>View All Specialists</span>
+              <ArrowRight size={16} />
+            </Link>
           </div>
         </div>
       </section>
@@ -579,7 +585,6 @@ export default function HomePage() {
               <div key={facility.id} className="wor-gallery-card">
                 <div className="wor-gallery-img-wrap">
                   <img src={facility.image} alt={facility.title} className="wor-gallery-img" />
-                  <span className="wor-gallery-badge">{facility.badge}</span>
                 </div>
                 <div className="wor-gallery-content">
                   <h4>{facility.title}</h4>
