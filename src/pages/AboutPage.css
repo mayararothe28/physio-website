@@ -212,6 +212,88 @@
   margin: 0;
 }
 
+/* ─── 4. OUR PROCESS (4 STEPS) ─── */
+.wor-process-section {
+  padding: 5rem 0;
+  background-color: #ffffff;
+  border-top: 1px solid var(--wor-border, #e2e8f0);
+}
+
+.wor-process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.wor-process-card {
+  background-color: var(--wor-bg-light, #f8fafc);
+  border: 1px solid var(--wor-border, #e2e8f0);
+  border-radius: var(--wor-radius-md, 10px);
+  padding: 2rem 1.75rem;
+  box-shadow: 0 2px 10px rgba(15, 43, 72, 0.03);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.wor-process-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 24px rgba(15, 43, 72, 0.08);
+  border-color: var(--wor-blue, #0284c7);
+  background-color: #ffffff;
+}
+
+.wor-process-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.wor-process-num {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--wor-blue, #0284c7);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.wor-process-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  border: 1px solid var(--wor-border, #e2e8f0);
+  color: var(--wor-blue, #0284c7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(15, 43, 72, 0.04);
+  transition: all 0.25s ease;
+}
+
+.wor-process-card:hover .wor-process-icon {
+  background-color: var(--wor-blue, #0284c7);
+  color: #ffffff;
+  border-color: var(--wor-blue, #0284c7);
+}
+
+.wor-process-card-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--wor-navy, #0f2b48);
+  margin: 0 0 0.75rem 0;
+  line-height: 1.35;
+}
+
+.wor-process-card-desc {
+  font-size: 0.885rem;
+  color: var(--wor-text-body, #334155);
+  line-height: 1.6;
+  margin: 0;
+}
 
 /* ─── RESPONSIVE BREAKPOINTS ─── */
 @media (max-width: 1024px) {
@@ -231,6 +313,11 @@
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
+
+  .wor-process-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
 }
 
 @media (max-width: 768px) {
@@ -246,5 +333,11 @@
     grid-template-columns: 1fr;
     gap: 1rem;
   }
-
 }
+
+@media (max-width: 640px) {
+  .wor-process-grid {
+    grid-template-columns: 1fr;
+  }
+}
+

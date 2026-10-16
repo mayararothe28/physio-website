@@ -3,6 +3,10 @@ import {
   Award,
   CheckCircle2,
   HeartPulse,
+  Stethoscope,
+  FileText,
+  Activity,
+  Sparkles,
 } from "lucide-react";
 import "./AboutPage.css";
 
@@ -150,6 +154,78 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* ─── 5. OUR PROCESS (4 STEPS) ─── */}
+      <section className="wor-process-section">
+        <div className="wor-container">
+          <div className="wor-section-header-center">
+            <div className="wor-section-tag-line center-tag">
+              <span className="wor-divider-line"></span>
+              <span className="wor-section-kicker">OUR PROCESS</span>
+              <span className="wor-divider-line"></span>
+            </div>
+            <h2 className="wor-section-title">Your 4-Step Recovery Journey</h2>
+            <p className="wor-section-subtitle">
+              A structured, evidence-based clinical pathway designed to accurately identify the root cause, relieve pain, and restore lasting mobility.
+            </p>
+          </div>
+
+          <div className="wor-process-grid">
+            <div className="wor-process-card">
+              <div className="wor-process-top">
+                <span className="wor-process-num">01</span>
+                <div className="wor-process-icon">
+                  <Stethoscope size={22} />
+                </div>
+              </div>
+              <h3 className="wor-process-card-title">Comprehensive Evaluation</h3>
+              <p className="wor-process-card-desc">
+                In-depth 45-minute biomechanical assessment, posture analysis, and joint mobility testing to diagnose the root cause of your pain.
+              </p>
+            </div>
+
+            <div className="wor-process-card">
+              <div className="wor-process-top">
+                <span className="wor-process-num">02</span>
+                <div className="wor-process-icon">
+                  <FileText size={22} />
+                </div>
+              </div>
+              <h3 className="wor-process-card-title">Personalized Care Plan</h3>
+              <p className="wor-process-card-desc">
+                A customized, goal-oriented recovery roadmap tailored to your MRI/X-ray findings, daily routine, and personal mobility goals.
+              </p>
+            </div>
+
+            <div className="wor-process-card">
+              <div className="wor-process-top">
+                <span className="wor-process-num">03</span>
+                <div className="wor-process-icon">
+                  <Activity size={22} />
+                </div>
+              </div>
+              <h3 className="wor-process-card-title">Advanced Hands-On Therapy</h3>
+              <p className="wor-process-card-desc">
+                Dedicated 1-on-1 manual therapy, computerized spinal decompression, and targeted modalities to relieve acute pain and restore tissue mobility.
+              </p>
+            </div>
+
+            <div className="wor-process-card">
+              <div className="wor-process-top">
+                <span className="wor-process-num">04</span>
+                <div className="wor-process-icon">
+                  <Sparkles size={22} />
+                </div>
+              </div>
+              <h3 className="wor-process-card-title">Active Strengthening & Prevention</h3>
+              <p className="wor-process-card-desc">
+                Functional core stabilization, posture & ergonomic retraining, and custom home exercise prescriptions for permanent relapse prevention.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
     </main>
   );
 }
+
