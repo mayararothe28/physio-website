@@ -134,6 +134,9 @@ export default function ServicesPage() {
                       <span>Read More</span>
                       <ChevronRight size={15} />
                     </Link>
+                    <Link to={`/appointment?service=${srv.id}`} className="wor-service-book-btn">
+                      <span>Book Appointment</span>
+                    </Link>
                   </div>
                 </div>
               </div>
