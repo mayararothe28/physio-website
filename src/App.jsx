@@ -15,6 +15,7 @@ import TestimonialsPage from "./pages/TestimonialsPage";
 import ContactPage from "./pages/ContactPage";
 import FAQPage from "./pages/FAQPage";
 import OurWorkPage from "./pages/OurWorkPage";
+import FacilitiesPage from "./pages/FacilitiesPage";
 import ServiceDetailPage from "./pages/ServiceDetailPage";
 import BlogDetailPage from "./pages/BlogDetailPage";
 
@@ -65,6 +66,8 @@ function App() {
         <Route path="/about" Component={AboutPage} />
         <Route path="/services" Component={ServicesPage} />
         <Route path="/services/:serviceId" Component={ServiceDetailPage} />
+        <Route path="/facilities" Component={FacilitiesPage} />
+        <Route path="/clinic-facilities" Component={FacilitiesPage} />
         <Route path="/treatments" Component={TreatmentsPage} />
         <Route path="/treatments/:serviceId" Component={ServiceDetailPage} />
         <Route path="/team" Component={TeamPage} />

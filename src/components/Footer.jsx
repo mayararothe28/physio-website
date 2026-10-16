@@ -59,6 +59,12 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
+                  <Link to="/facilities">
+                    <ChevronRight size={14} />
+                    <span>Clinic Facilities</span>
+                  </Link>
+                </li>
+                <li>
                   <Link to="/contact">
                     <ChevronRight size={14} />
                     <span>Contact Us</span>

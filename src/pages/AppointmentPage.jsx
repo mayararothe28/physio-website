@@ -23,11 +23,27 @@ export default function AppointmentPage() {
     "sports-injury": "sports",
     "knee-pain": "knee",
   };
+
+  const FACILITY_MAP = {
+    "spinal-decompression": { cond: "spine", note: "Interested in: Motorized Spinal Decompression Lab" },
+    "consultation-suites": { cond: "other", note: "Interested in: Private Sanitized Consultation Suite" },
+    "laser-electrotherapy": { cond: "sports", note: "Interested in: Class-IV Laser & Electrotherapy Bay" },
+    "rehab-gym": { cond: "postop", note: "Interested in: Active Functional Rehabilitation Gym" },
+    "cervical-traction": { cond: "neck", note: "Interested in: Computerized Cervical Traction & Posture Lab" },
+    "cryotherapy-contrast": { cond: "sports", note: "Interested in: Advanced Cryotherapy & Contrast Suite" },
+    "manual-therapy": { cond: "shoulder", note: "Interested in: Manual Therapy & Joint Mobilization Cabins" },
+    "gait-balance": { cond: "stroke", note: "Interested in: Sensor-Equipped Gait & Balance Training Studio" },
+  };
+
   const rawCond = searchParams.get("condition") || searchParams.get("service") || "";
-  const initCondition = COND_MAP[rawCond] || rawCond || "spine";
+  const facilityParam = searchParams.get("facility") || "";
+  const facilityData = FACILITY_MAP[facilityParam];
+
+  const initCondition = facilityData?.cond || COND_MAP[rawCond] || rawCond || "spine";
   const initMode = searchParams.get("mode") || "clinic";
   const initTime = searchParams.get("time") || "evening";
   const initDoctor = searchParams.get("doctor") || "any";
+  const initNotes = facilityData?.note || "";
 
   const [formData, setFormData] = useState({
     name: "",
@@ -39,7 +55,7 @@ export default function AppointmentPage() {
     doctor: initDoctor,
     date: "",
     timeSlot: initTime,
-    notes: "",
+    notes: initNotes,
   });
 
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -51,6 +67,15 @@ export default function AppointmentPage() {
 
   useEffect(() => {
     // If query params change, update formData
+    const fac = searchParams.get("facility");
+    if (fac && FACILITY_MAP[fac]) {
+      setFormData((prev) => ({
+        ...prev,
+        condition: FACILITY_MAP[fac].cond,
+        notes: prev.notes || FACILITY_MAP[fac].note,
+      }));
+    }
+
     const newRaw = searchParams.get("condition") || searchParams.get("service");
     if (newRaw) {
       const resolved = COND_MAP[newRaw] || newRaw;

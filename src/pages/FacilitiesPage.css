@@ -1,0 +1,667 @@
+/* ══════════════════════════════════════════════════════════════════
+   CLINIC FACILITIES PAGE STYLES (RevitaOrtho European Standard)
+   ══════════════════════════════════════════════════════════════════ */
+
+.wor-facilities-page {
+  background-color: #ffffff;
+  min-height: 100vh;
+}
+
+/* ─── 1. Subpage Hero Section ─── */
+.wor-facilities-page .wor-subpage-hero {
+  background: linear-gradient(180deg, #f0f7ff 0%, #ffffff 100%);
+  padding: 4.5rem 0 2.5rem 0;
+  text-align: center;
+  border-bottom: 1px solid var(--wor-border, #e2e8f0);
+}
+
+.wor-facilities-page .wor-subpage-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--wor-navy, #0f2b48);
+  margin: 0.5rem 0 1rem 0;
+  letter-spacing: -0.02em;
+}
+
+.wor-facilities-page .wor-subpage-subtitle {
+  font-size: 1.05rem;
+  color: var(--wor-text-muted, #64748b);
+  max-width: 760px;
+  margin: 0 auto 2rem auto;
+  line-height: 1.6;
+}
+
+/* Hero Metrics Bar */
+.wor-facilities-metrics-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.wor-metric-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #ffffff;
+  border: 1px solid var(--wor-border, #e2e8f0);
+  padding: 0.5rem 1.1rem;
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--wor-navy, #0f2b48);
+  box-shadow: 0 2px 6px rgba(15, 43, 72, 0.04);
+}
+
+.wor-metric-chip .text-blue {
+  color: var(--wor-blue, #0284c7);
+}
+
+.wor-metric-chip .text-emerald {
+  color: #10b981;
+}
+
+/* ─── 2. Category Filter Navigation ─── */
+.wor-facilities-filter-section {
+  padding: 1.75rem 0;
+  background: #ffffff;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.wor-facilities-filter-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.wor-filter-pill {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  color: #475569;
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0.55rem 1.2rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.wor-filter-pill:hover {
+  background: #f1f5f9;
+  color: var(--wor-navy, #0f2b48);
+  border-color: #cbd5e1;
+}
+
+.wor-filter-pill.is-active {
+  background: var(--wor-blue, #0284c7);
+  color: #ffffff;
+  border-color: var(--wor-blue, #0284c7);
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+}
+
+/* ─── 3. Facilities Grid Section ─── */
+.wor-facilities-grid-section {
+  padding: 3.5rem 0 5rem 0;
+  background-color: #fafbfc;
+}
+
+.wor-facilities-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.wor-facility-card {
+  background: #ffffff;
+  border: 1px solid var(--wor-border, #e2e8f0);
+  border-radius: var(--wor-radius-md, 10px);
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(15, 43, 72, 0.05);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.wor-facility-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(15, 43, 72, 0.1);
+  border-color: #cbd5e1;
+}
+
+.wor-facility-thumb-wrap {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  cursor: pointer;
+  background: #0f2b48;
+}
+
+.wor-facility-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.wor-facility-card:hover .wor-facility-thumb {
+  transform: scale(1.06);
+}
+
+.wor-facility-badge {
+  position: absolute;
+  top: 0.85rem;
+  left: 0.85rem;
+  background: rgba(15, 43, 72, 0.9);
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.28rem 0.65rem;
+  border-radius: 4px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  backdrop-filter: blur(4px);
+  z-index: 2;
+}
+
+.wor-facility-body {
+  padding: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.wor-facility-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.35;
+  margin: 0 0 0.35rem 0;
+}
+
+.wor-facility-title-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--wor-navy, #0f2b48);
+  font-size: inherit;
+  font-weight: inherit;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.wor-facility-title-btn:hover {
+  color: var(--wor-blue, #0284c7);
+}
+
+.wor-facility-subtitle {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--wor-blue, #0284c7);
+  margin: 0 0 0.85rem 0;
+  line-height: 1.4;
+}
+
+.wor-facility-desc {
+  font-size: 0.9rem;
+  color: #475569;
+  line-height: 1.55;
+  margin: 0 0 1.25rem 0;
+}
+
+.wor-facility-highlights {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  flex: 1;
+}
+
+.wor-facility-highlights li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.835rem;
+  color: #334155;
+  line-height: 1.45;
+}
+
+.wor-check-icon {
+  color: #10b981;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* Card Action: View Details + Book Appointment Side-by-Side */
+.wor-facility-action {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.65rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid #f1f5f9;
+}
+
+.wor-facility-details-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.885rem;
+  font-weight: 700;
+  color: var(--wor-blue, #0284c7);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.wor-facility-details-btn:hover {
+  color: var(--wor-blue-dark, #0369a1);
+  gap: 0.45rem;
+}
+
+.wor-facility-book-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  background: var(--wor-blue, #0284c7);
+  color: #ffffff !important;
+  font-size: 0.825rem;
+  font-weight: 700;
+  padding: 0.55rem 0.95rem;
+  border-radius: var(--wor-radius-sm, 6px);
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.25);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.wor-facility-book-btn:hover {
+  background: var(--wor-blue-dark, #0369a1);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.35);
+}
+
+/* ─── 4. Modal Styles ─── */
+.wor-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 43, 72, 0.65);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  animation: worFadeIn 0.25s ease-out;
+}
+
+.wor-modal-box {
+  background: #ffffff;
+  border-radius: var(--wor-radius-lg, 14px);
+  width: 100%;
+  max-width: 680px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  animation: worSlideUp 0.25s ease-out;
+}
+
+@keyframes worFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes worSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.wor-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #f1f5f9;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #475569;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.wor-modal-close:hover {
+  background: #e2e8f0;
+  color: var(--wor-navy, #0f2b48);
+}
+
+.wor-modal-header {
+  padding: 1.75rem 2rem 1rem 2rem;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.wor-modal-badge {
+  display: inline-block;
+  background: #e0f2fe;
+  color: var(--wor-blue, #0284c7);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.2rem 0.65rem;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.wor-modal-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--wor-navy, #0f2b48);
+  margin: 0 0 0.3rem 0;
+  line-height: 1.3;
+}
+
+.wor-modal-subtitle {
+  font-size: 0.95rem;
+  color: var(--wor-blue, #0284c7);
+  font-weight: 600;
+  margin: 0;
+}
+
+.wor-modal-media {
+  width: 100%;
+  height: 260px;
+  background: #0f2b48;
+}
+
+.wor-modal-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.wor-modal-body {
+  padding: 1.75rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.wor-modal-section h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--wor-navy, #0f2b48);
+  margin: 0 0 0.6rem 0;
+}
+
+.wor-modal-section p {
+  font-size: 0.925rem;
+  color: #475569;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.wor-modal-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.wor-modal-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.885rem;
+  color: #334155;
+  background: #f8fafc;
+  padding: 0.55rem 0.85rem;
+  border-radius: 6px;
+  border: 1px solid #f1f5f9;
+}
+
+.wor-modal-icon {
+  color: var(--wor-blue, #0284c7);
+  flex-shrink: 0;
+}
+
+.wor-modal-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.wor-modal-tag {
+  background: #f0fdf4;
+  color: #166534;
+  border: 1px solid #bbf7d0;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+}
+
+.wor-modal-footer {
+  padding: 1.25rem 2rem;
+  border-top: 1px solid #e2e8f0;
+  background: #f8fafc;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+  border-radius: 0 0 var(--wor-radius-lg, 14px) var(--wor-radius-lg, 14px);
+}
+
+.wor-modal-back-btn {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #475569;
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--wor-radius-sm, 6px);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.wor-modal-back-btn:hover {
+  background: #f1f5f9;
+  color: var(--wor-navy, #0f2b48);
+}
+
+.wor-modal-book-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--wor-blue, #0284c7);
+  color: #ffffff !important;
+  padding: 0.65rem 1.4rem;
+  border-radius: var(--wor-radius-sm, 6px);
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+  transition: all 0.2s ease;
+}
+
+.wor-modal-book-btn:hover {
+  background: var(--wor-blue-dark, #0369a1);
+  transform: translateY(-1px);
+}
+
+/* ─── 5. Tour Call-out Section ─── */
+.wor-facilities-tour-section {
+  padding: 0 0 5rem 0;
+  background: #fafbfc;
+}
+
+.wor-facilities-tour-card {
+  background: linear-gradient(135deg, var(--wor-navy, #0f2b48) 0%, #1e3a5f 100%);
+  border-radius: var(--wor-radius-lg, 14px);
+  padding: 3rem 3.5rem;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2.5rem;
+  box-shadow: 0 10px 30px rgba(15, 43, 72, 0.12);
+}
+
+.wor-tour-tag {
+  display: inline-block;
+  background: rgba(2, 132, 199, 0.35);
+  color: #7dd3fc;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.75rem;
+}
+
+.wor-tour-content h3 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  margin: 0 0 0.65rem 0;
+  color: #ffffff;
+  line-height: 1.3;
+}
+
+.wor-tour-content p {
+  font-size: 0.95rem;
+  color: #cbd5e1;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 620px;
+}
+
+.wor-tour-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.wor-tour-btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: #ffffff;
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: 0.75rem 1.4rem;
+  border-radius: var(--wor-radius-sm, 6px);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.wor-tour-btn-outline:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+.wor-tour-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--wor-blue, #0284c7);
+  color: #ffffff !important;
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--wor-radius-sm, 6px);
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
+  transition: all 0.2s ease;
+}
+
+.wor-tour-btn-primary:hover {
+  background: var(--wor-blue-dark, #0369a1);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(2, 132, 199, 0.45);
+}
+
+/* ─── Responsive Adjustments ─── */
+@media (max-width: 1024px) {
+  .wor-facilities-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .wor-facilities-tour-card {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2.25rem 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .wor-facilities-page .wor-subpage-title {
+    font-size: 2rem;
+  }
+
+  .wor-facilities-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .wor-facilities-metrics-bar {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.65rem;
+  }
+
+  .wor-tour-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .wor-tour-btn-outline,
+  .wor-tour-btn-primary {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .wor-modal-footer {
+    flex-direction: column-reverse;
+  }
+
+  .wor-modal-back-btn,
+  .wor-modal-book-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

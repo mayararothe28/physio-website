@@ -121,28 +121,28 @@ const PATIENT_REVIEWS = [
 // Clinical Gallery Showcase (World of Rehab video/photo gallery style)
 const CLINIC_FACILITIES = [
   {
-    id: "suite-1",
+    id: "spinal-decompression",
     title: "Motorized Spinal Decompression Lab",
     subtitle: "Computer-calibrated disc distraction technology",
     image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=700&q=80",
     badge: "Spine Care",
   },
   {
-    id: "suite-2",
+    id: "consultation-suites",
     title: "Private Sanitized Consultation Suites",
     subtitle: "Dedicated 1-on-1 therapist assessment rooms",
     image: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=700&q=80",
     badge: "1-on-1 Care",
   },
   {
-    id: "suite-3",
+    id: "laser-electrotherapy",
     title: "Class-IV Laser & Electrotherapy Bay",
     subtitle: "Deep cellular healing and acute pain relief",
     image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=700&q=80",
     badge: "Advanced Modalities",
   },
   {
-    id: "suite-4",
+    id: "rehab-gym",
     title: "Active Functional Rehabilitation Gym",
     subtitle: "Kinetic chain alignment and athletic retraining",
     image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=700&q=80",
@@ -585,9 +585,12 @@ export default function HomePage() {
                   <h4>{facility.title}</h4>
                   <p>{facility.subtitle}</p>
                   <div className="wor-gallery-action">
-                    <Link to="/about" className="wor-btn-gallery-details">
+                    <Link to={`/facilities?facility=${facility.id}`} className="wor-btn-gallery-details">
                       <span>View Details</span>
                       <ChevronRight size={14} />
+                    </Link>
+                    <Link to={`/appointment?facility=${facility.id}`} className="wor-btn-gallery-book">
+                      <span>Book Appointment</span>
                     </Link>
                   </div>
                 </div>
@@ -596,8 +599,8 @@ export default function HomePage() {
           </div>
 
           <div className="wor-gallery-footer-action">
-            <Link to="/about" className="wor-btn-gallery-visit">
-              <span>View Details</span>
+            <Link to="/facilities" className="wor-btn-gallery-visit">
+              <span>View All Clinic Facilities</span>
               <ArrowRight size={16} />
             </Link>
           </div>
