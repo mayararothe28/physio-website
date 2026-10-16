@@ -481,21 +481,6 @@
   border-top: 1px solid var(--wor-border);
 }
 
-.wor-drawer-book-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
-  color: #ffffff;
-  font-size: 0.95rem;
-  font-weight: 700;
-  padding: 0.85rem;
-  border-radius: 8px;
-  text-decoration: none;
-  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
-}
-
 .wor-drawer-call-btn {
   display: flex;
   align-items: center;

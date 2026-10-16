@@ -255,17 +255,8 @@ export default function Navbar() {
                 )}
               </nav>
 
-              {/* Prominent Book Appointment Button in Mobile Drawer */}
+              {/* Mobile contact actions */}
               <div className="wor-drawer-actions">
-                <Link
-                  to="/appointment"
-                  className="wor-drawer-book-btn"
-                  onClick={closeMenu}
-                >
-                  <Calendar size={17} />
-                  <span>Book Appointment</span>
-                </Link>
-
                 <a
                   href="tel:+919145875248"
                   className="wor-drawer-call-btn"
