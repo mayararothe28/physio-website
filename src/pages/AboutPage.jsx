@@ -2,10 +2,7 @@ import {
   ShieldCheck,
   Award,
   CheckCircle2,
-  Building2,
   HeartPulse,
-  Sparkles,
-  Accessibility,
 } from "lucide-react";
 import "./AboutPage.css";
 
@@ -153,64 +150,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ─── 5. CLINIC INFRASTRUCTURE & AMENITIES ─── */}
-      <section className="wor-facilities-section">
-        <div className="wor-container">
-          <div className="wor-section-header-center">
-            <div className="wor-section-tag-line center-tag">
-              <span className="wor-divider-line"></span>
-              <span className="wor-section-kicker">PATIENT COMFORT & SAFETY</span>
-              <span className="wor-divider-line"></span>
-            </div>
-            <h2 className="wor-section-title">Modern Clinic Infrastructure in Baner, Pune</h2>
-            <p className="wor-section-subtitle">
-              Designed to clinical hospital standards with dedicated amenities for maximum privacy, comfort, and accessibility.
-            </p>
-          </div>
-
-          <div className="wor-facilities-grid">
-            <div className="wor-facility-card">
-              <div className="wor-facility-icon">
-                <Building2 size={24} />
-              </div>
-              <div>
-                <h4>Private Treatment Suites</h4>
-                <p>Individual private cabins ensure dignity, comfort, and quiet during every manual therapy and laser session.</p>
-              </div>
-            </div>
-
-            <div className="wor-facility-card">
-              <div className="wor-facility-icon">
-                <Sparkles size={24} />
-              </div>
-              <div>
-                <h4>Computerized Decompression Lab</h4>
-                <p>European motorized traction units gently open disc spaces for lasting neck and lower back relief.</p>
-              </div>
-            </div>
-
-            <div className="wor-facility-card">
-              <div className="wor-facility-icon">
-                <ShieldCheck size={24} />
-              </div>
-              <div>
-                <h4>Hospital-Grade Sanitization</h4>
-                <p>UV sterilized cabins, single-use medical consumables, and daily sanitized linens ensure 100% hygiene.</p>
-              </div>
-            </div>
-
-            <div className="wor-facility-card">
-              <div className="wor-facility-icon">
-                <Accessibility size={24} />
-              </div>
-              <div>
-                <h4>Wheelchair & Elevator Access</h4>
-                <p>Level ramps, spacious elevators, and dedicated assistance for elderly or severely pained patients.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
     </main>
   );
 }

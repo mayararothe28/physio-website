@@ -212,61 +212,6 @@
   margin: 0;
 }
 
-/* ─── 5. CLINIC INFRASTRUCTURE & AMENITIES ─── */
-.wor-facilities-section {
-  padding: 5rem 0;
-  background-color: var(--wor-bg-light, #f8fafc);
-  border-top: 1px solid var(--wor-border, #e2e8f0);
-}
-
-.wor-facilities-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.75rem;
-}
-
-.wor-facility-card {
-  background-color: #ffffff;
-  border: 1px solid var(--wor-border, #e2e8f0);
-  border-radius: var(--wor-radius-md, 10px);
-  padding: 1.75rem;
-  display: flex;
-  align-items: flex-start;
-  gap: 1.25rem;
-  box-shadow: 0 2px 8px rgba(15, 43, 72, 0.03);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.wor-facility-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(15, 43, 72, 0.07);
-}
-
-.wor-facility-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 10px;
-  background-color: rgba(2, 132, 199, 0.1);
-  color: var(--wor-blue, #0284c7);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.wor-facility-card h4 {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--wor-navy, #0f2b48);
-  margin: 0 0 0.4rem 0;
-}
-
-.wor-facility-card p {
-  font-size: 0.875rem;
-  color: var(--wor-text-muted, #64748b);
-  line-height: 1.55;
-  margin: 0;
-}
 
 /* ─── RESPONSIVE BREAKPOINTS ─── */
 @media (max-width: 1024px) {
@@ -302,8 +247,4 @@
     gap: 1rem;
   }
 
-  .wor-facilities-grid {
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
-  }
 }
