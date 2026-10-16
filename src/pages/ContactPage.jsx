@@ -1,8 +1,18 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import {
+  MapPin,
+  Clock,
+  Phone,
+  Mail,
   MessageCircle,
+  ShieldCheck,
   CheckCircle2,
   ArrowRight,
+  ExternalLink,
+  Building2,
+  Accessibility,
+  Car,
 } from "lucide-react";
 import "./ContactPage.css";
 
@@ -78,6 +88,14 @@ export default function ContactPage() {
       {/* ─── 1. SUBPAGE HERO BANNER ─── */}
       <section className="subpage-hero-banner">
         <div className="subpage-hero-content">
+          <div className="subpage-breadcrumb">
+            <Link to="/">Home</Link>
+            <span className="breadcrumb-separator">/</span>
+            <span className="breadcrumb-current">Contact Us</span>
+          </div>
+          <span className="subpage-kicker">
+            <MapPin size={14} /> PATIENT DESK & CLINIC DIRECTIONS
+          </span>
           <h1 className="subpage-title">
             Get in Touch With Our
             <br />
@@ -85,16 +103,113 @@ export default function ContactPage() {
           </h1>
           <p className="subpage-lead">
             Have questions regarding your joint pain, rehabilitation protocols, or insurance assistance?
-            Submit an inquiry below for a prompt specialist callback.
+            Visit our center in Baner, Pune or submit an inquiry for a prompt callback.
           </p>
         </div>
       </section>
 
-      {/* ─── 2. MAIN CONTACT SECTION (Centered Form Only) ─── */}
+      {/* ─── 2. MAIN CONTACT SECTION ─── */}
       <section className="contact-main-section section-padding">
         <div className="contact-container">
-          <div className="contact-form-centered">
-            <div className="contact-form-card">
+          <div className="contact-two-col-grid">
+            {/* Left Column: Clinic Contact Details */}
+            <div className="contact-info-col">
+              <div className="contact-card-block">
+                <div className="contact-card-icon-wrap">
+                  <MapPin size={22} />
+                </div>
+                <div className="contact-card-body">
+                  <h3>Clinic Location</h3>
+                  <p className="contact-card-text">
+                    Suite 302, Health & Wellness Plaza, Medical Center Road, Baner, Pune – 411045
+                  </p>
+                  <p className="contact-card-subtext">Landmark: Opposite Medical Square, Above Wellness Care</p>
+                  <a
+                    href="https://maps.google.com"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn-card-maps-link"
+                  >
+                    <span>Open in Google Maps</span>
+                    <ExternalLink size={13} />
+                  </a>
+                </div>
+              </div>
+
+              <div className="contact-card-block">
+                <div className="contact-card-icon-wrap">
+                  <Clock size={22} />
+                </div>
+                <div className="contact-card-body">
+                  <h3>Consultation Hours</h3>
+                  <p className="contact-card-text">
+                    <strong>Monday – Saturday:</strong> 8:00 AM – 8:00 PM
+                  </p>
+                  <p className="contact-card-text">
+                    <strong>Sunday:</strong> 9:00 AM – 1:00 PM (By Prior Appointment)
+                  </p>
+                  <span className="contact-card-subtext">Zero waiting time with pre-scheduled visits</span>
+                </div>
+              </div>
+
+              <div className="contact-card-block">
+                <div className="contact-card-icon-wrap">
+                  <Phone size={22} />
+                </div>
+                <div className="contact-card-body">
+                  <h3>Direct Phone & Helpline</h3>
+                  <p className="contact-card-phone">
+                    <a href="tel:+919145875248">+91 91458 75248</a>
+                  </p>
+                  <p className="contact-card-email">
+                    <a href="mailto:care@revitaortho.com">care@revitaortho.com</a>
+                  </p>
+                  <span className="contact-card-subtext">Immediate clinical triage & appointment support</span>
+                </div>
+              </div>
+
+              {/* WhatsApp Card */}
+              <div className="contact-card-block contact-card-whatsapp">
+                <div className="contact-card-icon-wrap whatsapp-icon-wrap">
+                  <MessageCircle size={22} />
+                </div>
+                <div className="contact-card-body">
+                  <h3>WhatsApp Medical Triage</h3>
+                  <p className="contact-card-text">
+                    Share your MRI/X-ray reports or consult with our care coordinator via WhatsApp.
+                  </p>
+                  <a
+                    href="https://wa.me/919145875248?text=Hello%20RevitaOrtho,%20I%20have%20an%20inquiry%20regarding%20physiotherapy."
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn-whatsapp-chat"
+                  >
+                    <MessageCircle size={15} />
+                    <span>Chat on WhatsApp: +91 91458 75248</span>
+                  </a>
+                </div>
+              </div>
+
+              {/* Amenities Strip */}
+              <div className="contact-amenities-strip">
+                <div className="amenity-item">
+                  <Car size={16} className="text-azure" />
+                  <span>Dedicated Patient Parking</span>
+                </div>
+                <div className="amenity-item">
+                  <Accessibility size={16} className="text-azure" />
+                  <span>Wheelchair Ramp & Lift</span>
+                </div>
+                <div className="amenity-item">
+                  <ShieldCheck size={16} className="text-azure" />
+                  <span>Cashless Insurance Assistance</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column: Inquiry & Booking Form */}
+            <div className="contact-form-col">
+              <div className="contact-form-card">
                 {submitted ? (
                   <div className="contact-success-state">
                     <div className="success-icon-wrap">
@@ -247,6 +362,7 @@ export default function ContactPage() {
               </div>
             </div>
           </div>
+        </div>
       </section>
     </main>
   );

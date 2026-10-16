@@ -114,12 +114,6 @@
   align-items: start;
 }
 
-.contact-form-centered {
-  max-width: 820px;
-  margin: 0 auto;
-  width: 100%;
-}
-
 /* ─── LEFT COLUMN: INFO CARDS ─── */
 .contact-info-col {
   display: flex;
