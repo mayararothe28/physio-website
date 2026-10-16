@@ -287,30 +287,6 @@ export default function FacilitiesPage() {
         </div>
       )}
 
-      {/* ─── 5. CLINIC TOUR & CONSULTATION CALL-OUT ─── */}
-      <section className="wor-facilities-tour-section">
-        <div className="wor-container">
-          <div className="wor-facilities-tour-card">
-            <div className="wor-tour-content">
-              <span className="wor-tour-tag">VISIT OUR CLINIC</span>
-              <h3>Want a Walk-Through Tour of Our Facilities?</h3>
-              <p>
-                We welcome prospective patients and families to inspect our treatment suites, spinal decompression lab, and sanitization standards prior to starting rehabilitation in Baner, Pune.
-              </p>
-            </div>
-            <div className="wor-tour-actions">
-              <a href="tel:+919876543210" className="wor-tour-btn-outline">
-                <Phone size={16} />
-                <span>Call Coordinator</span>
-              </a>
-              <Link to="/appointment" className="wor-tour-btn-primary">
-                <Calendar size={16} />
-                <span>Schedule Consultation</span>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
     </main>
   );
 }
