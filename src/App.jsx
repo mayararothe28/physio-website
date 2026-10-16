@@ -23,24 +23,26 @@ import FacilityDetailPage from "./pages/FacilityDetailPage";
 import "./App.css";
 
 function ScrollAndAnimationHandler() {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
 
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    if (!hash) {
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    }
 
     let observer;
     const timer = setTimeout(() => {
+      if (hash) {
+        const target = document.getElementById(decodeURIComponent(hash.slice(1)));
+        target?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
       const elements = document.querySelectorAll(
-        "main section, main article, main [class*='-card'], main .standard-box, .scroll-reveal"
+        "main article, main [class*='-card'], main .standard-box, .scroll-reveal"
       );
       if (!elements.length) return;
 
-      elements.forEach((element) => {
-        element.classList.add("scroll-reveal");
-        if (element.matches("main article, main [class*='-card'], main .standard-box")) {
-          element.classList.add("reveal-scale");
-        }
-      });
+      elements.forEach((element) => element.classList.add("scroll-reveal"));
 
       if (!("IntersectionObserver" in window)) {
         elements.forEach((element) => element.classList.add("is-visible"));
@@ -69,7 +71,7 @@ function ScrollAndAnimationHandler() {
       clearTimeout(timer);
       observer?.disconnect();
     };
-  }, [pathname]);
+  }, [pathname, hash]);
 
   return null;
 }

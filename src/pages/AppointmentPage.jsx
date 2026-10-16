@@ -255,7 +255,7 @@ export default function AppointmentPage() {
       </section>
 
       {/* ─── 2. BOOKING PORTAL & SIDEBAR ─── */}
-      <section className="appointment-portal-section section-padding">
+      <section id="booking-form" className="appointment-portal-section section-padding">
         <div className="appointment-container">
           <div className="appointment-layout-grid">
             {/* Form Column */}

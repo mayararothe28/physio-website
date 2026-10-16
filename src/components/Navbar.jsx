@@ -171,9 +171,9 @@ export default function Navbar() {
 
           {/* Mobile Right Controls: Compact Appointment Button + Hamburger Menu */}
           <div className="wor-mobile-controls">
-            <Link to="/appointment" className="wor-mobile-book-btn" onClick={closeMenu}>
+            <Link to="/appointment#booking-form" className="wor-mobile-book-btn" onClick={closeMenu}>
               <Calendar size={14} />
-              <span>Book</span>
+              <span>Book Appointment</span>
             </Link>
             <button
               type="button"

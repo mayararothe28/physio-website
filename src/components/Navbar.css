@@ -552,11 +552,16 @@
 
 @media (max-width: 576px) {
   .wor-nav-container {
-    padding: 0 1rem;
+    padding: 0 0.75rem;
   }
 
   .wor-header-inner {
     height: 64px;
+    gap: 0.4rem;
+  }
+
+  .wor-brand-logo {
+    gap: 0.4rem;
   }
 
   .wor-logo-cross {
@@ -567,7 +572,22 @@
   }
 
   .wor-logo-text {
-    font-size: 1.25rem;
+    font-size: 1.1rem;
+  }
+
+  .wor-mobile-controls {
+    gap: 0.4rem;
+  }
+
+  .wor-mobile-book-btn {
+    gap: 0.25rem;
+    padding: 0.45rem 0.55rem;
+    font-size: 0.7rem;
+    white-space: nowrap;
+  }
+
+  .wor-hamburger-btn {
+    padding: 0.3rem;
   }
 
   .wor-topbar-inner {
@@ -580,5 +600,21 @@
   .wor-topbar-phone {
     font-size: 0.75rem;
     padding: 0.15rem 0.5rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .wor-logo-text {
+    font-size: 1rem;
+  }
+
+  .wor-logo-cross {
+    width: 29px;
+    height: 29px;
+  }
+
+  .wor-mobile-book-btn {
+    padding: 0.4rem 0.45rem;
+    font-size: 0.66rem;
   }
 }

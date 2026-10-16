@@ -86,6 +86,7 @@
 /* ─── 2. BOOKING FORM SECTION ─── */
 .appointment-portal-section {
   background-color: #f8fafc;
+  scroll-margin-top: 84px;
 }
 
 .appointment-layout-grid {
