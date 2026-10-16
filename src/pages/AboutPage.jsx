@@ -23,14 +23,6 @@ export default function AboutPage() {
       {/* ─── 1. STANDARDIZED HERO BANNER ─── */}
       <section className="subpage-hero-banner">
         <div className="subpage-hero-content">
-          <div className="subpage-breadcrumb">
-            <Link to="/">Home</Link>
-            <span className="breadcrumb-separator">/</span>
-            <span className="breadcrumb-current">About Us</span>
-          </div>
-          <span className="subpage-kicker">
-            <ShieldCheck size={14} /> ABOUT REVITAORTHO CLINIC
-          </span>
           <h1 className="subpage-title">
             Dedicated to Restoring Movement,
             <br />
