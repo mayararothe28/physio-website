@@ -15,11 +15,11 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
 
-  // Exactly the 4 page links requested by user + prominent Book Appointment button
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
     { name: "Services", href: "/services" },
+    { name: "Clinic Facility", href: "/facilities" },
     { name: "Contact", href: "/contact" },
   ];
 

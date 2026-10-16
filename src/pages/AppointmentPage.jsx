@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useSearchParams, Link } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import {
   Calendar,
   ShieldCheck,
@@ -9,7 +9,6 @@ import {
   MessageCircle,
   AlertCircle,
   ArrowRight,
-  Phone,
 } from "lucide-react";
 import "./AppointmentPage.css";
 
@@ -171,14 +170,6 @@ export default function AppointmentPage() {
       {/* ─── 1. HERO ─── */}
       <section className="subpage-hero-banner">
         <div className="subpage-hero-content">
-          <div className="subpage-breadcrumb">
-            <Link to="/">Home</Link>
-            <span className="breadcrumb-separator">/</span>
-            <span className="breadcrumb-current">Book Appointment</span>
-          </div>
-          <span className="subpage-kicker">
-            <Calendar size={14} /> ONLINE CLINICAL BOOKING DESK
-          </span>
           <h1 className="subpage-title">
             Schedule Your Comprehensive
             <br />
@@ -190,12 +181,11 @@ export default function AppointmentPage() {
         </div>
       </section>
 
-      {/* ─── 2. BOOKING PORTAL & SIDEBAR ─── */}
+      {/* ─── 2. BOOKING FORM (centered, no sidebar) ─── */}
       <section className="appointment-portal-section section-padding">
         <div className="appointment-container">
-          <div className="appointment-layout-grid">
-            {/* Form Column */}
-            <div className="booking-card-wrapper scroll-reveal">
+          <div className="appointment-form-centered">
+
               {isSubmitted ? (
                 <div className="booking-success-card">
                   <div className="success-icon-badge">
@@ -461,63 +451,7 @@ export default function AppointmentPage() {
                   </p>
                 </form>
               )}
-            </div>
 
-            {/* Sidebar Column: What to Expect & Helplines */}
-            <aside className="booking-sidebar">
-              <div className="sidebar-info-card">
-                <span className="sidebar-card-kicker">First Consultation</span>
-                <h3>What to Expect</h3>
-                <ul className="sidebar-checklist">
-                  <li>
-                    <CheckCircle2 size={16} className="text-emerald" />
-                    <span><strong>45-Minute 1-on-1 Assessment:</strong> Comprehensive examination by certified MPT specialists.</span>
-                  </li>
-                  <li>
-                    <CheckCircle2 size={16} className="text-emerald" />
-                    <span><strong>Scans Review in Plain English:</strong> We explain your MRI/X-ray reports clearly without confusing jargon.</span>
-                  </li>
-                  <li>
-                    <CheckCircle2 size={16} className="text-emerald" />
-                    <span><strong>Milestone Recovery Roadmap:</strong> Clear timeline of expected sessions and non-surgical outcomes.</span>
-                  </li>
-                  <li>
-                    <CheckCircle2 size={16} className="text-emerald" />
-                    <span><strong>Zero Waiting Time Policy:</strong> Pre-booked slots begin the moment you walk through our doors.</span>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="sidebar-info-card">
-                <span className="sidebar-card-kicker">Checklist</span>
-                <h3>What to Bring on Day 1</h3>
-                <ul className="sidebar-checklist">
-                  <li>
-                    <CheckCircle2 size={16} className="text-emerald" />
-                    <span>Recent MRI, X-ray scans, or doctor prescriptions if you have them.</span>
-                  </li>
-                  <li>
-                    <CheckCircle2 size={16} className="text-emerald" />
-                    <span>Comfortable clothing allowing unrestricted joint movement.</span>
-                  </li>
-                  <li>
-                    <CheckCircle2 size={16} className="text-emerald" />
-                    <span>Health insurance card for cashless or reimbursement assistance.</span>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="sidebar-urgent-card">
-                <Phone size={24} className="urgent-phone-icon" />
-                <div>
-                  <strong>Need Immediate Assistance?</strong>
-                  <p>Our care coordinator is available for instant triage and emergency scheduling.</p>
-                  <a href="tel:+919145875248" className="urgent-tel-link">
-                    +91 91458 75248
-                  </a>
-                </div>
-              </div>
-            </aside>
           </div>
         </div>
       </section>

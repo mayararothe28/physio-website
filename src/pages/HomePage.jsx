@@ -585,7 +585,7 @@ export default function HomePage() {
                   <h4>{facility.title}</h4>
                   <p>{facility.subtitle}</p>
                   <div className="wor-gallery-action">
-                    <Link to="/about" className="wor-btn-gallery-details">
+                    <Link to={`/facilities?id=${facility.id}`} className="wor-btn-gallery-details">
                       <span>View Details</span>
                       <ChevronRight size={14} />
                     </Link>
@@ -596,8 +596,8 @@ export default function HomePage() {
           </div>
 
           <div className="wor-gallery-footer-action">
-            <Link to="/about" className="wor-btn-gallery-visit">
-              <span>View Details</span>
+            <Link to="/facilities" className="wor-btn-gallery-visit">
+              <span>View All Clinic Facilities & Treatment Steps</span>
               <ArrowRight size={16} />
             </Link>
           </div>

@@ -88,14 +88,9 @@
   background-color: #f8fafc;
 }
 
-.appointment-layout-grid {
-  display: grid;
-  grid-template-columns: 1.25fr 0.85fr;
-  gap: 36px;
-  align-items: start;
-}
-
-.booking-card-wrapper {
+.appointment-form-centered {
+  max-width: 820px;
+  margin: 0 auto;
   width: 100%;
 }
 
