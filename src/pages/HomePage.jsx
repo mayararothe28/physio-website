@@ -575,6 +575,12 @@ export default function HomePage() {
                 <div className="wor-gallery-content">
                   <h4>{facility.title}</h4>
                   <p>{facility.subtitle}</p>
+                  <div className="wor-gallery-action">
+                    <Link to="/about" className="wor-btn-gallery-details">
+                      <span>View Details</span>
+                      <ChevronRight size={14} />
+                    </Link>
+                  </div>
                 </div>
               </div>
             ))}
@@ -582,7 +588,7 @@ export default function HomePage() {
 
           <div className="wor-gallery-footer-action">
             <Link to="/about" className="wor-btn-gallery-visit">
-              <span>Explore Full Clinic Facilities</span>
+              <span>View Details</span>
               <ArrowRight size={16} />
             </Link>
           </div>
