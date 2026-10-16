@@ -4,16 +4,12 @@ import {
   CheckCircle2,
   ShieldCheck,
   Check,
-  Calendar,
-  Building2,
-  Home,
   MessageCircle,
-  AlertCircle,
   ArrowRight,
 } from "lucide-react";
 import { SERVICE_DETAILS } from "../data/serviceDetailsData";
 import "./ServiceDetailPage.css";
-import "./AppointmentPage.css";
+import "./ContactPage.css";
 
 const SERVICE_IMAGES = {
   "back-pain": "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&q=80",
@@ -66,7 +62,7 @@ const ALIAS_MAP = {
   "home-visit": "back-pain",
 };
 
-const COND_MAP = {
+const CONCERN_MAP = {
   "back-pain": "spine",
   "slip-disc": "spine",
   "neck-pain": "neck",
@@ -76,7 +72,7 @@ const COND_MAP = {
   "sports-injury": "sports",
   "frozen-shoulder": "shoulder",
   "post-operative": "postop",
-  "stroke-neuro": "stroke",
+  "stroke-neuro": "neuro",
 };
 
 export default function ServiceDetailPage() {
@@ -90,28 +86,21 @@ export default function ServiceDetailPage() {
     name: "",
     phone: "",
     email: "",
-    age: "",
-    condition: COND_MAP[resolvedId] || "spine",
+    concern: CONCERN_MAP[resolvedId] || "spine",
     careMode: "clinic",
-    doctor: "any",
-    date: "",
-    timeSlot: "evening",
-    notes: "",
+    message: "",
   });
-
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [bookingRef, setBookingRef] = useState("");
+  const [submitted, setSubmitted] = useState(false);
   const [phoneError, setPhoneError] = useState("");
   const [emailError, setEmailError] = useState("");
-  const [dateError, setDateError] = useState("");
-  const [ageError, setAgeError] = useState("");
+  const [inquiryRef, setInquiryRef] = useState("");
 
-  // Scroll to top and sync condition on service change
+  // Scroll to top and sync concern on service change
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
     setFormData((prev) => ({
       ...prev,
-      condition: COND_MAP[resolvedId] || "spine",
+      concern: CONCERN_MAP[resolvedId] || "spine",
     }));
   }, [resolvedId]);
 
@@ -133,28 +122,6 @@ export default function ServiceDetailPage() {
       }
       return;
     }
-    if (name === "date") {
-      if (value) {
-        const parts = value.split("-");
-        if (parts[0] && parts[0].length > 4) {
-          return;
-        }
-      }
-      setFormData((prev) => ({ ...prev, date: value }));
-      setDateError("");
-      return;
-    }
-    if (name === "age") {
-      const cleanDigits = value.replace(/\D/g, "").slice(0, 3);
-      if (cleanDigits !== "" && Number(cleanDigits) > 100) {
-        setAgeError("Age cannot be more than 100.");
-        setFormData((prev) => ({ ...prev, age: "100" }));
-      } else {
-        setAgeError("");
-        setFormData((prev) => ({ ...prev, age: cleanDigits }));
-      }
-      return;
-    }
     setFormData((prev) => ({ ...prev, [name]: value }));
   }
 
@@ -166,53 +133,27 @@ export default function ServiceDetailPage() {
     }
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (formData.email && !emailRegex.test(formData.email)) {
-      setEmailError("Please enter a valid email address (e.g. name@gmail.com).");
+      setEmailError("Please enter a valid email address.");
       return;
-    }
-    if (!formData.date) {
-      setDateError("Please select a valid appointment date.");
-      return;
-    }
-    const parts = formData.date.split("-");
-    if (!parts[0] || parts[0].length !== 4 || Number(parts[0]) < 2024 || Number(parts[0]) > 2099) {
-      setDateError("Please enter a valid date with a 4-digit year (e.g. 2026).");
-      return;
-    }
-    if (formData.age) {
-      const numAge = Number(formData.age);
-      if (numAge < 1 || numAge > 100) {
-        setAgeError("Age must be between 1 and 100.");
-        return;
-      }
     }
     setPhoneError("");
     setEmailError("");
-    setDateError("");
-    setAgeError("");
-    const randomRef = "RO-" + Math.floor(10000 + Math.random() * 90000);
-    setBookingRef(randomRef);
-    setIsSubmitted(true);
+    setInquiryRef(`REV-${Math.floor(100000 + Math.random() * 900000)}`);
+    setSubmitted(true);
   }
 
-  function handleResetAppointment() {
+  function handleResetContact() {
     setFormData({
       name: "",
       phone: "",
       email: "",
-      age: "",
-      condition: COND_MAP[resolvedId] || "spine",
+      concern: CONCERN_MAP[resolvedId] || "spine",
       careMode: "clinic",
-      doctor: "any",
-      date: "",
-      timeSlot: "evening",
-      notes: "",
+      message: "",
     });
     setPhoneError("");
     setEmailError("");
-    setDateError("");
-    setAgeError("");
-    setIsSubmitted(false);
-    setBookingRef("");
+    setSubmitted(false);
   }
 
   const serviceImage = SERVICE_IMAGES[detail.id] || "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=80";
@@ -395,275 +336,161 @@ export default function ServiceDetailPage() {
         </section>
       )}
 
-      {/* ─── 5. BOOK APPOINTMENT FORM (Replaces Case Study) ─── */}
-      <section className="service-booking-section" id="book-consultation">
+      {/* ─── 5. CONTACT & INQUIRY FORM (Replaces Book Appointment Form) ─── */}
+      <section className="service-contact-section" id="contact-consultation">
         <div className="detail-container">
-          <div className="service-booking-wrapper">
-            {isSubmitted ? (
-              <div className="booking-success-card">
-                <div className="success-icon-badge">
-                  <CheckCircle2 size={44} />
-                </div>
-                <h2>Appointment Request Confirmed!</h2>
-                <p className="success-lead">
-                  Thank you, <strong>{formData.name}</strong>. Your appointment request has been logged in our clinical triage registry.
-                </p>
-
-                <div className="booking-summary-box">
-                  <div className="summary-row">
-                    <span>Booking Reference:</span>
-                    <strong>{bookingRef}</strong>
+          <div className="service-contact-wrapper">
+            <div className="contact-form-card">
+              {submitted ? (
+                <div className="contact-success-state">
+                  <div className="success-icon-wrap">
+                    <CheckCircle2 size={44} className="text-emerald" />
                   </div>
-                  <div className="summary-row">
-                    <span>Care Mode:</span>
-                    <strong>{formData.careMode === "clinic" ? "In-Clinic Consultation" : "Doorstep Home Visit"}</strong>
-                  </div>
-                  <div className="summary-row">
-                    <span>Condition / Area:</span>
-                    <strong>{formData.condition.toUpperCase()}</strong>
-                  </div>
-                  <div className="summary-row">
-                    <span>Preferred Slot:</span>
-                    <strong>{formData.timeSlot.toUpperCase()} ({formData.date || "Next Available"})</strong>
-                  </div>
-                  <div className="summary-row">
-                    <span>Assigned Doctor:</span>
-                    <strong>{formData.doctor === "any" ? "First Available Specialist" : formData.doctor}</strong>
-                  </div>
-                </div>
-
-                <div className="success-instruction-box">
-                  <AlertCircle size={18} className="text-azure" />
-                  <p>
-                    Our patient care coordinator will call you at <strong>+91 {formData.phone}</strong> within 15 minutes to confirm your exact appointment timing and discuss report preparation.
+                  <h3>Clinical Inquiry Received!</h3>
+                  <p className="success-ref-code">
+                    Reference Number: <strong>{inquiryRef}</strong>
                   </p>
-                </div>
+                  <p className="success-desc">
+                    Thank you, <strong>{formData.name || "Patient"}</strong>. Our clinical coordination desk has received your request regarding <strong>{detail.title}</strong>. A senior physiotherapist will call you back at <strong>+91 {formData.phone}</strong> within 15–30 minutes to discuss your symptoms and next steps.
+                  </p>
 
-                <div className="success-actions">
-                  <a
-                    href={`https://wa.me/919145875248?text=Hello%20RevitaOrtho,%20my%20booking%20reference%20is%20${bookingRef}.`}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="btn-success-whatsapp"
-                  >
-                    <MessageCircle size={16} />
-                    <span>Confirm Faster via WhatsApp</span>
-                  </a>
-                  <button
-                    type="button"
-                    onClick={handleResetAppointment}
-                    className="btn-success-reset"
-                  >
-                    Book Another Appointment
-                  </button>
-                </div>
-              </div>
-            ) : (
-              <form className="booking-form-card" onSubmit={handleSubmit}>
-                <div className="form-card-header">
-                  <h3>Schedule Your Consultation for {detail.title}</h3>
-                  <p>Book your 45-minute comprehensive biomechanical evaluation with our specialists</p>
-                </div>
-
-                {/* Section 1: Care Mode */}
-                <div className="form-section-group">
-                  <label className="section-label">1. Select Consultation Mode</label>
-                  <div className="mode-toggle-grid">
-                    <label
-                      className={`mode-option-card ${formData.careMode === "clinic" ? "selected" : ""}`}
+                  <div className="success-actions-row">
+                    <a
+                      href={`https://wa.me/919145875248?text=Hello%20RevitaOrtho,%20I%20just%20submitted%20an%20inquiry%20regarding%20${encodeURIComponent(detail.title)}%20(Ref:%20${inquiryRef}).`}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="btn-whatsapp-confirm"
                     >
-                      <input
-                        type="radio"
-                        name="careMode"
-                        value="clinic"
-                        checked={formData.careMode === "clinic"}
-                        onChange={handleChange}
-                      />
-                      <Building2 size={20} className="text-azure" />
-                      <div>
-                        <strong>In-Clinic Visit</strong>
-                        <span>Modern Private Treatment Suites</span>
-                      </div>
-                    </label>
-
-                    <label
-                      className={`mode-option-card ${formData.careMode === "home" ? "selected" : ""}`}
+                      <MessageCircle size={16} />
+                      <span>Confirm via WhatsApp</span>
+                    </a>
+                    <button
+                      type="button"
+                      onClick={handleResetContact}
+                      className="btn-reset-form"
                     >
-                      <input
-                        type="radio"
-                        name="careMode"
-                        value="home"
-                        checked={formData.careMode === "home"}
-                        onChange={handleChange}
-                      />
-                      <Home size={20} className="text-azure" />
-                      <div>
-                        <strong>Doorstep Home Visit</strong>
-                        <span>Therapist visits your residence</span>
-                      </div>
-                    </label>
+                      Send Another Inquiry
+                    </button>
                   </div>
                 </div>
-
-                {/* Section 2: Condition / Pain Area */}
-                <div className="form-section-group">
-                  <label htmlFor="condition" className="section-label">
-                    2. Primary Condition / Pain Area
-                  </label>
-                  <select
-                    id="condition"
-                    name="condition"
-                    value={formData.condition}
-                    onChange={handleChange}
-                    required
-                  >
-                    <option value="spine">Lower Back Pain / L4-L5 Slip Disc / Sciatica</option>
-                    <option value="knee">Knee Pain / Osteoarthritis / Cartilage Stiffness</option>
-                    <option value="neck">Neck Pain / Cervical Spondylosis / Tech Neck</option>
-                    <option value="shoulder">Frozen Shoulder / Rotator Cuff Pinch / Tendonitis</option>
-                    <option value="sports">Sports Injury / ACL Sprain / Muscle Tear</option>
-                    <option value="postop">Post-Operative Surgery Rehabilitation (TKR/THR)</option>
-                    <option value="stroke">Neurological Rehab / Stroke / Balance Restoration</option>
-                    <option value="other">General Joint Pain / Second Opinion</option>
-                  </select>
-                </div>
-
-                {/* Section 3: Specialist & Timing */}
-                <div className="form-grid-2">
-                  <div className="form-field">
-                    <label htmlFor="doctor">Preferred Doctor</label>
-                    <select
-                      id="doctor"
-                      name="doctor"
-                      value={formData.doctor}
-                      onChange={handleChange}
-                    >
-                      <option value="any">First Available Senior Specialist</option>
-                      <option value="Dr. Sumit Gupta, PT">Dr. Sumit Gupta (Chief Ortho &amp; Spine)</option>
-                      <option value="Dr. Sneha Kulkarni, PT">Dr. Sneha Kulkarni (Sports &amp; Knee)</option>
-                      <option value="Dr. Vikram Patil, PT">Dr. Vikram Patil (Neuro &amp; Post-Op)</option>
-                      <option value="Dr. Ananya Deshmukh, PT">Dr. Ananya Deshmukh (Ergonomics &amp; Posture)</option>
-                    </select>
+              ) : (
+                <form onSubmit={handleSubmit} className="inquiry-form" noValidate>
+                  <div className="form-card-header">
+                    <h3>Contact Our Specialists for {detail.title}</h3>
+                    <p>Share your symptoms or MRI findings and our clinical care team will contact you promptly.</p>
                   </div>
 
-                  <div className="form-field">
-                    <label htmlFor="timeSlot">Preferred Time Slot</label>
-                    <select
-                      id="timeSlot"
-                      name="timeSlot"
-                      value={formData.timeSlot}
-                      onChange={handleChange}
-                    >
-                      <option value="morning">Morning (8:00 AM – 12:00 PM)</option>
-                      <option value="afternoon">Afternoon (12:00 PM – 4:00 PM)</option>
-                      <option value="evening">Evening (4:00 PM – 8:00 PM)</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div className="form-field">
-                  <label htmlFor="date">Preferred Date (4-digit Year) *</label>
-                  <input
-                    type="date"
-                    id="date"
-                    name="date"
-                    value={formData.date}
-                    onChange={handleChange}
-                    min={new Date().toISOString().split("T")[0]}
-                    max="2099-12-31"
-                    required
-                  />
-                  {dateError && <span className="field-error-msg">{dateError}</span>}
-                </div>
-
-                {/* Section 4: Patient Info */}
-                <div className="form-grid-2">
-                  <div className="form-field">
-                    <label htmlFor="name">Full Name *</label>
+                  <div className="form-input-group">
+                    <label htmlFor="c-name">Patient Full Name *</label>
                     <input
                       type="text"
-                      id="name"
+                      id="c-name"
                       name="name"
-                      placeholder="e.g. Rahul Sharma"
+                      placeholder="e.g. Ramesh Kulkarni"
                       value={formData.name}
                       onChange={handleChange}
                       required
+                      className="form-input"
                     />
                   </div>
 
-                  <div className="form-field">
-                    <label htmlFor="phone">Phone / WhatsApp Number (10 Digits) *</label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      placeholder="Enter 10-digit number (e.g. 9145875248)"
-                      value={formData.phone}
+                  <div className="form-two-col-row">
+                    <div className="form-input-group">
+                      <label htmlFor="c-phone">10-Digit Mobile Number *</label>
+                      <div className="phone-input-wrap">
+                        <span className="country-prefix">+91</span>
+                        <input
+                          type="tel"
+                          id="c-phone"
+                          name="phone"
+                          placeholder="9876543210"
+                          value={formData.phone}
+                          onChange={handleChange}
+                          maxLength={10}
+                          required
+                          className={`form-input ${phoneError ? "has-error" : ""}`}
+                        />
+                      </div>
+                      {phoneError && <span className="field-error-msg">{phoneError}</span>}
+                    </div>
+
+                    <div className="form-input-group">
+                      <label htmlFor="c-email">Email Address (Optional)</label>
+                      <input
+                        type="email"
+                        id="c-email"
+                        name="email"
+                        placeholder="e.g. name@gmail.com"
+                        value={formData.email}
+                        onChange={handleChange}
+                        className={`form-input ${emailError ? "has-error" : ""}`}
+                      />
+                      {emailError && <span className="field-error-msg">{emailError}</span>}
+                    </div>
+                  </div>
+
+                  <div className="form-two-col-row">
+                    <div className="form-input-group">
+                      <label htmlFor="c-concern">Primary Area of Concern</label>
+                      <select
+                        id="c-concern"
+                        name="concern"
+                        value={formData.concern}
+                        onChange={handleChange}
+                        className="form-input select-input"
+                      >
+                        <option value="spine">Lower Back / Slip Disc / Sciatica</option>
+                        <option value="neck">Neck Pain &amp; Cervical Spondylosis</option>
+                        <option value="knee">Knee Pain &amp; Osteoarthritis</option>
+                        <option value="sports">Sports Injury &amp; Ligament Sprain</option>
+                        <option value="shoulder">Frozen Shoulder &amp; Rotator Cuff</option>
+                        <option value="postop">Post-Surgical Joint Rehabilitation</option>
+                        <option value="neuro">Stroke &amp; Neuro Rehabilitation</option>
+                        <option value="other">General Physical Evaluation</option>
+                      </select>
+                    </div>
+
+                    <div className="form-input-group">
+                      <label htmlFor="c-caremode">Preferred Care Mode</label>
+                      <select
+                        id="c-caremode"
+                        name="careMode"
+                        value={formData.careMode}
+                        onChange={handleChange}
+                        className="form-input select-input"
+                      >
+                        <option value="clinic">In-Clinic Consultation</option>
+                        <option value="home">Home Visit Physiotherapy</option>
+                        <option value="video">Online Video Consultation</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div className="form-input-group">
+                    <label htmlFor="c-message">Describe Your Symptoms or Medical History *</label>
+                    <textarea
+                      id="c-message"
+                      name="message"
+                      rows="4"
+                      placeholder="Please mention how long you have had pain, if you have MRI/X-ray scans, or any previous treatments..."
+                      value={formData.message}
                       onChange={handleChange}
-                      maxLength={10}
-                      pattern="[0-9]{10}"
-                      inputMode="numeric"
                       required
-                    />
-                    {phoneError && <span className="field-error-msg">{phoneError}</span>}
-                  </div>
-                </div>
-
-                <div className="form-grid-2">
-                  <div className="form-field">
-                    <label htmlFor="email">Email Address (Gmail / Email) *</label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      placeholder="e.g. yourname@gmail.com"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                    />
-                    {emailError && <span className="field-error-msg">{emailError}</span>}
+                      className="form-input textarea-input"
+                    ></textarea>
                   </div>
 
-                  <div className="form-field">
-                    <label htmlFor="age">Patient Age (Up to 3 Digits, Max 100) *</label>
-                    <input
-                      type="number"
-                      id="age"
-                      name="age"
-                      min="1"
-                      max="100"
-                      placeholder="e.g. 42 (Max 100)"
-                      value={formData.age}
-                      onChange={handleChange}
-                      required
-                    />
-                    {ageError && <span className="field-error-msg">{ageError}</span>}
-                  </div>
-                </div>
+                  <button type="submit" className="btn-send-inquiry">
+                    <span>Submit Clinical Inquiry</span>
+                    <ArrowRight size={17} />
+                  </button>
 
-                <div className="form-field">
-                  <label htmlFor="notes">Briefly describe your symptoms / MRI findings (Optional)</label>
-                  <textarea
-                    id="notes"
-                    name="notes"
-                    rows="3"
-                    placeholder="e.g. Symptoms radiating to joints, pain duration, or previous treatments..."
-                    value={formData.notes}
-                    onChange={handleChange}
-                  ></textarea>
-                </div>
-
-                <button type="submit" className="btn-submit-appointment">
-                  <Calendar size={18} />
-                  <span>Confirm &amp; Schedule Evaluation</span>
-                  <ArrowRight size={17} />
-                </button>
-
-                <p className="form-disclaimer-text">
-                  <ShieldCheck size={14} className="text-azure" /> Your personal medical data is strictly confidential under patient privacy standards.
-                </p>
-              </form>
-            )}
+                  <p className="form-privacy-note">
+                    Your medical information is strictly confidential. No promotional spam.
+                  </p>
+                </form>
+              )}
+            </div>
           </div>
         </div>
       </section>

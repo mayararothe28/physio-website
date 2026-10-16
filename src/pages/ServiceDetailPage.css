@@ -467,19 +467,19 @@
   margin-bottom: 2px;
 }
 
-/* ─── 5. BOOK APPOINTMENT FORM SECTION ─── */
-.service-booking-section {
+/* ─── 5. CONTACT & INQUIRY FORM SECTION ─── */
+.service-contact-section {
   background-color: #f8fafc;
   border-top: 1px solid #e2e8f0;
-  padding: 80px 0;
+  padding: 70px 0 85px;
 }
 
-.service-booking-wrapper {
+.service-contact-wrapper {
   max-width: 820px;
   margin: 0 auto;
 }
 
-.service-booking-section .booking-form-card {
+.service-contact-section .contact-form-card {
   box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
 }
 
