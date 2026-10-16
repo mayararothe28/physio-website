@@ -362,65 +362,24 @@
   align-items: flex-start;
 }
 
-.wor-about-video-container {
-  background: #ffffff;
+.wor-about-image-card {
+  position: relative;
   border-radius: var(--wor-radius-lg);
   overflow: hidden;
   box-shadow: var(--wor-shadow-md);
-  border: 1px solid var(--wor-border);
+  border: 4px solid #ffffff;
 }
 
-.wor-video-header-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.85rem 1.25rem;
-  background-color: var(--wor-navy);
-  color: #ffffff;
-}
-
-.wor-video-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.825rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: #38bdf8;
-}
-
-.wor-video-duration {
-  font-size: 0.775rem;
-  color: #94a3b8;
-  font-weight: 600;
-}
-
-.wor-about-video-wrapper {
-  position: relative;
+.wor-about-image {
   width: 100%;
-  aspect-ratio: 16 / 9;
-  background-color: #000000;
-  overflow: hidden;
-}
-
-.wor-about-video-iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: none;
+  height: 480px;
+  object-fit: cover;
   display: block;
+  transition: transform 0.4s ease;
 }
 
-.wor-video-caption {
-  padding: 0.85rem 1.25rem;
-  font-size: 0.85rem;
-  color: var(--wor-text-muted);
-  line-height: 1.45;
-  background-color: #f8fafc;
-  border-top: 1px solid var(--wor-border-light);
+.wor-about-image-card:hover .wor-about-image {
+  transform: scale(1.02);
 }
 
 /* Rating Badges Row */
@@ -1335,6 +1294,10 @@
   .wor-about-grid {
     grid-template-columns: 1fr;
     gap: 2.5rem;
+  }
+
+  .wor-about-image {
+    height: 340px;
   }
 
   .wor-services-cards-grid {
