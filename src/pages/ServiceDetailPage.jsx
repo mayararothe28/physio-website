@@ -2,8 +2,12 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import {
   CheckCircle2,
+  Check,
   MessageCircle,
   ArrowRight,
+  Activity,
+  AlertCircle,
+  ShieldCheck,
 } from "lucide-react";
 import { SERVICE_DETAILS } from "../data/serviceDetailsData";
 import "./ServiceDetailPage.css";
@@ -158,7 +162,7 @@ export default function ServiceDetailPage() {
 
   return (
     <main className="service-detail-page">
-      {/* ─── 1. STANDARDIZED SUBPAGE HERO BANNER ─── */}
+      {/* ─── 1. CLEAN SUBPAGE HERO ─── */}
       <section className="subpage-hero-banner">
         <div className="subpage-hero-content">
           <h1 className="subpage-title">
@@ -166,113 +170,150 @@ export default function ServiceDetailPage() {
             <br />
             <span className="text-highlight">{detail.highlight}</span>
           </h1>
-
           <p className="subpage-lead">
             {detail.subtitle}
           </p>
         </div>
       </section>
 
-      {/* ─── 2. CLINICAL INFORMATION (IN CLEAN POINTS — NO BOX CARDS) ─── */}
-      <section className="service-info-section">
+      {/* ─── 2. STRUCTURED CLINICAL INFORMATION (IN POINTS - NO CARDS) ─── */}
+      <section className="service-info-points-section">
         <div className="detail-container">
-          <div className="service-info-grid">
-            {/* Left: Professional Treatment Photo */}
-            <div className="service-info-media">
-              <div className="service-image-wrapper">
-                <img
-                  src={serviceImage}
-                  alt={detail.title}
-                  className="service-feature-img"
-                  loading="lazy"
-                />
-              </div>
+
+          {/* Part A: Top Split (Clinical Photo Left, Overview Points Right) */}
+          <div className="service-points-top-grid">
+            <div className="service-points-photo-col">
+              <img
+                src={serviceImage}
+                alt={detail.title}
+                className="service-clean-photo"
+                loading="lazy"
+              />
             </div>
 
-            {/* Right: Overview & Clinical Information in Points */}
-            <div className="service-info-text">
-              <div className="service-info-header">
-                <span className="detail-kicker">CLINICAL INFORMATION</span>
-                <h2 className="service-info-heading">
-                  Root-Cause Non-Surgical Care for {detail.title}
-                </h2>
-                <p className="service-info-lead">
-                  At <strong>RevitaOrtho</strong>, our treatment protocols are engineered to eliminate pain, address underlying mechanical dysfunction, and restore lasting joint mobility without surgery or long-term medication.
-                </p>
-                <p className="service-info-desc">
-                  Every patient receives dedicated 1-on-1 care directly from senior hospital-certified Master's degree (MPT) physiotherapists. We review MRI and X-ray findings, perform specialized orthopedic evaluations, and formulate a customized rehabilitation pathway.
-                </p>
+            <div className="service-points-overview-col">
+              <h2 className="points-main-heading">Clinical Overview &amp; Root-Cause Approach</h2>
+              <p className="points-lead-text">
+                At <strong>RevitaOrtho</strong>, our treatment protocols for <strong>{detail.title}</strong> are engineered to eliminate acute pain and restore functional joint mobility without requiring surgical intervention or dependency on pain medication.
+              </p>
+
+              <div className="points-list">
+                <div className="point-item">
+                  <CheckCircle2 size={19} className="point-icon-blue" />
+                  <div>
+                    <strong>45-Minute Biomechanical Diagnosis:</strong> Comprehensive 1-on-1 assessment by hospital-certified Master&apos;s-degree (MPT) physiotherapists.
+                  </div>
+                </div>
+
+                <div className="point-item">
+                  <CheckCircle2 size={19} className="point-icon-blue" />
+                  <div>
+                    <strong>100% Non-Surgical Technologies:</strong> Computer-calibrated decompression, high-intensity laser, and evidence-based manual therapy.
+                  </div>
+                </div>
+
+                <div className="point-item">
+                  <CheckCircle2 size={19} className="point-icon-blue" />
+                  <div>
+                    <strong>Transparent Clinical Roadmap:</strong> Detailed explanations of your MRI/X-ray findings and recovery milestones in simple, clear language.
+                  </div>
+                </div>
+
+                <div className="point-item">
+                  <CheckCircle2 size={19} className="point-icon-blue" />
+                  <div>
+                    <strong>Relapse &amp; Re-Injury Prevention:</strong> Tailored home rehabilitation and ergonomic guidance to protect joints permanently.
+                  </div>
+                </div>
               </div>
-
-              {/* Point Block 1: Symptoms Treated */}
-              {detail.symptoms && detail.symptoms.length > 0 && (
-                <div className="info-points-group">
-                  <h3 className="info-points-title">Common Symptoms &amp; Conditions Treated:</h3>
-                  <ul className="info-points-list">
-                    {detail.symptoms.map((symp, idx) => (
-                      <li key={idx} className="info-point-item">
-                        <CheckCircle2 size={18} className="info-point-icon text-azure" />
-                        <span>{symp}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-
-              {/* Point Block 2: Root Causes */}
-              {detail.rootCauses && detail.rootCauses.length > 0 && (
-                <div className="info-points-group">
-                  <h3 className="info-points-title">Underlying Root Causes Addressed:</h3>
-                  <ul className="info-points-list">
-                    {detail.rootCauses.map((cause, idx) => (
-                      <li key={idx} className="info-point-item">
-                        <CheckCircle2 size={18} className="info-point-icon text-azure" />
-                        <span>
-                          <strong>{cause.title}:</strong> {cause.desc}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-
-              {/* Point Block 3: Treatment Protocols */}
-              {detail.protocols && detail.protocols.length > 0 && (
-                <div className="info-points-group">
-                  <h3 className="info-points-title">Our Structured Treatment Progression:</h3>
-                  <ul className="info-points-list">
-                    {detail.protocols.map((proto, idx) => (
-                      <li key={idx} className="info-point-item">
-                        <CheckCircle2 size={18} className="info-point-icon text-azure" />
-                        <span>
-                          <strong>Step {proto.step} – {proto.title}:</strong> {proto.desc} ({proto.modality})
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-
-              {/* Point Block 4: Surgeries Successfully Avoided */}
-              {detail.surgeriesAvoided && detail.surgeriesAvoided.length > 0 && (
-                <div className="info-points-group">
-                  <h3 className="info-points-title">Surgeries &amp; Invasions Successfully Avoided:</h3>
-                  <ul className="info-points-list">
-                    {detail.surgeriesAvoided.map((surg, idx) => (
-                      <li key={idx} className="info-point-item">
-                        <CheckCircle2 size={18} className="info-point-icon text-emerald" />
-                        <span>{surg}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
             </div>
           </div>
+
+          {/* Part B: Symptoms & Daily Limitations (In Points) */}
+          {detail.symptoms && detail.symptoms.length > 0 && (
+            <div className="service-info-block">
+              <h3 className="points-section-heading">
+                <AlertCircle size={22} className="points-heading-icon" />
+                <span>Common Symptoms &amp; Daily Limitations Treated</span>
+              </h3>
+              <div className="points-grid-2col">
+                {detail.symptoms.map((symp, idx) => (
+                  <div key={idx} className="point-item">
+                    <CheckCircle2 size={18} className="point-icon-blue" />
+                    <span>{symp}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Part C: Root Causes & Mechanical Factors (In Points) */}
+          {detail.rootCauses && detail.rootCauses.length > 0 && (
+            <div className="service-info-block">
+              <h3 className="points-section-heading">
+                <Activity size={22} className="points-heading-icon" />
+                <span>Root Causes We Diagnose &amp; Correct</span>
+              </h3>
+              <div className="points-stack">
+                {detail.rootCauses.map((cause, idx) => (
+                  <div key={idx} className="point-item point-item-deep">
+                    <CheckCircle2 size={18} className="point-icon-blue" />
+                    <div>
+                      <strong className="point-sub-title">{cause.title}:</strong>{" "}
+                      <span className="point-sub-desc">{cause.desc}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Part D: Clinical Recovery Roadmap (In Sequential Points) */}
+          {detail.protocols && detail.protocols.length > 0 && (
+            <div className="service-info-block">
+              <h3 className="points-section-heading">
+                <Activity size={22} className="points-heading-icon" />
+                <span>Evidence-Based 4-Stage Recovery Roadmap</span>
+              </h3>
+              <div className="points-stack">
+                {detail.protocols.map((proto) => (
+                  <div key={proto.step} className="point-item point-item-stage">
+                    <span className="point-stage-badge">Stage {proto.step}</span>
+                    <div>
+                      <strong className="point-sub-title">{proto.title}</strong>
+                      <p className="point-stage-desc">{proto.desc}</p>
+                      <div className="point-stage-modality">
+                        <strong>Clinical Modality / Method:</strong> {proto.modality}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Part E: Surgeries Successfully Avoided (In Points) */}
+          {detail.surgeriesAvoided && detail.surgeriesAvoided.length > 0 && (
+            <div className="service-info-block">
+              <h3 className="points-section-heading">
+                <ShieldCheck size={22} className="points-heading-icon text-emerald" />
+                <span>Surgeries &amp; Invasive Procedures Successfully Avoided</span>
+              </h3>
+              <div className="points-grid-2col">
+                {detail.surgeriesAvoided.map((surg, idx) => (
+                  <div key={idx} className="point-item">
+                    <Check size={18} className="point-icon-green" />
+                    <span><strong>{surg}</strong></span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
         </div>
       </section>
 
-      {/* ─── 3. CONTACT & INQUIRY FORM ─── */}
+      {/* ─── 3. CLINICAL INQUIRY & CONTACT FORM (Directly Below Points) ─── */}
       <section className="service-contact-section" id="contact-consultation">
         <div className="detail-container">
           <div className="service-contact-wrapper">

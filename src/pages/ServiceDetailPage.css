@@ -1,6 +1,6 @@
 /* ==========================================================================
-   SERVICE DETAIL PAGE - CLEAN, FOCUSED POINTS & INQUIRY THEME
-   Information in Points (No Box Cards) + Clinical Contact Form
+   SERVICE DETAIL PAGE - CLEAN POINT-BASED CLINICAL INFORMATION THEME
+   Information in structured points (no cards), followed by inquiry contact form
    ========================================================================== */
 
 .service-detail-page {
@@ -20,7 +20,7 @@
 
 /* ─── 1. STANDARDIZED SUBPAGE HERO BANNER ─── */
 .subpage-hero-banner {
-  padding: 60px 0 50px;
+  padding: 55px 0 45px;
   background: linear-gradient(180deg, #f0f9ff 0%, #ffffff 100%);
   border-bottom: 1px solid #e2e8f0;
   text-align: center;
@@ -39,8 +39,8 @@
   font-size: clamp(28px, 3.6vw, 42px);
   font-weight: 800;
   line-height: 1.25;
-  color: #0f172a;
-  margin: 0 0 14px;
+  color: #0f2b48;
+  margin: 0 0 12px;
   letter-spacing: -0.02em;
 }
 
@@ -56,115 +56,66 @@
   max-width: 760px;
 }
 
-/* ─── COMMON HEADERS & KICKERS ─── */
-.detail-kicker {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.6px;
-  color: #0284c7;
-  background-color: #f0f9ff;
-  padding: 4px 12px;
-  border-radius: 6px;
-  border: 1px solid #bae6fd;
-  margin-bottom: 12px;
-  text-transform: uppercase;
-}
-
-/* ─── 2. CLINICAL INFORMATION (IN POINTS — NO BOX CARDS) ─── */
-.service-info-section {
+/* ─── 2. STRUCTURED CLINICAL INFORMATION (IN POINTS - NO CARDS) ─── */
+.service-info-points-section {
+  padding: 60px 0 40px;
   background-color: #ffffff;
-  padding: 60px 0 75px;
 }
 
-.service-info-grid {
+/* Top Split: Photo Left, Overview Points Right */
+.service-points-top-grid {
   display: grid;
-  grid-template-columns: 1fr 1.35fr;
-  gap: 50px;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 48px;
   align-items: start;
+  margin-bottom: 45px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid #e2e8f0;
 }
 
-.service-info-media {
-  position: sticky;
-  top: 90px;
+.service-points-photo-col {
+  width: 100%;
 }
 
-.service-image-wrapper {
-  position: relative;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
+.service-clean-photo {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+  box-shadow: 0 4px 20px rgba(15, 43, 72, 0.08);
   border: 1px solid #e2e8f0;
 }
 
-.service-feature-img {
-  width: 100%;
-  height: 480px;
-  object-fit: cover;
-  display: block;
-}
-
-.service-info-text {
+.service-points-overview-col {
   display: flex;
   flex-direction: column;
-  gap: 32px;
 }
 
-.service-info-header {
-  border-bottom: 1px solid #e2e8f0;
-  padding-bottom: 24px;
-}
-
-.service-info-heading {
+.points-main-heading {
   font-family: 'Outfit', -apple-system, sans-serif;
-  font-size: clamp(24px, 2.7vw, 32px);
+  font-size: 26px;
   font-weight: 800;
-  color: #0f172a;
-  line-height: 1.25;
-  margin: 6px 0 14px;
-}
-
-.service-info-lead {
-  font-size: 15.5px;
-  color: #1e293b;
-  line-height: 1.7;
-  margin-bottom: 12px;
-}
-
-.service-info-desc {
-  font-size: 14.5px;
-  color: #64748b;
-  line-height: 1.7;
-  margin: 0;
-}
-
-/* Points Group */
-.info-points-group {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.info-points-title {
-  font-family: 'Outfit', -apple-system, sans-serif;
-  font-size: 18px;
-  font-weight: 750;
   color: #0f2b48;
-  margin: 0;
+  margin: 0 0 14px;
+  line-height: 1.25;
 }
 
-.info-points-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.points-lead-text {
+  font-size: 15.5px;
+  color: #334155;
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+
+/* Points List & Items */
+.points-list {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
 }
 
-.info-point-item {
+.point-item {
   display: flex;
   align-items: flex-start;
   gap: 12px;
@@ -173,28 +124,112 @@
   line-height: 1.65;
 }
 
-.info-point-icon {
+.point-icon-blue {
+  color: #0284c7;
   flex-shrink: 0;
   margin-top: 3px;
 }
 
-.info-point-icon.text-azure {
-  color: #0284c7;
+.point-icon-green {
+  color: #059669;
+  flex-shrink: 0;
+  margin-top: 3px;
 }
 
-.info-point-icon.text-emerald {
-  color: #10b981;
+/* Section Blocks */
+.service-info-block {
+  margin-bottom: 45px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid #e2e8f0;
 }
 
-.info-point-item strong {
+.points-section-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Outfit', -apple-system, sans-serif;
+  font-size: 22px;
+  font-weight: 800;
   color: #0f2b48;
+  margin: 0 0 20px;
+}
+
+.points-heading-icon {
+  color: #0284c7;
+  flex-shrink: 0;
+}
+
+.points-grid-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 36px;
+}
+
+.points-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.point-item-deep {
+  align-items: flex-start;
+}
+
+.point-sub-title {
+  color: #0f2b48;
+  font-weight: 750;
+  font-size: 15px;
+}
+
+.point-sub-desc {
+  color: #475569;
+}
+
+/* Stage Points */
+.point-item-stage {
+  align-items: flex-start;
+  gap: 16px;
+  padding: 6px 0;
+}
+
+.point-stage-badge {
+  background-color: #e0f2fe;
+  color: #0284c7;
+  font-family: 'Outfit', sans-serif;
+  font-size: 12.5px;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 6px;
+  flex-shrink: 0;
+  letter-spacing: 0.3px;
+  margin-top: 2px;
+}
+
+.point-stage-desc {
+  margin: 4px 0 6px;
+  font-size: 14px;
+  color: #475569;
+  line-height: 1.6;
+}
+
+.point-stage-modality {
+  font-size: 12.5px;
+  color: #64748b;
+}
+
+.point-stage-modality strong {
+  color: #0f2b48;
+}
+
+.text-emerald {
+  color: #059669;
 }
 
 /* ─── 3. CONTACT & INQUIRY FORM SECTION ─── */
 .service-contact-section {
   background-color: #f8fafc;
   border-top: 1px solid #e2e8f0;
-  padding: 70px 0 90px;
+  padding: 60px 0 80px;
 }
 
 .service-contact-wrapper {
@@ -203,44 +238,36 @@
 }
 
 .service-contact-section .contact-form-card {
-  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+  box-shadow: 0 8px 28px rgba(15, 23, 42, 0.07);
 }
 
 /* ─── RESPONSIVE BREAKPOINTS ─── */
-@media (max-width: 992px) {
-  .service-info-grid {
+@media (max-width: 1024px) {
+  .service-points-top-grid {
     grid-template-columns: 1fr;
-    gap: 36px;
+    gap: 32px;
   }
 
-  .service-info-media {
-    position: static;
+  .service-clean-photo {
+    height: 360px;
   }
 
-  .service-feature-img {
-    height: 340px;
-  }
-
-  .service-info-section {
-    padding: 45px 0 55px;
-  }
-
-  .service-contact-section {
-    padding: 55px 0 70px;
+  .points-grid-2col {
+    grid-template-columns: 1fr;
+    gap: 14px;
   }
 }
 
-@media (max-width: 600px) {
-  .service-feature-img {
-    height: 260px;
+@media (max-width: 768px) {
+  .points-main-heading {
+    font-size: 22px;
   }
 
-  .service-info-text {
-    gap: 24px;
+  .points-section-heading {
+    font-size: 19px;
   }
 
-  .info-point-item {
-    font-size: 13.5px;
-    gap: 10px;
+  .service-clean-photo {
+    height: 280px;
   }
 }
