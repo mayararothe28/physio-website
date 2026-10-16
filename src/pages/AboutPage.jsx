@@ -4,9 +4,6 @@ import {
   Award,
   CheckCircle2,
   HeartPulse,
-  Compass,
-  Zap,
-  Activity,
 } from "lucide-react";
 import "./AboutPage.css";
 
@@ -14,66 +11,26 @@ const PROCESS_STEPS = [
   {
     id: "awareness-goal-setting",
     num: "1",
-    numLabel: "Step 01",
     title: "Awareness & Goal Setting",
-    shortTitle: "Awareness & Goal Setting",
-    icon: Compass,
-    tag: "ASSESSMENT & DIAGNOSTIC CLARITY",
     desc: "Being educated about your condition/injury is the most important factor towards your recovery. After a thorough assessment, our experts help you understand body mechanics, your condition/injury, types of treatment, exercises and help you set specific goals. This personalized therapy guides your treatment to expedite recovery and more successful results.",
-    highlights: [
-      "In-depth 45-Min Biomechanical Assessment",
-      "Body Mechanics & Anatomy Education",
-      "Condition & Injury Root-Cause Analysis",
-      "Goal Setting & Personalized Milestones",
-    ],
   },
   {
     id: "recovery",
     num: "2",
-    numLabel: "Step 02",
     title: "Recovery",
-    shortTitle: "Recovery",
-    icon: Zap,
-    tag: "TARGETED DRUG-FREE PAIN RELIEF",
     desc: "We recognize that you are in pain and/or unable to move the way you want to. Experience relief with our experts through drug-free modern therapies like Mulligan, McKenzie, Kinesio-taping, Cupping, and more. Our physios can offer the best of methods to reduce pain, improve mobility and functionality.",
-    highlights: [
-      "Mulligan Joint Mobilization",
-      "McKenzie Spinal Protocol",
-      "Kinesio-Taping & Myofascial Release",
-      "Advanced Cupping & Decompression",
-    ],
   },
   {
     id: "maintenance",
     num: "3",
-    numLabel: "Step 03",
     title: "Maintenance",
-    shortTitle: "Maintenance",
-    icon: Activity,
-    tag: "MOBILITY RESTORATION & FUNCTION",
     desc: "Pain relief is just the start but the key is to get back to your previous level of function. We tailor exercises to restore mobility and full function, best suited to your lifestyle for long term results. Home based rehab programs also involve caregivers for enhanced support.",
-    highlights: [
-      "Progressive Functional Retraining",
-      "Restoration of Full Range of Motion",
-      "Lifestyle-Specific Exercise Customization",
-      "Home-Based Caregiver Integration",
-    ],
   },
   {
     id: "prevention-lifestyle",
     num: "4",
-    numLabel: "Step 04",
     title: "Prevention & Lifestyle",
-    shortTitle: "Prevention & Lifestyle",
-    icon: ShieldCheck,
-    tag: "PERMANENT INDEPENDENCE & LONG-TERM CARE",
     desc: "At RevitaOrtho, we believe that our true success lies in the fact that our client can maintain the physical recovery on his/her own even after the completion of therapy. Before leaving, we equip you with a home exercise plan with a clear list of “Dos and Don'ts” and suggestions to improve your lifestyle or the steps to maximize benefit after a specific surgery.",
-    highlights: [
-      "Clear “Dos & Don’ts” Lifestyle Guide",
-      "Independent Home Exercise Plan (HEP)",
-      "Ergonomic & Postural Preservation",
-      "Post-Surgical Long-Term Recovery Roadmap",
-    ],
   },
 ];
 
@@ -83,20 +40,22 @@ export default function AboutPage() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + 240;
+      // Trigger threshold: 45% from viewport top
+      const midPoint = window.innerHeight * 0.45;
 
-      for (let i = PROCESS_STEPS.length - 1; i >= 0; i--) {
-        const step = PROCESS_STEPS[i];
-        const el = document.getElementById(step.id);
+      let currentIdx = 0;
+      for (let i = 0; i < PROCESS_STEPS.length; i++) {
+        const el = document.getElementById(PROCESS_STEPS[i].id);
         if (el) {
-          const top = el.offsetTop;
-          if (scrollPosition >= top) {
-            setActiveStep(step.id);
-            setActiveIndex(i);
-            break;
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= midPoint) {
+            currentIdx = i;
           }
         }
       }
+
+      setActiveStep(PROCESS_STEPS[currentIdx].id);
+      setActiveIndex(currentIdx);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -109,11 +68,14 @@ export default function AboutPage() {
     setActiveIndex(index);
     const element = document.getElementById(id);
     if (element) {
-      const yOffset = -150;
+      const navbarHeight = 72;
+      const btnGroupHeight = 75;
+      const yOffset = -(navbarHeight + btnGroupHeight + 20);
       const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
       window.scrollTo({ top: y, behavior: "smooth" });
     }
   };
+
   return (
     <main className="wor-about-page">
       {/* ─── 1. STANDARDIZED CLEAN SUBPAGE HERO ─── */}
@@ -126,7 +88,7 @@ export default function AboutPage() {
           </div>
 
           <h1 className="wor-subpage-title">
-            Specialized Physical Therapy & Joint Rehabilitation
+            Specialized Physical Therapy &amp; Joint Rehabilitation
           </h1>
           <p className="wor-subpage-subtitle">
             Dedicated 1-on-1 hands-on care, advanced European technology, and evidence-based non-surgical recovery protocols in Baner, Pune.
@@ -134,11 +96,10 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ─── 2. OUR STORY & CLINICAL PHILOSOPHY (Split Layout matching Home) ─── */}
+      {/* ─── 2. OUR STORY & CLINICAL PHILOSOPHY ─── */}
       <section className="wor-about-story-section">
         <div className="wor-container">
           <div className="wor-about-story-grid">
-            {/* Left: Clean Clinic Treatment Suite Image (Same as Home Page) */}
             <div className="wor-about-img-col">
               <div className="wor-about-img-card">
                 <img
@@ -150,7 +111,6 @@ export default function AboutPage() {
               </div>
             </div>
 
-            {/* Right: Narrative Copy & Clinical Commitments */}
             <div className="wor-about-text-col">
               <div className="wor-section-tag-line">
                 <span className="wor-divider-line"></span>
@@ -174,7 +134,7 @@ export default function AboutPage() {
                   <CheckCircle2 size={18} className="wor-pillar-icon" />
                   <div>
                     <strong>Dedicated 1-on-1 Doctor Care</strong>
-                    <p>Every session led personally by hospital-certified Master's degree (MPT) clinicians.</p>
+                    <p>Every session led personally by hospital-certified Master&apos;s degree (MPT) clinicians.</p>
                   </div>
                 </div>
 
@@ -182,7 +142,7 @@ export default function AboutPage() {
                   <CheckCircle2 size={18} className="wor-pillar-icon" />
                   <div>
                     <strong>100% Non-Surgical Focus</strong>
-                    <p>Advanced European decompression & Class-IV laser protocols engineered to prevent surgery.</p>
+                    <p>Advanced European decompression &amp; Class-IV laser protocols engineered to prevent surgery.</p>
                   </div>
                 </div>
 
@@ -207,7 +167,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-
       {/* ─── 4. OUR MISSION, VISION & CORE VALUES ─── */}
       <section className="wor-values-section">
         <div className="wor-container">
@@ -217,7 +176,7 @@ export default function AboutPage() {
               <span className="wor-section-kicker">OUR GUIDING PRINCIPLES</span>
               <span className="wor-divider-line"></span>
             </div>
-            <h2 className="wor-section-title">Mission, Vision & Core Values</h2>
+            <h2 className="wor-section-title">Mission, Vision &amp; Core Values</h2>
             <p className="wor-section-subtitle">
               The ethical and clinical standards that drive every evaluation, treatment protocol, and patient recovery roadmap at RevitaOrtho.
             </p>
@@ -257,19 +216,19 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ─── 5. OUR PROCESS (EXACT RELIVA TIMELINE & BUTTON GROUP DESIGN) ─── */}
-      <section className="reliva-process-section" id="revitaortho-process">
+      {/* ─── 5. OUR PROCESS (EXACT RELIVA TIMELINE & BUTTON GROUP FORMAT) ─── */}
+      <section className="reliva-process-section" id="process-sec">
         <div className="wor-container">
           <div className="reliva-process-header">
-            <p className="reliva-process-tag">Our Process</p>
-            <h2 className="reliva-process-heading">4 Step Standardized RevitaOrtho Process</h2>
+            <h2 className="reliva-process-heading">Our Process</h2>
+            <p className="reliva-process-subheading">4 Step Standardized RevitaOrtho Process</p>
           </div>
 
           {/* Sticky ReLiva Button Group (Updates on scroll, click to jump) */}
           <div className="reliva-btn-group-wrapper">
             <div className="reliva-btn-group">
               {PROCESS_STEPS.map((step, idx) => {
-                const isActive = activeStep === step.id;
+                const isActive = activeIndex === idx;
                 return (
                   <button
                     key={step.id}
@@ -288,8 +247,10 @@ export default function AboutPage() {
           {/* ReLiva Unlimited Vertical Timeline */}
           <div className="reliva-timeline-track">
             {PROCESS_STEPS.map((step, index) => {
-              const isCurrent = activeStep === step.id;
+              const isCurrent = activeIndex === index;
               const isPassed = activeIndex >= index;
+              const isLast = index === PROCESS_STEPS.length - 1;
+
               return (
                 <div
                   key={step.id}
@@ -301,11 +262,11 @@ export default function AboutPage() {
                     <div className="reliva-icon-circle">
                       <span className="reliva-step-num">{step.num}</span>
                     </div>
-                    {index < PROCESS_STEPS.length - 1 && (
+                    {!isLast && (
                       <div className="reliva-icon-line">
                         <div
                           className="reliva-icon-line-mask"
-                          style={{ height: activeIndex > index ? "100%" : "0%" }}
+                          style={{ height: activeIndex > index ? "100%" : isCurrent ? "50%" : "0%" }}
                         ></div>
                       </div>
                     )}
@@ -329,4 +290,3 @@ export default function AboutPage() {
     </main>
   );
 }
-

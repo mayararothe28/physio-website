@@ -1,18 +1,25 @@
-/* ══════════════════════════════════════════════════════════════════
-   ABOUT PAGE STYLING (World of Rehab UI/UX Reference)
-   ══════════════════════════════════════════════════════════════════ */
+
+/* ==========================================================
+   ABOUT PAGE — REVITAORTHO
+   World of Rehab-inspired overall styling
+   Reliva-inspired 4-step process section
+========================================================== */
 
 .wor-about-page {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, sans-serif;
   color: var(--wor-text-body, #334155);
-  background-color: #ffffff;
+  background-color: #fff;
   overflow-x: hidden;
 }
 
-/* ─── 1. SUBPAGE HERO ─── */
+/* ==========================================================
+   1. SUBPAGE HERO
+========================================================== */
+
 .wor-about-page .wor-subpage-hero {
   background-color: var(--wor-bg-light, #f8fafc);
-  padding: 4.5rem 0 3.5rem 0;
+  padding: 4.5rem 0 3.5rem;
   text-align: center;
   border-bottom: 1px solid var(--wor-border, #e2e8f0);
 }
@@ -22,7 +29,7 @@
   font-size: 2.5rem;
   font-weight: 800;
   color: var(--wor-navy, #0f2b48);
-  margin: 0.5rem 0 0.85rem 0;
+  margin: 0.5rem 0 0.85rem;
   line-height: 1.25;
   letter-spacing: -0.02em;
 }
@@ -32,13 +39,16 @@
   color: var(--wor-text-muted, #64748b);
   max-width: 720px;
   margin: 0 auto;
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
-/* ─── 2. STORY & PHILOSOPHY (Split Layout matching Home) ─── */
+/* ==========================================================
+   2. ABOUT STORY & PHILOSOPHY
+========================================================== */
+
 .wor-about-story-section {
   padding: 5rem 0;
-  background-color: #ffffff;
+  background-color: #fff;
 }
 
 .wor-about-story-grid {
@@ -50,30 +60,28 @@
 
 .wor-about-img-col {
   position: relative;
-  height: 100%;
   width: 100%;
-  min-height: 100%;
+  min-height: 420px;
 }
 
 .wor-about-img-card {
   position: relative;
-  border-radius: var(--wor-radius-lg, 12px);
-  overflow: hidden;
-  box-shadow: 0 8px 24px rgba(15, 43, 72, 0.08);
-  border: 4px solid #ffffff;
   width: 100%;
   height: 100%;
-  min-height: 100%;
+  min-height: 420px;
+  overflow: hidden;
+  border-radius: var(--wor-radius-lg, 12px);
+  box-shadow: 0 8px 24px rgba(15, 43, 72, 0.08);
+  border: 4px solid #fff;
 }
 
 .wor-about-page-img {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
   transition: transform 0.4s ease;
 }
 
@@ -93,7 +101,7 @@
   font-weight: 800;
   color: var(--wor-navy, #0f2b48);
   line-height: 1.3;
-  margin: 0 0 1rem 0;
+  margin: 0 0 1rem;
   letter-spacing: -0.015em;
 }
 
@@ -111,9 +119,11 @@
   margin-bottom: 1.75rem;
 }
 
+/* About feature cards */
+
 .wor-about-pillars-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1.25rem;
 }
 
@@ -154,7 +164,10 @@
   margin: 0;
 }
 
-/* ─── 3. MISSION, VISION & CORE VALUES ─── */
+/* ==========================================================
+   3. MISSION, VISION & CORE VALUES
+========================================================== */
+
 .wor-values-section {
   padding: 5rem 0;
   background-color: var(--wor-bg-light, #f8fafc);
@@ -163,19 +176,20 @@
 
 .wor-values-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 2rem;
 }
 
 .wor-value-card {
-  background-color: #ffffff;
-  border: 1px solid var(--wor-border, #e2e8f0);
-  border-radius: var(--wor-radius-md, 10px);
-  padding: 2.25rem 2rem;
-  box-shadow: 0 2px 10px rgba(15, 43, 72, 0.04);
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
   display: flex;
   flex-direction: column;
+  padding: 2.25rem 2rem;
+  background-color: #fff;
+  border: 1px solid var(--wor-border, #e2e8f0);
+  border-radius: var(--wor-radius-md, 10px);
+  box-shadow: 0 2px 10px rgba(15, 43, 72, 0.04);
+  transition: transform 0.25s ease, box-shadow 0.25s ease,
+    border-color 0.25s ease;
 }
 
 .wor-value-card:hover {
@@ -185,15 +199,15 @@
 }
 
 .wor-value-icon-box {
-  width: 56px;
-  height: 56px;
-  border-radius: 12px;
-  background-color: rgba(2, 132, 199, 0.1);
-  color: var(--wor-blue, #0284c7);
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 56px;
+  height: 56px;
   margin-bottom: 1.25rem;
+  border-radius: 12px;
+  background-color: rgba(2, 132, 199, 0.1);
+  color: var(--wor-blue, #0284c7);
 }
 
 .wor-value-card h3 {
@@ -201,7 +215,7 @@
   font-size: 1.35rem;
   font-weight: 700;
   color: var(--wor-navy, #0f2b48);
-  margin: 0 0 0.75rem 0;
+  margin: 0 0 0.75rem;
   line-height: 1.3;
 }
 
@@ -212,7 +226,7 @@
   margin: 0;
 }
 
-/* ─── 4. OUR PROCESS (EXACT RELIVA TIMELINE DESIGN) ─── */
+/* ─── 4. OUR PROCESS (EXACT RELIVA TIMELINE & BUTTON GROUP DESIGN) ─── */
 .reliva-process-section {
   padding: 5rem 0 6rem;
   background-color: #ffffff;
@@ -224,23 +238,20 @@
   margin-bottom: 2rem;
 }
 
-.reliva-process-tag {
-  font-family: 'Outfit', sans-serif;
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: var(--wor-navy, #0f2b48);
-  margin: 0 0 0.4rem 0;
-  text-align: center;
-}
-
 .reliva-process-heading {
   font-family: 'Outfit', sans-serif;
   font-size: 2.25rem;
-  font-weight: 700;
+  font-weight: 800;
   color: var(--wor-navy, #0f2b48);
-  margin: 0;
+  margin: 0 0 0.5rem 0;
   line-height: 1.25;
-  text-align: center;
+}
+
+.reliva-process-subheading {
+  font-size: 1.15rem;
+  color: var(--wor-text-muted, #64748b);
+  font-weight: 600;
+  margin: 0;
 }
 
 /* ─── Sticky ReLiva Button Group (blox_btn_group) ─── */
@@ -270,9 +281,9 @@
   padding: 14px 28px;
   font-weight: 600;
   font-size: 0.95rem;
-  color: var(--wor-navy, #0f2b48);
-  background-color: #f1f5f9;
-  border: 1px solid #e2e8f0;
+  color: var(--wor-blue, #0284c7);
+  background-color: #e0f2fe;
+  border: 1px solid #bae6fd;
   cursor: pointer;
   transition: all 0.25s ease;
   font-family: inherit;
@@ -328,9 +339,9 @@
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background-color: #f1f5f9;
+  background-color: #e0f2fe;
   color: var(--wor-blue, #0284c7);
-  border: 2px solid #e2e8f0;
+  border: 2px solid #bae6fd;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -385,7 +396,7 @@
   height: 24px;
   flex-shrink: 0;
   margin-top: 10px;
-  background-color: #f8fafc;
+  background-color: #f1f5f9;
   clip-path: polygon(100% 0, 0 50%, 100% 100%);
   transition: background-color 0.3s ease;
 }
@@ -395,10 +406,10 @@
 }
 
 .reliva-timeline-card {
-  background-color: #f8fafc;
+  background-color: #f1f5f9;
   border-radius: 0 20px 20px 20px;
   padding: 24px 28px;
-  box-shadow: 0 4px 16px rgba(15, 43, 72, 0.05);
+  box-shadow: 0 4px 14px rgba(15, 43, 72, 0.05);
   border: 1.5px solid #e2e8f0;
   flex: 1;
   transition: all 0.3s ease;
@@ -511,6 +522,3 @@
     line-height: 1.6;
   }
 }
-
-
-
