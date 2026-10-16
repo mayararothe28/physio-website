@@ -17,33 +17,6 @@
   border-bottom: 1px solid var(--wor-border, #e2e8f0);
 }
 
-.wor-subpage-breadcrumb {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  font-size: 0.875rem;
-  font-weight: 500;
-  margin-bottom: 1.25rem;
-}
-
-.wor-subpage-breadcrumb a {
-  color: var(--wor-blue, #0284c7);
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.wor-subpage-breadcrumb a:hover {
-  text-decoration: underline;
-}
-
-.wor-breadcrumb-sep {
-  color: #94a3b8;
-}
-
-.wor-breadcrumb-curr {
-  color: var(--wor-text-muted, #64748b);
-}
 
 .wor-subpage-title {
   font-family: 'Outfit', sans-serif;

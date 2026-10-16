@@ -96,11 +96,6 @@ export default function ServicesPage() {
       {/* ─── 1. STANDARDIZED CLEAN SUBPAGE HERO ─── */}
       <section className="wor-subpage-hero">
         <div className="wor-container">
-          <div className="wor-subpage-breadcrumb">
-            <Link to="/">Home</Link>
-            <span className="wor-breadcrumb-sep">/</span>
-            <span className="wor-breadcrumb-curr">Services</span>
-          </div>
 
           <div className="wor-section-tag-line center-tag">
             <span className="wor-divider-line"></span>
