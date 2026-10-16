@@ -447,9 +447,6 @@ export default function HomePage() {
                   <span>Learn More About Us</span>
                   <ArrowRight size={16} />
                 </Link>
-                <Link to="/appointment" className="wor-btn-about-outline">
-                  <span>Book Initial Assessment</span>
-                </Link>
               </div>
             </div>
           </div>
