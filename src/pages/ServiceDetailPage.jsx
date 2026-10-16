@@ -2,8 +2,6 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import {
   CheckCircle2,
-  ShieldCheck,
-  Check,
   MessageCircle,
   ArrowRight,
 } from "lucide-react";
@@ -175,12 +173,12 @@ export default function ServiceDetailPage() {
         </div>
       </section>
 
-      {/* ─── 2. CLINICAL OVERVIEW & APPROACH (Split Layout) ─── */}
-      <section className="service-overview-section section-padding">
+      {/* ─── 2. CLINICAL INFORMATION (IN CLEAN POINTS — NO BOX CARDS) ─── */}
+      <section className="service-info-section">
         <div className="detail-container">
-          <div className="service-story-grid">
+          <div className="service-info-grid">
             {/* Left: Professional Treatment Photo */}
-            <div className="service-img-col">
+            <div className="service-info-media">
               <div className="service-image-wrapper">
                 <img
                   src={serviceImage}
@@ -188,118 +186,85 @@ export default function ServiceDetailPage() {
                   className="service-feature-img"
                   loading="lazy"
                 />
-                <div className="service-badge-pill">
-                  <ShieldCheck size={20} className="text-emerald" />
-                  <div>
-                    <strong>94% Surgery Avoidance</strong>
-                    <span>Documented Clinical Outcomes</span>
-                  </div>
-                </div>
               </div>
             </div>
 
-            {/* Right: Overview & Clinical Approach */}
-            <div className="service-text-col">
-              <span className="detail-kicker">CLINICAL APPROACH</span>
-              <h2 className="detail-section-heading">
-                Root-Cause Rehabilitation for {detail.title}
-              </h2>
-              <p className="detail-lead-p">
-                At <strong>RevitaOrtho</strong>, our treatment protocols are designed to eliminate pain and restore natural movement by targeting the exact mechanical imbalance — without requiring surgery or long-term medication.
-              </p>
-              <p className="detail-body-p">
-                Every patient undergoes a thorough 45-minute diagnostic evaluation conducted directly by a senior Master's-degree (MPT) physiotherapist. We review your MRI/X-ray reports, perform orthopedic tests, and deliver a transparent, written recovery roadmap.
-              </p>
-
-              <div className="detail-pillars-grid">
-                <div className="detail-pillar-card">
-                  <CheckCircle2 size={18} className="pillar-check-icon" />
-                  <div>
-                    <strong>1-on-1 Doctor Care</strong>
-                    <p>Personally administered by certified senior specialists, never junior helpers.</p>
-                  </div>
-                </div>
-
-                <div className="detail-pillar-card">
-                  <CheckCircle2 size={18} className="pillar-check-icon" />
-                  <div>
-                    <strong>Non-Surgical Technologies</strong>
-                    <p>Computerized spinal decompression, Class-IV laser, and targeted radiofrequency.</p>
-                  </div>
-                </div>
-
-                <div className="detail-pillar-card">
-                  <CheckCircle2 size={18} className="pillar-check-icon" />
-                  <div>
-                    <strong>Zero Confusing Jargon</strong>
-                    <p>Clear explanations of your condition and recovery milestones in simple words.</p>
-                  </div>
-                </div>
-
-                <div className="detail-pillar-card">
-                  <CheckCircle2 size={18} className="pillar-check-icon" />
-                  <div>
-                    <strong>Relapse Prevention</strong>
-                    <p>Custom home exercise prescriptions so your muscles stay strong and pain stays away.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ─── 3. SYMPTOMS & ROOT CAUSES (2-Column Grid) ─── */}
-      <section className="service-symptoms-section section-padding">
-        <div className="detail-container">
-          <div className="section-head-center">
-            <span className="detail-kicker">CONDITIONS & DIAGNOSIS</span>
-            <h2>What We Diagnose &amp; Successfully Treat</h2>
-            <p>
-              If you are suffering from any of the following symptoms or have been advised surgery, our evidence-based protocols can help.
-            </p>
-          </div>
-
-          <div className="two-col-clinical-grid">
-            {/* Left: Symptoms Checklist */}
-            <div className="clinical-col symptoms-col">
-              <h3>Common Symptoms &amp; Daily Limitations</h3>
-              <div className="symptoms-list">
-                {detail.symptoms?.map((symp, idx) => (
-                  <div key={idx} className="symptom-item">
-                    <CheckCircle2 size={18} className="symp-icon text-azure" />
-                    <span>{symp}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Right: Root Causes & Surgeries Avoided */}
-            <div className="clinical-col causes-col">
-              <h3>Root Causes We Treat</h3>
-              <div className="root-causes-stack">
-                {detail.rootCauses?.map((cause, idx) => (
-                  <div key={idx} className="cause-card">
-                    <h4>{cause.title}</h4>
-                    <p>{cause.desc}</p>
-                  </div>
-                ))}
+            {/* Right: Overview & Clinical Information in Points */}
+            <div className="service-info-text">
+              <div className="service-info-header">
+                <span className="detail-kicker">CLINICAL INFORMATION</span>
+                <h2 className="service-info-heading">
+                  Root-Cause Non-Surgical Care for {detail.title}
+                </h2>
+                <p className="service-info-lead">
+                  At <strong>RevitaOrtho</strong>, our treatment protocols are engineered to eliminate pain, address underlying mechanical dysfunction, and restore lasting joint mobility without surgery or long-term medication.
+                </p>
+                <p className="service-info-desc">
+                  Every patient receives dedicated 1-on-1 care directly from senior hospital-certified Master's degree (MPT) physiotherapists. We review MRI and X-ray findings, perform specialized orthopedic evaluations, and formulate a customized rehabilitation pathway.
+                </p>
               </div>
 
-              {/* Surgeries Avoided Box */}
-              {detail.surgeriesAvoided && detail.surgeriesAvoided.length > 0 && (
-                <div className="surgeries-avoided-card">
-                  <div className="avoided-header">
-                    <ShieldCheck size={20} className="text-emerald" />
-                    <strong>Surgeries Successfully Avoided:</strong>
-                  </div>
-                  <div className="avoided-chips-wrap">
-                    {detail.surgeriesAvoided.map((surg, sIdx) => (
-                      <span key={sIdx} className="avoided-chip">
-                        <Check size={12} /> {surg}
-                      </span>
+              {/* Point Block 1: Symptoms Treated */}
+              {detail.symptoms && detail.symptoms.length > 0 && (
+                <div className="info-points-group">
+                  <h3 className="info-points-title">Common Symptoms &amp; Conditions Treated:</h3>
+                  <ul className="info-points-list">
+                    {detail.symptoms.map((symp, idx) => (
+                      <li key={idx} className="info-point-item">
+                        <CheckCircle2 size={18} className="info-point-icon text-azure" />
+                        <span>{symp}</span>
+                      </li>
                     ))}
-                  </div>
+                  </ul>
+                </div>
+              )}
+
+              {/* Point Block 2: Root Causes */}
+              {detail.rootCauses && detail.rootCauses.length > 0 && (
+                <div className="info-points-group">
+                  <h3 className="info-points-title">Underlying Root Causes Addressed:</h3>
+                  <ul className="info-points-list">
+                    {detail.rootCauses.map((cause, idx) => (
+                      <li key={idx} className="info-point-item">
+                        <CheckCircle2 size={18} className="info-point-icon text-azure" />
+                        <span>
+                          <strong>{cause.title}:</strong> {cause.desc}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {/* Point Block 3: Treatment Protocols */}
+              {detail.protocols && detail.protocols.length > 0 && (
+                <div className="info-points-group">
+                  <h3 className="info-points-title">Our Structured Treatment Progression:</h3>
+                  <ul className="info-points-list">
+                    {detail.protocols.map((proto, idx) => (
+                      <li key={idx} className="info-point-item">
+                        <CheckCircle2 size={18} className="info-point-icon text-azure" />
+                        <span>
+                          <strong>Step {proto.step} – {proto.title}:</strong> {proto.desc} ({proto.modality})
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {/* Point Block 4: Surgeries Successfully Avoided */}
+              {detail.surgeriesAvoided && detail.surgeriesAvoided.length > 0 && (
+                <div className="info-points-group">
+                  <h3 className="info-points-title">Surgeries &amp; Invasions Successfully Avoided:</h3>
+                  <ul className="info-points-list">
+                    {detail.surgeriesAvoided.map((surg, idx) => (
+                      <li key={idx} className="info-point-item">
+                        <CheckCircle2 size={18} className="info-point-icon text-emerald" />
+                        <span>{surg}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               )}
             </div>
@@ -307,36 +272,7 @@ export default function ServiceDetailPage() {
         </div>
       </section>
 
-      {/* ─── 4. RECOVERY PROTOCOLS (4-Stage Progression) ─── */}
-      {detail.protocols && (
-        <section className="service-protocols-section section-padding">
-          <div className="detail-container">
-            <div className="section-head-center">
-              <span className="detail-kicker">RECOVERY ROADMAP</span>
-              <h2>Our 4-Stage Clinical Protocol</h2>
-              <p>
-                A documented phase-based progression engineered to relieve acute pain, restore joint mobility, and rebuild lasting strength.
-              </p>
-            </div>
-
-            <div className="protocols-grid">
-              {detail.protocols.map((proto) => (
-                <div key={proto.step} className="protocol-card">
-                  <div className="protocol-step-badge">{proto.step}</div>
-                  <h3 className="protocol-title">{proto.title}</h3>
-                  <p className="protocol-desc">{proto.desc}</p>
-                  <div className="protocol-modality">
-                    <strong>Technology / Method:</strong>
-                    <span>{proto.modality}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* ─── 5. CONTACT & INQUIRY FORM (Replaces Book Appointment Form) ─── */}
+      {/* ─── 3. CONTACT & INQUIRY FORM ─── */}
       <section className="service-contact-section" id="contact-consultation">
         <div className="detail-container">
           <div className="service-contact-wrapper">

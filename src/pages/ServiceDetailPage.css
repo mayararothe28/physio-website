@@ -1,6 +1,6 @@
 /* ==========================================================================
-   SERVICE DETAIL PAGE - CLEAN, FOCUSED TERAPIA THEME
-   Dedicated to single condition: clean overview, symptoms, protocol & CTA
+   SERVICE DETAIL PAGE - CLEAN, FOCUSED POINTS & INQUIRY THEME
+   Information in Points (No Box Cards) + Clinical Contact Form
    ========================================================================== */
 
 .service-detail-page {
@@ -15,11 +15,7 @@
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
-}
-
-.section-padding {
-  padding: 75px 0;
+  padding: 0 24px;
 }
 
 /* ─── 1. STANDARDIZED SUBPAGE HERO BANNER ─── */
@@ -36,22 +32,6 @@
   max-width: 860px;
   margin: 0 auto;
   padding: 0 20px;
-}
-
-.subpage-kicker {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 12.5px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  color: #0284c7;
-  background-color: #e0f2fe;
-  padding: 5px 14px;
-  border-radius: 6px;
-  border: 1px solid #bae6fd;
-  margin-bottom: 16px;
-  text-transform: uppercase;
 }
 
 .subpage-title {
@@ -72,55 +52,8 @@
   font-size: 16px;
   color: #475569;
   line-height: 1.65;
-  margin: 0 auto 28px;
+  margin: 0 auto;
   max-width: 760px;
-}
-
-.subpage-hero-actions {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-  flex-wrap: wrap;
-}
-
-.btn-hero-book-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background-color: #0284c7;
-  color: #ffffff !important;
-  font-size: 14.5px;
-  font-weight: 700;
-  padding: 12px 24px;
-  border-radius: 6px;
-  text-decoration: none;
-  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
-  transition: transform 0.15s ease, background-color 0.2s ease;
-}
-
-.btn-hero-book-primary:hover {
-  background-color: #0369a1;
-  transform: translateY(-2px);
-}
-
-.btn-hero-whatsapp {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background-color: #16a34a;
-  color: #ffffff !important;
-  font-size: 14.5px;
-  font-weight: 700;
-  padding: 12px 22px;
-  border-radius: 6px;
-  text-decoration: none;
-  transition: transform 0.15s ease, background-color 0.2s ease;
-}
-
-.btn-hero-whatsapp:hover {
-  background-color: #15803d;
-  transform: translateY(-2px);
 }
 
 /* ─── COMMON HEADERS & KICKERS ─── */
@@ -140,49 +73,30 @@
   text-transform: uppercase;
 }
 
-.section-head-center {
-  text-align: center;
-  max-width: 760px;
-  margin: 0 auto 46px;
-}
-
-.section-head-center h2 {
-  font-family: 'Outfit', -apple-system, sans-serif;
-  font-size: clamp(26px, 3vw, 36px);
-  font-weight: 800;
-  color: #0f172a;
-  margin: 0 0 12px;
-  line-height: 1.25;
-}
-
-.section-head-center p {
-  font-size: 15.5px;
-  color: #64748b;
-  line-height: 1.6;
-  margin: 0;
-}
-
-/* ─── 2. CLINICAL OVERVIEW & APPROACH (Split Layout) ─── */
-.service-overview-section {
+/* ─── 2. CLINICAL INFORMATION (IN POINTS — NO BOX CARDS) ─── */
+.service-info-section {
   background-color: #ffffff;
+  padding: 60px 0 75px;
 }
 
-.service-story-grid {
+.service-info-grid {
   display: grid;
-  grid-template-columns: 1fr 1.15fr;
+  grid-template-columns: 1fr 1.35fr;
   gap: 50px;
-  align-items: center;
+  align-items: start;
 }
 
-.service-img-col {
-  position: relative;
+.service-info-media {
+  position: sticky;
+  top: 90px;
 }
 
 .service-image-wrapper {
   position: relative;
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.1);
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
+  border: 1px solid #e2e8f0;
 }
 
 .service-feature-img {
@@ -192,286 +106,95 @@
   display: block;
 }
 
-.service-badge-pill {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  background: rgba(15, 23, 42, 0.92);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #ffffff;
-  padding: 14px 20px;
-  border-radius: 12px;
+.service-info-text {
   display: flex;
-  align-items: center;
-  gap: 14px;
+  flex-direction: column;
+  gap: 32px;
 }
 
-.service-badge-pill strong {
-  display: block;
-  font-size: 14px;
-  color: #ffffff;
+.service-info-header {
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 24px;
 }
 
-.service-badge-pill span {
-  font-size: 12px;
-  color: #cbd5e1;
-}
-
-.text-emerald {
-  color: #10b981;
-}
-
-.detail-section-heading {
+.service-info-heading {
   font-family: 'Outfit', -apple-system, sans-serif;
-  font-size: clamp(24px, 2.7vw, 34px);
+  font-size: clamp(24px, 2.7vw, 32px);
   font-weight: 800;
   color: #0f172a;
   line-height: 1.25;
-  margin: 0 0 16px;
+  margin: 6px 0 14px;
 }
 
-.detail-lead-p {
+.service-info-lead {
   font-size: 15.5px;
   color: #1e293b;
   line-height: 1.7;
   margin-bottom: 12px;
 }
 
-.detail-body-p {
+.service-info-desc {
   font-size: 14.5px;
   color: #64748b;
   line-height: 1.7;
-  margin-bottom: 24px;
+  margin: 0;
 }
 
-.detail-pillars-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+/* Points Group */
+.info-points-group {
+  display: flex;
+  flex-direction: column;
   gap: 14px;
 }
 
-.detail-pillar-card {
-  background-color: #f8fafc;
-  border: 1px solid #e2e8f0;
-  border-radius: 10px;
-  padding: 14px 16px;
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  transition: border-color 0.2s ease;
-}
-
-.detail-pillar-card:hover {
-  border-color: #bae6fd;
-}
-
-.pillar-check-icon {
-  color: #0d9468;
-  flex-shrink: 0;
-  margin-top: 2px;
-}
-
-.detail-pillar-card strong {
-  display: block;
-  font-size: 13.5px;
-  color: #0f172a;
-  margin-bottom: 3px;
-}
-
-.detail-pillar-card p {
-  font-size: 12.5px;
-  color: #64748b;
-  line-height: 1.45;
+.info-points-title {
+  font-family: 'Outfit', -apple-system, sans-serif;
+  font-size: 18px;
+  font-weight: 750;
+  color: #0f2b48;
   margin: 0;
 }
 
-/* ─── 3. SYMPTOMS & ROOT CAUSES (2-Column Grid) ─── */
-.service-symptoms-section {
-  background-color: #f8fafc;
-  border-top: 1px solid #e2e8f0;
-  border-bottom: 1px solid #e2e8f0;
-}
-
-.two-col-clinical-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  align-items: start;
-}
-
-.clinical-col h3 {
-  font-family: 'Outfit', -apple-system, sans-serif;
-  font-size: 20px;
-  font-weight: 800;
-  color: #0f172a;
-  margin: 0 0 18px;
-}
-
-.symptoms-list {
+.info-points-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 
-.symptom-item {
+.info-point-item {
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  background-color: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 10px;
-  padding: 14px 16px;
-  font-size: 13.5px;
-  color: #1e293b;
-  line-height: 1.5;
-  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.02);
+  font-size: 14.5px;
+  color: #334155;
+  line-height: 1.65;
 }
 
-.symp-icon {
-  color: #0284c7;
+.info-point-icon {
   flex-shrink: 0;
-  margin-top: 2px;
+  margin-top: 3px;
 }
 
-.root-causes-stack {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-bottom: 20px;
-}
-
-.cause-card {
-  background-color: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-left: 4px solid #0284c7;
-  border-radius: 0 10px 10px 0;
-  padding: 16px 18px;
-}
-
-.cause-card h4 {
-  font-family: 'Outfit', -apple-system, sans-serif;
-  font-size: 15.5px;
-  font-weight: 750;
-  color: #0f172a;
-  margin: 0 0 6px;
-}
-
-.cause-card p {
-  font-size: 13px;
-  color: #475569;
-  line-height: 1.55;
-  margin: 0;
-}
-
-.surgeries-avoided-card {
-  background-color: #ecfdf5;
-  border: 1px solid #a7f3d0;
-  border-radius: 12px;
-  padding: 18px 20px;
-}
-
-.avoided-header {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: #047857;
-  font-size: 14px;
-  font-weight: 750;
-  margin-bottom: 12px;
-}
-
-.avoided-chips-wrap {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.avoided-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background-color: #ffffff;
-  border: 1px solid #6ee7b7;
-  color: #065f46;
-  font-size: 12px;
-  font-weight: 650;
-  padding: 5px 12px;
-  border-radius: 9999px;
-}
-
-/* ─── 4. RECOVERY PROTOCOLS (4-Stage Grid) ─── */
-.service-protocols-section {
-  background-color: #ffffff;
-}
-
-.protocols-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-}
-
-.protocol-card {
-  background-color: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  padding: 24px 20px;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-}
-
-.protocol-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
-  border-color: #bae6fd;
-}
-
-.protocol-step-badge {
-  font-family: 'Outfit', -apple-system, sans-serif;
-  font-size: 24px;
-  font-weight: 800;
+.info-point-icon.text-azure {
   color: #0284c7;
-  margin-bottom: 10px;
-  line-height: 1;
 }
 
-.protocol-title {
-  font-family: 'Outfit', -apple-system, sans-serif;
-  font-size: 16.5px;
-  font-weight: 750;
-  color: #0f172a;
-  margin: 0 0 10px;
+.info-point-icon.text-emerald {
+  color: #10b981;
 }
 
-.protocol-desc {
-  font-size: 13px;
-  color: #475569;
-  line-height: 1.6;
-  margin: 0 0 14px;
-  flex-grow: 1;
+.info-point-item strong {
+  color: #0f2b48;
 }
 
-.protocol-modality {
-  padding-top: 12px;
-  border-top: 1px dashed #e2e8f0;
-  font-size: 12px;
-  color: #64748b;
-}
-
-.protocol-modality strong {
-  display: block;
-  color: #0f172a;
-  font-size: 11.5px;
-  margin-bottom: 2px;
-}
-
-/* ─── 5. CONTACT & INQUIRY FORM SECTION ─── */
+/* ─── 3. CONTACT & INQUIRY FORM SECTION ─── */
 .service-contact-section {
   background-color: #f8fafc;
   border-top: 1px solid #e2e8f0;
-  padding: 70px 0 85px;
+  padding: 70px 0 90px;
 }
 
 .service-contact-wrapper {
@@ -483,150 +206,41 @@
   box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
 }
 
-/* ─── 6. BOTTOM ACTION CTA STRIP (Standardized) ─── */
-.service-bottom-cta-section {
-  background: linear-gradient(135deg, #0f172a 0%, #0369a1 100%);
-  color: #ffffff;
-  padding: 70px 0;
-}
-
-.service-cta-inner {
-  text-align: center;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.text-ice {
-  color: #38bdf8 !important;
-  background-color: rgba(2, 132, 199, 0.2) !important;
-  border-color: rgba(56, 189, 248, 0.3) !important;
-}
-
-.service-cta-inner h2 {
-  font-family: 'Outfit', -apple-system, sans-serif;
-  font-size: clamp(26px, 3.2vw, 36px);
-  font-weight: 800;
-  color: #ffffff;
-  margin: 0 0 14px;
-  line-height: 1.25;
-}
-
-.service-cta-inner p {
-  font-size: 16px;
-  color: #cbd5e1;
-  line-height: 1.6;
-  margin: 0 auto 30px;
-  max-width: 650px;
-}
-
-.service-cta-btn-group {
-  display: flex;
-  gap: 14px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.btn-detail-white {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background-color: #ffffff;
-  color: #0369a1 !important;
-  padding: 13px 24px;
-  border-radius: 6px;
-  font-weight: 700;
-  font-size: 14.5px;
-  text-decoration: none;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
-  transition: transform 0.15s ease, background-color 0.2s ease;
-}
-
-.btn-detail-white:hover {
-  background-color: #f0f9ff;
-  transform: translateY(-2px);
-}
-
-.btn-detail-outline-white {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  color: #ffffff !important;
-  padding: 13px 22px;
-  border-radius: 6px;
-  font-weight: 600;
-  font-size: 14.5px;
-  text-decoration: none;
-  transition: background 0.2s ease, border-color 0.2s ease;
-}
-
-.btn-detail-outline-white:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: #ffffff;
-}
-
-.btn-detail-whatsapp {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background-color: #16a34a;
-  color: #ffffff !important;
-  padding: 13px 22px;
-  border-radius: 6px;
-  font-weight: 700;
-  font-size: 14.5px;
-  text-decoration: none;
-  transition: background-color 0.2s ease;
-}
-
-.btn-detail-whatsapp:hover {
-  background-color: #15803d;
-}
-
 /* ─── RESPONSIVE BREAKPOINTS ─── */
-@media (max-width: 1024px) {
-  .protocols-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
 @media (max-width: 992px) {
-  .service-story-grid {
+  .service-info-grid {
     grid-template-columns: 1fr;
     gap: 36px;
+  }
+
+  .service-info-media {
+    position: static;
   }
 
   .service-feature-img {
     height: 340px;
   }
 
-  .two-col-clinical-grid {
-    grid-template-columns: 1fr;
-    gap: 32px;
+  .service-info-section {
+    padding: 45px 0 55px;
   }
 
-  .case-study-card {
-    grid-template-columns: 1fr;
-    gap: 20px;
+  .service-contact-section {
+    padding: 55px 0 70px;
   }
 }
 
 @media (max-width: 600px) {
-  .detail-pillars-grid {
-    grid-template-columns: 1fr;
+  .service-feature-img {
+    height: 260px;
   }
 
-  .protocols-grid {
-    grid-template-columns: 1fr;
+  .service-info-text {
+    gap: 24px;
   }
 
-  .service-cta-btn-group {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .section-padding {
-    padding: 50px 0;
+  .info-point-item {
+    font-size: 13.5px;
+    gap: 10px;
   }
 }
