@@ -207,4 +207,30 @@ export const ALL_FACILITIES = [
       "Senior Citizen Fall Risk Reduction & Frailty Rehabilitation",
     ],
   },
+  {
+    id: "hydrotherapy-pool",
+    title: "Hydrotherapy & Warm Water Rehabilitation Pool",
+    subtitle: "Aquatic therapy and buoyancy-assisted joint mobilization",
+    category: "Aquatic Rehab",
+    badge: "Aquatic Rehab",
+    image: "https://images.unsplash.com/photo-1576610616656-d3aa5d1f4534?auto=format&fit=crop&w=800&q=80",
+    desc: "Temperature-controlled warm water pool for non-weight-bearing rehabilitation, enabling pain-free joint movement, muscle strengthening, and cardiovascular conditioning for patients unable to bear full body weight on land.",
+    fullDesc: "Water's natural buoyancy reduces effective body weight by up to 90%, allowing patients with severe joint pain, post-surgical weakness, or neurological conditions to move freely without pain. Our hydrotherapy pool maintains a therapeutic temperature of 33–35°C to promote muscle relaxation, improve blood circulation, and facilitate comfortable range-of-motion recovery.",
+    keyEquipment: [
+      "Temperature-regulated therapeutic pool (33–35°C) with underwater jets",
+      "Aquatic treadmill and underwater resistance resistance bars",
+      "Non-slip ramps, hoisting rails, and aquatic walking harness systems",
+    ],
+    highlights: [
+      "Buoyancy reduces joint load by up to 90% for pain-free movement",
+      "Warm water relaxes spastic muscles and improves circulation",
+      "Safe entry ramp and harness system for post-surgical and senior patients",
+    ],
+    conditions: [
+      "Severe Knee & Hip Osteoarthritis (Pre & Post Surgery)",
+      "Post-Operative Lower Limb Weakness & Swelling",
+      "Cerebral Palsy & Spastic Muscle Rehabilitation",
+      "Chronic Fibromyalgia & Generalized Body Pain",
+    ],
+  },
 ];
