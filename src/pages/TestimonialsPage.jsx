@@ -251,28 +251,6 @@ export default function TestimonialsPage() {
           </div>
         </div>
       </section>
-
-      {/* ─── 3. BOTTOM CTA ─── */}
-      <section className="testimonials-bottom-cta">
-        <div className="testimonials-container">
-          <div className="bottom-cta-banner scroll-reveal">
-            <h2>Ready to Write Your Own Recovery Story?</h2>
-            <p>
-              Don't let chronic joint stiffness or nerve pain become your everyday baseline. Schedule your comprehensive 45-minute clinical assessment today.
-            </p>
-            <div className="bottom-cta-actions">
-              <Link to="/appointment" className="btn-cta-white">
-                <Calendar size={18} />
-                <span>Book Your Evaluation</span>
-                <ArrowRight size={17} />
-              </Link>
-              <a href="tel:+919145875248" className="btn-cta-outline-white">
-                <span>Call Helpline: +91 91458 75248</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
     </main>
   );
 }

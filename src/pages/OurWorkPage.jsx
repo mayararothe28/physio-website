@@ -184,27 +184,6 @@ export default function OurWorkPage() {
           </div>
         </div>
       </section>
-
-      {/* ─── 3. BOTTOM CTA ─── */}
-      <section className="work-bottom-cta">
-        <div className="work-container">
-          <div className="work-cta-card scroll-reveal">
-            <h2>Struggling with a Similar Orthopedic Condition?</h2>
-            <p>
-              Don't accept invasive surgery as your only option until you have received a comprehensive 45-minute biomechanical evaluation at RevitaOrtho.
-            </p>
-            <div className="work-cta-actions">
-              <Link to="/appointment" className="btn-work-white">
-                <Calendar size={18} />
-                <span>Book Initial Evaluation</span>
-              </Link>
-              <a href="tel:+919145875248" className="btn-work-outline-white">
-                <span>Call Doctor Helpline: +91 91458 75248</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
     </main>
   );
 }

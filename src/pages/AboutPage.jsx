@@ -1,19 +1,13 @@
-import { Link } from "react-router-dom";
 import {
   ShieldCheck,
   Award,
   Users,
   CheckCircle2,
-  Calendar,
-  Phone,
-  MessageCircle,
   Building2,
   HeartPulse,
   Sparkles,
-  ArrowRight,
   Accessibility,
   Clock,
-  MapPin,
 } from "lucide-react";
 import "./AboutPage.css";
 
@@ -204,36 +198,6 @@ export default function AboutPage() {
                 <p>Level ramps, spacious elevators, and dedicated assistance for elderly or severely pained patients.</p>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ─── 5. CLEAN BOTTOM ACTION CTA STRIP ─── */}
-      <section className="about-cta-section">
-        <div className="about-container about-cta-inner">
-          <span className="about-kicker text-ice">START YOUR RECOVERY</span>
-          <h2>Ready to Consult with Our Clinical Specialists?</h2>
-          <p>
-            Schedule your comprehensive 45-minute root-cause evaluation today or connect directly with our patient coordination desk.
-          </p>
-          <div className="about-cta-btn-group">
-            <Link to="/appointment" className="btn-about-white">
-              <Calendar size={17} />
-              <span>Book Initial Assessment</span>
-            </Link>
-            <Link to="/contact" className="btn-about-outline-white">
-              <MapPin size={17} />
-              <span>Contact Clinic Desk</span>
-            </Link>
-            <a
-              href="https://wa.me/919145875248?text=Hello%20RevitaOrtho,%20I%20would%20like%20to%20learn%20more%20about%20your%20clinic."
-              target="_blank"
-              rel="noreferrer"
-              className="btn-about-whatsapp"
-            >
-              <MessageCircle size={17} />
-              <span>WhatsApp Us: +91 91458 75248</span>
-            </a>
           </div>
         </div>
       </section>

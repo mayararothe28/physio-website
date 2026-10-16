@@ -308,28 +308,6 @@ export default function TreatmentsPage() {
           </div>
         </div>
       </section>
-
-      {/* ─── 4. BOTTOM CTA ─── */}
-      <section className="treatments-bottom-cta">
-        <div className="treatments-container bottom-cta-box">
-          <div className="bottom-cta-inner">
-            <span className="treatments-kicker text-ice">NEED CLINICAL GUIDANCE?</span>
-            <h2>Unsure Which Treatment Protocol You Need?</h2>
-            <p>
-              You don’t have to guess. Our senior orthopedic physiotherapists will evaluate your joints, examine any imaging reports, and recommend the exact protocol tailored to your recovery.
-            </p>
-            <div className="bottom-cta-buttons">
-              <Link to="/appointment" className="btn-treatment-white">
-                <Calendar size={18} />
-                <span>Book a Diagnostic Consultation</span>
-              </Link>
-              <a href="tel:+919145875248" className="btn-treatment-outline-white">
-                <span>Call Helpline: +91 91458 75248</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
     </main>
   );
 }

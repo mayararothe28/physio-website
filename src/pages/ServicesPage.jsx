@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ChevronRight, Calendar, Phone, Sparkles, ArrowRight } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import "./ServicesPage.css";
 
 // 12 Clinically accurate, image-based service cards matching World of Rehab & Homepage design
@@ -143,31 +143,6 @@ export default function ServicesPage() {
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ─── 3. ASSESSMENT / CALLOUT SECTION ─── */}
-      <section className="wor-services-cta-section">
-        <div className="wor-container">
-          <div className="wor-services-cta-card">
-            <div className="wor-services-cta-info">
-              <span className="wor-services-cta-kicker">PERSONALIZED 1-ON-1 CARE</span>
-              <h2 className="wor-services-cta-title">Not Sure Which Therapy Fits Your Condition?</h2>
-              <p className="wor-services-cta-desc">
-                Schedule a 45-minute comprehensive clinical assessment with our Master's qualified physiotherapists to identify the root cause of your pain.
-              </p>
-            </div>
-            <div className="wor-services-cta-actions">
-              <Link to="/appointment" className="wor-btn-cta-book">
-                <Calendar size={16} />
-                <span>Book Appointment</span>
-              </Link>
-              <a href="tel:+919145875248" className="wor-btn-cta-call">
-                <Phone size={16} />
-                <span>Call Us! +91 91458 75248</span>
-              </a>
-            </div>
           </div>
         </div>
       </section>
