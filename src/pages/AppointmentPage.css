@@ -6,7 +6,7 @@
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   color: #0f172a;
   background-color: #ffffff;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 .appointment-container {

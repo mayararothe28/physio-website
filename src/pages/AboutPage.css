@@ -10,7 +10,7 @@
     'Segoe UI', Roboto, sans-serif;
   color: var(--wor-text-body, #334155);
   background-color: #fff;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 /* ==========================================================

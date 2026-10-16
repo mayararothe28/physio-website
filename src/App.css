@@ -10,7 +10,7 @@
   flex-direction: column;
   background-color: var(--bg-surface);
   color: var(--body-text);
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 .main-content-flow {
