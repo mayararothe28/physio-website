@@ -585,7 +585,7 @@ export default function HomePage() {
                   <h4>{facility.title}</h4>
                   <p>{facility.subtitle}</p>
                   <div className="wor-gallery-action">
-                    <Link to={`/facilities?facility=${facility.id}`} className="wor-btn-gallery-details">
+                    <Link to={`/facilities/${facility.id}`} className="wor-btn-gallery-details">
                       <span>View Details</span>
                       <ChevronRight size={14} />
                     </Link>
