@@ -231,6 +231,7 @@ img {
 
 /* ─── STANDARDIZED UNIFORM SUBPAGE INTRO (Exact Height Matching Our Doctors / Team Page) ─── */
 .subpage-hero-banner,
+.wor-subpage-hero,
 .contact-hero-section,
 .appointment-hero-section,
 .team-hero-section,
@@ -252,15 +253,16 @@ img {
 
 @media (max-width: 768px) {
   .subpage-hero-banner,
+  .wor-subpage-hero,
   .contact-hero-section,
   .appointment-hero-section,
   .team-hero-section,
   .work-hero-section,
   .faq-hero-section,
   .testimonials-hero-section {
-    min-height: 290px !important;
-    height: auto !important;
-    padding: 48px 0 !important;
+    min-height: 340px !important;
+    height: 340px !important;
+    padding: 16px 0 !important;
   }
 }
 
