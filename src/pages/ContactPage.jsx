@@ -231,7 +231,7 @@ export default function ContactPage() {
                           onChange={handleChange}
                           className="form-input select-input"
                         >
-                          <option value="" disabled>Select a care mode</option>
+                          <option value="">Select a care mode</option>
                           <option value="clinic">In-Clinic Consultation</option>
                           <option value="home">Home Visit Physiotherapy</option>
                           <option value="video">Online Video Consultation</option>
