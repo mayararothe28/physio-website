@@ -1457,3 +1457,94 @@
     padding: 1.5rem;
   }
 }
+
+
+/* ─── Sequential hero heading reveal ─── */
+.wor-banner-title .wor-word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.wor-banner-title .wor-letter {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(18px);
+  animation: worLetterReveal 0.32s ease-out forwards;
+}
+
+@keyframes worLetterReveal {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wor-banner-title .wor-letter {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+
+/* ─── Statistics animate only when the user scrolls to this section ─── */
+.wor-stats-section {
+  opacity: 1;
+}
+
+.wor-stat-animated {
+  opacity: 0;
+  transform: translateY(18px) scale(0.98);
+  will-change: opacity, transform;
+}
+
+.wor-stats-visible .wor-stat-animated.wor-stat-visible {
+  animation: worStatReveal 0.55s ease-out forwards;
+}
+
+.wor-stat-icon-wrap {
+  transition: transform 0.25s ease, background-color 0.25s ease;
+}
+
+.wor-stat-animated:hover .wor-stat-icon-wrap {
+  transform: translateY(-3px) scale(1.06);
+}
+
+@keyframes worStatsSectionReveal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes worStatReveal {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wor-banner-title .wor-letter,
+  .wor-stats-section,
+  .wor-stat-animated {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .wor-stat-icon-wrap {
+    transition: none;
+  }
+}

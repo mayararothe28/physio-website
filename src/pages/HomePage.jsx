@@ -150,9 +150,29 @@ const CLINIC_FACILITIES = [
   },
 ];
 
+function AnimatedWord({ word, startDelay = 0, accent = false }) {
+  return (
+    <span className={`wor-word${accent ? " wor-text-accent" : ""}`}>
+      {Array.from(word).map((letter, index) => (
+        <span
+          className="wor-letter"
+          key={`${word}-${index}`}
+          style={{ animationDelay: `${startDelay + index * 0.075}s` }}
+        >
+          {letter}
+        </span>
+      ))}
+    </span>
+  );
+}
+
 export default function HomePage() {
   const [apiData, setApiData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [yearsCount, setYearsCount] = useState(0);
+  const [patientCount, setPatientCount] = useState(0);
+  const [surgeryCount, setSurgeryCount] = useState(0);
+  const [statsInView, setStatsInView] = useState(false);
 
   // Appointment Form State
   const [formData, setFormData] = useState({
@@ -184,6 +204,50 @@ export default function HomePage() {
       isMounted = false;
     };
   }, []);
+
+  // Start statistics animation only when the section enters the viewport
+  useEffect(() => {
+    const statsSection = document.querySelector(".wor-stats-section");
+    if (!statsSection) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setStatsInView(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.25 }
+    );
+
+    observer.observe(statsSection);
+    return () => observer.disconnect();
+  }, [isLoading, apiData]);
+
+  // Animate all numeric statistics after the section becomes visible
+  useEffect(() => {
+    if (isLoading || !apiData || !statsInView) return;
+
+    const duration = 2000;
+    const intervalTime = 20;
+    const totalSteps = duration / intervalTime;
+    let currentStep = 0;
+
+    const timer = setInterval(() => {
+      currentStep = Math.min(currentStep + 1, totalSteps);
+      const progress = currentStep / totalSteps;
+
+      setYearsCount(Math.floor(14 * progress));
+      setPatientCount(Math.floor(10000 * progress));
+      setSurgeryCount(Math.floor(94 * progress));
+
+      if (currentStep >= totalSteps) {
+        clearInterval(timer);
+      }
+    }, intervalTime);
+
+    return () => clearInterval(timer);
+  }, [isLoading, apiData, statsInView]);
 
   function handleInputChange(e) {
     const { name, value } = e.target;
@@ -311,8 +375,12 @@ export default function HomePage() {
             </span>
 
             <h1 className="wor-banner-title">
-              Begin Your Journey <br />
-              to <span className="wor-text-accent">Recovery</span>
+              <AnimatedWord word="Begin" startDelay={0} />{" "}
+              <AnimatedWord word="Your" startDelay={0.62} />{" "}
+              <AnimatedWord word="Journey" startDelay={1.165} />
+              <br />
+              <AnimatedWord word="to" startDelay={1.935} />{" "}
+              <AnimatedWord word="Recovery" startDelay={2.33} accent />
             </h1>
 
             <p className="wor-banner-desc">
@@ -350,46 +418,46 @@ export default function HomePage() {
           2. EXPERIENCE & ACHIEVEMENTS STRIP (Horizontal Stats Row)
           Matching World of Rehab's 4 horizontal metric highlights
          ══════════════════════════════════════════════════════════════ */}
-      <section className="wor-stats-section">
+      <section className={`wor-stats-section${statsInView ? " wor-stats-visible" : ""}`}>
         <div className="wor-container">
           <div className="wor-stats-grid">
-            <div className="wor-stat-box">
+            <div className={`wor-stat-box wor-stat-animated${statsInView ? " wor-stat-visible" : ""}`} style={{ animationDelay: "0.1s" }}>
               <div className="wor-stat-icon-wrap">
                 <Award size={28} />
               </div>
               <div className="wor-stat-info">
-                <h3>14+ Years</h3>
+                <h3>{yearsCount}+ Years</h3>
                 <p>Of Clinical Leadership</p>
               </div>
             </div>
 
             <div className="wor-stat-divider"></div>
 
-            <div className="wor-stat-box">
+            <div className={`wor-stat-box wor-stat-animated${statsInView ? " wor-stat-visible" : ""}`} style={{ animationDelay: "0.25s" }}>
               <div className="wor-stat-icon-wrap">
                 <Users size={28} />
               </div>
               <div className="wor-stat-info">
-                <h3>10,000+</h3>
+                <h3>{patientCount.toLocaleString("en-IN")}+</h3>
                 <p>Happy Patients Restored</p>
               </div>
             </div>
 
             <div className="wor-stat-divider"></div>
 
-            <div className="wor-stat-box">
+            <div className={`wor-stat-box wor-stat-animated${statsInView ? " wor-stat-visible" : ""}`} style={{ animationDelay: "0.4s" }}>
               <div className="wor-stat-icon-wrap">
                 <ShieldCheck size={28} />
               </div>
               <div className="wor-stat-info">
-                <h3>94% Surgeries</h3>
+                <h3>{surgeryCount}% Surgeries</h3>
                 <p>Successfully Avoided</p>
               </div>
             </div>
 
             <div className="wor-stat-divider"></div>
 
-            <div className="wor-stat-box">
+            <div className={`wor-stat-box wor-stat-animated${statsInView ? " wor-stat-visible" : ""}`} style={{ animationDelay: "0.55s" }}>
               <div className="wor-stat-icon-wrap">
                 <Zap size={28} />
               </div>
