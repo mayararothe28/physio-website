@@ -8,14 +8,13 @@ import {
 import "./ContactPage.css";
 
 export default function ContactPage() {
-  const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
-    email: "",
-    concern: "",
-    careMode: "",
-    message: "",
-  });
+ const [formData, setFormData] = useState({
+  name: "",
+  phone: "",
+  email: "",
+  regarding: "",
+  message: "",
+});
   const [submitted, setSubmitted] = useState(false);
   const [phoneError, setPhoneError] = useState("");
   const [emailError, setEmailError] = useState("");
@@ -27,8 +26,7 @@ export default function ContactPage() {
     `Name: ${formData.name}`,
     `Phone: +91 ${formData.phone}`,
     `Email: ${formData.email || "Not provided"}`,
-    `Area of concern: ${formData.concern || "Not selected"}`,
-    `Care mode: ${formData.careMode || "Not selected"}`,
+   `Enquiry regarding: ${formData.regarding || "Not selected"}`,
     `Message: ${formData.message || "Not provided"}`,
   ].join("\n");
   const whatsappHref = `https://wa.me/919145875248?text=${encodeURIComponent(inquiryMessage)}`;
@@ -74,14 +72,13 @@ export default function ContactPage() {
   }
 
   function handleResetContact() {
-    setFormData({
-      name: "",
-      phone: "",
-      email: "",
-      concern: "",
-      careMode: "",
-      message: "",
-    });
+   setFormData({
+  name: "",
+  phone: "",
+  email: "",
+  regarding: "",
+  message: "",
+});
     setPhoneError("");
     setEmailError("");
     setSubmitted(false);
@@ -205,25 +202,25 @@ export default function ContactPage() {
 
                     <div className="form-two-col-row">
                       <div className="form-input-group">
-                        <label htmlFor="c-concern">Primary Area of Concern</label>
-                        <select
-                          id="c-concern"
-                          name="concern"
-                          value={formData.concern}
-                          onChange={handleChange}
-                          className="form-input select-input"
-                        >
-                          <option value="" disabled>Select an area of concern</option>
-                          <option value="spine">Lower Back / Slip Disc / Sciatica</option>
-                          <option value="neck">Neck Pain & Cervical Spondylosis</option>
-                          <option value="knee">Knee Pain & Osteoarthritis</option>
-                          <option value="sports">Sports Injury & Ligament Sprain</option>
-                          <option value="shoulder">Frozen Shoulder & Rotator Cuff</option>
-                          <option value="postop">Post-Surgical Joint Rehabilitation</option>
-                          <option value="neuro">Stroke & Neuro Rehabilitation</option>
-                          <option value="other">General Physical Evaluation</option>
-                        </select>
-                      </div>
+  <label htmlFor="c-regarding">
+    What Is Your Enquiry Regarding? *
+  </label>
+
+  <select
+    id="c-regarding"
+    name="regarding"
+    value={formData.regarding}
+    onChange={handleChange}
+    className="form-input select-input"
+    required
+  >
+    <option value="">Select an option</option>
+    <option value="Doctor">Doctor</option>
+    <option value="Hospital / Clinic">Hospital / Clinic</option>
+    <option value="Appointment">Appointment</option>
+    <option value="General Enquiry">General Enquiry</option>
+  </select>
+</div>
 
                       <div className="form-input-group">
                         <label htmlFor="c-caremode">Preferred Care Mode</label>
