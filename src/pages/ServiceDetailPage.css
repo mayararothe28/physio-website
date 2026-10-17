@@ -271,3 +271,767 @@
     height: 280px;
   }
 }
+/* =========================================
+   REVITAORTHO — RECOVERY ROADMAP
+   Clean Bootstrap Icon treatment stages
+========================================= */
+
+.recovery-roadmap {
+  padding-top: 12px;
+}
+
+.roadmap-heading {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 34px;
+}
+
+.roadmap-eyebrow {
+  display: inline-block;
+  margin-bottom: 12px;
+  color: #0284c7;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.roadmap-heading .points-section-heading {
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  font-size: clamp(23px, 2.5vw, 31px);
+  line-height: 1.3;
+}
+
+.roadmap-title-icon {
+  color: #0284c7;
+  font-size: 27px;
+  flex-shrink: 0;
+}
+
+.roadmap-highlight {
+  color: #0284c7;
+}
+
+.roadmap-intro {
+  margin: 0;
+  color: #64748b;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.roadmap-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+  position: relative;
+  align-items: stretch;
+}
+
+.roadmap-card {
+  min-width: 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 26px 20px 20px;
+  background: #ffffff;
+  border: 1px solid #dcebf5;
+  border-radius: 13px;
+  box-shadow: 0 3px 12px rgba(15, 43, 72, 0.035);
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    border-color 220ms ease;
+  animation: roadmapFadeIn 450ms ease both;
+  animation-delay: calc(var(--stage-index, 0) * 90ms);
+}
+
+.roadmap-card:hover {
+  transform: translateY(-5px);
+  border-color: #91cfee;
+  box-shadow: 0 12px 28px rgba(15, 80, 120, 0.09);
+}
+
+.roadmap-card:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 63px;
+  right: -21px;
+  width: 21px;
+  height: 1px;
+  background: #78c5e8;
+  z-index: 1;
+}
+
+.roadmap-card-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.roadmap-icon-wrap {
+  width: 82px;
+  height: 82px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #edf8fe;
+  border-radius: 50%;
+  transition:
+    background-color 220ms ease,
+    transform 220ms ease;
+}
+
+.roadmap-card:hover .roadmap-icon-wrap {
+  background: #dff3fd;
+  transform: scale(1.05);
+}
+
+.roadmap-stage-icon {
+  color: #087fbd;
+  font-size: 35px;
+  line-height: 1;
+}
+
+.roadmap-stage-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 48px;
+  height: 29px;
+  padding: 0 12px;
+  border-radius: 20px;
+  background: #e5f5fd;
+  color: #027bb8;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+}
+
+.roadmap-card-title {
+  min-height: 48px;
+  margin: 0 0 12px;
+  color: #0f2b48;
+  font-family: "Outfit", sans-serif;
+  font-size: 17px;
+  font-weight: 750;
+  line-height: 1.45;
+  text-align: center;
+}
+
+.roadmap-card-description {
+  flex: 1;
+  margin: 0 0 20px;
+  color: #64748b;
+  font-size: 13.5px;
+  line-height: 1.75;
+  text-align: center;
+}
+
+.roadmap-method {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  padding: 14px 12px;
+  margin-top: auto;
+  background: #f3f9fd;
+  border-radius: 9px;
+}
+
+.roadmap-method-icon {
+  flex-shrink: 0;
+  color: #0284c7;
+  font-size: 21px;
+  line-height: 1.3;
+}
+
+.roadmap-method-label {
+  display: block;
+  margin-bottom: 5px;
+  color: #087fbd;
+  font-size: 11.5px;
+  font-weight: 800;
+}
+
+.roadmap-method-text {
+  margin: 0;
+  color: #64748b;
+  font-size: 12px;
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+}
+
+.roadmap-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 30px;
+}
+
+.roadmap-footer p {
+  margin: 0;
+  color: #0f3b70;
+  font-size: 15px;
+  font-weight: 650;
+  font-style: italic;
+}
+
+.roadmap-footer-line {
+  width: 32px;
+  height: 1px;
+  background: #0284c7;
+}
+
+@keyframes roadmapFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Laptop and tablet */
+@media (max-width: 1024px) {
+  .roadmap-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .roadmap-card:not(:last-child)::after {
+    display: none;
+  }
+
+  .roadmap-card-title {
+    min-height: auto;
+  }
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+  .roadmap-heading {
+    margin-bottom: 25px;
+  }
+
+  .roadmap-heading .points-section-heading {
+    font-size: 22px;
+  }
+
+  .roadmap-intro {
+    font-size: 14px;
+  }
+
+  .roadmap-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .roadmap-card {
+    padding: 22px 18px 18px;
+  }
+
+  .roadmap-card-top {
+    margin-bottom: 14px;
+  }
+
+  .roadmap-icon-wrap {
+    width: 70px;
+    height: 70px;
+  }
+
+  .roadmap-stage-icon {
+    font-size: 30px;
+  }
+
+  .roadmap-card-title {
+    font-size: 17px;
+  }
+
+  .roadmap-card-description {
+    margin-bottom: 16px;
+  }
+
+  .roadmap-footer {
+    gap: 10px;
+  }
+
+  .roadmap-footer p {
+    font-size: 13px;
+    text-align: center;
+  }
+
+  .roadmap-footer-line {
+    width: 20px;
+  }
+}
+
+/* Respect accessibility preferences */
+@media (prefers-reduced-motion: reduce) {
+  .roadmap-card {
+    animation: none;
+    transition: none;
+  }
+
+  .roadmap-card:hover,
+  .roadmap-card:hover .roadmap-icon-wrap {
+    transform: none;
+  }
+}
+
+/* =========================================
+   REVITAORTHO — RECOVERY ROADMAP
+   Clean Bootstrap Icon treatment stages
+========================================= */
+
+.recovery-roadmap {
+  padding-top: 12px;
+}
+
+.roadmap-heading {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 34px;
+}
+
+.roadmap-eyebrow {
+  display: inline-block;
+  margin-bottom: 12px;
+  color: #0284c7;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.roadmap-heading .points-section-heading {
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  font-size: clamp(23px, 2.5vw, 31px);
+  line-height: 1.3;
+}
+
+.roadmap-title-icon {
+  color: #0284c7;
+  font-size: 27px;
+  flex-shrink: 0;
+}
+
+.roadmap-highlight {
+  color: #0284c7;
+}
+
+.roadmap-intro {
+  margin: 0;
+  color: #64748b;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.roadmap-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+  position: relative;
+  align-items: stretch;
+}
+
+.roadmap-card {
+  min-width: 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 26px 20px 20px;
+  background: #ffffff;
+  border: 1px solid #dcebf5;
+  border-radius: 13px;
+  box-shadow: 0 3px 12px rgba(15, 43, 72, 0.035);
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    border-color 220ms ease;
+  animation: roadmapFadeIn 450ms ease both;
+  animation-delay: calc(var(--stage-index, 0) * 90ms);
+}
+
+.roadmap-card:hover {
+  transform: translateY(-5px);
+  border-color: #91cfee;
+  box-shadow: 0 12px 28px rgba(15, 80, 120, 0.09);
+}
+
+.roadmap-card:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 63px;
+  right: -21px;
+  width: 21px;
+  height: 1px;
+  background: #78c5e8;
+  z-index: 1;
+}
+
+.roadmap-card-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.roadmap-icon-wrap {
+  width: 82px;
+  height: 82px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #edf8fe;
+  border-radius: 50%;
+  transition:
+    background-color 220ms ease,
+    transform 220ms ease;
+}
+
+.roadmap-card:hover .roadmap-icon-wrap {
+  background: #dff3fd;
+  transform: scale(1.05);
+}
+
+.roadmap-stage-icon {
+  color: #087fbd;
+  font-size: 35px;
+  line-height: 1;
+}
+
+.roadmap-stage-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 48px;
+  height: 29px;
+  padding: 0 12px;
+  border-radius: 20px;
+  background: #e5f5fd;
+  color: #027bb8;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+}
+
+.roadmap-card-title {
+  min-height: 48px;
+  margin: 0 0 12px;
+  color: #0f2b48;
+  font-family: "Outfit", sans-serif;
+  font-size: 17px;
+  font-weight: 750;
+  line-height: 1.45;
+  text-align: center;
+}
+
+.roadmap-card-description {
+  flex: 1;
+  margin: 0 0 20px;
+  color: #64748b;
+  font-size: 13.5px;
+  line-height: 1.75;
+  text-align: center;
+}
+
+.roadmap-method {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  padding: 14px 12px;
+  margin-top: auto;
+  background: #f3f9fd;
+  border-radius: 9px;
+}
+
+.roadmap-method-icon {
+  flex-shrink: 0;
+  color: #0284c7;
+  font-size: 21px;
+  line-height: 1.3;
+}
+
+.roadmap-method-label {
+  display: block;
+  margin-bottom: 5px;
+  color: #087fbd;
+  font-size: 11.5px;
+  font-weight: 800;
+}
+
+.roadmap-method-text {
+  margin: 0;
+  color: #64748b;
+  font-size: 12px;
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+}
+
+.roadmap-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 30px;
+}
+
+.roadmap-footer p {
+  margin: 0;
+  color: #0f3b70;
+  font-size: 15px;
+  font-weight: 650;
+  font-style: italic;
+}
+
+.roadmap-footer-line {
+  width: 32px;
+  height: 1px;
+  background: #0284c7;
+}
+
+@keyframes roadmapFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Laptop and tablet */
+@media (max-width: 1024px) {
+  .roadmap-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .roadmap-card:not(:last-child)::after {
+    display: none;
+  }
+
+  .roadmap-card-title {
+    min-height: auto;
+  }
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+  .roadmap-heading {
+    margin-bottom: 25px;
+  }
+
+  .roadmap-heading .points-section-heading {
+    font-size: 22px;
+  }
+
+  .roadmap-intro {
+    font-size: 14px;
+  }
+
+  .roadmap-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .roadmap-card {
+    padding: 22px 18px 18px;
+  }
+
+  .roadmap-card-top {
+    margin-bottom: 14px;
+  }
+
+  .roadmap-icon-wrap {
+    width: 70px;
+    height: 70px;
+  }
+
+  .roadmap-stage-icon {
+    font-size: 30px;
+  }
+
+  .roadmap-card-title {
+    font-size: 17px;
+  }
+
+  .roadmap-card-description {
+    margin-bottom: 16px;
+  }
+
+  .roadmap-footer {
+    gap: 10px;
+  }
+
+  .roadmap-footer p {
+    font-size: 13px;
+    text-align: center;
+  }
+
+  .roadmap-footer-line {
+    width: 20px;
+  }
+}
+
+/* Respect accessibility preferences */
+@media (prefers-reduced-motion: reduce) {
+  .roadmap-card {
+    animation: none;
+    transition: none;
+  }
+
+  .roadmap-card:hover,
+  .roadmap-card:hover .roadmap-icon-wrap {
+    transform: none;
+  }
+}
+
+/* Compact Recovery Roadmap Cards */
+.recovery-roadmap .roadmap-heading {
+  margin-bottom: 20px;
+}
+
+.recovery-roadmap .roadmap-eyebrow {
+  margin-bottom: 6px;
+  font-size: 10px;
+  letter-spacing: 1.4px;
+}
+
+.recovery-roadmap .roadmap-heading .points-section-heading {
+  font-size: 24px;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.recovery-roadmap .roadmap-title-icon {
+  font-size: 21px;
+}
+
+.recovery-roadmap .roadmap-intro {
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.recovery-roadmap .roadmap-grid {
+  gap: 12px;
+  align-items: start;
+}
+
+.recovery-roadmap .roadmap-card {
+  padding: 14px 12px 12px;
+  border-radius: 10px;
+  min-height: 0;
+  height: auto;
+  align-self: start;
+}
+
+.recovery-roadmap .roadmap-card-top {
+  gap: 7px;
+  margin-bottom: 10px;
+}
+
+.recovery-roadmap .roadmap-icon-wrap {
+  width: 48px;
+  height: 48px;
+}
+
+.recovery-roadmap .roadmap-stage-icon {
+  font-size: 22px;
+}
+
+.recovery-roadmap .roadmap-stage-number {
+  min-width: 34px;
+  height: 22px;
+  padding: 0 8px;
+  font-size: 10px;
+}
+
+.recovery-roadmap .roadmap-card-title {
+  min-height: 0;
+  margin: 0 0 6px;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.recovery-roadmap .roadmap-card-description {
+  flex: initial;
+  margin: 0 0 10px;
+  font-size: 11px;
+  line-height: 1.45;
+  text-align: center;
+}
+
+.recovery-roadmap .roadmap-method {
+  gap: 7px;
+  padding: 8px;
+  margin-top: 0;
+  border-radius: 7px;
+}
+
+.recovery-roadmap .roadmap-method-icon {
+  font-size: 15px;
+}
+
+.recovery-roadmap .roadmap-method-label {
+  margin-bottom: 3px;
+  font-size: 10px;
+}
+
+.recovery-roadmap .roadmap-method-text {
+  font-size: 10px;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.recovery-roadmap .roadmap-footer {
+  margin-top: 18px;
+  gap: 10px;
+}
+
+.recovery-roadmap .roadmap-footer p {
+  font-size: 12px;
+}
+
+.recovery-roadmap .roadmap-card:not(:last-child)::after {
+  top: 38px;
+  right: -13px;
+  width: 13px;
+}
+
+@media (max-width: 576px) {
+  .recovery-roadmap .roadmap-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .recovery-roadmap .roadmap-card {
+    padding: 12px 9px;
+  }
+
+  .recovery-roadmap .roadmap-card-title {
+    font-size: 13px;
+  }
+
+  .recovery-roadmap .roadmap-card-description {
+    font-size: 10px;
+  }
+
+  .recovery-roadmap .roadmap-method {
+    padding: 7px;
+  }
+
+  .recovery-roadmap .roadmap-card:not(:last-child)::after {
+    display: none;
+  }
+}
