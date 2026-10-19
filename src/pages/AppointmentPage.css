@@ -556,3 +556,205 @@
     padding: 26px 20px;
   }
 }
+
+/* =========================================
+   REVITAORTHO - PREMIUM APPOINTMENT DROPDOWNS
+   ========================================= */
+
+.appointment-page .booking-form-card select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  width: 100%;
+  min-height: 50px;
+  padding: 13px 44px 13px 16px;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #18344d;
+
+  background-color: #ffffff;
+  border: 1px solid #d8e3ed;
+  border-radius: 8px;
+
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%230284c7' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m7 10 5 5 5-5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 18px;
+
+  cursor: pointer;
+  outline: none;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+
+/* Hover */
+.appointment-page .booking-form-card select:hover {
+  border-color: #8bbbd0;
+  background-color: #fbfdff;
+}
+
+/* Focus */
+.appointment-page .booking-form-card select:focus {
+  border-color: #0284c7;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.10);
+}
+
+/* Placeholder option */
+.appointment-page .booking-form-card select:invalid {
+  color: #7b8b9b;
+}
+
+/* Dropdown options */
+.appointment-page .booking-form-card select option {
+  color: #18344d;
+  background-color: #ffffff;
+  font-size: 14px;
+  padding: 12px;
+}
+
+.appointment-page .booking-form-card select option:disabled {
+  color: #94a3b8;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .appointment-page .booking-form-card select {
+    min-height: 48px;
+    font-size: 14px;
+    padding-left: 13px;
+  }
+}
+
+/* ===== Premium Rounded Custom Dropdown ===== */
+
+.appointment-page .custom-dropdown {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+}
+
+.appointment-page .custom-dropdown-trigger {
+  width: 100%;
+  min-height: 48px;
+  padding: 13px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font: inherit;
+  font-size: 14px;
+  text-align: left;
+  color: #18344d;
+  background: #fff;
+  border: 1px solid #d8e3ed;
+  border-radius: 9px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.appointment-page .custom-dropdown-trigger:hover,
+.appointment-page .custom-dropdown-trigger.is-open {
+  border-color: #0284c7;
+  background: #fbfdff;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.08);
+}
+
+.appointment-page .dropdown-placeholder {
+  color: #8292a3;
+}
+
+.appointment-page .dropdown-chevron {
+  color: #0284c7;
+  font-size: 19px;
+  transition: transform 0.2s ease;
+}
+
+.appointment-page .dropdown-chevron.rotated {
+  transform: rotate(180deg);
+}
+
+.appointment-page .custom-dropdown-menu {
+  position: absolute;
+  z-index: 999;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  max-height: 280px;
+  overflow-y: auto;
+  padding: 7px;
+  background: #fff;
+  border: 1px solid #e4edf4;
+  border-radius: 15px;
+  box-shadow: 0 14px 38px rgba(15, 43, 72, 0.15);
+  animation: customDropdownOpen 0.18s ease-out;
+}
+
+@keyframes customDropdownOpen {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.appointment-page .custom-dropdown-option {
+  width: 100%;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  text-align: left;
+  font: inherit;
+  color: #18344d;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.18s ease;
+}
+
+.appointment-page .custom-dropdown-option:hover {
+  background: #f1f8fc;
+}
+
+.appointment-page .custom-dropdown-option.selected {
+  background: #eaf6fc;
+  border-color: #d5edf8;
+  color: #036b97;
+}
+
+.appointment-page .dropdown-option-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.appointment-page .dropdown-option-label {
+  font-size: 13.5px;
+  font-weight: 600;
+}
+
+.appointment-page .dropdown-option-description {
+  color: #718096;
+  font-size: 11.5px;
+  line-height: 1.4;
+}
+
+@media (max-width: 600px) {
+  .appointment-page .custom-dropdown-menu {
+    max-height: 240px;
+    border-radius: 12px;
+  }
+}

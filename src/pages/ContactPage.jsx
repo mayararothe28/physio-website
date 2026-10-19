@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   MessageCircle,
   Mail,
@@ -7,6 +7,101 @@ import {
   ArrowRight,
 } from "lucide-react";
 import "./ContactPage.css";
+
+function CustomDropdown({
+  id,
+  name,
+  value,
+  onChange,
+  options,
+  placeholder,
+}) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const selectedOption = options.find(
+    (option) => option.value === value
+  );
+
+  useEffect(() => {
+    function handleOutsideClick(event) {
+      if (!event.target.closest(`[data-dropdown="${id}"]`)) {
+        setIsOpen(false);
+      }
+    }
+
+    function handleEscape(event) {
+      if (event.key === "Escape") setIsOpen(false);
+    }
+
+    document.addEventListener("mousedown", handleOutsideClick);
+    document.addEventListener("keydown", handleEscape);
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, [id]);
+
+  return (
+    <div className="custom-dropdown" data-dropdown={id}>
+      <input type="hidden" name={name} value={value} />
+
+      <button
+        type="button"
+        id={id}
+        className={`custom-dropdown-trigger ${isOpen ? "is-open" : ""}`}
+        aria-expanded={isOpen}
+        aria-haspopup="listbox"
+        onClick={() => setIsOpen((prev) => !prev)}
+      >
+        <span className={!selectedOption ? "dropdown-placeholder" : ""}>
+          {selectedOption?.label || placeholder}
+        </span>
+
+        <span className={`dropdown-chevron ${isOpen ? "rotated" : ""}`}>
+          ▾
+        </span>
+      </button>
+
+      {isOpen && (
+        <div className="custom-dropdown-menu" role="listbox">
+          {options.map((option) => (
+            <button
+              type="button"
+              key={option.value}
+              role="option"
+              aria-selected={value === option.value}
+              className={`custom-dropdown-option ${
+                value === option.value ? "selected" : ""
+              }`}
+              onClick={() => {
+                onChange({
+                  target: { name, value: option.value },
+                });
+                setIsOpen(false);
+              }}
+            >
+              <span className="dropdown-option-text">
+                <span className="dropdown-option-label">
+                  {option.label}
+                </span>
+                {option.description && (
+                  <span className="dropdown-option-description">
+                    {option.description}
+                  </span>
+                )}
+              </span>
+
+              {value === option.value && (
+                <span className="dropdown-check">✓</span>
+              )}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -29,7 +124,15 @@ export default function ContactPage() {
     `Phone: +91 ${formData.phone}`,
     `Email: ${formData.email || "Not provided"}`,
     `Enquiry Regarding: ${formData.regarding || "Not selected"}`,
-    `Preferred Care Mode: ${formData.careMode || "Not selected"}`,
+    `Preferred Care Mode: ${
+      formData.careMode
+        ? {
+            clinic: "In-Clinic Consultation",
+            home: "Home Visit Physiotherapy",
+            video: "Online Video Consultation",
+          }[formData.careMode]
+        : "Not selected"
+    }`,
     `Message: ${formData.message || "Not provided"}`,
   ].join("\n");
 
@@ -47,45 +150,28 @@ export default function ContactPage() {
     if (name === "phone") {
       const cleanDigits = value.replace(/\D/g, "").slice(0, 10);
 
-      setFormData((prev) => ({
-        ...prev,
-        phone: cleanDigits,
-      }));
+      setFormData((prev) => ({ ...prev, phone: cleanDigits }));
 
-      if (cleanDigits.length === 10) {
-        setPhoneError("");
-      }
-
+      if (cleanDigits.length === 10) setPhoneError("");
       return;
     }
 
     if (name === "email") {
-      setFormData((prev) => ({
-        ...prev,
-        email: value,
-      }));
+      setFormData((prev) => ({ ...prev, email: value }));
 
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-      if (!value || emailRegex.test(value)) {
-        setEmailError("");
-      }
-
+      if (!value || emailRegex.test(value)) setEmailError("");
       return;
     }
 
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   }
 
   function handleSubmit(e) {
     e.preventDefault();
 
-    if (!formData.name.trim()) {
-      return;
-    }
+    if (!formData.name.trim()) return;
 
     if (formData.phone.length !== 10) {
       setPhoneError("Please enter a valid 10-digit mobile number.");
@@ -99,18 +185,13 @@ export default function ContactPage() {
       return;
     }
 
-    if (!formData.regarding || !formData.message.trim()) {
-      return;
-    }
+    if (!formData.regarding || !formData.message.trim()) return;
 
     setPhoneError("");
     setEmailError("");
     setSubmitted(true);
 
-    window.scrollTo({
-      top: 200,
-      behavior: "smooth",
-    });
+    window.scrollTo({ top: 200, behavior: "smooth" });
   }
 
   function handleResetContact() {
@@ -128,13 +209,8 @@ export default function ContactPage() {
     setSubmitted(false);
   }
 
-  function handleDemoSend() {
-    handleResetContact();
-  }
-
   return (
     <main className="contact-page">
-      {/* 1. SUBPAGE HERO BANNER */}
       <section className="subpage-hero-banner">
         <div className="subpage-hero-content">
           <h1 className="subpage-title">
@@ -153,20 +229,15 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* 2. MAIN CONTACT SECTION */}
       <section className="contact-main-section section-padding">
         <div className="contact-container">
           <div className="contact-two-col-grid">
-            {/* Contact Inquiry Form */}
             <div className="contact-form-col">
               <div className="contact-form-card">
                 {submitted ? (
                   <div className="contact-success-state">
                     <div className="success-icon-wrap">
-                      <CheckCircle2
-                        size={44}
-                        className="text-emerald"
-                      />
+                      <CheckCircle2 size={44} className="text-emerald" />
                     </div>
 
                     <h3>Inquiry Ready to Send</h3>
@@ -177,7 +248,7 @@ export default function ContactPage() {
                         target="_blank"
                         rel="noreferrer"
                         className="btn-whatsapp-confirm"
-                        onClick={handleDemoSend}
+                        onClick={handleResetContact}
                       >
                         <MessageCircle size={16} />
                         <span>Send via WhatsApp</span>
@@ -186,7 +257,7 @@ export default function ContactPage() {
                       <a
                         href={emailHref}
                         className="btn-email-confirm"
-                        onClick={handleDemoSend}
+                        onClick={handleResetContact}
                       >
                         <Mail size={16} />
                         <span>Send via Email</span>
@@ -202,17 +273,13 @@ export default function ContactPage() {
                     <div className="form-card-header">
                       <h3>Send a Medical Inquiry</h3>
                       <p>
-                        Share your concerns and our senior clinical
-                        team will respond promptly.
+                        Share your concerns and our senior clinical team
+                        will respond promptly.
                       </p>
                     </div>
 
-                    {/* Patient Name */}
                     <div className="form-input-group">
-                      <label htmlFor="c-name">
-                        Patient Full Name *
-                      </label>
-
+                      <label htmlFor="c-name">Patient Full Name *</label>
                       <input
                         type="text"
                         id="c-name"
@@ -225,7 +292,6 @@ export default function ContactPage() {
                       />
                     </div>
 
-                    {/* Phone and Email */}
                     <div className="form-two-col-row">
                       <div className="form-input-group">
                         <label htmlFor="c-phone">
@@ -233,10 +299,7 @@ export default function ContactPage() {
                         </label>
 
                         <div className="phone-input-wrap">
-                          <span className="country-prefix">
-                            +91
-                          </span>
-
+                          <span className="country-prefix">+91</span>
                           <input
                             type="tel"
                             id="c-phone"
@@ -263,7 +326,6 @@ export default function ContactPage() {
                         <label htmlFor="c-email">
                           Email Address (Optional)
                         </label>
-
                         <input
                           type="email"
                           id="c-email"
@@ -284,35 +346,41 @@ export default function ContactPage() {
                       </div>
                     </div>
 
-                    {/* Enquiry and Care Mode */}
                     <div className="form-two-col-row">
                       <div className="form-input-group">
                         <label htmlFor="c-regarding">
                           What Is Your Enquiry Regarding? *
                         </label>
 
-                        <select
+                        <CustomDropdown
                           id="c-regarding"
                           name="regarding"
                           value={formData.regarding}
                           onChange={handleChange}
-                          className="form-input select-input"
-                          required
-                        >
-                          <option value="">
-                            Select an option
-                          </option>
-                          <option value="Doctor">Doctor</option>
-                          <option value="Hospital / Clinic">
-                            Hospital / Clinic
-                          </option>
-                          <option value="Appointment">
-                            Appointment
-                          </option>
-                          <option value="General Enquiry">
-                            General Enquiry
-                          </option>
-                        </select>
+                          placeholder="Select an option"
+                          options={[
+                            {
+                              value: "Doctor",
+                              label: "Doctor",
+                              description: "Questions about our specialists",
+                            },
+                            {
+                              value: "Hospital / Clinic",
+                              label: "Hospital / Clinic",
+                              description: "Clinic facilities and services",
+                            },
+                            {
+                              value: "Appointment",
+                              label: "Appointment",
+                              description: "Booking or changing a visit",
+                            },
+                            {
+                              value: "General Enquiry",
+                              label: "General Enquiry",
+                              description: "Other questions and assistance",
+                            },
+                          ]}
+                        />
                       </div>
 
                       <div className="form-input-group">
@@ -320,35 +388,37 @@ export default function ContactPage() {
                           Preferred Care Mode
                         </label>
 
-                        <select
+                        <CustomDropdown
                           id="c-caremode"
                           name="careMode"
                           value={formData.careMode}
                           onChange={handleChange}
-                          className="form-input select-input"
-                        >
-                          <option value="">
-                            Select a care mode
-                          </option>
-                          <option value="clinic">
-                            In-Clinic Consultation
-                          </option>
-                          <option value="home">
-                            Home Visit Physiotherapy
-                          </option>
-                          <option value="video">
-                            Online Video Consultation
-                          </option>
-                        </select>
+                          placeholder="Select a care mode"
+                          options={[
+                            {
+                              value: "clinic",
+                              label: "In-Clinic Consultation",
+                              description: "Visit the RevitaOrtho clinic",
+                            },
+                            {
+                              value: "home",
+                              label: "Home Visit Physiotherapy",
+                              description: "Physiotherapy at your home",
+                            },
+                            {
+                              value: "video",
+                              label: "Online Video Consultation",
+                              description: "Consult with a specialist online",
+                            },
+                          ]}
+                        />
                       </div>
                     </div>
 
-                    {/* Message */}
                     <div className="form-input-group">
                       <label htmlFor="c-message">
                         Describe Your Symptoms or Medical History *
                       </label>
-
                       <textarea
                         id="c-message"
                         name="message"
@@ -361,17 +431,14 @@ export default function ContactPage() {
                       />
                     </div>
 
-                    <button
-                      type="submit"
-                      className="btn-send-inquiry"
-                    >
+                    <button type="submit" className="btn-send-inquiry">
                       <span>Submit Clinical Inquiry</span>
                       <ArrowRight size={17} />
                     </button>
 
                     <p className="form-privacy-note">
-                      Your medical information is strictly
-                      confidential. No promotional spam.
+                      Your medical information is strictly confidential.
+                      No promotional spam.
                     </p>
                   </form>
                 )}

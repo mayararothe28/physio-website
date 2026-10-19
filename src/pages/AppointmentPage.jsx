@@ -14,6 +14,104 @@ import {
 } from "lucide-react";
 import "./AppointmentPage.css";
 
+
+function CustomDropdown({
+  id,
+  name,
+  value,
+  onChange,
+  options,
+  placeholder,
+  required = false,
+}) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const selectedOption = options.find(
+    (option) => option.value === value
+  );
+
+  useEffect(() => {
+    function handleOutsideClick(event) {
+      if (!event.target.closest(`[data-dropdown="${id}"]`)) {
+        setIsOpen(false);
+      }
+    }
+
+    function handleEscape(event) {
+      if (event.key === "Escape") setIsOpen(false);
+    }
+
+    document.addEventListener("mousedown", handleOutsideClick);
+    document.addEventListener("keydown", handleEscape);
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, [id]);
+
+  return (
+    <div className="custom-dropdown" data-dropdown={id}>
+      <input
+        type="hidden"
+        name={name}
+        value={value}
+        required={required}
+      />
+
+      <button
+        type="button"
+        className={`custom-dropdown-trigger ${isOpen ? "is-open" : ""}`}
+        aria-expanded={isOpen}
+        onClick={() => setIsOpen((prev) => !prev)}
+      >
+        <span className={!selectedOption ? "dropdown-placeholder" : ""}>
+          {selectedOption?.label || placeholder}
+        </span>
+
+        <span className={`dropdown-chevron ${isOpen ? "rotated" : ""}`}>
+          ▾
+        </span>
+      </button>
+
+      {isOpen && (
+        <div className="custom-dropdown-menu">
+          {options.map((option) => (
+            <button
+              type="button"
+              key={option.value}
+              className={`custom-dropdown-option ${
+                value === option.value ? "selected" : ""
+              }`}
+              onClick={() => {
+                onChange({
+                  target: { name, value: option.value },
+                });
+                setIsOpen(false);
+              }}
+            >
+              <span className="dropdown-option-text">
+                <span className="dropdown-option-label">
+                  {option.label}
+                </span>
+
+                {option.description && (
+                  <span className="dropdown-option-description">
+                    {option.description}
+                  </span>
+                )}
+              </span>
+
+              {value === option.value && <span>✓</span>}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+
 const SERVICE_CONDITIONS = {
   "back-pain": "spine",
   "slip-disc": "spine",
@@ -376,62 +474,71 @@ export default function AppointmentPage() {
                     <label htmlFor="condition" className="section-label">
                       2. Primary Condition / Pain Area
                     </label>
-                    <select
-                      id="condition"
-                      name="condition"
-                      value={formData.condition}
-                      onChange={handleChange}
-                      required
-                    >
-                      <option value="" disabled>Select a condition</option>
-                      <option value="spine">Lower Back Pain / L4-L5 Slip Disc / Sciatica</option>
-                      <option value="knee">Knee Pain / Osteoarthritis / Cartilage Stiffness</option>
-                      <option value="neck">Neck Pain / Cervical Spondylosis / Tech Neck</option>
-                      <option value="shoulder">Frozen Shoulder / Rotator Cuff Pinch / Tendonitis</option>
-                      <option value="sports">Sports Injury / ACL Sprain / Muscle Tear</option>
-                      <option value="postop">Post-Operative Surgery Rehabilitation (TKR/THR)</option>
-                      <option value="stroke">Neurological Rehab / Stroke / Balance Restoration</option>
-                      <option value="other">General Joint Pain / Second Opinion</option>
-                    </select>
+                    
+<CustomDropdown
+  id="condition"
+  name="condition"
+  value={formData.condition}
+  onChange={handleChange}
+  required
+  placeholder="Select a condition"
+  options={[
+    { value: "spine", label: "Lower Back Pain / Sciatica", description: "Back pain, slip disc and nerve pain" },
+    { value: "knee", label: "Knee Pain / Osteoarthritis", description: "Joint pain and stiffness" },
+    { value: "neck", label: "Neck Pain / Cervical Spondylosis", description: "Neck and posture-related pain" },
+    { value: "shoulder", label: "Frozen Shoulder / Rotator Cuff", description: "Shoulder mobility and tendon issues" },
+    { value: "sports", label: "Sports Injury / ACL Rehab", description: "Sports injuries and muscle tears" },
+    { value: "postop", label: "Post-Operative Rehabilitation", description: "Recovery after surgery" },
+    { value: "stroke", label: "Neurological Rehabilitation", description: "Balance and movement rehabilitation" },
+    { value: "other", label: "General Joint Pain / Second Opinion", description: "Other concerns and consultations" },
+  ]}
+/>
+
                   </div>
 
                   {/* Section 3: Specialist & Timing */}
                   <div className="form-grid-2">
                     <div className="form-field">
                       <label htmlFor="doctor">Preferred Doctor</label>
-                      <select
-                        id="doctor"
-                        name="doctor"
-                        value={formData.doctor}
-                        onChange={handleChange}
-                      >
-                        <option value="" disabled>Select a specialist (optional)</option>
-                        <option value="any">First Available Senior Specialist</option>
-                        <option value="Dr. Sumit Gupta, PT">Dr. Sumit Gupta (Chief Ortho & Spine)</option>
-                        <option value="Dr. Sneha Kulkarni, PT">Dr. Sneha Kulkarni (Sports & Knee)</option>
-                        <option value="Dr. Vikram Patil, PT">Dr. Vikram Patil (Neuro & Post-Op)</option>
-                        <option value="Dr. Ananya Deshmukh, PT">Dr. Ananya Deshmukh (Ergonomics & Posture)</option>
-                      </select>
+                      
+<CustomDropdown
+  id="doctor"
+  name="doctor"
+  value={formData.doctor}
+  onChange={handleChange}
+  placeholder="Select a specialist (optional)"
+  options={[
+    { value: "any", label: "First Available Senior Specialist", description: "Recommended for new patients" },
+    { value: "Dr. Sumit Gupta, PT", label: "Dr. Sumit Gupta", description: "Chief Ortho & Spine" },
+    { value: "Dr. Sneha Kulkarni, PT", label: "Dr. Sneha Kulkarni", description: "Sports & Knee" },
+    { value: "Dr. Vikram Patil, PT", label: "Dr. Vikram Patil", description: "Neuro & Post-Op" },
+    { value: "Dr. Ananya Deshmukh, PT", label: "Dr. Ananya Deshmukh", description: "Ergonomics & Posture" },
+  ]}
+/>
+
                     </div>
 
                     <div className="form-field">
                       <label htmlFor="timeSlot">Preferred Time Slot</label>
-                      <select
-                        id="timeSlot"
-                        name="timeSlot"
-                        value={formData.timeSlot}
-                        onChange={handleChange}
-                      >
-                        <option value="" disabled>Select a preferred time (optional)</option>
-                        <option value="morning">Morning (8:00 AM – 12:00 PM)</option>
-                        <option value="afternoon">Afternoon (12:00 PM – 4:00 PM)</option>
-                        <option value="evening">Evening (4:00 PM – 8:00 PM)</option>
-                      </select>
+                     
+<CustomDropdown
+  id="timeSlot"
+  name="timeSlot"
+  value={formData.timeSlot}
+  onChange={handleChange}
+  placeholder="Select a preferred time (optional)"
+  options={[
+    { value: "morning", label: "Morning", description: "8:00 AM – 12:00 PM" },
+    { value: "afternoon", label: "Afternoon", description: "12:00 PM – 4:00 PM" },
+    { value: "evening", label: "Evening", description: "4:00 PM – 8:00 PM" },
+  ]}
+/>
+
                     </div>
                   </div>
 
                   <div className="form-field">
-                    <label htmlFor="date">Preferred Date (4-digit Year) *</label>
+                    <label htmlFor="date">Preferred Date (4-digit Year) </label>
                     <input
                       type="date"
                       id="date"
@@ -448,7 +555,7 @@ export default function AppointmentPage() {
                   {/* Section 4: Patient Info */}
                   <div className="form-grid-2">
                     <div className="form-field">
-                      <label htmlFor="name">Full Name *</label>
+                      <label htmlFor="name">Full Name </label>
                       <input
                         type="text"
                         id="name"
@@ -461,7 +568,7 @@ export default function AppointmentPage() {
                     </div>
 
                     <div className="form-field">
-                      <label htmlFor="phone">Phone / WhatsApp Number (10 Digits) *</label>
+                      <label htmlFor="phone">Phone / WhatsApp Number </label>
                       <input
                         type="tel"
                         id="phone"
@@ -480,7 +587,7 @@ export default function AppointmentPage() {
 
                   <div className="form-grid-2">
                     <div className="form-field">
-                      <label htmlFor="email">Email Address (Gmail / Email) *</label>
+                      <label htmlFor="email">Email Address  </label>
                       <input
                         type="email"
                         id="email"
@@ -494,14 +601,14 @@ export default function AppointmentPage() {
                     </div>
 
                     <div className="form-field">
-                      <label htmlFor="age">Patient Age (Up to 3 Digits, Max 100) *</label>
+                      <label htmlFor="age">Patient Age </label>
                       <input
                         type="number"
                         id="age"
                         name="age"
                         min="1"
                         max="100"
-                        placeholder="e.g. 42 (Max 100)"
+                        placeholder="e.g. 42 "
                         value={formData.age}
                         onChange={handleChange}
                         required

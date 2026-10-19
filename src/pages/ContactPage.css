@@ -577,3 +577,225 @@
     padding: 45px 0;
   }
 }
+
+/* =========================================
+   REVITAORTHO - PREMIUM CONTACT DROPDOWNS
+========================================= */
+
+.contact-page .inquiry-form select.select-input {
+  width: 100%;
+  min-height: 46px;
+  padding: 11px 42px 11px 14px;
+
+  border: 1px solid #d6e4ef;
+  border-radius: 14px;
+
+  background-color: #ffffff;
+  color: #334155;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+
+  cursor: pointer;
+  outline: none;
+
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    background-color 0.25s ease;
+}
+
+/* Hover effect */
+.contact-page .inquiry-form select.select-input:hover {
+  border-color: #7dbbd7;
+  background-color: #fbfdff;
+}
+
+/* Focus effect */
+.contact-page .inquiry-form select.select-input:focus {
+  border-color: #0284c7;
+  box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.12);
+}
+
+/* Placeholder option */
+.contact-page .inquiry-form select.select-input:invalid {
+  color: #64748b;
+}
+
+/* Dropdown options */
+.contact-page .inquiry-form select.select-input option {
+  padding: 12px;
+  background-color: #ffffff;
+  color: #0f172a;
+  font-size: 14px;
+}
+
+/* Mobile responsive */
+@media (max-width: 600px) {
+  .contact-page .inquiry-form select.select-input {
+    min-height: 46px;
+    font-size: 14px;
+  }
+}
+
+/* =========================================
+   REVITAORTHO - CUSTOM CONTACT DROPDOWNS
+========================================= */
+
+.contact-page .custom-dropdown {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+}
+
+.contact-page .custom-dropdown-trigger {
+  width: 100%;
+  min-height: 46px;
+  padding: 12px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+
+  border: 1px solid #d8e3ed;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #334155;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: left;
+
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.contact-page .custom-dropdown-trigger:hover,
+.contact-page .custom-dropdown-trigger.is-open {
+  border-color: #0284c7;
+  background: #fbfdff;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.1);
+}
+
+.contact-page .custom-dropdown-trigger:focus-visible {
+  outline: 2px solid #0284c7;
+  outline-offset: 2px;
+}
+
+.contact-page .dropdown-placeholder {
+  color: #64748b;
+}
+
+.contact-page .dropdown-chevron {
+  flex-shrink: 0;
+  color: #64748b;
+  font-size: 17px;
+  transition: transform 0.2s ease;
+}
+
+.contact-page .dropdown-chevron.rotated {
+  transform: rotate(180deg);
+}
+
+.contact-page .custom-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  z-index: 999;
+
+  max-height: 280px;
+  overflow-y: auto;
+  padding: 7px;
+
+  background: #ffffff;
+  border: 1px solid #e4edf4;
+  border-radius: 14px;
+  box-shadow: 0 14px 38px rgba(15, 43, 72, 0.15);
+
+  animation: contactDropdownOpen 0.18s ease-out;
+  transform-origin: top center;
+}
+
+@keyframes contactDropdownOpen {
+  from {
+    opacity: 0;
+    transform: translateY(-5px) scale(0.99);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.contact-page .custom-dropdown-option {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+
+  padding: 11px 12px;
+  border: none;
+  border-radius: 9px;
+  background: transparent;
+  color: #334155;
+  text-align: left;
+  font-family: inherit;
+  cursor: pointer;
+
+  transition: background-color 0.18s ease, color 0.18s ease;
+}
+
+.contact-page .custom-dropdown-option:hover {
+  background: #f1f8fc;
+}
+
+.contact-page .custom-dropdown-option.selected {
+  background: #eaf6fc;
+  color: #0369a1;
+}
+
+.contact-page .dropdown-option-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.contact-page .dropdown-option-label {
+  font-size: 13.5px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.contact-page .dropdown-option-description {
+  color: #64748b;
+  font-size: 11.5px;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.contact-page .dropdown-check {
+  flex-shrink: 0;
+  color: #0284c7;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+@media (max-width: 600px) {
+  .contact-page .custom-dropdown-menu {
+    max-height: 240px;
+    border-radius: 12px;
+  }
+
+  .contact-page .custom-dropdown-trigger {
+    min-height: 46px;
+    font-size: 14px;
+  }
+}
+
