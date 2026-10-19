@@ -1548,3 +1548,39 @@
     transition: none;
   }
 }
+/* Blur-to-Clear + Letter-by-Letter Intro Animation */
+.wor-word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.wor-letter {
+  display: inline-block;
+  opacity: 0;
+  filter: blur(1px);
+  transform: translateY(4px);
+  animation: worBlurLetterReveal 0.4s ease-out forwards;
+}
+
+@keyframes worBlurLetterReveal {
+  from {
+    opacity: 0;
+    filter: blur(3px);
+    transform: translateY(4px);
+  }
+
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wor-letter {
+    animation: none;
+    opacity: 1;
+    filter: none;
+    transform: none;
+  }
+}

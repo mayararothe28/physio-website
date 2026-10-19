@@ -286,94 +286,88 @@ export default function ServiceDetailPage() {
               </div>
             </div>
           )}
+{/* Part D: Simple Recovery Roadmap */}
+{/* Part D: Horizontal Recovery Roadmap */}
 
-         {/* Part D: Clinical Recovery Roadmap */}
 {detail.protocols && detail.protocols.length > 0 && (
-  <div className="service-info-block recovery-roadmap">
+  <section className="service-info-block recovery-roadmap">
     <div className="roadmap-heading">
-      <span className="roadmap-eyebrow">OUR TREATMENT PROCESS</span>
+      <span className="roadmap-eyebrow">YOUR PATH TO RECOVERY</span>
 
-      <h3 className="points-section-heading">
-        <i className="bi bi-activity roadmap-title-icon" aria-hidden="true"></i>
-        <span>
-          Evidence-Based <span className="roadmap-highlight">4-Stage</span>{" "}
-          Recovery Roadmap
-        </span>
+      <h3 className="roadmap-main-title">
+        Your Recovery Journey
       </h3>
 
       <p className="roadmap-intro">
-        A structured approach to treatment, movement and long-term recovery.
+        A personalised journey to reduce pain, restore movement
+        and return to everyday activities.
       </p>
     </div>
 
-    <div className="roadmap-grid">
-      {detail.protocols.map((proto, index) => {
-        const stageIcons = [
-          "bi-clipboard2-check",
-          "bi-bullseye",
-          "bi-person-walking",
-          "bi-graph-up-arrow",
-        ];
+    <div className="roadmap-horizontal">
+      <div className="roadmap-track" aria-hidden="true" />
 
-        return (
-          <article
-            key={proto.step}
-            className="roadmap-card"
-            style={{ "--stage-index": index }}
-          >
-            <div className="roadmap-card-top">
-              <div className="roadmap-icon-wrap">
-                <i
-                  className={`bi ${
-                    stageIcons[index % stageIcons.length]
-                  } roadmap-stage-icon`}
-                  aria-hidden="true"
-                />
+      <div className="roadmap-grid">
+        {detail.protocols.map((proto, index) => {
+          const stages = [
+            {
+              icon: "bi-clipboard2-pulse",
+              description:
+                "Understand symptoms and identify the source of discomfort.",
+            },
+            {
+              icon: "bi-bullseye",
+              description:
+                "Start a personalised plan focused on pain relief.",
+            },
+            {
+              icon: "bi-person-walking",
+              description:
+                "Improve flexibility, mobility and daily movement.",
+            },
+            {
+              icon: "bi-graph-up-arrow",
+              description:
+                "Build strength and help prevent future injuries.",
+            },
+          ];
+
+          const stage = stages[index % stages.length];
+
+          return (
+            <article
+              key={proto.step ?? proto.title ?? index}
+              className="roadmap-card"
+              style={{ "--stage-index": index }}
+            >
+              <div className="roadmap-marker">
+                <span className="roadmap-dot" />
               </div>
 
-              <span className="roadmap-stage-number">
-                {String(proto.step).padStart(2, "0")}
-              </span>
-            </div>
+              <div className="roadmap-card-content">
+                <div className="roadmap-icon-wrap">
+                  <i
+                    className={`bi ${stage.icon} roadmap-stage-icon`}
+                    aria-hidden="true"
+                  />
+                </div>
 
-            <h4 className="roadmap-card-title">{proto.title}</h4>
+                <h4 className="roadmap-card-title">
+                  {proto.title}
+                </h4>
 
-            
-<p className="roadmap-card-description">
-  {[
-    "Assess pain levels, posture and movement.",
-    "Start targeted treatment to reduce pain.",
-    "Improve mobility, flexibility and daily function.",
-    "Build strength and help prevent future injuries."
-  ][index] || proto.desc}
-</p>
-
-
-            <div className="roadmap-method">
-              <i
-                className="bi bi-shield-check roadmap-method-icon"
-                aria-hidden="true"
-              />
-
-              <div>
-                <span className="roadmap-method-label">
-                  Clinical Method
-                </span>
-                <p className="roadmap-method-text">{proto.modality}</p>
+                <p className="roadmap-card-description">
+                  {stage.description}
+                </p>
               </div>
-            </div>
-          </article>
-        );
-      })}
+            </article>
+          );
+        })}
+      </div>
     </div>
-
-    <div className="roadmap-footer">
-      <span className="roadmap-footer-line" />
-      <p>Your Recovery. Our Priority.</p>
-      <span className="roadmap-footer-line" />
-    </div>
-  </div>
+  </section>
 )}
+
 
           {/* Part E: Surgeries Successfully Avoided (In Points) */}
           {detail.surgeriesAvoided && detail.surgeriesAvoided.length > 0 && (

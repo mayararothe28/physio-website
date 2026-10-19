@@ -1035,3 +1035,598 @@
     display: none;
   }
 }
+/* SIMPLE & CLEAN RECOVERY PROCESS */
+
+.recovery-roadmap {
+  padding-top: 8px;
+}
+
+.recovery-roadmap .roadmap-heading {
+  max-width: 680px;
+  margin: 0 auto 26px;
+  text-align: center;
+}
+
+.recovery-roadmap .roadmap-heading .points-section-heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 8px;
+  color: #0f2b48;
+  font-size: clamp(22px, 2.5vw, 28px);
+  line-height: 1.3;
+}
+
+.recovery-roadmap .roadmap-intro {
+  margin: 0;
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.recovery-roadmap .roadmap-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  align-items: stretch;
+}
+
+.recovery-roadmap .roadmap-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  min-width: 0;
+  height: auto;
+  min-height: 0;
+  padding: 22px 18px;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  box-shadow: 0 3px 12px rgba(15, 43, 72, 0.04);
+  transition: border-color 0.2s ease, transform 0.2s ease,
+    box-shadow 0.2s ease;
+  animation: roadmapFadeIn 0.45s ease both;
+  animation-delay: calc(var(--stage-index, 0) * 80ms);
+}
+
+.recovery-roadmap .roadmap-card:hover {
+  transform: translateY(-3px);
+  border-color: #a5d9f2;
+  box-shadow: 0 8px 22px rgba(15, 43, 72, 0.07);
+}
+
+.recovery-roadmap .roadmap-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: #edf8fe;
+  color: #0284c7;
+  transition: background 0.2s ease;
+}
+
+.recovery-roadmap .roadmap-card:hover .roadmap-icon-wrap {
+  background: #dff3fd;
+}
+
+.recovery-roadmap .roadmap-stage-icon {
+  color: #0284c7;
+}
+
+.recovery-roadmap .roadmap-stage-number,
+.recovery-roadmap .roadmap-method,
+.recovery-roadmap .roadmap-footer,
+.recovery-roadmap .roadmap-card::after {
+  display: none;
+}
+
+.recovery-roadmap .roadmap-card-title {
+  min-height: 0;
+  margin: 0;
+  color: #0f2b48;
+  font-family: "Outfit", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.4;
+  text-align: left;
+}
+
+.recovery-roadmap .roadmap-card-description {
+  flex: initial;
+  margin: 0;
+  color: #64748b;
+  font-size: 13px;
+  line-height: 1.65;
+  text-align: left;
+}
+
+@media (max-width: 900px) {
+  .recovery-roadmap .roadmap-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .recovery-roadmap .roadmap-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .recovery-roadmap .roadmap-card {
+    padding: 17px;
+  }
+
+  .recovery-roadmap .roadmap-card-title {
+    font-size: 15px;
+  }
+
+  .recovery-roadmap .roadmap-card-description {
+    font-size: 13px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .recovery-roadmap .roadmap-card {
+    animation: none;
+    transition: none;
+  }
+
+  .recovery-roadmap .roadmap-card:hover {
+    transform: none;
+  }
+}
+
+/* =========================================
+   HORIZONTAL RECOVERY ROADMAP
+   Compact cards with a connecting timeline
+========================================= */
+
+.recovery-roadmap {
+  padding-top: 8px;
+}
+
+.recovery-roadmap .roadmap-heading {
+  max-width: 680px;
+  margin: 0 auto 24px;
+  text-align: center;
+}
+
+.recovery-roadmap .roadmap-eyebrow {
+  display: inline-block;
+  margin-bottom: 7px;
+  color: #0284c7;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.recovery-roadmap .roadmap-main-title {
+  margin: 0 0 8px;
+  color: #0f2b48;
+  font-family: "Outfit", sans-serif;
+  font-size: clamp(22px, 2.5vw, 28px);
+  font-weight: 800;
+  line-height: 1.3;
+}
+
+.recovery-roadmap .roadmap-intro {
+  max-width: 580px;
+  margin: 0 auto;
+  color: #64748b;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.recovery-roadmap .roadmap-horizontal {
+  position: relative;
+  padding-top: 0;
+}
+
+.recovery-roadmap .roadmap-track {
+  position: absolute;
+  top: 7px;
+  left: 12.5%;
+  right: 12.5%;
+  height: 2px;
+  background: #9bd8f3;
+  z-index: 0;
+}
+
+.recovery-roadmap .roadmap-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  align-items: start;
+}
+
+.recovery-roadmap .roadmap-card {
+  min-width: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  animation: roadmapFadeIn 0.4s ease both;
+  animation-delay: calc(var(--stage-index, 0) * 80ms);
+}
+
+.recovery-roadmap .roadmap-card:hover {
+  transform: none;
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.recovery-roadmap .roadmap-marker {
+  position: relative;
+  z-index: 1;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.recovery-roadmap .roadmap-dot {
+  width: 14px;
+  height: 14px;
+  display: block;
+  border: 3px solid #d8f0fc;
+  border-radius: 50%;
+  background: #0284c7;
+  box-shadow: 0 0 0 2px #ffffff;
+}
+
+.recovery-roadmap .roadmap-card-content {
+  min-height: 0;
+  height: 100%;
+  padding: 15px 12px;
+  background: #f8fbfe;
+  border: 1px solid #dcebf5;
+  border-radius: 9px;
+  text-align: center;
+  transition: border-color 0.2s ease,
+              background-color 0.2s ease,
+              transform 0.2s ease;
+}
+
+.recovery-roadmap .roadmap-card:hover .roadmap-card-content {
+  background: #ffffff;
+  border-color: #83c9ec;
+  transform: translateY(-3px);
+}
+
+.recovery-roadmap .roadmap-icon-wrap {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 10px;
+  border-radius: 50%;
+  background: #e5f5fd;
+}
+
+.recovery-roadmap .roadmap-stage-icon {
+  color: #0284c7;
+  font-size: 19px;
+  line-height: 1;
+}
+
+.recovery-roadmap .roadmap-card-title {
+  min-height: 0;
+  margin: 0 0 7px;
+  color: #0f2b48;
+  font-family: "Outfit", sans-serif;
+  font-size: 13px;
+  font-weight: 750;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.recovery-roadmap .roadmap-card-description {
+  margin: 0;
+  color: #64748b;
+  font-size: 11px;
+  line-height: 1.55;
+  text-align: center;
+}
+
+.recovery-roadmap .roadmap-stage-number,
+.recovery-roadmap .roadmap-method,
+.recovery-roadmap .roadmap-footer {
+  display: none;
+}
+
+@keyframes roadmapFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .recovery-roadmap .roadmap-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px 12px;
+  }
+
+  .recovery-roadmap .roadmap-track {
+    display: none;
+  }
+
+  .recovery-roadmap .roadmap-card-content {
+    height: auto;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .recovery-roadmap .roadmap-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px 10px;
+  }
+
+  .recovery-roadmap .roadmap-card-content {
+    padding: 13px 9px;
+  }
+
+  .recovery-roadmap .roadmap-card-title {
+    font-size: 12px;
+  }
+
+  .recovery-roadmap .roadmap-card-description {
+    font-size: 10.5px;
+  }
+
+  .recovery-roadmap .roadmap-icon-wrap {
+    width: 34px;
+    height: 34px;
+  }
+
+  .recovery-roadmap .roadmap-stage-icon {
+    font-size: 17px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .recovery-roadmap .roadmap-card {
+    animation: none;
+    transition: none;
+  }
+
+  .recovery-roadmap .roadmap-card-content {
+    transition: none;
+  }
+}
+
+/* Fix: Make all recovery roadmap cards equal height */
+
+.recovery-roadmap .roadmap-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 12px;
+}
+
+.recovery-roadmap .roadmap-card {
+  height: 100%;
+  min-width: 0;
+  align-self: stretch;
+}
+
+.recovery-roadmap .roadmap-card-content {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  min-height: 154px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.recovery-roadmap .roadmap-card-title {
+  min-height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.recovery-roadmap .roadmap-card-description {
+  margin-top: 0;
+}
+
+@media (max-width: 900px) {
+  .recovery-roadmap .roadmap-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .recovery-roadmap .roadmap-card-content {
+    min-height: 150px;
+  }
+}
+
+/* Equal-size cards in a horizontal staggered roadmap */
+
+.recovery-roadmap .roadmap-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  align-items: start;
+}
+
+.recovery-roadmap .roadmap-card {
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+  margin-top: 0;
+}
+
+.recovery-roadmap .roadmap-card:nth-child(even) {
+  margin-top: 55px;
+}
+
+.recovery-roadmap .roadmap-card-content {
+  width: 100%;
+  height: 170px;
+  min-height: 170px;
+  box-sizing: border-box;
+  padding: 14px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.recovery-roadmap .roadmap-card-title {
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0 8px;
+}
+
+.recovery-roadmap .roadmap-card-description {
+  margin: 0;
+}
+
+/* Tablet and mobile */
+@media (max-width: 900px) {
+  .recovery-roadmap .roadmap-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .recovery-roadmap .roadmap-card:nth-child(even) {
+    margin-top: 35px;
+  }
+}
+
+@media (max-width: 480px) {
+  .recovery-roadmap .roadmap-card-content {
+    height: 170px;
+    min-height: 170px;
+    padding: 12px 8px;
+  }
+}
+
+/* Remove roadmap line and every blue connector dot */
+.recovery-roadmap .roadmap-grid {
+  background: none !important;
+}
+
+.recovery-roadmap .roadmap-grid::before,
+.recovery-roadmap .roadmap-grid::after,
+.recovery-roadmap .roadmap-card::before,
+.recovery-roadmap .roadmap-card::after,
+.recovery-roadmap .roadmap-card-top::before,
+.recovery-roadmap .roadmap-card-top::after,
+.recovery-roadmap .roadmap-connector-dot {
+  content: none !important;
+  display: none !important;
+}
+
+/* Keep the zigzag cards and equal dimensions */
+.recovery-roadmap .roadmap-card {
+  width: 100%;
+  height: 190px;
+  min-height: 190px;
+}
+
+/* Hide any standalone connector line */
+.recovery-roadmap .roadmap-grid {
+  border: none !important;
+  outline: none !important;
+}
+
+/* REMOVE ROADMAP LINE AND ALL CONNECTOR DOTS */
+
+.recovery-roadmap .roadmap-track,
+.recovery-roadmap .roadmap-marker,
+.recovery-roadmap .roadmap-dot,
+.recovery-roadmap .roadmap-connector-dot {
+  display: none !important;
+}
+
+/* Keep all four cards equal in size */
+.recovery-roadmap .roadmap-grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 14px !important;
+  align-items: start !important;
+}
+
+/* Zigzag layout: 1 and 3 above, 2 and 4 below */
+.recovery-roadmap .roadmap-card:nth-child(1),
+.recovery-roadmap .roadmap-card:nth-child(3) {
+  margin-top: 0 !important;
+}
+
+.recovery-roadmap .roadmap-card:nth-child(2),
+.recovery-roadmap .roadmap-card:nth-child(4) {
+  margin-top: 60px !important;
+}
+
+/* Same card width and height */
+.recovery-roadmap .roadmap-card {
+  width: 100% !important;
+  height: 190px !important;
+  min-height: 190px !important;
+  box-sizing: border-box !important;
+}
+
+.recovery-roadmap .roadmap-card-content {
+  width: 100% !important;
+  height: 190px !important;
+  min-height: 190px !important;
+  box-sizing: border-box !important;
+}
+
+/* Responsive layout */
+@media (max-width: 900px) {
+  .recovery-roadmap .roadmap-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .recovery-roadmap .roadmap-card:nth-child(2),
+  .recovery-roadmap .roadmap-card:nth-child(4) {
+    margin-top: 30px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .recovery-roadmap .roadmap-card:nth-child(2),
+  .recovery-roadmap .roadmap-card:nth-child(4) {
+    margin-top: 20px !important;
+  }
+}
+
+/* Normal rounded recovery cards */
+.recovery-roadmap .roadmap-card-content {
+  border-radius: 45px !important;
+  border: 2px solid #dce5ed !important;
+  background: #f8fbfe !important;
+  box-shadow: 0 2px 6px rgba(15, 43, 72, 0.04) !important;
+}
+
+.recovery-roadmap .roadmap-card-content:hover {
+  border-color: #bfd7e4 !important;
+  box-shadow: 0 4px 10px rgba(15, 43, 72, 0.07) !important;
+  transform: translateY(-2px);
+}

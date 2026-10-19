@@ -152,14 +152,20 @@ const CLINIC_FACILITIES = [
 
 function AnimatedWord({ word, startDelay = 0, accent = false }) {
   return (
-    <span className={`wor-word${accent ? " wor-text-accent" : ""}`}>
+    <span
+      className={`wor-word${accent ? " wor-text-accent" : ""}`}
+      aria-label={word}
+    >
       {Array.from(word).map((letter, index) => (
         <span
           className="wor-letter"
           key={`${word}-${index}`}
-          style={{ animationDelay: `${startDelay + index * 0.075}s` }}
+          aria-hidden="true"
+          style={{
+           animationDelay: `${startDelay + index * 0.12}s`,
+          }}
         >
-          {letter}
+          {letter === " " ? "\u00A0" : letter}
         </span>
       ))}
     </span>
@@ -606,7 +612,12 @@ export default function HomePage() {
                   <h3 className="wor-doctor-name">{doc.name}</h3>
                   <span className="wor-doctor-role">{doc.role}</span>
                   <p className="wor-doctor-degree">{doc.qualifications}</p>
-                  <p className="wor-doctor-bio">{doc.bio}</p>
+                  <div className="wor-doctor-bio">
+  <p>{doc.bio.split(". ").slice(0, 2).join(". ")}.</p>
+  <p>
+    {doc.bio.split(". ").slice(2).join(". ")}
+  </p>
+</div>
                   <div className="wor-doctor-actions">
                     <Link
                       to={`/appointment?doctor=${encodeURIComponent(doc.name)}`}
