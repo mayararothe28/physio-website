@@ -23,6 +23,7 @@ import {
 } from "lucide-react";
 import { fetchClinicData, submitAppointmentApi } from "../services/api";
 import drAnanyaImg from "../assets/dr-ananya-deshmukh.jpg";
+import TypewriterTitle from "../components/TypewriterTitle";
 import "./HomePage.css";
 
 // Verified Doctor Profiles for RevitaOrtho (matching World of Rehab doctor layout)
@@ -150,27 +151,6 @@ const CLINIC_FACILITIES = [
   },
 ];
 
-function AnimatedWord({ word, startDelay = 0, accent = false }) {
-  return (
-    <span
-      className={`wor-word${accent ? " wor-text-accent" : ""}`}
-      aria-label={word}
-    >
-      {Array.from(word).map((letter, index) => (
-        <span
-          className="wor-letter"
-          key={`${word}-${index}`}
-          aria-hidden="true"
-          style={{
-           animationDelay: `${startDelay + index * 0.12}s`,
-          }}
-        >
-          {letter === " " ? "\u00A0" : letter}
-        </span>
-      ))}
-    </span>
-  );
-}
 
 export default function HomePage() {
   const [apiData, setApiData] = useState(null);
@@ -380,14 +360,14 @@ export default function HomePage() {
               <span>SPECIALIZED PHYSICAL THERAPY & ORTHOPEDICS</span>
             </span>
 
-            <h1 className="wor-banner-title">
-              <AnimatedWord word="Begin" startDelay={0} />{" "}
-              <AnimatedWord word="Your" startDelay={0.62} />{" "}
-              <AnimatedWord word="Journey" startDelay={1.165} />
-              <br />
-              <AnimatedWord word="to" startDelay={1.935} />{" "}
-              <AnimatedWord word="Recovery" startDelay={2.33} accent />
-            </h1>
+            <TypewriterTitle
+              part1="Begin Your Journey"
+              part2="to Recovery"
+              hasBreak={true}
+              part2ClassName="wor-text-accent"
+              typeSpeed={48}
+              initialDelay={300}
+            />
 
             <p className="wor-banner-desc">
               Our customized physical therapy treatments provide lasting relief and a proven path to a pain-free life without unnecessary surgery or medication. Over 10,000+ recoveries managed in Pune.

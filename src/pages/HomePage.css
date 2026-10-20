@@ -1459,23 +1459,38 @@
 }
 
 
-/* ─── Sequential hero heading reveal ─── */
-.wor-banner-title .wor-word {
-  display: inline-block;
-  white-space: nowrap;
+/* ─── Hero banner intro animations matching smile-zone ─── */
+.wor-banner-kicker {
+  animation: worHeroFadeDown 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-.wor-banner-title .wor-letter {
-  display: inline-block;
-  opacity: 0;
-  transform: translateY(18px);
-  animation: worLetterReveal 0.32s ease-out forwards;
+.wor-banner-desc {
+  animation: worHeroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both;
 }
 
-@keyframes worLetterReveal {
+.wor-banner-btn-group {
+  animation: worHeroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.55s both;
+}
+
+.wor-banner-trust-tags {
+  animation: worHeroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.75s both;
+}
+
+@keyframes worHeroFadeDown {
   from {
     opacity: 0;
-    transform: translateY(18px);
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes worHeroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
   }
   to {
     opacity: 1;
@@ -1484,7 +1499,10 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .wor-banner-title .wor-letter {
+  .wor-banner-kicker,
+  .wor-banner-desc,
+  .wor-banner-btn-group,
+  .wor-banner-trust-tags {
     animation: none;
     opacity: 1;
     transform: none;

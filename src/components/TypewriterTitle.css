@@ -1,0 +1,79 @@
+.wor-typewriter-wrap {
+  position: relative;
+  display: block;
+}
+
+.wor-typewriter-ghost {
+  visibility: hidden;
+  user-select: none;
+  pointer-events: none;
+  display: block;
+}
+
+.wor-typewriter-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: block;
+  user-select: text;
+}
+
+/* Blinking cursor matching smile-zone style with RevitaOrtho sky-blue glow */
+.wor-typewriter-cursor {
+  display: inline-block;
+  width: 4px;
+  height: 0.88em;
+  margin-left: 5px;
+  background-color: #38bdf8;
+  vertical-align: -0.06em;
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.95), 0 0 20px rgba(56, 189, 248, 0.45);
+  animation: typewriterBlink 0.85s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  transition: opacity 0.4s ease;
+}
+
+@keyframes typewriterBlink {
+  0%, 45% {
+    opacity: 1;
+  }
+  50%, 95% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.wor-typewriter-accent-finished {
+  transition: filter 0.4s ease, text-shadow 0.4s ease;
+  text-shadow: 0 2px 20px rgba(56, 189, 248, 0.35);
+}
+
+/* Accessible hidden text utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 640px) {
+  .wor-typewriter-cursor {
+    width: 3px;
+    height: 0.84em;
+    margin-left: 3px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wor-typewriter-cursor {
+    display: none;
+  }
+}
